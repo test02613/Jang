@@ -22,8 +22,8 @@
 				</div>
 				<div class="top_menu_right">
 					<ul>
-						<li><a href="#">로그인</a></li>
-						<li><a href="#">회원가입</a></li>
+						<li><a href="/member/join">로그인</a></li>
+						<li><a href="join">회원가입</a></li>
 						<li><a href="#">마이페이지</a></li>
 						<li><a href="#">장바구니</a></li>
 					</ul>
@@ -37,39 +37,75 @@
 			<nav>
 				<ul>
 					<li class="dropdown">
-						<div class="dropdown-menu">menu1</div>
+						<div class="dropdown-menu">Mac</div>
 						<div class="dropdown-content">
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
 						</div>
 					</li>
 					<li class="dropdown">
-						<div class="dropdown-menu">menu1</div>
+						<div class="dropdown-menu">iPad</div>
 						<div class="dropdown-content">
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
 						</div>
 					</li>
 					<li class="dropdown">
-						<div class="dropdown-menu">menu1</div>
+						<div class="dropdown-menu">iPone</div>
 						<div class="dropdown-content">
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
 						</div>
 					</li>
 					<li class="dropdown">
-						<div class="dropdown-menu">menu1</div>
+						<div class="dropdown-menu">Watch</div>
 						<div class="dropdown-content">
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
-							<a href="#">menu1-1</a>
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<div class="dropdown-menu">AirPod</div>
+						<div class="dropdown-content">
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<div class="dropdown-menu">Accsessory</div>
+						<div class="dropdown-content">
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<div class="dropdown-menu">이벤트</div>
+						<div class="dropdown-content">
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+						</div>
+					</li>
+					<li class="dropdown">
+						<div class="dropdown-menu">공지사항</div>
+						<div class="dropdown-content">
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
 						</div>
 					</li>
 				</ul>

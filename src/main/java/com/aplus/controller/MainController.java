@@ -17,5 +17,12 @@ public class MainController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>mainPage 진입");
 
 	}
+	
+	/*@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public void joinPageGet() {
+
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>mainPage 진입");
+
+	}*/
 
 }

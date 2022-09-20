@@ -107,6 +107,7 @@ nav ul{
 nav li{
 	display: inline-block;
 	color: white;
+	margin-left: 57px;
 }
 .dropdown{
 	position: relative;
