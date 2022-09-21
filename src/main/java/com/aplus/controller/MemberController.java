@@ -29,5 +29,13 @@ public class MemberController {
 	public void joinGET() {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 페이지 진입");
 	}
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void loginGET() {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 로그인 페이지 진입");
+	}
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public void testGET() {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 테스트 페이지 진입");
+	}
 	
 }	

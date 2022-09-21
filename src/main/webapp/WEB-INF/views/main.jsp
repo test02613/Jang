@@ -9,9 +9,7 @@
 <meta charset="UTF-8">
 <title>APLUS MALL</title>
 <link rel="stylesheet" href="resources/css/main.css">
-<script>
 
-</script>
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
@@ -53,9 +51,7 @@
 			</div>
 		</div>
 		<!-- 푸터 -->
-	<div class="footer_area">
-		<h1>footer area</h1>
-	</div>
+	<%@ include file= "include/footer.jsp"%>
 </div>
 </body>
 </html>

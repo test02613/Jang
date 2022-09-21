@@ -15,14 +15,14 @@
 
 				<div class="top_menu_left">
 					<ul>
-						<li><a href="#">매장안내</a></li>
+						<li><a href="po">매장안내</a></li>
 						<li><a href="#">공지사항</a></li>
 						<li><a href="#">이벤트</a></li>
 					</ul>
 				</div>
 				<div class="top_menu_right">
 					<ul>
-						<li><a href="/member/join">로그인</a></li>
+						<li><a href="login">로그인</a></li>
 						<li><a href="join">회원가입</a></li>
 						<li><a href="#">마이페이지</a></li>
 						<li><a href="#">장바구니</a></li>
@@ -55,7 +55,7 @@
 						</div>
 					</li>
 					<li class="dropdown">
-						<div class="dropdown-menu">iPone</div>
+						<div class="dropdown-menu">iPhone</div>
 						<div class="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
