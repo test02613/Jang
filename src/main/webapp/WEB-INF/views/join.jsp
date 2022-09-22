@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/resources/css/member/join.css">
+<link rel="stylesheet" href="/resources/css/join.css">
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
@@ -105,7 +105,7 @@
 					</div>
 				</div>
 				<div class="join_button_wrap">
-					<input type="button" class="join_button" value="가입하기">
+					<input type="submit" class="join_button" value="가입하기">
 				</div>
 			</div>
 		</form>
@@ -134,7 +134,7 @@
 
 					$.ajax({
 						type : "post",
-						url : "/member/memberIdChk",
+						url : "/memberIdChk",
 						data : data,
 						success : function(result) {
 							//console.log("확인 : " + result);
