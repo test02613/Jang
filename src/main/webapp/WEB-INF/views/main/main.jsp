@@ -7,17 +7,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login</title>
-<link rel="stylesheet" href="resources/css/login.css">
-
+<title>APLUS MALL</title>
+<!-- <link rel="stylesheet" href="resources/css/main.css"> -->
+<style> .content_area{
+background-color: blue;
+height: 5000px;}</style>
 </head>
 <body>
-<%@ include file="include/top.jsp" %>
 <div class="wrapper">
-	<div class="test">
-		<h1>5555</h1>
-	</div>
+	<!-- 내용 -->
+		<div class="content_area">
+			
+			
+		</div>
+		<!-- 푸터 -->
 </div>
-<%@ include file="include/footer.jsp" %>	
 </body>
+
 </html>

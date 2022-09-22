@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet" href="resources/css/footer.css">
+<!-- <link rel="stylesheet" href="resources/css/footer.css"> -->
 <body>
 	<div class="wrapper">
+	
 		<footer class="footer">
 			<nav>
 				<a href='https://band.us/band/88769882' target='_blank'>Band</a> | <a
@@ -32,7 +33,7 @@
 				<a href="https://www.instagram.com/"><img src="resources/img/insta.png" width="40px" height="40px"/></a>
 			</div>
 		</footer>
-		
-	</div>
+		</div>
+	
 </body>
 </html>

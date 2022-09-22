@@ -18,7 +18,7 @@ import com.aplus.service.MemberService;
 import com.aplus.model.MemberVO;
 
 @Controller
-//@RequestMapping(value = "/member")
+@RequestMapping(value = "/member")
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
