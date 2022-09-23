@@ -27,13 +27,13 @@
 	/* background-color: red; */
 }
 
-.header_wrap {
+#header_wrap {
 	width: 1200px;
 	position: relative;
 }
 
 /* 로고, 검색, 로그인 */
-.top_menu_area {
+#top_menu_area {
 	width: 1200px;
 	height: 40px;
 	background-color: black;
@@ -41,7 +41,7 @@
 	position: relative;
 }
 
-.top_menu_left {
+#top_menu_left {
 	position: absolute;
 	display: flex;
 	color: white;
@@ -49,89 +49,89 @@
 	padding-left: 30px;
 }
 
-.top_menu_left ul {
+#top_menu_left ul {
 	display: flex;
 	list-style: none;
 }
 
-.top_menu_left li {
+#top_menu_left li {
 	border-left: solid 1px;
 	padding-left: 5px;
 	margin-left: 5px;
 }
 
-.top_menu_left li:first-child {
+#top_menu_left li:first-child {
 	border-left: none;
 }
 
-.top_menu_left  a {
+#top_menu_left  a {
 	text-decoration: none;
 }
 
-.top_menu_left a:link {
+#top_menu_left a:link {
 	color: inherit;
 	text-decoration: none;
 }
 
-.top_menu_left a:visited {
+#top_menu_left a:visited {
 	color: inherit;
 	text-decoration: none;
 }
 
-.top_menu_left a:hover {
+#top_menu_left a:hover {
 	color: inherit;
 	text-decoration: none;
 }
 
-.top_menu_right {
+#top_menu_right {
 	color: white;
 	padding: 10px;
 	padding-right: 30px;
 	float: right;
 }
 
-.top_menu_right ul {
+#top_menu_right ul {
 	display: flex;
 	list-style: none;
 }
 
-.top_menu_right li {
+#top_menu_right li {
 	border-left: solid 1px;
 	padding-left: 5px;
 	margin-left: 5px;
 }
 
-.top_menu_right li:first-child {
+#top_menu_right li:first-child {
 	border-left: none;
 }
 
-.top_menu_right  a {
+#top_menu_right  a {
 	text-decoration: none;
 }
 
-.top_menu_right a:link {
+#top_menu_right a:link {
 	color: inherit;
 	text-decoration: none;
 }
 
-.top_menu_right a:visited {
+#top_menu_right a:visited {
 	color: inherit;;
 	text-decoration: none;
 }
 
-.top_menu_right a:hover {
+#top_menu_right a:hover {
 	color: inherit;
 	text-decoration: none;
 }
 /* 로고 */
-.logo_area {
+#logo_area {
 	width: 1200px;
 	height: 150px;
 	background-color: none;
 	position: relative;
 }
 
-.logo {
+#logo {
 	padding-top: 30px;
 	padding-left: 430px;
 }

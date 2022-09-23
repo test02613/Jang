@@ -9,18 +9,18 @@
 </head>
 <body>
 <div class="wrapper">
-		<div class="header_wrap">
+		<div id="header_wrap">
 
-			<div class="top_menu_area">
+			<div id="top_menu_area">
 
-				<div class="top_menu_left">
+				<div id="top_menu_left">
 					<ul>
 						<li><a href="main">홈</a></li>
 						<li><a href="#">공지사항</a></li>
 						<li><a href="#">이벤트</a></li>
 					</ul>
 				</div>
-				<div class="top_menu_right">
+				<div id="top_menu_right">
 					<ul>
 						<li><a href="/login">로그인</a></li>
 						<li><a href="/join">회원가입</a></li>
@@ -29,8 +29,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="logo_area">
-				<div class="logo">
+			<div id="logo_area">
+				<div id="logo">
 					<img src="../resources/img/logo.png" />
 				</div>
 			</div>
