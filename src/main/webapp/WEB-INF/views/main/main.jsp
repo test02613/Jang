@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set> --%>
@@ -8,51 +8,120 @@
 <head>
 <meta charset="UTF-8">
 <title>APLUS MALL</title>
-<!-- <link rel="stylesheet" href="resources/css/main.css"> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
-rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" 
-crossorigin="anonymous">
-</head>
-<body>
-   <div class="wrapper">
+<link rel="stylesheet" href="resources/css/main2.css">
 
-      <!-- 슬라이드 이미지 -->
-      <div id="carouselExampleIndicators" class="carousel slide"
-         data-bs-ride="true">
-         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators"
-               data-bs-slide-to="0" class="active" aria-current="true"
-               aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators"
-               data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators"
-               data-bs-slide-to="2" aria-label="Slide 3"></button>
-         </div>
-         <div class="carousel-inner">
-            <div class="carousel-item active">
-               <img src="https://www.apple.com/v/iphone-14/a/images/overview/hero/hero_iphone_14_logo__dsjqlhotvrma_large.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-               <img src="https://www.apple.com/v/iphone-14/a/images/overview/hero/hero_iphone_14_logo__dsjqlhotvrma_large.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-               <img src="https://www.apple.com/v/iphone-14/a/images/overview/hero/hero_iphone_14_logo__dsjqlhotvrma_large.png" class="d-block w-100" alt="...">
-            </div>
-         </div>
-         <button class="carousel-control-prev" type="button"
-            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-         </button>
-         <button class="carousel-control-next" type="button"
-            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-         </button>
+</head>
+<script>
+var slideIndex = 0; //slide index
+
+//HTML 로드가 끝난 후 동작
+window.onload=function(){
+showSlides(slideIndex);
+
+// Auto Move Slide
+var sec = 3000;
+setInterval(function(){
+ slideIndex++;
+ showSlides(slideIndex);
+
+}, sec);
+}
+
+
+//Next/previous controls
+function moveSlides(n) {
+slideIndex = slideIndex + n
+showSlides(slideIndex);
+}
+
+//Thumbnail image controls
+function currentSlide(n) {
+slideIndex = n;
+showSlides(slideIndex);
+}
+
+function showSlides(n) {
+
+var slides = document.getElementsByClassName("mySlides");
+var dots = document.getElementsByClassName("dot");
+var size = slides.length;
+
+if ((n+1) > size) {
+ slideIndex = 0; n = 0;
+}else if (n < 0) {
+ slideIndex = (size-1);
+ n = (size-1);
+}
+
+for (i = 0; i < slides.length; i++) {
+   slides[i].style.display = "none";
+}
+for (i = 0; i < dots.length; i++) {
+   dots[i].className = dots[i].className.replace(" active", "");
+}
+
+slides[n].style.display = "block";
+dots[n].className += " active";
+}
+	
+</script>
+<body>
+
+	<div class="wrapper">
+		<div class="slideshow-container">
+
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 6</div>
+        <img src="../resources/img/twitter.png" width="100%"height="200px">
+        <div class="text">ACNE STUDIO</div>
       </div>
 
-   </div>
-   
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 6</div>
+        <img src="../resources/img/face.png" width="100%"height="200px">
+        <div class="text">ACNE STUDIO</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 6</div>
+        <img src="../resources/img/logo.png" width="100%"height="200px">
+        <div class="text">ACNE STUDIO</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">4 / 6</div>
+        <img src="../resources/img/logo1.png" width="100%"height="200px">
+        <div class="text">ACNE STUDIO</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">5 / 6</div>
+        <img src="../resources/img/insta.png" width="100%"height="200px">
+        <div class="text">ACNE STUDIO</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">6 / 6</div>
+        <img src="../resources/img/twitter.png" width="100%"height="200px">
+        <div class="text">ACNE STUDIO</div>
+      </div>
+
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+      <a class="next" onclick="moveSlides(1)">&#10095;</a>
+    </div>
+    <br/>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+	</div>
 </body>
 </html>

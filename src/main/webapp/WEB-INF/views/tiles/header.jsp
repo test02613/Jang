@@ -15,7 +15,7 @@
 
 				<div class="top_menu_left">
 					<ul>
-						<li><a href="po">매장안내</a></li>
+						<li><a href="main">홈</a></li>
 						<li><a href="#">공지사항</a></li>
 						<li><a href="#">이벤트</a></li>
 					</ul>
@@ -110,10 +110,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="main_menu_area">
-				
-
-			</div>
+			
 
 		</div>
 	</div>
