@@ -18,7 +18,7 @@ import com.aplus.service.MemberService;
 import com.aplus.model.MemberVO;
 
 @Controller
-@RequestMapping(value = "/member")
+/* @RequestMapping(value = "/member") */
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -31,9 +31,9 @@ public class MemberController {
 
 	// 회원가입 페이지 이동
 	@RequestMapping(value = "join", method = RequestMethod.GET)
-	public void joinGET() {
+	public String joinGET() {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 페이지 진입");
-
+		return "member/join";
 	}
 
 	// 회원가입
@@ -50,13 +50,14 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGET() {
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String loginGET() {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 로그인 페이지 진입");
+		return "member/login";
 	}
 
 	// 아이디 중복 검사
-	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
+	@RequestMapping(value = "member/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception {
 
@@ -79,7 +80,11 @@ public class MemberController {
 	// 이메일 인증
 	@RequestMapping(value = "mailCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public void mailCheckGET(String email) throws Exception {
+	/* 변경전 */
+   /* public void mailCheckGET(String email) throws Exception{*/
+ 
+    /* 변경후 */
+    public String mailCheckGET(String email) throws Exception{
 
 		// 뷰에서 넘어온 데이터 확인
 		logger.info("========================== 이메일 데이터 전송 확인 ============================");
@@ -110,7 +115,8 @@ public class MemberController {
 
 			e.printStackTrace();
 		}
-
+		String num = Integer.toString(checkNum);
+		return num;
 	}
-
+		
 }

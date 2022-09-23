@@ -27,7 +27,7 @@
 
 <body>
 
-	<tiles:insertAttribute name="topMenu" />
+	
 
 	<tiles:insertAttribute name="header" />
 

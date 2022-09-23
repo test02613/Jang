@@ -16,30 +16,6 @@
 			value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
 
-	<!-- <definition name="layout-tiles3"
-		template="/WEB-INF/views/tiles/tiles-layout3.jsp">
-
-		<put-attribute name="body" value="" />
-	</definition> -->
-	<!-- <definition name="*.jsp" extends="layout-tiles">
-		<put-attribute name="topMenu"
-			value="/WEB-INF/views/tiles/topMenu.jsp" />
-		<put-attribute name="header"
-			value="/WEB-INF/views/tiles/header.jsp" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="footer"
-			value="/WEB-INF/views/tiles/footer.jsp" />
-	</definition>
-
-	<definition name="*/*.jsp" extends="layout-tiles">
-		<put-attribute name="topMenu"
-			value="/WEB-INF/views/tiles/topMenu.jsp" />
-		<put-attribute name="header"
-			value="/WEB-INF/views/tiles/header.jsp" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="footer"
-			value="/WEB-INF/views/tiles/footer.jsp" />
-	</definition> -->
 	
 	<definition name="layout-tiles2"
 		template="/WEB-INF/views/tiles/tiles-layout2.jsp">
@@ -49,18 +25,19 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
-	<!-- <definition name="layout-tiles3"
-		template="/WEB-INF/views/tiles/tiles-layout3.jsp">
-		<put-attribute name="body" value="" />
-	</definition> -->
 	
+	<definition name="main/*" extends="layout-tiles">
+		<put-attribute name="body" value="/WEB-INF/views/main/{1}.jsp" />
+		<put-attribute name="title" value="aplus" />
+	</definition>
+	<definition name="member/*" extends="layout-tiles2">
+		<put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+		<put-attribute name="title" value="aplus" />
+	</definition>
 	<definition name="*/*" extends="layout-tiles">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
 		<put-attribute name="title" value="aplus" />
 	</definition>
-	<!-- <definition name="member/*" extends="layout-tiles3">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
-		<put-attribute name="title" value="login" />
-	</definition> -->
+	
 	
 </tiles-definitions>
