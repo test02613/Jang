@@ -10,7 +10,38 @@
 		#{memberAddr2}, #{memberAddr3}, 0,
 		sysdate, 100000, 5000 )
 	</insert>
-
+	<select id="selectName" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				MEMBERNAME 
+			FROM 
+				MEMBER 
+			WHERE 
+				MEMBERNAME = #{MEMBERNAME}
+		]]>
+	</select>
+	<select id="loginAction" >
+		
+			SELECT 
+				#{memberId},
+				#{memberPw},
+				#{memberName},
+				#{memberMail},
+				#{memberAddr1},
+				#{memberAddr2},
+				#{memberAddr3},
+				#{regDate},
+				#{adminCk},
+				#{money},
+				#{point}
+			FROM 
+				BOOK_MEMBER
+			WHERE 
+				MEMBERID = #{memberId} 
+			AND 
+				MEMBERPW = #{memberPw}
+		
+	</select>
 	<!-- 아이디 중복검사 -->
 	<select id="idCheck" resultType="int">
 		select count(*) from book_member where memberId = #{memberId}

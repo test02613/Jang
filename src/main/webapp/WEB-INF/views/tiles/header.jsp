@@ -34,74 +34,74 @@
 					<img src="../resources/img/logo.png" />
 				</div>
 			</div>
-			<div class="nav">
+			<div id="nav">
 				<ul>
-					<li class="dropdown">
-						<div class="dropdown-menu">Mac</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">Mac</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">iPad</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">iPad</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">iPhone</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">iPhone</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">Watch</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">Watch</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">AirPod</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">AirPod</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">Accsessory</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">Accsessory</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">이벤트</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">이벤트</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
 							<a href="#">4</a>
 						</div>
 					</li>
-					<li class="dropdown">
-						<div class="dropdown-menu">공지사항</div>
-						<div class="dropdown-content">
+					<li id="dropdown">
+						<div id="dropdown-menu">공지사항</div>
+						<div id="dropdown-content">
 							<a href="#">1</a>
 							<a href="#">2</a>
 							<a href="#">3</a>
