@@ -19,6 +19,13 @@ public class MainController {
 		
 
 //	}
+	@RequestMapping("/")
+	public String homeGet() {
+
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>home 진입");
+		return "redirect:/main";
+	}
+
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainPageGet() {
 

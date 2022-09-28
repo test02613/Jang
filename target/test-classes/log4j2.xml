@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration >
+
+	<!-- 
+	
+	######## log4j pattern(패턴) ##########
+	 
+	%p : 로그 레벨(debug, info, warn, error, fatal)의 priority(디버깅시 출력 우선권)가 출력됨.
+	%m : 로그 내용이 출력.
+	%d : 로그 이벤트가 발생한 시간을 기록.
+	  ex) %d{HH:mm:ss, SSS}, %d{yyyy MMM dd HH:mm:ss, SSS}
+	  : Java의 SimpleDateFormat의 클래스에 따른 포맷(format) 적용
+	  
+		- %d{ABSOLUTE}
+		- %d{DATE}
+		- %d{ISO8601}
+
+	%t : 로그 이벤트가 발생된 스레드(thread)명을 출력.
+	%% : % 표시 출력.
+	%n : 플랫폼 종속적인 개행문자(줄바꿈)가 출력.
+	%c : 카테고리(category)를 표시.
+	 ex) 카테고리가 a.b.c 처럼 되어있다면 %c{2}는 b.c가 출력.
+	 
+	%C : 클래스명(class)을 표시. 
+	 ex) 만약 클래스의 패키지 구조가 com.javateam.project.DemoClass 라고 한다면  
+	     %C{2}는 project.DemoClass 가 출력됨.
+	 
+	%F : 로그가 발생한 프로그램 파일(File)명.
+	%l : 로그가 발생한 호출자(caller)의 정보.
+	%L : 로그가 발생한 호출자(caller)의 라인수(line)를 나타냅니다
+	%M : 로그가 발생한 메서드(method) 이름을 나타냅니다.
+	%r : 프로그램 시작 이후 부터 로그가 발생한 시점의 시간(milliseconds : 밀리초)
+	%x : 로그가 발생한 스레드(thread)와 관련된 NDC(nested diagnostic context)를 출력.
+	%X : 로그가 발생한 스레드(thread)와 관련된 MDC(mapped diagnostic context)를 출력. %X{key} 형태.
+	
+	참고) NDC & MDC : https://cwiki.apache.org/confluence/display/LOGGINGLOG4J/NDCvsMDC
+	http://egloos.zum.com/charmpa/v/2543451
+	
+	- 공백(whitespace) 패딩 관련
+	%5p : 우측 정렬로 로그 레벨을 남김. 로그 레벨이 5글자가 안되면 왼쪽에 공백을 추가하여 5글자 맞춤.
+	%-5p : 좌측 정렬. 
+
+	-->
+	
+	<Properties>
+	
+		<!-- <Property name="LOG_PATH" value="E:\lsh\log\spring\test" /> -->
+		<Property name="LOG_PATH" value="D:\works\log" />
+		
+		<Property name="layoutPattern">
+			%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%C] [%t] -- %m%n
+		</Property>
+	</Properties>
+	
+	<Appenders>
+	
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout pattern="${layoutPattern}" />
+		</Console>
+		
+		<RollingFile name="FileAppender" 
+		 			 fileName="${LOG_PATH}/test/log4j2_test.log" 
+		 			 filePattern="${LOG_PATH}/test/%d{yyyy-MM-dd}/log4j2_test_%d{yyyy-MM-dd}_%i.log">
+		 			  
+            <PatternLayout pattern="${layoutPattern}"/>
+            
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50KB"/>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+            
+            <DefaultRolloverStrategy max="10" fileIndex="min"/>
+            
+        </RollingFile>
+        
+	</Appenders>
+	
+		
+	<Loggers>
+	
+		<Logger name="com.aplus" 
+				level="INFO" 
+				additivity="false">
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger>
+		
+		<Logger name="org.apache.ibatis" 
+				level="INFO" 
+				additivity="false">
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger>
+		
+		<Logger name="org.mybatis" 
+				level="INFO" 
+				additivity="false">
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger>
+		
+		<!-- ///////////////////// logf4jdbc //////////////////// -->
+	
+		<Logger name="jdbc.sqltiming" additivity="false">
+			<Level value="WARN" />
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger>
+	
+		<Logger name="jdbc.sqlonly" additivity="false"> 
+			<Level value="INFO"/> 
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger>
+	
+		<Logger name="jdbc.audit" additivity="false"> 
+			<Level value="WARN"/>  
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger> 
+	
+		<Logger name="jdbc.resultset" additivity="false">
+			<Level value="WARN" />
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger>
+	
+		<Logger name="jdbc.resultsettable" additivity="false"> 
+			<Level value="INFO" />  
+			<AppenderRef ref="ConsoleAppender"/> 
+			<AppenderRef ref="FileAppender"/>
+		</Logger> 
+	
+		<!-- ////////////////////////////////////////// -->
+				
+		<Root level="INFO" additivity="false">
+			<AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="FileAppender"/>
+		</Root>
+		
+	</Loggers>
+	
+</Configuration>
