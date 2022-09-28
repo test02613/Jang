@@ -82,7 +82,7 @@ h1 {
 			<button type="submit" class="defaultBtn loginBtn" id="login">로그인</button>
 		</form>
 			<p>
-			아직 회원이 아니신가요? <a href="join">회원가입하기</a>
+			아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
 
 		</p>
 			<!-- 소셜 로그인 버튼  -->

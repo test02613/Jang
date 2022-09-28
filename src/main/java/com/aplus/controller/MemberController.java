@@ -77,6 +77,7 @@ public class MemberController {
 		logger.info("MemberVO:" + vo);
 	 String name = memberService.loginAction(vo,session);  
 	 ModelAndView mav = new ModelAndView();
+	 
 	  if (name != null) { // 로그인 성공 시
 	   mav.setViewName("main/main"); // 뷰의 이름
 	   } else { // 로그인 실패 시
@@ -86,7 +87,13 @@ public class MemberController {
 	  logger.info("Name:"+name);
 	     return mav;
 	   }
-
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception{
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 
 	// 아이디 중복 검사z
 	@RequestMapping(value = "member/memberIdChk", method = RequestMethod.POST)

@@ -12,7 +12,24 @@
 	background-color: red;
 	height: 350px;
 }
+#event{
+	color: white;
+	text-decoration: none;
+}
+#event a:link {
+	color: white;
+	text-decoration: none;
+}
 
+#event a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+#event a:hover {
+	color: white;
+	text-decoration: none;
+}
 /* 푸터 영역 */
 * {
 	margin: 0;
@@ -31,6 +48,7 @@
 	width: 1200px;
 	position: relative;
 }
+
 
 /* 로고, 검색, 로그인 */
 #top_menu_area {
