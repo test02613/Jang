@@ -20,26 +20,11 @@
 				MEMBERNAME = #{MEMBERNAME}
 		]]>
 	</select>
-	<select id="loginAction" >
+	<select id="loginAction"  parameterType="MemberVO" resultType ="String" >
 		
-			SELECT 
-				#{memberId},
-				#{memberPw},
-				#{memberName},
-				#{memberMail},
-				#{memberAddr1},
-				#{memberAddr2},
-				#{memberAddr3},
-				#{regDate},
-				#{adminCk},
-				#{money},
-				#{point}
-			FROM 
-				BOOK_MEMBER
-			WHERE 
-				MEMBERID = #{memberId} 
-			AND 
-				MEMBERPW = #{memberPw}
+			SELECT * FROM book_member 
+	    WHERE MEMBERID = #{memberId}
+	    AND MEMBERPW = #{memberPw}
 		
 	</select>
 	<!-- 아이디 중복검사 -->

@@ -4,7 +4,7 @@
 <meta name="google-signin-client_id" content="840345488051-t7d9q5tg8he8kt3om4dmlovpjom64m3q.apps.googleusercontent.com">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/stu/css/login.css">
+
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -70,16 +70,16 @@ h1 {
 	<div id="loginform">
 		<h3 class="contents">로그인</h3>
 		<div class="logintable">
-		<form action="/login" method="POST" id="frm">
-			<input type="text" class="form-control" name="MEMBERID"
-				id="MEMBERID" placeholder="아이디">
-			<input type="password" class="form-control" name="MEMBERPW"
-				id="MEMBERPW" placeholder="비밀번호">
+		<form action="loginAction" method="POST" id="frm">
+			<input type="text" class="form-control" name="memberId"
+				id="memberId" placeholder="아이디">
+			<input type="password" class="form-control" name="memberPw"
+				id="memberPw" placeholder="비밀번호">
 			<a href="/stu/findPw.do">비밀번호
 					재설정</a>
 			<a href="/stu/findId.do">아이디
 					찾기</a>
-			<button type="submit" class="defaultBtn loginBtn" id="/login">로그인</button>
+			<button type="submit" class="defaultBtn loginBtn" id="login">로그인</button>
 		</form>
 			<p>
 			아직 회원이 아니신가요? <a href="join">회원가입하기</a>
@@ -112,8 +112,10 @@ h1 {
 if('${message}' != "") {
 	alert('${message}');
 }
+
+
 //공란 확인
-$(document).ready(function() {
+ $(document).ready(function() {
 	
 	$("#login").unbind("click").click(function(e) {
 		e.preventDefault();
@@ -121,17 +123,17 @@ $(document).ready(function() {
 	});
 
 	function fn_login() {
-		if($("#MEMBERID").val()==""){
+		if($("#memberId").val()==""){
 			alert("아이디를 입력해주세요");
-			$("#MEMBERID").focus();
-		} else if($("#MEMBERPW").val()==""){
+			$("#memberId").focus();
+		} else if($("#memberPw").val()==""){
 			alert("비밀번호를 입력해주세요");
-			$("#MEMBERPW").focus();
+			$("#memberPw").focus();
 		} else {
 			$("#frm").submit();
 		}
 	}
-});
+}); 
 var googleUser = {};
 var startApp = function() {
   gapi.load('auth2', function(){
