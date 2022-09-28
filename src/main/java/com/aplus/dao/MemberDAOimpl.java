@@ -29,6 +29,13 @@ public class MemberDAOimpl implements MemberDAO {
 		int result = sql.selectOne("com.aplus.mapper.MemberMapper.idCheck", memberId);
 		return result;
 	}
+
+
+	@Override
+	public String findId(String memberMail) throws Exception {
+		String result = sql.selectOne("com.aplus.mapper.MemberMapper.findId", memberMail);
+		return result;
+	}
 	
 	
 	

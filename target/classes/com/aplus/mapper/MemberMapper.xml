@@ -10,15 +10,8 @@
 		#{memberAddr2}, #{memberAddr3}, 0,
 		sysdate, 100000, 5000 )
 	</insert>
-	<select id="selectName" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
-			SELECT 
-				MEMBERNAME 
-			FROM 
-				MEMBER 
-			WHERE 
-				MEMBERNAME = #{MEMBERNAME}
-		]]>
+	<select id="findId" parameterType="MemberVO" resultType="String">
+		select memberId from book_member where memberMail = #{memberMail}
 	</select>
 	<select id="loginAction"  parameterType="MemberVO" resultType ="String" >
 		

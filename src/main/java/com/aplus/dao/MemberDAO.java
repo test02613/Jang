@@ -10,6 +10,10 @@ public interface MemberDAO {
 	
 	public String loginAction(MemberVO member) throws Exception;
 
-	public int idCheck(String memberId) throws Exception;;
+	public int idCheck(String memberId) throws Exception;
+	
+	public String findId(String memberMail) throws Exception;
+		
+	
 
 }

@@ -75,14 +75,14 @@ h1 {
 				id="memberId" placeholder="아이디">
 			<input type="password" class="form-control" name="memberPw"
 				id="memberPw" placeholder="비밀번호">
-			<a href="/stu/findPw.do">비밀번호
+			<a href="/findId">비밀번호
 					재설정</a>
-			<a href="/stu/findId.do">아이디
+			<a href="/findId">아이디
 					찾기</a>
 			<button type="submit" class="defaultBtn loginBtn" id="login">로그인</button>
 		</form>
 			<p>
-			아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
+			아직 회원이 아니신가요? <a href="join">회원가입하기</a>
 
 		</p>
 			<!-- 소셜 로그인 버튼  -->

@@ -1,5 +1,6 @@
 package com.aplus.service;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aplus.dao.MemberDAO;
@@ -13,7 +14,8 @@ public interface MemberService {
 	public int idCheck(String memberId) throws Exception;
 	
 	public String loginAction(MemberVO vo, HttpSession session) throws Exception;
-
+	
+	public String findId(HttpServletResponse response, String mamberMail) throws Exception;
 	
 
 }

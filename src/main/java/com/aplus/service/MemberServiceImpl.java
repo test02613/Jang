@@ -1,6 +1,9 @@
 package com.aplus.service;
 
+import java.io.PrintWriter;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,7 @@ import com.aplus.model.MemberVO;
 import com.aplus.dao.MemberDAO;
 import com.aplus.model.MemberVO;
 
-import com.aplus.mapper.MemberMapper;
+
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -40,6 +43,24 @@ public class MemberServiceImpl implements MemberService {
 		}
 		 return name; 
 		}
+
+	@Override
+	public String findId(HttpServletResponse response, String mamberMail) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String id = dao.findId(mamberMail);
+		
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return id;
+		}
+	}
 }
 
 

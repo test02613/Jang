@@ -55,45 +55,7 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginGET() {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 로그인 페이지 진입");
-		return "member/login";
-	}
-	/*@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(MemberVO member) throws Exception {
-
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> join 진입");
-
-		// 회원가입 서비스 실행
-		memberService.loginAction(member);
-
-		logger.info("join Service 성공");
-
-		return "redirect:/main";
-	}*/
-	@RequestMapping(value = "loginAction", method = {RequestMethod.GET , RequestMethod.POST})
-	public ModelAndView loginAction(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
-		logger.info("MemberVO:" + vo);
-	 String name = memberService.loginAction(vo,session);  
-	 ModelAndView mav = new ModelAndView();
-	 
-	  if (name != null) { // 로그인 성공 시
-	   mav.setViewName("main/main"); // 뷰의 이름
-	   } else { // 로그인 실패 시
-	     mav.setViewName("member/login"); 		
-	     mav.addObject("message", "error");
-	     }
-	  logger.info("Name:"+name);
-	     return mav;
-	   }
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session) throws Exception{
-		
-		session.invalidate();
-		
-		return "redirect:/";
-	}
+	
 
 	// 아이디 중복 검사z
 	@RequestMapping(value = "member/memberIdChk", method = RequestMethod.POST)

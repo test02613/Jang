@@ -4,6 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script>
+	$(function(){
+		$("#loginBtn").click(function(){
+			location.href='findIdAction';
+		})
+	})
+</script>
 <title>Log In</title>
 </head>
 <body>
@@ -14,10 +21,10 @@
 					<div class="card card-signin my-5">
 						<div class="card-body">
 							<h5 class="card-title text-center">Log In</h5>
-							<form class="form-signin" method="post" action="login">
+							<form class="Idr" method="post" action="login">
 								<div class="form-label-group">
-									<input type="text" id="id" name="id" class="form-control"
-										placeholder="id" required autofocus>
+									<input type="text" id="memberId" name="memberId" class="form-control"
+										placeholder="memberId" required autofocus>
 								</div>
 								<br>
 

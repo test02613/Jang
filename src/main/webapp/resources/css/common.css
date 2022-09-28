@@ -12,6 +12,52 @@
 	background-color: red;
 	height: 350px;
 }
+
+/* 푸터 영역 */
+* {
+	margin: 0;
+	padding: 0;
+}
+/* 화면 전체 렙 */
+.wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	height: 100%;
+	/* background-color: red; */
+}
+/* 부트스트랩 - 이벤트 슬라이드 랩 */
+#image_slide_wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+	height: 100%;
+    text-align: center;
+   	border-radius: 10px;
+	/* background-color: red; */
+}
+
+/* 부트스트랩 - 상품 바로가기 이미지 랩 */
+#image_click_mainwrapper {
+	max-width: 1200px;
+	height: 100%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+    text-align: center;
+ }
+ 
+ /* 부트스트랩 슬라이드쇼 이미지 속성 */
+#boot_imgradius1{
+	border-radius: 10px;
+}
+ /* 부트스트랩 바로가기 이미지 속성 */
+#boot_imgradius2{
+	border-radius: 20px;
+}
+
+#header_wrap {
+	width: 1200px;
+	position: relative;
+}
+/* 이벤트 */
 #event{
 	color: white;
 	text-decoration: none;
@@ -30,25 +76,6 @@
 	color: white;
 	text-decoration: none;
 }
-/* 푸터 영역 */
-* {
-	margin: 0;
-	padding: 0;
-}
-/* 화면 전체 렙 */
-.wrapper {
-	max-width: 1200px;
-	margin: 0 auto;
-	height: 100%;
-
-	/* background-color: red; */
-}
-
-#header_wrap {
-	width: 1200px;
-	position: relative;
-}
-
 
 /* 로고, 검색, 로그인 */
 #top_menu_area {
@@ -166,7 +193,7 @@
 #nav li {
 	display: inline-block;
 	color: white;
-	margin-left: 57px;
+	margin-left: 75px;
 	border-radius: 10px;
 	z-index: 999;
 }

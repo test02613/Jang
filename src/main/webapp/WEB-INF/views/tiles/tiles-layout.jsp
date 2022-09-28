@@ -12,7 +12,8 @@
 	scope="application" />
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
+<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="viewport"
@@ -21,20 +22,23 @@
 	var CONTEXT_PATH = "${CONTEXT_PATH}";
 	var RESOURCES_PATH = "${RESOURCES_PATH}";
 </script>
-<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
 <link rel="stylesheet" href="${RESOURCES_PATH}/css/common.css">
 <title><tiles:insertAttribute name="title" /></title>
 </head>
 
 <body>
 
-	
+	<tiles:insertAttribute name="topMenu" />
 
 	<tiles:insertAttribute name="header" />
 
 	<tiles:insertAttribute name="body" />
 
 	<tiles:insertAttribute name="footer" />
+
+
+</body>
+
 
 </body>
 
