@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Member_SQL">
+	<insert id="memberJoin">
+		insert into "member" values(#{id},
+		#{name}, #{pw},sysdate,
+		#{email},0, #{postcode},
+		#{address}, #{addressDetail}, 0,
+		sysdate, 50000, 0 )
+	</insert>
+	<select id="findId" parameterType="MemberVO" resultType="String">
+		select * from "member" where <!-- "name" = #{name} AND --> "email" = #{email}
+	</select>
+	<select id="loginAction"  parameterType="MemberVO" resultType ="String" >
+		
+			SELECT "id" FROM "member" 
+	    WHERE "pw" = #{pw}
+	    AND "id" = #{id}
+		
+	</select>
+	<select id="loginAction_admin"  parameterType="MemberVO" resultType ="int" >
+		
+			SELECT "admin" FROM "member" 
+	    WHERE "pw" = #{pw}
+	    AND "id" = #{id}
+		
+	</select>
+	<!-- 아이디 중복검사 -->
+	<select id="idCheck" resultType="int">
+		select count(*) from "member" where "id" = #{id}
+	</select>
+</mapper>

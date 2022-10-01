@@ -7,8 +7,8 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<mybatis-spring:scan
-		base-package="com.aplus.mapper" />
+	<!-- <mybatis-spring:scan
+		base-package="mapper" /> -->
 	<context:component-scan
 		base-package="com.aplus.model" />
 	<context:component-scan
@@ -24,8 +24,8 @@
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
-		<property name="username" value="hss"></property>
-		<property name="password" value="hss"></property>
+		<property name="username" value="aplus"></property>
+		<property name="password" value="aplus"></property>
 	</bean>
 
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
@@ -44,7 +44,7 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource" />
 		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/com/**/**/*.xml" />
+		<property name="mapperLocations" value="classpath:/mapper/*_SQL.xml" />
 	</bean>
 	<!-- navermail설정 -->
 	<bean id="mailSender"

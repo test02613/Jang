@@ -23,9 +23,14 @@
 				</div>
 				<div id="top_menu_right">
 					<ul>
-						<li><c:if test="${name != null}">
-								<a href="/logout">${name} 님</a><!--controller 함수name -->
-							</c:if> <c:if test="${name == null}">
+						<li><c:choose >
+						<c:when test="${admin eq 0}">${admin} 님</c:when>
+						<c:when test="${admin eq 1}">rr</c:when>	
+						</c:choose>	
+								<%-- <p>${name} 님</p><!--controller 함수name --> --%>
+							<%-- <c:if test="${name != "1"}">
+								<a href="/logout">${name} 님</a> --%>
+							 <c:if test="${name == null}">
 								<a href="/login">로그인</a>
 							</c:if></li>
 						<li><c:if test="${name != null}">

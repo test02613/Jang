@@ -71,10 +71,10 @@ h1 {
 		<h3 class="contents">로그인</h3>
 		<div class="logintable">
 		<form action="loginAction" method="POST" id="frm">
-			<input type="text" class="form-control" name="memberId"
-				id="memberId" placeholder="아이디">
-			<input type="password" class="form-control" name="memberPw"
-				id="memberPw" placeholder="비밀번호">
+			<input type="text" class="form-control" name="id"
+				id="id" placeholder="아이디">
+			<input type="password" class="form-control" name="pw"
+				id="pw" placeholder="비밀번호">
 			<a href="/findId">비밀번호
 					재설정</a>
 			<a href="/findId">아이디
@@ -123,12 +123,12 @@ if('${message}' != "") {
 	});
 
 	function fn_login() {
-		if($("#memberId").val()==""){
+		if($("#id").val()==""){
 			alert("아이디를 입력해주세요");
-			$("#memberId").focus();
-		} else if($("#memberPw").val()==""){
+			$("#id").focus();
+		} else if($("#pw").val()==""){
 			alert("비밀번호를 입력해주세요");
-			$("#memberPw").focus();
+			$("#pw").focus();
 		} else {
 			$("#frm").submit();
 		}

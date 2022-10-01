@@ -42,7 +42,7 @@ public class MemberController {
 	}
 
 	// 회원가입
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/joinAction", method = RequestMethod.POST)
 	public String joinPost(MemberVO member) throws Exception {
 
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> join 진입");
@@ -58,13 +58,13 @@ public class MemberController {
 	
 
 	// 아이디 중복 검사z
-	@RequestMapping(value = "member/memberIdChk", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
-	public String memberIdChkPOST(String memberId) throws Exception {
+	public String memberIdChkPOST(String id) throws Exception {
 
 		// logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> memberIdChk 진입");
 
-		int result = memberService.idCheck(memberId);
+		int result = memberService.idCheck(id);
 
 		logger.info("결과값 : " + result);
 

@@ -5,37 +5,45 @@ import java.sql.Date;
 public class MemberVO {
    
    // 회원 ID
-   private String memberId;
+   private String id;
+   
+   // 회원 이름
+   private String name;
    
    // 회원 비밀번호
-   private String memberPw;
+   private String pw;
    
-   //회원 이름
-   private String memberName;
+   //회원 생년월일
+   private Date birth;
    
    //회원 이메일
-   private String memberMail;
+   private String email;
+   
+   //회원 핸드폰번호
+   private String mobile;
    
    //회원 우편번호
-   private String memberAddr1;
+   private String postcode;
    
    //회원 주소
-   private String memberAddr2;
+   private String address;
    
    //회원 상세주소
-   private String memberAddr3;
+   private String addressDetail;
    
    //관리자 구분
-   private int adminCk;
+   private int admin;
    
    //등록일자
-   private Date regDate;
-   
-   //회원 돈
-   private int money;
+   private Date joinDate;
    
    //회원 포인트
    private int point;
+   
+   //회원 탈퇴
+   private String leave;   
+   
+   
    
    
    public MemberVO() {
@@ -44,120 +52,163 @@ public class MemberVO {
    
    
    //db에서 가져올때 컬럼하나하나 가져오는게 아니라 한번에 가져오기 위함  (source-Generate Constructor using Fields...)
-   public MemberVO(String memberId, String memberPw, String memberName, String memberMail, String memberAddr1,
-         String memberAddr2, String memberAddr3, int adminCk, Date regDate, int money, int point) {
+   public MemberVO(String id, String name, String pw, Date birth, String email, String mobile, String postcode, String address,
+         String addressDetail, int admin, Date joinDate, int point, String leave) {
       super();
-      this.memberId = memberId;
-      this.memberPw = memberPw;
-      this.memberName = memberName;
-      this.memberMail = memberMail;
-      this.memberAddr1 = memberAddr1;
-      this.memberAddr2 = memberAddr2;
-      this.memberAddr3 = memberAddr3;
-      this.adminCk = adminCk;
-      this.regDate = regDate;
-      this.money = money;
+      this.id = id;
+      this.name = name;
+      this.pw = pw;
+      this.birth = birth;
+      this.email = email;
+      this.mobile = mobile;
+      this.postcode = postcode;
+      this.address = address;
+      this.addressDetail = addressDetail;
+      this.admin = admin;
+      this.joinDate = joinDate;
       this.point = point;
+      this.leave = leave;
+
    }
+
 
    //getter / setter
-   public String getMemberId() {
-      return memberId;
+   public String getId() {
+      return id;
    }
-
-   public void setMemberId(String memberId) {
-      this.memberId = memberId;
+   
+   
+   public void setId(String id) {
+      this.id = id;
    }
-
-   public String getMemberPw() {
-      return memberPw;
+   
+   
+   public String getName() {
+      return name;
    }
-
-   public void setMemberPw(String memberPw) {
-      this.memberPw = memberPw;
+   
+   
+   public void setName(String name) {
+      this.name = name;
    }
-
-   public String getMemberName() {
-      return memberName;
+   
+   
+   public String getPw() {
+      return pw;
    }
-
-   public void setMemberName(String memberName) {
-      this.memberName = memberName;
+   
+   
+   public void setPw(String pw) {
+      this.pw = pw;
    }
-
-   public String getMemberMail() {
-      return memberMail;
+   
+   
+   public Date getBirth() {
+      return birth;
    }
-
-   public void setMemberMail(String memberMail) {
-      this.memberMail = memberMail;
+   
+   
+   public void setBirth(Date birth) {
+      this.birth = birth;
    }
-
-   public String getMemberAddr1() {
-      return memberAddr1;
+   
+   
+   public String getEmail() {
+      return email;
    }
-
-   public void setMemberAddr1(String memberAddr1) {
-      this.memberAddr1 = memberAddr1;
+   
+   
+   public void setEmail(String email) {
+      this.email = email;
    }
-
-   public String getMemberAddr2() {
-      return memberAddr2;
+   
+   public String getMobile() {
+      return mobile;
    }
-
-   public void setMemberAddr2(String memberAddr2) {
-      this.memberAddr2 = memberAddr2;
+   
+   
+   public void setMobile (String mobile) {
+      this.mobile = mobile;
    }
-
-   public String getMemberAddr3() {
-      return memberAddr3;
+   
+   
+   public String getPostcode() {
+      return postcode;
    }
-
-   public void setMemberAddr3(String memberAddr3) {
-      this.memberAddr3 = memberAddr3;
+   
+   
+   public void setPostcode(String postcode) {
+      this.postcode = postcode;
    }
-
-   public int getAdminCk() {
-      return adminCk;
+   
+   
+   public String getAddress() {
+      return address;
    }
-
-   public void setAdminCk(int adminCk) {
-      this.adminCk = adminCk;
+   
+   
+   public void setAddress(String address) {
+      this.address = address;
    }
-
-   public Date getRegDate() {
-      return regDate;
+   
+   
+   public String getAddressDetail() {
+      return addressDetail;
    }
-
-   public void setRegDate(Date regDate) {
-      this.regDate = regDate;
+   
+   
+   public void setAddressDetail(String addressDetail) {
+      this.addressDetail = addressDetail;
    }
-
-   public int getMoney() {
-      return money;
+   
+   
+   public int getAdmin() {
+      return admin;
    }
-
-   public void setMoney(int money) {
-      this.money = money;
+   
+   
+   public void setAdmin(int admin) {
+      this.admin = admin;
    }
-
+   
+   
+   public Date getJoinDate() {
+      return joinDate;
+   }
+   
+   
+   public void setJoinDate(Date joinDate) {
+      this.joinDate = joinDate;
+   }
+   
+   
    public int getPoint() {
       return point;
    }
-
+   
+   
    public void setPoint(int point) {
       this.point = point;
    }
-
    
-   @Override
-   public String toString() {
-      return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
-            + ", memberMail=" + memberMail + ", memberAddr1=" + memberAddr1 + ", memberAddr2=" + memberAddr2
-            + ", memberAddr3=" + memberAddr3 + ", adminCk=" + adminCk + ", regDate=" + regDate + ", money=" + money
-            + ", point=" + point + "]";
+   
+   public String getLeave() {
+      return leave;
    }
    
+   
+   public void setLeave(String leave) {
+      this.leave = leave;
+   }
 
+
+   @Override
+   public String toString() {
+      return "MemberVO [id=" + id + ", name=" + name + ", pw=" + pw + ", birth=" + birth + ", email=" + email
+            + ", mobile=" + mobile + ", postcode=" + postcode + ", address=" + address + ", addressDetail="
+            + addressDetail + ", admin=" + admin + ", joinDate=" + joinDate + ", point=" + point + ", leave="
+            + leave + "]";
+   }
+   
 
 }

@@ -11,11 +11,14 @@ public interface MemberService {
 	public void memberJoin(MemberVO member) throws Exception;
 
 	// 아이디 중복 검사
-	public int idCheck(String memberId) throws Exception;
+	public int idCheck(String id) throws Exception;
 	
 	public String loginAction(MemberVO vo, HttpSession session) throws Exception;
+	public int loginAction_admin(MemberVO vo) throws Exception;
 	
-	public String findId(HttpServletResponse response, String mamberMail) throws Exception;
+	public String findId(HttpServletResponse response, String email) throws Exception;
+
+	/*public int loginAction_admin1(MemberVO vo);*/
 	
 
 }
