@@ -16,7 +16,7 @@ public interface MemberService {
 	public String loginAction(MemberVO vo, HttpSession session) throws Exception;
 	public int loginAction_admin(MemberVO vo) throws Exception;
 	
-	public String findId(HttpServletResponse response, String email) throws Exception;
+	public String findId(HttpServletResponse response, /*String email*/ MemberVO vo) throws Exception;
 
 	/*public int loginAction_admin1(MemberVO vo);*/
 	

@@ -13,7 +13,7 @@ public interface MemberDAO {
 
 	public int idCheck(String id) throws Exception;
 	
-	public String findId(String email) throws Exception;
+	public String findId(MemberVO member) throws Exception;
 		
 	
 

@@ -7,11 +7,11 @@
 		insert into "member" values(#{id},
 		#{name}, #{pw},sysdate,
 		#{email},0, #{postcode},
-		#{address}, #{addressDetail}, 0,
+		#{address}, #{addressDetail}, 2,
 		sysdate, 50000, 0 )
 	</insert>
 	<select id="findId" parameterType="MemberVO" resultType="String">
-		select * from "member" where <!-- "name" = #{name} AND --> "email" = #{email}
+		select "id" from "member" where "name" = #{name} AND "email" = #{email}
 	</select>
 	<select id="loginAction"  parameterType="MemberVO" resultType ="String" >
 		

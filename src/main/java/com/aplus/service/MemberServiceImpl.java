@@ -49,10 +49,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 	@Override
-	public String findId(HttpServletResponse response, String email) throws Exception {
+	public String findId(HttpServletResponse response, /*String email*/MemberVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String id = dao.findId(email);
+		String id = dao.findId(vo);
 		logger.info("id1:"+id);
 		if (id == null) {
 			out.println("<script>");

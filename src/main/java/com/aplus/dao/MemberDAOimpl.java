@@ -36,8 +36,8 @@ public class MemberDAOimpl implements MemberDAO {
 
 
 	@Override
-	public String findId(String email) throws Exception {
-		String result = sql.selectOne("mapper.Member_SQL.findId", email);
+	public String findId(MemberVO member) throws Exception {
+		String result = sql.selectOne("mapper.Member_SQL.findId",member);
 		return result;
 	}
 
