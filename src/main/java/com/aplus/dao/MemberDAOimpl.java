@@ -12,7 +12,6 @@ import com.aplus.dao.MemberDAO;
 import com.aplus.model.MemberVO;
 @Repository
 public class MemberDAOimpl implements MemberDAO {
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Autowired SqlSession sql;
 	
 	@Override
@@ -36,8 +35,14 @@ public class MemberDAOimpl implements MemberDAO {
 
 
 	@Override
-	public String findId(MemberVO member) throws Exception {
-		String result = sql.selectOne("mapper.Member_SQL.findId",member);
+	public String findId(MemberVO vo) throws Exception {
+		String result = sql.selectOne("mapper.Member_SQL.findId", vo);
+		return result;
+	}
+	
+	@Override
+	public String findPw(MemberVO vo) throws Exception {
+		String result = sql.selectOne("mapper.Member_SQL.findPw", vo);
 		return result;
 	}
 
@@ -46,6 +51,13 @@ public class MemberDAOimpl implements MemberDAO {
 	public int loginAction_admin(MemberVO member) throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Member_SQL.loginAction_admin",member);
+	}
+
+
+	@Override
+	public String updatePw(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Member_SQL.updatePw",vo);
 	}
 	
 	

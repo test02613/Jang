@@ -13,9 +13,18 @@
 	<select id="findId" parameterType="MemberVO" resultType="String">
 		select "id" from "member" where "name" = #{name} AND "email" = #{email}
 	</select>
+	
+	<select id="findPw" parameterType="MemberVO" resultType="String">
+		select "pw" from "member" where "id" = #{id} AND "email" = #{email}
+	</select>
+	
+	<update id="updatePw" parameterType="MemberVO" >
+	update "member" set "pw" = #{pw} where "id" = #{id}
+	</update>
+
 	<select id="loginAction"  parameterType="MemberVO" resultType ="String" >
 		
-			SELECT "id" FROM "member" 
+			SELECT * FROM "member" 
 	    WHERE "pw" = #{pw}
 	    AND "id" = #{id}
 		

@@ -9,12 +9,16 @@ public interface MemberDAO {
 	
 	
 	public String loginAction(MemberVO member) throws Exception;
+	
 	public int loginAction_admin(MemberVO member) throws Exception;
 
 	public int idCheck(String id) throws Exception;
 	
-	public String findId(MemberVO member) throws Exception;
+	public String findId(MemberVO vo) throws Exception;
 		
+	public String findPw(MemberVO vo) throws Exception;
+	
+	public String updatePw(MemberVO vo) throws Exception;
 	
 
 }

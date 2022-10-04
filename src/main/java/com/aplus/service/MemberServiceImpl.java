@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 	@Override
-	public String findId(HttpServletResponse response, /*String email*/MemberVO vo) throws Exception {
+	public String findId(HttpServletResponse response, MemberVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String id = dao.findId(vo);
@@ -65,6 +65,36 @@ public class MemberServiceImpl implements MemberService {
 			return id;
 		}
 	}
+	
+	@Override
+	public String findPw(HttpServletResponse response, MemberVO vo) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String pw = dao.findPw(vo);
+		logger.info("id1:"+pw);
+		return pw;
+		/*if(vo.getPw() == null) {
+			out.print("등록되지 않은 아이디입니다.");
+			out.close();
+		}
+		else {
+			// 임시 비밀번호 생성
+			pw = "";
+			for (int i = 0; i < 12; i++) {
+				pw += (char) ((Math.random() * 26) + 97);
+			}
+			vo.setPw(pw);
+			// 비밀번호 변경
+			
+			// 비밀번호 변경 메일 발송
+			
+
+			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
+			out.close();
+		}*/
+		
+		
+	}
 
 	@Override
 	public int loginAction_admin(MemberVO vo) throws Exception {
@@ -75,6 +105,13 @@ public class MemberServiceImpl implements MemberService {
 		 session.setAttribute("admin", admin);*/
 		 return admin; 
 		}
+
+	@Override
+	public String updatePw(HttpServletResponse response, MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		String pw = dao.updatePw(vo);
+		return pw;
+	}
 	}
 
 

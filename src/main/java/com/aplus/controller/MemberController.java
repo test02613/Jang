@@ -63,7 +63,7 @@ public class MemberController {
 	public String memberIdChkPOST(String id) throws Exception {
 
 		// logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> memberIdChk 진입");
-
+		logger.info("vo 진입"+id);
 		int result = memberService.idCheck(id);
 
 		logger.info("결과값 : " + result);

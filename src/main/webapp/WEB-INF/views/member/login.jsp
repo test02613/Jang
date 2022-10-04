@@ -13,56 +13,52 @@
 <script src = "//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <style>
+/* 로그인 페이지 전체 영역 css */
 #loginform {
-	width: 500px;
-	margin: 0 auto;
-	margin-top: 50px;
-	text-align: center;
-	margin-bottom: 100px
+   width: 500px;
+   margin: 0 auto;
+   margin-top: 50px;
+   text-align: center;
+   margin-bottom: 100px
 }
 
+/* 로그인 타이틀 */
 .contents {
-	font-size : 40px;
+   height : 100px;
+   color : #24292F;
+   font-size : 40px;
+   margin-top : 20px;
 }
 
+/* 로그인 구성요소 : a 태그들 */
 .logintable>#frm>a {
-	float: right;
-	padding-left: 24px;
+   float: center;
+   margin-top : 50px;
+   padding : 10px;
 }
 
+/* 로그인 구성요소 : 입력란 */
 .logintable>#frm>.form-control {
-	width: 100%;
-	height: 50px;
-	border: 1px solid #e0e0e0;
-	margin-bottom: 20px;
+   width: 100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   margin-bottom: 20px;
 }
 
+/* 로그인 구성요소 : 로그인 버튼 */
 #login {
-	width: 100%;
-	height: 50px;
-	display: block;
-	border: none;
-	margin-top: 10px;
-	font-size: 20px;
+   width: 100%;
+   height: 50px;
+   display: block;
+   border: none;
+   border-radius: 10px;
+   margin-top: 20px;
+   margin-bottom: 40px;
+   font-size: 20px;
+   color : white;
+   background-color : #24292F;
 }
-
-
-h1 {
-	text-align: center;
-	padding: 50px 0;
-	font-weight: normal;
-	font-size: 2em;
-	letter-spacing: 10px;
-}
-
-.btn-social-login {
-	outline: 0;
-	border: 1px solid transparent;
-	padding: .5rem !important;
-	border-radius: 10%;
-	color: #fff;
-}
-.text-dark { color: #343a40!important; }
 
 </style>
 
@@ -75,7 +71,7 @@ h1 {
 				id="id" placeholder="아이디">
 			<input type="password" class="form-control" name="pw"
 				id="pw" placeholder="비밀번호">
-			<a href="/findId">비밀번호
+			<a href="/findPw">비밀번호
 					재설정</a>
 			<a href="/findId">아이디
 					찾기</a>
@@ -83,29 +79,9 @@ h1 {
 		</form>
 			<p>
 			아직 회원이 아니신가요? <a href="join">회원가입하기</a>
-
-		</p>
-			<!-- 소셜 로그인 버튼  -->
-			<div style="width:220px; height:65px; margin: 0 auto;">
-				<div style="float:left;">
-					<button id="customBtn" class='btn-social-login' style='background:#D93025'><i class="xi-3x xi-google"></i></button>
-				</div>
-				<div style="float:left; margin-left:10px;">
-					<div id="naverIdLogin"><i class="xi-3x xi-naver"></i></div>
-				</div>
-				<div style="float:left; margin-left:10px;">
-					<button class='btn-social-login' onClick="javascript:loginWithKakao()" style='background:#FFEB00'>
-						<i class="xi-3x xi-kakaotalk text-dark"></i>
-					</button>
-				</div>
-			</div>
-		
-			
+			</p>
 		</div>
-		
-		
-		
-	</div>
+		</div>
 
 
 <script type="text/javascript">
@@ -134,112 +110,4 @@ if('${message}' != "") {
 		}
 	}
 }); 
-var googleUser = {};
-var startApp = function() {
-  gapi.load('auth2', function(){
-    auth2 = gapi.auth2.init({
-      client_id: '840345488051-t7d9q5tg8he8kt3om4dmlovpjom64m3q.apps.googleusercontent.com',
-      cookiepolicy: 'single_host_origin',
-    });
-    attachSignin(document.getElementById('customBtn'));
-  });
-};
-
-function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-          onSignIn(googleUser);
-        });
-  }
-
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    var id_token = googleUser.getAuthResponse().id_token;
-	var data={};
-	data["ID"] = profile.getId();
-	data["Name"] = profile.getName();
-	data["Image URL"] = profile.getImageUrl();
-	data["Email"] = profile.getEmail();
-	data["ID Token"] = id_token;
-    $.ajax({
-    	type : "POST",
-		url : "${pageContext.request.contextPath}/socialLoginAction.do",
-		data : JSON.stringify(data),
-		dataType : "json",   
-		contentType:"application/json;charset=UTF-8",
-	    async: false,
-		success : function(data, status, xhr) {
-			console.log(data);
-			location.href=data.URL;
-		},
-		error : function(jqXHR, textStatus, errorThrown) {
-			alert("에러가 발생했습니다.");
-		}
-    });
-};
-startApp();
-
-var naverLogin = new naver.LoginWithNaverId({
-	clientId : "N7cehmsKQVMvrJ4lCsgv",
-	callbackUrl : "http://localhost:8080/stu/loginCallback.do",
-	isPopup : true,
-	loginButton : {
-		color : "green",
-		type : 1,
-		height :65
-	}
-});
-naverLogin.init();
-
-Kakao.init('9822692fe88226084f38bfae8387055b');
-
-function loginWithKakao(){
-    
-    Kakao.Auth.cleanup();
-    Kakao.Auth.login({
-        persistAccessToken: true,
-        persistRefreshToken: true,
-        success: function(object) {
-        	Kakao.API.request({
-      	      url: '/v2/user/me',
-      	      success: function(res) {
-      	       console.log(res);
-      	       
-      	       var userID = res.id;
-      	       var userEmail = res.kakao_account.email;
-      	       var userNickName = res.properties.nickname;
-      	       var userbirthday = res.kakao_account.birthday;
-      	       var data={};
-      			data["ID"] = userID;
-      			data["Name"] = userNickName;
-      			data["Email"] = userEmail;
-      			data["Birthday"] = userbirthday;
-      			
-      	       $.ajax({
-      	       	type : "POST",
-      	   		url : "${pageContext.request.contextPath}/socialLoginAction.do",
-      	   		data : JSON.stringify(data),
-      	   		dataType : "json",   
-      	   		contentType:"application/json;charset=UTF-8",
-      	   	    async: false,
-      	   		success : function(data, status, xhr) {
-      	   			console.log(data);
-      	   			location.href=data.URL;
-      	   		},
-      	   		error : function(jqXHR, textStatus, errorThrown) {
-      	   			alert("에러가 발생했습니다.");
-      	   		}
-      	       });
-      	      },
-      	      fail: function(error) {
-      	       alert(JSON.stringify(error));
-      	      }
-      	     });
-        },
-            fail: function(err) {
-             alert(JSON.stringify(err));
-        }
-    });
-}
 </script>

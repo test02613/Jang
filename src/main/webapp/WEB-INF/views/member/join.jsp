@@ -132,9 +132,9 @@
 
                //console.log('keyup test')
 
-               var memberId = $('.id_input').val();
+               var id = $('.id_input').val();
                var data = {
-                  memberId : memberId
+                  id : id
                }
 
                $.ajax({

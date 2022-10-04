@@ -14,9 +14,14 @@ public interface MemberService {
 	public int idCheck(String id) throws Exception;
 	
 	public String loginAction(MemberVO vo, HttpSession session) throws Exception;
+	
 	public int loginAction_admin(MemberVO vo) throws Exception;
 	
-	public String findId(HttpServletResponse response, /*String email*/ MemberVO vo) throws Exception;
+	public String findId(HttpServletResponse response, MemberVO vo) throws Exception;
+	
+	public String findPw(HttpServletResponse response, MemberVO vo) throws Exception;
+	
+	public String updatePw(HttpServletResponse response, MemberVO vo) throws Exception;
 
 	/*public int loginAction_admin1(MemberVO vo);*/
 	
