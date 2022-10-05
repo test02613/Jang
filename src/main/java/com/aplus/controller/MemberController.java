@@ -55,9 +55,7 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
-	
-
-	// 아이디 중복 검사z
+	// 아이디 중복 검사
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String id) throws Exception {

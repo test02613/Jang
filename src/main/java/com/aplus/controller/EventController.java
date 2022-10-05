@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class EventController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-
+	
+	//이벤트 페이지 진입
 	@RequestMapping(value = "/event", method = RequestMethod.GET)
 	public String eventGET() {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 페이지 진입");
