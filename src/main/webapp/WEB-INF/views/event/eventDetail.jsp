@@ -61,9 +61,11 @@ text-align:center;
          </table>
          </div>
          <div id="button">
-   <a href='${path}/eventUpdate?num=${detail.eventnum}'><button>수정하기</button></a>
-   <a href='${path}/eventDeleteAction?num=${detail.eventnum}'><button>삭제하기</button></a>
-   </div>
+         <c:if test="${admin eq 1}">
+		   <a href='${path}/eventUpdate?num=${detail.eventnum}'><button>수정하기</button></a>
+		   <a href='${path}/eventDeleteAction?num=${detail.eventnum}'><button>삭제하기</button></a>
+  		</c:if> 
+ 		</div>
       </div>
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
