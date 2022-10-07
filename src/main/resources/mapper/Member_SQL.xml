@@ -2,42 +2,57 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="mapper.Member_SQL">
+
+	<!-- 회원가입 -->
 	<insert id="memberJoin">
-		insert into "member" values(#{id},
-		#{name}, #{pw},sysdate,
+		insert into member values(#{id},
+		#{name}, #{pw},
 		#{email},0, #{postcode},
-		#{address}, #{addressDetail}, 2,
-		sysdate, 50000, 0 )
+		#{address}, #{addressDetail}, 0,
+		sysdate, 5000000, 0 )
 	</insert>
+	
+	<!-- 아이디 찾기 -->
 	<select id="findId" parameterType="MemberVO" resultType="String">
-		select "id" from "member" where "name" = #{name} AND "email" = #{email}
+		select id from member where name = #{name} AND email = #{email}
 	</select>
 	
+	<!-- 비밀번호 초기화용 -->
 	<select id="findPw" parameterType="MemberVO" resultType="String">
-		select "pw" from "member" where "id" = #{id} AND "email" = #{email}
+		SELECT pw 
+		FROM member 
+		WHERE id = #{id} 
+		AND email = #{email}
 	</select>
 	
+	<!-- 비밀번호 변경 -->
 	<update id="updatePw" parameterType="MemberVO" >
-	update "member" set "pw" = #{pw} where "id" = #{id}
+		UPDATE member 
+		SET pw = #{pw} 
+		WHERE id = #{id}
 	</update>
 
+	<!-- 로그인 -->
 	<select id="loginAction"  parameterType="MemberVO" resultType ="String" >
-		
-			SELECT * FROM "member" 
-	    WHERE "pw" = #{pw}
-	    AND "id" = #{id}
-		
+		SELECT * FROM member 
+	    WHERE pw = #{pw}
+	    AND id = #{id}
 	</select>
+	
+	<!-- 관리자 로그인 -->
 	<select id="loginAction_admin"  parameterType="MemberVO" resultType ="int" >
-		
-			SELECT "admin" FROM "member" 
-	    WHERE "pw" = #{pw}
-	    AND "id" = #{id}
-		
+		SELECT admin FROM member 
+	    WHERE pw = #{pw}
+	    AND id = #{id}
 	</select>
+	
 	<!-- 아이디 중복검사 -->
 	<select id="idCheck" resultType="int">
-		select count(*) from "member" where "id" = #{id}
+		SELECT count(*) 
+		FROM member 
+		WHERE id = #{id}
 	</select>
+	
 </mapper>

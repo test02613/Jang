@@ -14,20 +14,20 @@
 	</definition>
 	
 	<!-- member 로그인 후 -->
-	<definition name="layout-tiles2" template="/WEB-INF/views/tiles/tiles-layout2.jsp" >
+	<!-- <definition name="layout-tiles2" template="/WEB-INF/views/tiles/tiles-layout2.jsp" >
 		<put-attribute name="member_topMenu" value="/WEB-INF/views/tiles/member_topMenu.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
-	</definition>
+	</definition> -->
 		
 	<!-- admin 로그인 후 -->
-	<definition name="layout-tiles3" template="/WEB-INF/views/tiles/tiles-layout3.jsp">
+	<!-- <definition name="layout-tiles3" template="/WEB-INF/views/tiles/tiles-layout3.jsp">
 		<put-attribute name="admin_topMenu" value="/WEB-INF/views/tiles/admin_topMenu.jsp" />
 		<put-attribute name="admin_header" value="/WEB-INF/views/tiles/admin_header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
-	</definition>
+	</definition> -->
 	
 
 

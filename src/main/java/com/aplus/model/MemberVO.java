@@ -13,9 +13,6 @@ public class MemberVO {
    // 회원 비밀번호
    private String pw;
    
-   //회원 생년월일
-   private Date birth;
-   
    //회원 이메일
    private String email;
    
@@ -43,22 +40,20 @@ public class MemberVO {
    //회원 탈퇴
    private String leave;   
    
-   
-   
-   
+ 
    public MemberVO() {
       super();
    }
    
    
    //db에서 가져올때 컬럼하나하나 가져오는게 아니라 한번에 가져오기 위함  (source-Generate Constructor using Fields...)
-   public MemberVO(String id, String name, String pw, Date birth, String email, String mobile, String postcode, String address,
+   public MemberVO(String id, String name, String pw, String email, String mobile, String postcode, String address,
          String addressDetail, int admin, Date joinDate, int point, String leave) {
+	   
       super();
       this.id = id;
       this.name = name;
       this.pw = pw;
-      this.birth = birth;
       this.email = email;
       this.mobile = mobile;
       this.postcode = postcode;
@@ -101,17 +96,6 @@ public class MemberVO {
    public void setPw(String pw) {
       this.pw = pw;
    }
-   
-   
-   public Date getBirth() {
-      return birth;
-   }
-   
-   
-   public void setBirth(Date birth) {
-      this.birth = birth;
-   }
-   
    
    public String getEmail() {
       return email;
@@ -204,7 +188,7 @@ public class MemberVO {
 
    @Override
    public String toString() {
-      return "MemberVO [id=" + id + ", name=" + name + ", pw=" + pw + ", birth=" + birth + ", email=" + email
+      return "MemberVO [id=" + id + ", name=" + name + ", pw=" + pw + ", email=" + email
             + ", mobile=" + mobile + ", postcode=" + postcode + ", address=" + address + ", addressDetail="
             + addressDetail + ", admin=" + admin + ", joinDate=" + joinDate + ", point=" + point + ", leave="
             + leave + "]";

@@ -9,9 +9,11 @@
     </settings>
     
      <typeAliases>
+        <typeAlias type="com.aplus.event.EventVO" alias="EventVO"></typeAlias>
         <typeAlias type="com.aplus.model.MemberVO" alias="MemberVO"></typeAlias>
     </typeAliases>     
     <!-- <mappers>
     	<mapper resource="com.aplus.mapper.MemberMapper.xml"/>
     </mappers> -->
+    
 </configuration>
