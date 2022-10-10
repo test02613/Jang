@@ -50,8 +50,6 @@ text-align:center;
 						<th id="title" width="100" scope="col">#</th>
 						<th id="title"   scope="col">제목</th>
 						<th id="title" width="100"scope="col">작성일</th>
-						
-						
 					</tr>
 				</thead>
 				<tbody>
@@ -63,8 +61,6 @@ text-align:center;
 							<td style="text-decoration: none;"><c:out value="${list.eventdate}" /></td>
 						</tr>
 					</c:forEach>
-					
-					
 				</tbody>
 			</table>
 			</div>

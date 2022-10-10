@@ -5,13 +5,21 @@
  
 <tiles-definitions>
 
-	<!-- 로그인 전 -->
+	<!-- tiles -->
 	<definition name="layout-tiles" template="/WEB-INF/views/tiles/tiles-layout.jsp">
 		<put-attribute name="topMenu" value="/WEB-INF/views/tiles/topMenu.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
+	
+	
+	<!-- tiles body -->
+	<definition name="*/*" extends="layout-tiles">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="title" value="aplus" />
+	</definition>
+	
 	
 	<!-- member 로그인 후 -->
 	<!-- <definition name="layout-tiles2" template="/WEB-INF/views/tiles/tiles-layout2.jsp" >
@@ -32,11 +40,7 @@
 
 
 	
-	<!-- 로그인 전 body -->
-	<definition name="*/*" extends="layout-tiles">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
-		<put-attribute name="title" value="aplus" />
-	</definition>
+
 	
 	<!-- member 로그인 후 body -->
 	<!-- <definition name="member/*" extends="layout-tiles">

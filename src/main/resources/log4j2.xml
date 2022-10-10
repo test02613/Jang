@@ -45,7 +45,7 @@
 	<Properties>
 	
 		<!-- <Property name="LOG_PATH" value="E:\lsh\log\spring\test" /> -->
-		<Property name="LOG_PATH" value="D:\works\log" />
+		<Property name="LOG_PATH" value="D:\jsj60\works\egov39_1\log\java" />
 		
 		<Property name="layoutPattern">
 			%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%C] [%t] -- %m%n

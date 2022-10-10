@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="mapper.Item_SQL">
+  
+	<resultMap type="ItemVO" id="itemlist">
+		<result column="ITEMNUM" property="itemnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMCOST" property="itemcost"
+			jdbcType="VARCHAR" javaType="String" />
+
+	</resultMap>
+
+  	
+  	<!-- 상품목록 -->
+	<select id="item_list" resultMap="itemlist">
+		SELECT *
+		FROM ITEM
+		where itemcategory = #{itemcategory}
+	</select>
+	
+	<!-- 카테고리 -->
+	<select id="item_cat" resultMap="itemlist">
+		SELECT *
+		FROM ITEM
+		where itemcategory = ${itemcategory}
+	</select>
+
+</mapper>

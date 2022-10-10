@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+
+	<!-- tiles -->
+	<definition name="layout-tiles" template="/WEB-INF/views/tiles/tiles-layout.jsp">
+		<put-attribute name="topMenu" value="/WEB-INF/views/tiles/topMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition>
+	
+	
+	<!-- tiles body -->
+	<definition name="*/*" extends="layout-tiles">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="title" value="aplus" />
+	</definition>
+	
+	
+	<!-- member 로그인 후 -->
+	<!-- <definition name="layout-tiles2" template="/WEB-INF/views/tiles/tiles-layout2.jsp" >
+		<put-attribute name="member_topMenu" value="/WEB-INF/views/tiles/member_topMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition> -->
+		
+	<!-- admin 로그인 후 -->
+	<!-- <definition name="layout-tiles3" template="/WEB-INF/views/tiles/tiles-layout3.jsp">
+		<put-attribute name="admin_topMenu" value="/WEB-INF/views/tiles/admin_topMenu.jsp" />
+		<put-attribute name="admin_header" value="/WEB-INF/views/tiles/admin_header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+	</definition> -->
+	
+
+
+	
+
+	
+	<!-- member 로그인 후 body -->
+	<!-- <definition name="member/*" extends="layout-tiles">
+		<put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+		<put-attribute name="title" value="회원" />
+	</definition> -->
+	
+	<!-- admin 로그인 후 body -->
+ 	<!-- <definition name="*/*" extends="layout-tiles">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+		<put-attribute name="title" value="관리자" />
+	</definition> -->
+</tiles-definitions>

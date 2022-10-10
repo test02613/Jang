@@ -7,7 +7,7 @@
 }
 /* 홈페이지 메인 제품 목록  */
 #content_area {
-	width: 1200px;
+	width: 1400px;
 	padding-top: 240px;
 	background-color: red;
 	height: 350px;
@@ -20,14 +20,14 @@
 }
 /* 화면 전체 렙 */
 .wrapper {
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	height: 100%;
 	/* background-color: red; */
 }
 /* 부트스트랩 - 이벤트 슬라이드 랩 */
 #image_slide_wrapper {
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	height: 100%;
     text-align: center;
@@ -37,7 +37,7 @@
 
 /* 부트스트랩 - 상품 바로가기 이미지 랩 */
 #image_click_mainwrapper {
-	max-width: 1200px;
+	max-width: 1400px;
 	height: 100%;
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -54,7 +54,7 @@
 }
 
 #header_wrap {
-	width: 1200px;
+	width: 1400px;
 	position: relative;
 }
 /* 이벤트 */
@@ -79,7 +79,7 @@
 
 /* 로고, 검색, 로그인 */
 #top_menu_area {
-	width: 1200px;
+	width: 1400px;
 	height: 40px;
 	background-color: #24292F;
 	border-radius: 0 0 10px 10px;
@@ -170,7 +170,7 @@
 }
 /* 로고 */
 #logo_area {
-	width: 1200px;
+	width: 1400px;
 	height: 150px;
 	background-color: none;
 	position: relative;
@@ -178,7 +178,7 @@
 
 #logo {
 	padding-top: 30px;
-	padding-left: 430px;
+	padding-left: 550px;
 }
 /* 메인메뉴*/
 #nav ul {
@@ -193,7 +193,7 @@
 #nav li {
 	display: inline-block;
 	color: white;
-	margin-left: 75px;
+	margin-left: 102px;
 	border-radius: 10px;
 	z-index: 999;
 }
@@ -259,7 +259,7 @@
 
 #footer {
 	background-color: #24292F;
-	width: 1200px;
+	width: 1400px;
 	height: 110px; /* 내용물에 따라 알맞는 값 설정 */
 	bottom: 0;
 	position: relative;

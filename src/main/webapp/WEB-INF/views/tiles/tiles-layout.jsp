@@ -24,18 +24,28 @@
 </script>
 <link rel="stylesheet" href="${RESOURCES_PATH}/css/common.css">
 <title><tiles:insertAttribute name="title" /></title>
+ <style>
+    .sticky{
+     position: sticky;
+     top:0px;
+	z-index: 99999999;
+    
+    }
+  </style>
 </head>
 
 <body>
 
-	<tiles:insertAttribute name="topMenu" />
+<div class="wrapper">
+   <tiles:insertAttribute name="topMenu" />
 
-	<tiles:insertAttribute name="header" />
+   <div class="sticky"><tiles:insertAttribute name="header" /></div>
 
-	<tiles:insertAttribute name="body" />
+   <tiles:insertAttribute name="body" />
 
-	<tiles:insertAttribute name="footer" />
+   <tiles:insertAttribute name="footer" />
 
+</div>
 
 </body>
 

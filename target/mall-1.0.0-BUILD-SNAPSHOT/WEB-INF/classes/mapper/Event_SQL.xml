@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Event_SQL">
+	<resultMap type="EventVO" id="list">
+		<result column="EVENTNUM" property="eventnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="EVENTTITLE" property="eventtitle"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+	
+	<!-- 게시글 등록 -->
+	<insert id="event_insert" parameterType="EventVO">
+		<selectKey keyProperty="eventnum" resultType="int" order="BEFORE">
+	      select EVENTNUM_SEQ.nextval FROM DUAL
+	   </selectKey>
+	      insert into event values(#{eventnum},
+	      sysdate, #{eventtitle},
+	      #{eventcontent} )
+	 </insert>
+	 
+	<!-- 게시글 목록 -->
+	<select id="event_list" resultMap="list">
+		SELECT *
+		FROM EVENT
+		ORDER BY eventnum DESC
+	</select>
+	
+	<!-- 이벤트 상세 -->
+	<select id="event_detail" resultType="EventVO">
+		SELECT * 
+		FROM EVENT 
+		WHERE eventnum = #{eventnum}
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="event_update" parameterType="EventVO">
+		UPDATE EVENT 
+		SET eventtitle= #{eventtitle}, eventcontent= #{eventcontent}
+		WHERE eventnum = #{eventnum}
+	</update>
+	
+	<!-- 글 삭제 -->
+	  <delete id="event_delete" >
+        delete from EVENT where eventnum = #{eventnum}
+    </delete>
+</mapper>
