@@ -109,7 +109,7 @@ public class LoginController {
 		PrintWriter out = response.getWriter();
 		ModelAndView mav = new ModelAndView();
 		String pw = memberService.findPw(response, vo);
-		String email=vo.getEmail();
+		String email = vo.getEmail();
 		String id = vo.getId();
 		logger.info("Member55:" + vo);
 		

@@ -279,7 +279,7 @@ p {
 
 <body>
 
-   <input type="hidden" id="IDX" name="IDX" value="${detail.itemnum}">
+   <input type="hidden" id="IDX" name="IDX" value="${list.itemnum}">
 
    <br>
    
@@ -288,7 +288,7 @@ p {
       <div style="float:left; width:500;">
          <table border="0">
             <tr>
-               <td><img src="" width="500"
+               <td><img src="/stu/file/${list.GOODS_THUMBNAIL}" width="500"
                   height="500" /></td>
             </tr>
          </table>
@@ -320,11 +320,11 @@ p {
 
             <tr>
                <td id="goodsName"><font size="5"
-                  style="box-sizing: border-box; position: relative;">${detail.itemname}</font></td>
+                  style="box-sizing: border-box; position: relative;">${list.itemname}</font></td>
             </tr>
 
             <tr>
-               <td><font size="3"></font></td>
+               <td><font size="3">${ColorSize}color</font></td>
             </tr>
 
             <tr>
@@ -334,7 +334,7 @@ p {
             <tr>
                <td id="price"
                   style="font-weight: 600px; font-Size: 24px; line-height: 42px;">
-                  <fmt:formatNumber value="" pattern="#,###" />원
+                  <fmt:formatNumber value="${list.itemcost}" pattern="#,###" />원
                </td>
             </tr>
          </table>
@@ -371,8 +371,8 @@ p {
                   <td><select name="ColorList" id="ColorList" class='total_cartAdd'
                      style="width: 600px; height: 30px;">
                         <option value="">==(필수)옵션: 색상 선택 ==</option>
-                        <c:forEach var="list1" items="${list1}" varStatus="index">
-                           <option value="${list1.itemcolor}">${list1.itemcolor}</option>
+                        <c:forEach var="list" items="${list}" varStatus="index">
+                           <option value="${list.itemcolor}">${list.itemcolor}</option>
                         </c:forEach>
                   </select></td>
                   
@@ -383,8 +383,8 @@ p {
                   <td><select name="SizeList" id="SizeList" class='total_cartAdd'
                      style="width: 600px; height: 30px;">
                         <option value="">==(필수)옵션: 사이즈 선택 ==</option>
-                        <c:forEach var="list1" items="${list1}" varStatus="index">
-                           <option value="${list1.itemgb}">${list1.itemgb}</option>
+                        <c:forEach var="list" items="${list}" varStatus="index">
+                           <option value="${list.itemgb}">${list.itemgb}</option>
                         </c:forEach>
                   </select></td>
                
@@ -1170,7 +1170,7 @@ function fn_selectReviewListCallback(data) {
                      var img = "<img src='/stu/img/icon_201602021908415400.jpg' >"
                      var REVIEW_IMG = value.REVIEW_IMG;
                      var gubun = value.REVIEW_NO;
-                     var imgpath = "<img src='"+value.REVIEW_IMG+"' width='500' height='400'>";
+                     var imgpath = "<img src='/stu/file/"+value.REVIEW_IMG+"' width='500' height='400'>";
                      
                      
                      if(REVIEW_IMG == null){

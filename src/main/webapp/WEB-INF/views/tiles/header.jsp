@@ -14,7 +14,7 @@
          <div id="nav">
          <ul>
             <li id="dropdown">
-               <div OnClick="location.href ='/itemList?cat=1'" id="dropdown-menu">Mac</div>
+               <div OnClick="location.href ='/itemListL?cat=1'" id="dropdown-menu">Mac</div>
                <div id="dropdown-content">
                   <a href="/itemList?cat=11">iMac</a>
                   <a href="/itemList?cat=12">MacBook Pro</a>
@@ -22,7 +22,7 @@
                </div>
             </li>
             <li id="dropdown">
-               <div OnClick="location.href ='/itemList?cat=2'" id="dropdown-menu">iPad</div>
+               <div OnClick="location.href ='/itemListL?cat=2'" id="dropdown-menu">iPad</div>
                <div id="dropdown-content">
                   <a href=/itemList?cat=21>iPad Pro</a>
                   <a href="/itemList?cat=22">iPad Air</a>
@@ -31,7 +31,7 @@
                </div>
             </li>
             <li id="dropdown">
-               <div OnClick="location.href ='/itemList?cat=3'" id="dropdown-menu">iPhone</div>
+               <div OnClick="location.href ='/itemListL?cat=3'" id="dropdown-menu">iPhone</div>
                <div id="dropdown-content">
                <a href="/itemList?cat=31">iPhone14</a>
                <a href="/itemList?cat=32">iPhone13</a>
@@ -40,7 +40,7 @@
                </div>
             </li>
             <li id="dropdown">
-               <div OnClick="location.href ='/itemList?cat=4'" id="dropdown-menu">Watch</div>
+               <div OnClick="location.href ='/itemListL?cat=4'" id="dropdown-menu">Watch</div>
                <div id="dropdown-content">
                <a href="/itemList?cat=41">Apple Watch Ultra</a>
                <a href="/itemList?cat=42">Apple Watch 8</a>
@@ -49,7 +49,7 @@
                </div>
             </li>
             <li id="dropdown">
-               <div OnClick="location.href ='/itemList?cat=5'" id="dropdown-menu">AirPods</div>
+               <div OnClick="location.href ='/itemListL?cat=5'" id="dropdown-menu">AirPods</div>
                <div id="dropdown-content">
                <a href="/itemList?cat=51">AirPods2</a>
                <a href="/itemList?cat=52">AirPods3</a>
@@ -58,7 +58,7 @@
                </div>
             </li>
             <li id="dropdown">
-               <div OnClick="location.href ='/itemList?cat=6'" id="dropdown-menu">Accsessory</div>
+               <div OnClick="location.href ='/itemListL?cat=6'" id="dropdown-menu">Accsessory</div>
                <div id="dropdown-content">
                <a href="/itemList?cat=61">case</a>
                <a href="/itemList?cat=62">cable</a>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- c태그 사용 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- c태그 사용 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,13 +32,12 @@
 								<!-- Product name-->
 								<h5 class="fw-bolder"><c:out value="${itemlist.itemname}" /></h5>
 								<!-- Product price-->
-								${itemlist.itemcost} 원
 							</div>
 						</div>
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="/itemDetail">제품 상세보기</a>
+								<a class="btn btn-outline-dark mt-auto" href="/itemDetail?num=${itemlist.itemnum}">제품 상세보기</a>
 							</div>
 						</div>
 					</div>

@@ -41,8 +41,6 @@
             <tr>
                <td bgcolor="orange">³»¿ë</td>
                <td align="left"><textarea name="eventcontent" cols="40" rows="10">${detail.eventcontent}</textarea></td>
-            
-               
             </tr>
             </c:if>
          </table>

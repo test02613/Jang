@@ -24,10 +24,22 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 	@Autowired
 	private ItemService itemService;
 	
-	// 아이템 페이지 진입
+	//상품 리스트 페이지 (대)
+	@RequestMapping(value = "/itemListL", method = RequestMethod.GET)
+	public String itemListL(ItemVO vo, Model model, HttpServletResponse response, Integer cat) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 리스트 페이지 진입");
+		
+		List<ItemVO> list = itemService.itemListL(cat);
+		logger.info("---------------글 목록 확인---------" + list);
+		model.addAttribute("itemlist", list);
+		
+		return "item/itemList";
+	}
+	
+	//상품 리스트 페이지 (중)
 	@RequestMapping(value = "/itemList", method = RequestMethod.GET)
 	public String itemList(ItemVO vo, Model model, HttpServletResponse response, Integer cat) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 페이지 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 리스트 페이지 진입");
 		
 		List<ItemVO> list = itemService.itemList(cat);
 		logger.info("---------------글 목록 확인---------" + list);
@@ -36,5 +48,18 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		return "item/itemList";
 	}
 	
+	//상품 상세페이지
+	@RequestMapping(value = "/itemDetail", method = RequestMethod.GET)
+	public String itemDetail(ItemVO vo, ItemAttrVO attrvo, Model model, Integer num, HttpServletResponse response) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 상세 페이지 진입");
+		
+		ItemVO list = itemService.itemDetail(num);
+		model.addAttribute("detail", list);
+		
+		List<ItemAttrVO> attrlist = itemService.itemAttr(num);
+		model.addAttribute("list1", attrlist);
+		
+		return "item/itemDetail";
+	}
 	
 }

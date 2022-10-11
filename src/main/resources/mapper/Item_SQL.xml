@@ -7,26 +7,56 @@
 	<resultMap type="ItemVO" id="itemlist">
 		<result column="ITEMNUM" property="itemnum"
 			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMCAT1" property="itemcat1"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMCAT2" property="itemcat2"
+			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ITEMNAME" property="itemname"
 			jdbcType="VARCHAR" javaType="String" />
-		<result column="ITEMCOST" property="itemcost"
-			jdbcType="VARCHAR" javaType="String" />
-
 	</resultMap>
-
-  	
-  	<!-- 상품목록 -->
+	
+	<resultMap type="ItemAttrVO" id="itemattrlist">
+		<result column="ITEMNUM" property="itemnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMCODE" property="itemcode"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMSTOCK" property="itemstock"
+			jdbcType="INTEGER" javaType="Integer" />	
+		<result column="ITEMCOST" property="itemcost"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMCOLOR" property="itemcolor"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMGB" property="itemgb"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+	
+  	<!-- 대분류 -->
+	<select id="item_listL" resultMap="itemlist">
+		SELECT *
+		FROM ITEM
+		WHERE itemcat1 = #{itemcat1}
+	</select>
+	
+	<!-- 중분류 -->
 	<select id="item_list" resultMap="itemlist">
 		SELECT *
 		FROM ITEM
-		where itemcategory = #{itemcategory}
-	</select>
-	
-	<!-- 카테고리 -->
-	<select id="item_cat" resultMap="itemlist">
-		SELECT *
-		FROM ITEM
-		where itemcategory = ${itemcategory}
+		WHERE itemcat2 = #{itemcat2}
 	</select>
 
+	<!-- 디테일 하나 뽑아오는 용 -->
+	<select id="item_detail" resultType="ItemVO">
+		SELECT *
+		FROM ITEM
+		WHERE itemnum = #{itemnum}
+	</select>
+
+	<!-- 디테일 -->
+	<select id="item_attr" resultMap="itemattrlist">
+		SELECT *
+		FROM ITEMATTR
+		WHERE itemnum = #{itemnum}
+	</select>
 </mapper>
