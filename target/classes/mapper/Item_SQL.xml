@@ -15,7 +15,7 @@
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
 	
-	<resultMap type="ItemAttrVO" id="itemattrlist">
+	<resultMap type="ItemAttrVO" id="itemAttr">
 		<result column="ITEMNUM" property="itemnum"
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ITEMCODE" property="itemcode"
@@ -46,17 +46,59 @@
 		WHERE itemcat2 = #{itemcat2}
 	</select>
 
-	<!-- 디테일 하나 뽑아오는 용 -->
+	<!-- 디테일  -->
 	<select id="item_detail" resultType="ItemVO">
 		SELECT *
 		FROM ITEM
 		WHERE itemnum = #{itemnum}
 	</select>
 
-	<!-- 디테일 -->
-	<select id="item_attr" resultMap="itemattrlist">
+	<!-- 옵션 박스 ajax -->
+	<select id="item_attr" resultMap="itemAttr">
 		SELECT *
 		FROM ITEMATTR
 		WHERE itemnum = #{itemnum}
 	</select>
+	
+	<!-- 가격  받아오는 ajax-->
+	<select id="item_op" resultType="ItemAttrVO">
+		SELECT *
+		FROM ITEMATTR
+		WHERE itemnum = #{itemnum}
+		AND itemcolor = #{itemcolor}
+	</select>
+	
+	<!-- 상품 상세페이지에서 장바구니 추가 -->
+	<!-- <insert id="insert_cart" parameterType="hashmap">
+	<selectKey resultType="string" keyProperty="ITEMCODE" order="BEFORE">
+        SELECT
+				ITEMCODE
+			FROM
+				ITEMATTR
+			WHERE
+				ITEMCODE = #{ITEMCODE}
+			AND ITEMCOLOR like '%' || #{ITEMCODE} || '%' 
+            AND ITEMGB like  '%' || #{ITEMGB} || '%'       
+    </selectKey>
+		<![CDATA[
+			INSERT INTO CART(
+								ITEMNUM,
+								ITEMCODE,
+								ITEMCOST,
+								ITEMSTOCK,
+								ITEMSNAME,
+								ITEMSCOLOR,
+								ITEMGB
+							 )
+						VALUES(
+								CART_NO_SEQ.NEXTVAL,
+								#{ITEMNUM},
+								#{ITEMCODE},
+								#{ITEMCOST},
+								#{ITEMSTOCK},
+								#{ITEMSNAME},
+								#{ITEMGB}
+							  )				
+		]]>
+	</insert> -->
 </mapper>

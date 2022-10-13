@@ -79,8 +79,11 @@ button {
             </tbody>
          </table>
          <!-- 글쓰기 버튼 -->
-         <button type="button" onclick="location.href='/eventCreate'">글쓰기</button>
-      </div>
+         <c:if test="${admin eq 1}">
+			<div id="button">
+	<a href="/eventCreate"><button>글쓰기</button></a>
+	</div>
+	</c:if>
    </div>
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

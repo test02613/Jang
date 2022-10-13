@@ -31,7 +31,7 @@
 							<div class="text-center">
 								<!-- Product name-->
 								<h5 class="fw-bolder"><c:out value="${itemlist.itemname}" /></h5>
-								<!-- Product price-->
+								<!-- Product price-->${ itemlist.itemdetailimg}
 							</div>
 						</div>
 						<!-- Product actions-->
@@ -49,7 +49,11 @@
 
 	</section>
 	
-	<!-- Footer-->
+	<%-- <c:if test="${admin eq 1}"> --%>
+			<div id="button">
+	<a href="/itemCreate"><button>글쓰기</button></a>
+	</div>
+	<%-- </c:if> --%>
 	</div>
 	
 	<!-- Bootstrap core JS-->

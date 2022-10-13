@@ -6,9 +6,9 @@ public class ItemAttrVO {
 	private Integer itemcode;
 	private Integer itemcost;
 	private Integer itemstock;
-	private String itemgb;
 	private String itemname;
 	private String itemcolor;
+	private String itemgb;
 	
 	public Integer getItemnum() {
 		return itemnum;
@@ -34,12 +34,6 @@ public class ItemAttrVO {
 	public void setItemstock(Integer itemstock) {
 		this.itemstock = itemstock;
 	}
-	public String getItemgb() {
-		return itemgb;
-	}
-	public void setItemgb(String itemgb) {
-		this.itemgb = itemgb;
-	}
 	public String getItemname() {
 		return itemname;
 	}
@@ -52,25 +46,29 @@ public class ItemAttrVO {
 	public void setItemcolor(String itemcolor) {
 		this.itemcolor = itemcolor;
 	}
+	public String getItemgb() {
+		return itemgb;
+	}
+	public void setItemgb(String itemgb) {
+		this.itemgb = itemgb;
+	}
 	
-	public ItemAttrVO(Integer itemnum, Integer itemcode, Integer itemcost, Integer itemstock, String itemgb,
-			String itemname, String itemcolor) {
+	public ItemAttrVO(Integer itemnum, Integer itemcode, Integer itemcost, Integer itemstock, String itemname,
+			String itemcolor, String itemgb) {
 		super();
 		this.itemnum = itemnum;
 		this.itemcode = itemcode;
 		this.itemcost = itemcost;
 		this.itemstock = itemstock;
-		this.itemgb = itemgb;
 		this.itemname = itemname;
 		this.itemcolor = itemcolor;
+		this.itemgb = itemgb;
 	}
 	
 	@Override
 	public String toString() {
 		return "ItemAttrVO [itemnum=" + itemnum + ", itemcode=" + itemcode + ", itemcost=" + itemcost + ", itemstock="
-				+ itemstock + ", itemgb=" + itemgb + ", itemname=" + itemname + ", itemcolor=" + itemcolor + "]";
+				+ itemstock + ", itemname=" + itemname + ", itemcolor=" + itemcolor + ", itemgb=" + itemgb + "]";
 	}
-	
-	
 	
 }

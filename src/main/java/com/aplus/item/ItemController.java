@@ -1,21 +1,27 @@
 package com.aplus.item;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.aplus.model.MemberVO;
 
 @Controller
 public class ItemController {
@@ -24,7 +30,7 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 	@Autowired
 	private ItemService itemService;
 	
-	//상품 리스트 페이지 (대)
+	//상품 리스트 페이지 (카테고리-대분류)
 	@RequestMapping(value = "/itemListL", method = RequestMethod.GET)
 	public String itemListL(ItemVO vo, Model model, HttpServletResponse response, Integer cat) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 리스트 페이지 진입");
@@ -36,7 +42,7 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		return "item/itemList";
 	}
 	
-	//상품 리스트 페이지 (중)
+	//상품 리스트 페이지 (카테고리-중분류)
 	@RequestMapping(value = "/itemList", method = RequestMethod.GET)
 	public String itemList(ItemVO vo, Model model, HttpServletResponse response, Integer cat) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 리스트 페이지 진입");
@@ -49,17 +55,76 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 	}
 	
 	//상품 상세페이지
-	@RequestMapping(value = "/itemDetail", method = RequestMethod.GET)
-	public String itemDetail(ItemVO vo, ItemAttrVO attrvo, Model model, Integer num, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/itemDetail", method = { RequestMethod.GET, RequestMethod.POST })
+	public String itemDetail(Model model, Integer num, HttpServletResponse response) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 상세 페이지 진입");
 		
-		ItemVO list = itemService.itemDetail(num);
-		model.addAttribute("detail", list);
+		ItemVO vo = itemService.itemDetail(num);
+		model.addAttribute("detail", vo);
 		
-		List<ItemAttrVO> attrlist = itemService.itemAttr(num);
-		model.addAttribute("list1", attrlist);
-		
+		List<ItemAttrVO> list = itemService.itemAttr(num);
+		model.addAttribute("list1", list);
+	
 		return "item/itemDetail";
 	}
 	
+	//상품 상세페이지 option ajax
+	@RequestMapping(value = "/itemOp", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public String itemOp(ItemAttrVO vo, Model model,@RequestParam("color") String color , @RequestParam("num") Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
+		vo.setItemcolor(color);
+		vo.setItemnum(num);
+		
+		/*List<ItemAttrVO> list = itemservice.colorChk(vo);*/
+		vo = itemService.itemOp(vo);
+		Integer cost = vo.getItemcost();
+		Integer code = vo.getItemcode();
+		String to = Integer.toString(cost);
+		String tt = Integer.toString(code);
+		logger.info("uuuu"+cost);
+		logger.info("vo"+vo);
+		
+		return to;
+	}
+	
+	
+	//상품 상세페이지 옵션 선택시 가격 표시 ajax
+	@RequestMapping(value = "/itemCode", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public String itemCodeGET(ItemAttrVO vo, Model model,@RequestParam("color") String color , @RequestParam("num") Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
+		vo.setItemcolor(color);
+		vo.setItemnum(num);
+		
+		/*List<ItemAttrVO> list = itemservice.colorChk(vo);*/
+		vo = itemService.itemOp(vo);
+		Integer cost = vo.getItemcode();
+		String to = Integer.toString(cost);
+		logger.info("uuuudddd"+cost);
+		logger.info("vo"+vo);
+		
+		return to;
+	}
+	
+	
+	
+	/*//상품 상세페이지에서 장바구니 추가
+	@RequestMapping(value = "/insertCartAction", method = RequestMethod.POST)
+	public String insertCart(@ModelAttribute MemberVO vo, Model model, String memberId, Integer itemcode, Integer itemcost, HttpSession session) throws Exception {
+		
+		MemberVO member = (MemberVO) session.getAttribute(memberId);
+		logger.info("memberId" + memberId);
+		
+		ItemVO code = itemService.itemCode(itemcode);
+		model.addAttribute("code", code);
+		
+		itemService.insertCart(itemcode);
+			
+		return "redirect:/cart/cartList";
+	
+	}*/
+		
+		
+
 }

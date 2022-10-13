@@ -18,9 +18,14 @@ create table member (
       ordernum   varchar2(20)      not null primary key,
       shippingnum   varchar2(20)      ,
       shippingcost   varchar2(20)      ,
-      ordercost   varchar2(20)      not null,
-      orderdate   date      not null,
-      payment   varchar(255)      not null
+      ordercost   varchar2(20),
+      orderdate   date,
+      payment    varchar2(20),
+      postcode    varchar2(20),
+      address    varchar2(20),
+      addressdetail    varchar2(20),
+      mobile    varchar2(20),
+      name    varchar2(20)
       );
 
    create table event (

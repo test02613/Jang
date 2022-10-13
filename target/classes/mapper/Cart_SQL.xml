@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Cart_SQL">
+	<resultMap type="CartVO" id="list">
+		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMCOST" property="itemcost"
+			jdbcType="INTEGER" javaType="Integer" />
+		<!-- <result column="hashed_password" property="hashedPassword" jdbcType="NVARCHAR" 
+			javaType="String"/> -->
+	</resultMap>
+	
+	<select id="cart" resultMap="list">
+
+		SELECT *
+		FROM cart
+		WHERE id = #{id}
+
+	</select>
+
+	
+	<!-- 장바구니 추가 -->
+	<!-- <insert id="cart_insert" parameterType="CartVO">
+		<selectKey keyProperty="eventnum" resultType="int" order="BEFORE">
+	      select EVENTNUM_SEQ.nextval FROM DUAL
+	   </selectKey>
+	      INSERT INTO CART VALUES(#{id},#{itemname},
+	      #{itemcode}, #{itemcost},
+	      #{itemimg} )
+	 </insert> -->
+	 
+	<!-- 장바구니 목록 -->
+	<!-- <select id="cart_list" resultMap="list">
+		SELECT *
+		FROM CART
+		ORDER BY eventnum DESC
+	</select> -->
+	
+	<!-- 장바구니 수정 -->
+	<!-- <update id="cart_update" parameterType="CartVO">
+		UPDATE CART 
+		SET eventtitle= #{eventtitle}, eventcontent= #{eventcontent}
+		WHERE eventnum = #{eventnum}
+	</update> -->
+	
+	<!-- 장바구니 삭제 -->
+	<!-- <delete id="cart_delete" >
+        DELETE FROM CART WHERE eventnum = #{eventnum}
+    </delete> -->
+</mapper>

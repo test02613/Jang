@@ -49,7 +49,7 @@
 						<li><c:if test="${name != null}">
 								<a href="#">장바구니</a>
 							</c:if> <c:if test="${name == null}">
-								<a href="/login">장바구니</a>
+								<a href="/cartList">장바구니</a>
 							</c:if></li>
 					</ul>
 				</div>
