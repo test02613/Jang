@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.aplus.item.ItemVO;
+import com.aplus.model.MemberVO;
 
 public interface ItemDAO {
 	
@@ -20,6 +21,10 @@ public interface ItemDAO {
 	
 	//상품상세페이지(옵션 박스)itemattr
 	public ItemAttrVO itemOp(ItemAttrVO vo) throws Exception;
+
+	public ItemAttrVO insert_cart(Integer code);
+
+	public MemberVO member(String id);
 	
 /*	//상품금액
 	public ItemVO  itemCost(Integer cost) throws Exception;

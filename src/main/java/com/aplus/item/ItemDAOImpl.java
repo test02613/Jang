@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.aplus.model.MemberVO;
+
 @Repository
 public class ItemDAOImpl implements ItemDAO {
 	@Autowired SqlSession sql;
@@ -65,6 +67,18 @@ public class ItemDAOImpl implements ItemDAO {
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Item_SQL.item_code", itemcode);
 	}*/
+
+	@Override
+	public ItemAttrVO insert_cart(Integer code) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Item_SQL.insert_cart", code);
+	}
+
+	@Override
+	public MemberVO member(String id) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Item_SQL.insert_cartmember", id);
+	}
 
 	
 

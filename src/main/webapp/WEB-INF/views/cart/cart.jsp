@@ -12,27 +12,31 @@
 <title>장바구니 목록</title>
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="/stu/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
-<link rel="stylesheet" href="/stu/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/resources/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="/stu/js/bootstrap.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/stu/js/common.js" charset="utf-8"></script>
+<script src="/resources/js/common.js" charset="utf-8"></script>
 
 <style>
+
+
 body {
  /*  font-family: Verdana, Arial; */
   font-family: 'Open Sans', sans-serif;
 }
+
 a {
   text-decoration: none;
   color: #666;
   text-decoration:none
 }
+
 h1 {
     text-align: center;
     padding: 50px 0;
@@ -40,10 +44,13 @@ h1 {
     font-size: 2em;
     letter-spacing: 10px;
 }  
+
+
 </style>
 
 
 <script type="text/javascript">
+
 //상품선택
 function fn_allchk(){
 	
@@ -54,10 +61,12 @@ function fn_allchk(){
 			arraychk[i].checked = chk; //chk가 true면 arraychk도 true
 		}
 }
+
 function fn_amount(index){ //장바구니 상품수량 변경
 	var array8 = document.getElementsByName("goods_att_amount"); //재고수량
 	var array1 = document.getElementsByName("basket_goods_amount"); //수량
 	var array4 = document.getElementsByName("chk");
+
 	var att = Number(array8[index].value); 
 	var amount = Number(array1[index].value);
 	var basket_no = array4[index].value;
@@ -79,10 +88,12 @@ function fn_amount(index){ //장바구니 상품수량 변경
 		return false;
 	}
 }
+
 //상품 삭제
 function fn_delete(index){
 	var array4 = document.getElementsByName("chk");
 	var basket_no = array4[index].value;
+
 	if(confirm("삭제하시겠습니까?")){
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("<c:url value='/basket/basketDelete.do' />");
@@ -95,6 +106,7 @@ function fn_delete(index){
 function fn_allDelete(){
 	var array9 = document.getElementsByName("member_no");
 	var member_no = array9[0].value;
+
 	if(confirm("삭제하시겠습니까?")){
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("<c:url value='/basket/basketAllDelete.do' />");
@@ -103,6 +115,7 @@ function fn_allDelete(){
 	}
 	return false;
 }
+
 function fn_allPrice(){ //전체주문금액구하기
 	var array1 = document.getElementsByName("goods_sell_price"); //상품가격
 	var array2 = document.getElementsByName("basket_goods_amount"); //장바구니 수량
@@ -131,6 +144,7 @@ function fn_allPrice(){ //전체주문금액구하기
 	var point = Number(hap)*Number(val); //등급별 적립율
 	document.getElementById("point").value = point;
 }
+
 //선택상품 찜하기
 function fn_like(){
 	
@@ -162,12 +176,14 @@ function fn_like(){
 	
 	
 }
+
 function fn_all_order(){ //장바구니 전제주문
 	document.basket.submit();
 }
 function fn_select_order(){ //선택상품 주문
 	var obj = $("[name=chk]");
     var SELECT_BASKET_NO = new Array(); // 배열 선언
+
  	// 체크된 체크박스의 value 값을 가지고 온다.
     $('input:checkbox[name=chk]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
     	SELECT_BASKET_NO.push(this.value);
@@ -181,6 +197,12 @@ function fn_select_order(){ //선택상품 주문
     	alert("구매할 상품을 선택해 주세요.");
     }
 }
+
+
+
+
+
+
 	
 	
 </script>
@@ -199,7 +221,7 @@ function fn_select_order(){ //선택상품 주문
 
       <!-- tables -->
       <form id="commonForm" name="commonForm"></form>
-      	<form name="basket" method="post" action="/stu/order/basketAllOrderWrite.do">
+      	<form name="basket" method="post" action="/addCartAction">
 		<input type="hidden" name="list" value="${list }">
 		</form>
 		
@@ -233,10 +255,8 @@ function fn_select_order(){ //선택상품 주문
 				<c:when test="${fn:length(list) > 0}">
 					<c:forEach items="${list }" var="list" varStatus="status">
 						<input type="hidden" name="goods_att_amount" value="${list.itemname}">
-						<input type="hidden" name="member_grade" value="${row.MEMBER_GRADE }">
-						<input type="hidden" name="member_no" value="${row.MEMBER_NO }">
-						<input type="hidden" name="goods_no" value="${row.GOODS_NO }">
-						<input type="hidden" name="goods_att_no" value="${row.GOODS_ATT_NO }">
+						<input type="hidden" name="goods_att_amount" value="${list.itemcode}">
+						<input type="hidden" name="goods_att_amount" value="${list.itemcost}">
 						<tr>
 							<td style="text-align:center">
                   				<input type="checkbox" name="chk" id="chk" value="${row.BASKET_NO }">
@@ -262,7 +282,7 @@ function fn_select_order(){ //선택상품 주문
         								<input type="text" name="goods_sell_price" value="${row.GOODS_SALE_PRICE }"style="width:60px; text-align:right; border:none;">원
    					 				</c:when>
 								</c:choose> --%>
-								<input type="text" name="goods_sell_price" value="${list.itemcost}"style="width:60px; text-align:right; border:none;">원
+								<input type="text" name="itemcost" value="${list.itemcost}"style="width:60px; text-align:right; border:none;">원
 							</td>
 							<td style="text-align:center">
 								<input type="text" name="goods_sell_price" value="" style="width:60px; text-align:right; border:none;">원

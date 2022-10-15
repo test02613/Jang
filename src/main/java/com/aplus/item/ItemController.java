@@ -78,11 +78,13 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		
 		/*List<ItemAttrVO> list = itemservice.colorChk(vo);*/
 		vo = itemService.itemOp(vo);
+		
 		Integer cost = vo.getItemcost();
 		Integer code = vo.getItemcode();
 		String to = Integer.toString(cost);
 		String tt = Integer.toString(code);
-		logger.info("uuuu"+cost);
+		
+		logger.info("itemOp.cost"+cost);
 		logger.info("vo"+vo);
 		
 		return to;
@@ -99,9 +101,11 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		
 		/*List<ItemAttrVO> list = itemservice.colorChk(vo);*/
 		vo = itemService.itemOp(vo);
+		
 		Integer cost = vo.getItemcode();
 		String to = Integer.toString(cost);
-		logger.info("uuuudddd"+cost);
+		
+		logger.info("itemCode.cost"+cost);
 		logger.info("vo"+vo);
 		
 		return to;
@@ -109,22 +113,20 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 	
 	
 	
-	/*//상품 상세페이지에서 장바구니 추가
+	//상품 상세페이지에서 장바구니 추가
 	@RequestMapping(value = "/insertCartAction", method = RequestMethod.POST)
-	public String insertCart(@ModelAttribute MemberVO vo, Model model, String memberId, Integer itemcode, Integer itemcost, HttpSession session) throws Exception {
+	public String insertCart(Model model, Integer code, HttpSession session, MemberVO mem) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문 페이지 진입");
 		
-		MemberVO member = (MemberVO) session.getAttribute(memberId);
-		logger.info("memberId" + memberId);
+		ItemAttrVO vo =itemService.insert_cart(code);//item 정보 가져오기
+		model.addAttribute("item",vo);
 		
-		ItemVO code = itemService.itemCode(itemcode);
-		model.addAttribute("code", code);
+		String id = (String) session.getAttribute("id");//세션 id가져오기
+		mem=itemService.member(id);//고객 정보 가져오기
+		model.addAttribute("member", mem);
 		
-		itemService.insertCart(itemcode);
-			
-		return "redirect:/cart/cartList";
-	
-	}*/
+		return "cart/cart";
 		
-		
+	}	
 
 }

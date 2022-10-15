@@ -424,17 +424,15 @@ p {
 			<button style="width: 124px; height: 58px;"
 				class="btn btn-outline-danger" id="insertLike"
 				onclick="fn_InsertLike()">
-				<font size="5px">♥</font>
+				<font size="5px">#</font>
 			</button>
 			<button style="width: 270px; height: 58px;"
-				class="btn btn-outline-danger" id="insertBasket"
-				onclick="fn_InsertBasket()">장바구니</button>
+				class="btn btn-outline-danger" id="insertBasket" onclick="fn_InsertBasket()">장바구니</button>
 			<button style="width: 270px; height: 58px;"
-				class="btn btn-outline-danger" id="goodsOrder"
-				>구매하기</button>
+				class="btn btn-outline-danger" id="goodsOrder" >구매하기</button>
 			
 			<br>
-	<h1><a href=/order>ㄱㄱ</a></h1>
+	<h1><a href=/order>주문페이지 바로가기</a></h1>
 			<!-- <button id="update" onclick="fn_update()">수정하기</button> -->
 
 		</div>
@@ -448,203 +446,8 @@ p {
 
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%" id="f1"><a
-				class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
-				role="tab" aria-controls="home" aria-selected="true"
-				onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="profile-tab" href="#profile" role="tab" aria-controls="profile"
-				aria-selected="false" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#contact" role="tab" aria-controls="contact"
-				aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#re" role="tab" aria-controls="re"
-				aria-selected="false" onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="home" role="tabpanel"
-				aria-labelledby="home-tab">${list.GOODS_CONTENT}</div>
-			<!-- 상세정보 -->
 
-		</div>
-	</div>
-	<br>
-	<br>
-
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="home-tab" href="#home1" role="tab" aria-controls="home1"
-				aria-selected="false" onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%" id="f2"><a
-				class="nav-link active" id="profile-tab" data-toggle="tab"
-				href="#profile1" role="tab" aria-controls="profile1"
-				aria-selected="true" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#contact1" role="tab"
-				aria-controls="contact1" aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a>
-			</li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#re1" role="tab" aria-controls="re1"
-				aria-selected="false" onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-
-			<div class="tab-pane fade show active" id="profile1" role="tabpanel"
-				aria-labelledby="profile-tab1">
-				<!-- 상품문의 -->
-
-				<table align="center" class="board_list">
-					<colgroup>
-						<col width="9%" />
-						<col>
-						<col width="15%" />
-						<col width="14%" />
-						<col width="13%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>문의</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>답변</th>
-						</tr>
-					</thead>
-				</table>
-				<table class="board_list2">
-
-					<tbody id="board_list1" name="board_list1">
-					<colgroup>
-						<col width="9%" />
-						<col>
-						<col width="10%" />
-						<col width="13%" />
-						<col width="13%" />
-					</colgroup>
-
-					</tbody>
-				</table>
-				<br>
-				<div style="margin-left: 1050px">
-					<button type="button" class="btn btn-secondary btn-sm"
-						onclick="fn_Qna()">상품문의</button>
-				</div>
-
-
-
-			</div>
-		</div>
-	</div>
-
-	<br>
-	<br>
-
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="home-tab" href="#home2" role="tab" aria-controls="home2"
-				aria-selected="false" onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="profile-tab" href="#profile2" role="tab"
-				aria-controls="profile2" aria-selected="false" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%" id="f3"><a
-				class="nav-link active" id="contact-tab" data-toggle="tab"
-				href="#contact2" role="tab" aria-controls="contact2"
-				aria-selected="true" onClick="fnMove(3)">쇼핑가이드</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#re2" role="tab" aria-controls="re2"
-				aria-selected="false" onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-
-
-			<div class="tab-pane fade show active" id="contact2" role="tabpanel"
-				aria-labelledby="contact-tab" align="left"
-				style="margin-left: 400px">
-				<!-- 쇼핑가이드 -->
-			</div>
-
-		</div>
-	</div>
-
-	<br>
-	<br>
-
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="home-tab" href="#home3" role="tab" aria-controls="home3"
-				aria-selected="false" onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="profile-tab" href="#profile3" role="tab"
-				aria-controls="profile3" aria-selected="false" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#contact3" role="tab"
-				aria-controls="contact3" aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a>
-			</li>
-			<li class="nav-item" role="presentation" style="width: 25%" id="f4"><a
-				class="nav-link active" id="contact-tab" data-toggle="tab"
-				href="#re3" role="tab" aria-controls="re3" aria-selected="true"
-				onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-
-
-			<div class="tab-pane fade show active" id="re3" role="tabpanel"
-				aria-labelledby="contact-tab">
-				<!-- 상품평 -->
-
-				<div class="xans-element- xans-product xans-product-review">
-					<div class="ec-base-table typeList">
-						<br>
-						<h3>REVIEW</h3>
-						<p class="desc">상품의 사용후기를 적어주세요.</p>
-						<table border="1" width="60%">
-							<caption></caption>
-							<colgroup>
-								<col style="width: 70px;">
-								<col style="width: auto">
-								<col style="width: 120px;">
-								<col style="width: 120px;">
-								<col style="width: 80px;" class="displaynone">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">번호</th>
-									<th scope="col">제목</th>
-									<th scope="col">작성자</th>
-									<th colspan="2" scope="col">작성일</th>
-
-									<th scope="col" class="displaynone">평점</th>
-								</tr>
-							</thead>
-
-							<tbody id="reviewList" name="reviewList">
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-
-				<div id="PAGE_NAVI"></div>
-				<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
-				<div style="margin-left: 1050px">
-					<button type="button" class="btn btn-secondary btn-sm"
-						onclick="fn_Review()">WRITE</button>
-				</div>
-
-			</div>
-		</div>
-
-
-
+	
 		<form id="commonForm" name="commonForm"></form>
 </body>
 </html>
@@ -686,6 +489,51 @@ var num ;
 		
 		
 	})
+		var code ;
+	$("#insertBasket").on("click", function(){ // 장바구니 버튼
+		
+		/*  alert(num); */ 
+		
+		
+		cart();	
+	});
+	
+function cart() {
+		
+		if(num == undefined ){
+			alert("상품을 선택해 주세요");
+		}else{
+			$.ajax({
+				type : "get",
+				url : "/itemCode",
+				data : {color : color,
+				num : num},
+				async:false,//전역 변수 보내기
+				dataType : "json",
+				success : function(result) {
+					code = result;
+					
+					console.log("확인 : " + result);
+					if (result) {
+						  /* alert("완료"+code);  */
+						return code;
+					} else {
+						  //alert("전송된 값 없음"+result);  
+					}
+				},
+				error : function() {
+					 // alert("에러 발생"+result); 
+				}
+
+			});//아작스 끝
+	
+			
+				
+				location.href = "/cart?code="+code;
+			}
+	}
+	
+	
 	
 	var code ;
 	$("#goodsOrder").on("click", function(){ // 구매 버튼
@@ -749,6 +597,36 @@ var num ;
 			location.href = "/stu/loginForm.do";
 		}
 	   
+	} */
+	/* $("#insertBasket").on("click", function(e){ // 장바구니 버튼
+		e.preventDefault(); 
+		fn_InsertBasket();	
+	});
+	
+	function fn_InsertBasket() { // 장바구니
+		
+		if(doubleSubmitCheck()) return; // 중복클릭 방지
+
+		if(${SESSION_NO ne null}){
+			var arraycode = document.getElementsByName("BASKET_GOODS_AMOUNT");
+			var len = arraycode.length;
+			if(len==0){
+				alert("상품을 추가해 주세요.");
+			}else{
+				var url = "/basketPopUp";
+				var name = "popup";
+				var option = "width=382, height=227, top=500, left=800, location=no";
+				
+			    var comSubmit = new ComSubmit("frm");
+				comSubmit.setUrl("<c:url value='/cart'/>");
+				window.open(url,name,option);
+				comSubmit.submit();
+			}
+		}else {
+			alert("로그인 후 이용해주세요.");
+			location.href = "/login";
+		}
+		
 	} */
 	
 </script>

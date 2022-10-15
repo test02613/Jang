@@ -12,16 +12,25 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired OrderDAO dao;
 
+	//상품 정보 가져오기
 	@Override
 	public ItemAttrVO order_item(Integer code) throws Exception {
-		// TODO Auto-generated method stub
+
 		return dao.order_item(code);
 	}
 
+	//고객 정보 가져오기
 	@Override
 	public MemberVO member(String id) throws Exception {
-		// TODO Auto-generated method stub
+	
 		return dao.member(id);
+	}
+	
+	//주문 실행
+	@Override
+	public void order_insert(OrderVO vo) throws Exception {
+
+		dao.order_insert(vo);
 	}
 	
 }

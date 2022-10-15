@@ -41,7 +41,7 @@ public class MemberController {
 		return "member/join";
 	}
 
-	// 회원가입
+	//회원가입 실행
 	@RequestMapping(value = "/joinAction", method = RequestMethod.POST)
 	public String joinPost(MemberVO member) throws Exception {
 

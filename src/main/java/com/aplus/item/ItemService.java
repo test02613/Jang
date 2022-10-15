@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.aplus.item.ItemVO;
+import com.aplus.model.MemberVO;
 
 public interface ItemService {
 	
@@ -31,4 +32,8 @@ public interface ItemService {
 
 	//itemcode
 	public ItemVO itemCode(Integer itemcode) throws Exception;*/
+
+	public ItemAttrVO insert_cart(Integer code);
+
+	public MemberVO member(String id);
 }

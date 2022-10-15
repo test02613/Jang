@@ -59,15 +59,7 @@ public class EventController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 글 작성 페이지 진입"+event);
 
 		return "redirect:/event";
-	}
-	
-/*	//이벤트 글 본문 페이지 진입
-	@RequestMapping(value = "/eventDetail", method = RequestMethod.GET)
-	public String eventView() {
-		
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 글 본문 페이지 진입");
-		return "event/eventDetail";
-	}*/
+	} 
 	
 	// 글 수정 페이지 진입
 	@RequestMapping(value ="/eventUpdate", method = RequestMethod.GET)

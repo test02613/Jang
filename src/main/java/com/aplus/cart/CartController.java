@@ -24,8 +24,49 @@ private static final Logger logger = LoggerFactory.getLogger(CartController.clas
 	@Autowired	
 	private CartService cartService;
 
+
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public String cartGet(Model model,HttpSession session,CartVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 진입");
+		
+		//세션에서 아이디 가져와서 list에 저장
+		String id = (String) session.getAttribute("id");
+		List<CartVO> list = cartService.cart(id);
+		
+		model.addAttribute("list", list);
+		logger.info("list" + list);
+		
+		
+		return "cart/cart";
+	}
+
+	
+	@RequestMapping(value = "/addCartAction", method = RequestMethod.GET)
+	public String addCartAction(Model model,HttpSession session,CartVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 진입");
+		
+		//세션에서 아이디 가져와서 list에 저장
+		String id = (String) session.getAttribute("id");
+		List<CartVO> list = cartService.cart(id);
+		
+		model.addAttribute("list", list);
+		logger.info("list" + list);
+		
+		
+		return "cart/cart";
+	}
+	
+	@RequestMapping(value = "/basketPopUp", method = RequestMethod.GET)
+	public String addCartAction() throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 진입");
+		
+		
+		
+		return "item/basketPopUp";
+	}
+	/*	
 	//장바구니 목록
-	@RequestMapping(value = "/cartList", method = RequestMethod.GET)
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String cartList(CartVO vo,HttpSession session, Model model) throws Exception {
 		
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 장바구니 페이지 진입");
@@ -35,7 +76,7 @@ private static final Logger logger = LoggerFactory.getLogger(CartController.clas
 		model.addAttribute("list", list);
 		logger.info("list"+list);
 		
-		return "cart/cartList";
+		return "cart/cart";
 	}
 	
 	//장바구니 추가
@@ -66,5 +107,5 @@ private static final Logger logger = LoggerFactory.getLogger(CartController.clas
 		
 		//model.addAttribute("cartlist", cartService.cartlist());
 		return "redirect:/cartList";
-	}
+	}*/
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aplus.item.ItemDAO;
+import com.aplus.model.MemberVO;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -46,6 +47,18 @@ public class ItemServiceImpl implements ItemService {
 	public ItemAttrVO itemOp(ItemAttrVO vo) throws Exception {
 		
 		return dao.itemOp(vo);
+	}
+
+	@Override
+	public ItemAttrVO insert_cart(Integer code) {
+		// TODO Auto-generated method stub
+		return dao.insert_cart(code);
+	}
+
+	@Override
+	public MemberVO member(String id) {
+		// TODO Auto-generated method stub
+		return dao.member(id);
 	}
 
 	/*//가격
