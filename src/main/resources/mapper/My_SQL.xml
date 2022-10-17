@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="mapper.My_SQL">
+  
+ 	 
+	<!-- 고객 정보 가져오기 -->
+	<select id="member"  resultType="MemberVO">
+		select * from member where id = #{id} 
+	</select>
+	
+  	<!-- 회원정보 수정 -->
+  	<update id="my_update" parameterType="MemberVO">
+		UPDATE MEMBER 
+		SET name= #{name}, id= #{id}, pw= #{pw}, email= #{email}, mobile= #{mobile}, postcode= #{postcode}, 
+			address = #{address}, addressDetail= #{addressDetail}
+		WHERE id= #{id}
+	</update>
+	
+	
+  </mapper>

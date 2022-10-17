@@ -32,5 +32,19 @@ public class OrderServiceImpl implements OrderService {
 
 		dao.order_insert(vo);
 	}
+
+	//주문번호 가져오기
+	@Override
+	public OrderVO ordernum(Integer ordernum) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.ordernum(ordernum);
+	}
+	
+	//포인트 업데이트
+	@Override
+	public MemberVO point_update(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.point_update(vo);
+	}
 	
 }

@@ -29,7 +29,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Autowired
-	private MemberService memberService; // 코드 추가
+	private MemberService memberService; 
 
 	@Autowired
 	private JavaMailSender mailSender;

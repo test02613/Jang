@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.aplus.item.ItemAttrVO;
@@ -34,7 +36,7 @@ public class OrderController {
 		model.addAttribute("item",vo);
 		
 		String id = (String) session.getAttribute("id");//세션 id가져오기
-		mem=orderService.member(id);//고객 정보 가져오기
+		mem = orderService.member(id);//고객 정보 가져오기
 		model.addAttribute("member", mem);
 		
 		logger.info("mem"+mem);
@@ -46,17 +48,46 @@ public class OrderController {
 	
 	//주문서 넘기기
 	@RequestMapping(value = "/orderAction", method = RequestMethod.POST)
-	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem, SessionStatus status) throws Exception {
+	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem,Integer ordernum, SessionStatus status) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>orderAction");
 		
 		String id = (String) session.getAttribute("id");//세션 id가져오기
 		mem = orderService.member(id);//고객 정보 가져오기
-
-		orderService.order_insert(vo);//주문 정보 담기
-		model.addAttribute("order", vo);//주문번호 가져올 용도 -> 새로고침하면 시퀀스는 올라가기 때문에 주문번호를 다르게 해야하나?
 		
-		status.setComplete(); // 중복 submit 방지(안하면 새로고침 할 때마다 데이터 계속 넘어감)
+		vo.setId(id);
+		orderService.order_insert(vo);
+		Integer num = vo.getOrdernum();
+			
+		//status.setComplete(); // 중복 submit 방지(안하면 새로고침 할 때마다 데이터 계속 넘어감)
 		
+		return "redirect:/orderFinish?num=" + num;
+	}
+	
+	//포인트 업데이트
+	@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public String getPoint(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
+		
+		int point = Integer.parseInt(getpoint);
+		
+		String id = (String) session.getAttribute("id");//세션 id가져오기
+				
+		vo.setPoint(point);//포인트 저장
+		vo.setId(id);//id 저장
+		
+		orderService.point_update(vo);
+		return "point";
+	}
+	
+	//주문확인 페이지
+	@RequestMapping(value = "/orderFinish", method = RequestMethod.GET)
+	public String orderFinish(Model model, HttpSession session, Integer num, SessionStatus status) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> orderFinish");
+		
+		OrderVO vo = orderService.ordernum(num);
+		model.addAttribute("order", vo);
+	
 		return "order/orderFinish";
 	}
+		
 }

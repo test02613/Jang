@@ -190,8 +190,8 @@ function fn_select_order(){ //선택상품 주문
     });
     if(SELECT_BASKET_NO[0] != null){
     	var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/order/basketSelectOrder.do' />");
-		comSubmit.addParam("SELECT_BASKET_NO", SELECT_BASKET_NO);
+		comSubmit.setUrl("<c:url value='/addCartAction' />");
+		comSubmit.addParam("itemcode", SELECT_BASKET_NO);
 		comSubmit.submit();
     }else{
     	alert("구매할 상품을 선택해 주세요.");
@@ -259,7 +259,7 @@ function fn_select_order(){ //선택상품 주문
 						<input type="hidden" name="goods_att_amount" value="${list.itemcost}">
 						<tr>
 							<td style="text-align:center">
-                  				<input type="checkbox" name="chk" id="chk" value="${row.BASKET_NO }">
+                  				<input type="checkbox" name="chk" id="chk" value="${list.itemcode}">
                   			</td>
                   			<td>
                   				<img src='/stu/file/${row.GOODS_THUMBNAIL}' width="70px" height="70px">

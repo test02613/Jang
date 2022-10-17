@@ -29,13 +29,13 @@ public class MemberVO {
    private String addressDetail;
    
    //관리자 구분
-   private int admin;
+   private Integer admin;
    
    //등록일자
    private Date joinDate;
    
    //회원 포인트
-   private int point;
+   private Integer point;
    
    //회원 탈퇴
    private String leave;   
@@ -48,7 +48,7 @@ public class MemberVO {
    
    //db에서 가져올때 컬럼하나하나 가져오는게 아니라 한번에 가져오기 위함  (source-Generate Constructor using Fields...)
    public MemberVO(String id, String name, String pw, String email, String mobile, String postcode, String address,
-         String addressDetail, int admin, Date joinDate, int point, String leave) {
+         String addressDetail, Integer admin, Date joinDate, Integer point, String leave) {
 	   
       super();
       this.id = id;
@@ -146,7 +146,7 @@ public class MemberVO {
    }
    
    
-   public int getAdmin() {
+   public Integer getAdmin() {
       return admin;
    }
    
@@ -166,12 +166,12 @@ public class MemberVO {
    }
    
    
-   public int getPoint() {
+   public Integer getPoint() {
       return point;
    }
    
    
-   public void setPoint(int point) {
+   public void setPoint(Integer point) {
       this.point = point;
    }
    

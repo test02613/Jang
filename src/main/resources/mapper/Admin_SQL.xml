@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Admin_SQL">
+
+	<!-- 상품 등록 -->
+	<insert id ="item_insert">
+     INSERT INTO ITEM
+     VALUES (
+            #{ itemnum }
+          , #{ itemname }
+          , #{ itemcat2 }
+          , NULL
+          , NULL
+          , #{ itemcat1 }
+          , NULL
+          , NULL 
+          )   
+    </insert>
+   
+   	<!-- 상품 상세 등록 -->
+	<insert id ="itemattr_insert">
+      INSERT INTO ITEMATTR 
+      VALUES(
+			  #{ itemnum }
+			, #{ itemcode }
+			, #{ itemcost }
+			, #{ itemstock }
+			, #{ itemname }
+			, #{ itemcolor }
+			, #{ itemgb } 
+			)
+    </insert>
+</mapper>

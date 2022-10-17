@@ -51,7 +51,7 @@
 	
 	<%-- <c:if test="${admin eq 1}"> --%>
 			<div id="button">
-	<a href="/itemCreate"><button>글쓰기</button></a>
+	<a href="/itemInsert"><button>글쓰기</button></a>
 	</div>
 	<%-- </c:if> --%>
 	</div>

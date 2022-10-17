@@ -9,7 +9,7 @@
 	<insert id="memberJoin">
 		insert into member values(#{id},
 		#{name}, #{pw},
-		#{email},0, #{postcode},
+		#{email},#{mobile}, #{postcode},
 		#{address}, #{addressDetail}, 0,
 		sysdate, 5000000, 0 )
 	</insert>

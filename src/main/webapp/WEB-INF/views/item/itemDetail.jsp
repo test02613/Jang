@@ -300,28 +300,6 @@ p {
 
 		<div style="float: left; margin-left: 30px; width: 682;">
 			<table border="0">
-
-				<tr>
-					<td><c:set var="PICK" value="${fn:split(list.GOODS_PICK,',')}" />
-						<c:forEach var="PICK1" items="${PICK}" varStatus="g">
-							<c:if test="${g.count == 1 }">
-								<span
-									style="background-color: #ff80bf; line-height: 27px; border-radius: 10px;"><font
-									color="#ffffff" size="2">&nbsp;${PICK1}&nbsp;</font></span>
-							</c:if>
-							<c:if test="${g.count == 2 }">
-								<span
-									style="background-color: #d456dc; line-height: 27px; border-radius: 10px;"><font
-									color="#ffffff" size="2">&nbsp;${PICK1}&nbsp;</font></span>
-							</c:if>
-							<c:if test="${g.count == 3 }">
-								<span
-									style="background-color: #33b7ff; line-height: 27px; border-radius: 10px;"><font
-									color="#ffffff" size="2">&nbsp;${PICK1}&nbsp;</font></span>
-							</c:if>
-						</c:forEach></td>
-				</tr>
-
 				<tr>
 					<td id="goodsName"><font size="5"
 						style="box-sizing: border-box; position: relative;">${detail.itemname}</font></td>

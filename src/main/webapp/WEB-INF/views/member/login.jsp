@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<html>
+<head>
 <meta charset="UTF-8" />
 <meta name="google-signin-client_id" content="840345488051-t7d9q5tg8he8kt3om4dmlovpjom64m3q.apps.googleusercontent.com">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +64,8 @@
 
 </style>
 
-
+</head>
+<body>
 	<div id="loginform">
 		<h3 class="contents">로그인</h3>
 		<div class="logintable">
@@ -71,10 +74,8 @@
 				id="id" placeholder="아이디">
 			<input type="password" class="form-control" name="pw"
 				id="pw" placeholder="비밀번호">
-			<a href="/findPw">비밀번호
-					재설정</a>
-			<a href="/findId">아이디
-					찾기</a>
+			<a href="/findPw">비밀번호 재설정</a>
+			<a href="/findId">아이디 찾기</a>
 			<button type="submit" class="defaultBtn loginBtn" id="login">로그인</button>
 		</form>
 			<p>
@@ -111,3 +112,5 @@ if('${message}' != "") {
 	}
 }); 
 </script>
+</body>
+</html>

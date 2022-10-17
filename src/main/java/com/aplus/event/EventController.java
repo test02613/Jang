@@ -68,14 +68,14 @@ public class EventController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 글 수정 페이지  진입");	
 		
 		EventVO vo = eventService.eventDetail(num);
-		 model.addAttribute("detail", vo);
+		model.addAttribute("detail", vo);
 		 
 		return "event/eventCreate";
 	}
 	
 	// 글 수정 실행
 	@RequestMapping(value ="/eventUpdateAction", method = RequestMethod.POST)
-	public String eventUpdateAction(EventVO vo, Integer num, Model model) throws Exception {
+	public String eventUpdateAction(EventVO vo, Integer num) throws Exception {
 		
 		eventService.eventDetail(num);
 		vo.setEventnum(num);

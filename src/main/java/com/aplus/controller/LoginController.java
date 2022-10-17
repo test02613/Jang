@@ -148,7 +148,7 @@ public class LoginController {
 			String setFrom = "dhkdwk997@gmail.com";
 			String toMail = email;
 			 String title = "비밀번호 이메일 입니다.";
-	         String content = "방문해주셔서 감사합니다." + "<br>"+ id+"님의 임시 비밀번호는 [ " +pw1 + " ]입니다." + "<br>"
+	         String content = "방문해주셔서 감사합니다." + "<br>"+ id +"님의 임시 비밀번호는 [ " + pw1 + " ]입니다." + "<br>"
 	               + "비밀번호를 변경하여 사용하세요.";
 
 			

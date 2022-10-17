@@ -1,8 +1,8 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -21,27 +21,28 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="/resources/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/resources/js/common.js" charset="utf-8"></script>
 
 <!-- 주소검색 API(카카오) -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <style>
-
 a {
-  text-decoration: none;
-  color: #666;
-  text-decoration:none
+	text-decoration: none;
+	color: #666;
+	text-decoration: none
 }
 
 h1 {
-    text-align: center;
-    padding: 50px 0;
-    font-weight: normal;
-    font-size: 2em;
-    letter-spacing: 10px;
-}  
+	text-align: center;
+	padding: 50px 0;
+	font-weight: normal;
+	font-size: 2em;
+	letter-spacing: 10px;
+}
 </style>
 
 <script type="text/javascript">
@@ -108,18 +109,40 @@ function fn_price(){
    document.getElementById("ORDER_USE_POINT").value = "${item.itemcost}"; //상품가격
    document.getElementById("POINT_TOTAL").value = ${member.point}-${item.itemcost}; //포인트-상품가격 차감 금액
    document.getElementById("ORDER_TOTAL_PAY_PRICE").value = document.getElementById("ORDER_USE_POINT").value-${item.itemcost};//결제할 금액
-   ORDER_TOTAL_PAY_PRICE
 }
 
-//주문완료
+//주문완료, 회원 포인트 차감
 function fn_order_pay(){
    var f = document.orderWrite;
    var a=document.getElementById("ORDER_TOTAL_PAY_PRICE").value
+   var b = document.getElementById("POINT_TOTAL").value		
    if(a>0){
       alert("포인트 사용하세요")
    } else {
-      f.submit();
-   }     
+	   $.ajax({
+		 	type : "get",
+		 	url : "/pointUp",
+		 	data : {getpoint : b},
+		 	async : false, //전역 변수 보내기
+		 	dataType : "json",
+		 	success : function(result){
+		 		code = result;
+		 		
+		 		/* console.log("확인 : " + result); */
+				if (result) {
+					  /*  alert("완료"+code);  
+					return code; */
+				} else {
+					  /* alert("전송된 값 없음"+result);   */
+				}
+			},
+			error : function() {
+				 /*  alert("에러 발생"+result);  */
+			}
+
+		});//아작스 끝
+	   f.submit();
+   }    
 }
 
 //주소 찾기
@@ -168,191 +191,196 @@ function findAddr() {
 </head>
 
 <body onload="fn_allPrice()">
-    <div class="container">
+	<div class="container">
 
-      <div style="width:1140px; height:50px; margin:10px; padding:12px; border:1px solid #dcdcdc">
-         <table>
-            <tr>
-               <td style="text-align:center; font-size:17px; font-weight:bold;">주문작성/결제</td>
-            </tr>
-         </table>
-      </div>
+		<div
+			style="width: 1140px; height: 50px; margin: 10px; padding: 12px; border: 1px solid #dcdcdc">
+			<table>
+				<tr>
+					<td style="text-align: center; font-size: 17px; font-weight: bold;">주문작성/결제</td>
+				</tr>
+			</table>
+		</div>
 
-      <!-- tables -->
-      <form id="commonForm" name="commonForm"></form>
-      <form name="orderWrite" id="orderWrite" method="post" action="/orderAction">
-         <%-- <!-- goods정보 -->
+		<!-- tables -->
+		<form id="commonForm" name="commonForm"></form>
+		<form name="orderWrite" id="orderWrite" method="post"
+			action="/orderAction">
+			<%-- <!-- goods정보 -->
          <input type="hidden" name="list" value="${list }">
          <!-- coupon정보 -->
          <input type="hidden" name="list2" value="${list2 }">
          <!-- member정보 -->
          <input type="hidden" name="map" value="${map }"> --%>
-          <div class="table-responsive">
-             <p><b>주문작성/결제</b></p>
-            <table class="table table-striped">
-            <colgroup>
-            <col width="20" />
-            <col width="*" />
-            <col width="10%" />
-            <col width="13%" />
-            <col width="13%" />
-         </colgroup>
-              <thead>
-                <tr>
-                  <th colspan="2" style="text-align:center">상품명/옵션</th>
-                  <th style="text-align:center">주문금액</th>
-                </tr>
-              </thead>
-              <tbody>
-              
-                  <tr>
-                           <td>
-                              <img src='' width="70px" height="70px">
-                           </td>
-                     <td>
-                          <a href="">${item.itemname}</a> <br>
-                          
-                       </td>
-                      <td style="text-align:center">
-                        <input type="text" value="${item.itemcolor}" style="width:60px; text-align:right; border:none;" readonly>
-                        <input type="hidden" name="itemcode"  value="${item.itemcode}" style="width:60px; text-align:right; border:none;" readonly>
-                     </td>
-                     <td style="text-align:center">
-                        <input type="text" name="ordercost" value="${item.itemcost}" style="width:60px; text-align:right; border:none;" readonly>원
-                     </td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
-          <br><br>
-          
-          <div class="table-responsive">
-             <table class="table table-striped" style="width:1140px" >
-             <colgroup>
-            <col width="11%" />
-            <col width="22%" />
-            <col width="11%" />
-            <col width="22%" />
-            <col width="12%" />
-            <col width="22%" />
-         </colgroup>
-                <tr>
-                   <td>주문금액</td>
-                   <td style="text-align:right">
-                      <input type="text" name="ORDER_TOTAL_ORDER_PRICE" value="${item.itemcost}" style="width:100px; text-align:right; border:none;" readonly>원
-                   </td>
-                </tr>
-                <tr rowspan="3">
-                   <td>
-                   </td>
-                   <td>
-                   </td>
-                </tr>
-                <tr rowspan="3">
-                   <td>
-                      포인트
-                   </td>
-                   <td colspan="3" >
-                      <input type="text" name="ORDER_USE_POINT" id="ORDER_USE_POINT" value="0" style="width:100px; text-align:right" readonly> P &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="button" value="사용" onclick="fn_price()">
-                      (포인트 <input type="text" name="POINT_TOTAL" id="POINT_TOTAL" value="${member.point}" style="width:100px; text-align:right; border:none;" readonly> P)
-                   </td>
-                </tr>
-                <tr rowspan="3">
-                   <td>
-                      선결제배송비
-                   </td>
-                   <td colspan="3" >
-                      <input type="text" id="ORDER_FEE" name="ORDER_FEE" value="3000" style="width:100px; text-align:right; border:none;" readonly>원
-                   </td>
-                   <td>
-                   </td>
-                   <td>
-                   </td>
-                </tr>
-             </table>
-          </div>
-         
-            <br><br>
-            <div class="table-responsive">
-             <p>
-                <b>받으시는분(상품받으실분)</b> &nbsp;
-             </p>
-            <table class="table table-striped">
-            <colgroup>
-            <col width="15%" />
-            <col width="*" />
-         </colgroup>
-              <tbody>
-                 <tr>
-                    <td>이름</td>
-                    <td style="text-align:left">
-                 	    <input type="hidden" name="id" value="${member.id}" style="width:100px;" >
-                        <input type="text" name="name" id="ORDER_NAME" value="${member.name}" style="width:100px;" >
-                     </td>
-            </tr>
-            <tr>
-                    <td>휴대폰번호</td>
-                    <td style="text-align:left">
-                        <input type="text" name="mobile" id="ORDER_PHONE" value="${member.mobile}" style="width:120px;" >
-                     </td>
-            </tr>
-            <tr>
-                    <td rowspan="3">주소</td>
-                    <td style="text-align:left">
-                        <input type="text" name="postcode" id="ORDER_ZIPCODE" value="${member.postcode}" style="width:80px;" >
-                        <button type="button" id="findAddrBtn" onclick="findAddr()">우편번호 찾기</button>
-                     </td>
-            </tr>
-            <tr>
-                    <td style="text-align:left">
-                        <input type="text" name="address" id="ORDER_ADDR1"value="${member.address}" style="width:400px;" >
-                     </td>
-            </tr>
-            <tr>
-                    <td style="text-align:left">
-                        <input type="text" name="addressdetail" id="ORDER_ADDR2"value="${member.addressDetail}" style="width:400px;" >
-                     </td>
-            </tr>
-              </tbody>
-            </table>
-          </div>
-          <br><br>
-          
-          <div class="table-responsive">
-             <p><b>결제선택</b></p>
-            <table class="table table-striped">
-            <colgroup>
-            <col width="20%" />
-            <col width="80%" />
-         </colgroup>
-              <tbody>
-                 <tr>
-                    <td>총 결제금액</td>
-                    <td style="text-align:left">
-                        <input type="text" name="itemcost" id="ORDER_TOTAL_PAY_PRICE" value="${item.itemcost }" style="width:100px;" readonly>원
-                     </td>
-            </tr>
-            <tr>
-            </tr>
-            <tr>
-            </tr>
-            <tr>
-            </tr>
-              </tbody>
-            </table>
-            </div>
-            <br>
-           <div style="text-align:center">
-            	<input type="checkbox" name="orderChk" id="orderChk">
-          		(필수)결제서비스 약관에 동의하며, 원활한 배송을 위한 개인정보 제공에 동의합니다.
-          		<br><br>
-          		<input type="button" name="all_order" value="장바구니" onClick="location.href='/cart'">
-            	<input type="submit" name="order_pay" value="결제진행" onclick="fn_order_pay(); return false;">
-            </div>
-      
-     </form>
+			<div class="table-responsive">
+				<p>
+					<b>주문작성/결제</b>
+				</p>
+				<table class="table table-striped">
+					<colgroup>
+						<col width="20" />
+						<col width="*" />
+						<col width="10%" />
+						<col width="13%" />
+						<col width="13%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th colspan="2" style="text-align: center">상품명/옵션</th>
+							<th style="text-align: center">주문금액</th>
+						</tr>
+					</thead>
+					<tbody>
 
-     
-  </body>
+						<tr>
+							<td><img src='' width="70px" height="70px"></td>
+							<td><a href="">${item.itemname}</a> <br></td>
+							<td style="text-align: center"><input type="text"
+								value="${item.itemcolor}"
+								style="width: 60px; text-align: right; border: none;" readonly>
+								<input type="hidden" name="itemcode" value="${item.itemcode}"
+								style="width: 60px; text-align: right; border: none;" readonly>
+							</td>
+							<td style="text-align: center"><input type="text"
+								name="ordercost" value="${item.itemcost}"
+								style="width: 60px; text-align: right; border: none;" readonly>원
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<br>
+
+			<div class="table-responsive">
+				<table class="table table-striped" style="width: 1140px">
+					<colgroup>
+						<col width="11%" />
+						<col width="22%" />
+						<col width="11%" />
+						<col width="22%" />
+						<col width="12%" />
+						<col width="22%" />
+					</colgroup>
+					<tr>
+						<td>주문금액</td>
+						<td style="text-align: right"><input type="text"
+							name="ORDER_TOTAL_ORDER_PRICE" value="${item.itemcost}"
+							style="width: 100px; text-align: right; border: none;" readonly>원
+						</td>
+					</tr>
+					<tr rowspan="3">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr rowspan="3">
+						<td>포인트</td>
+						<td colspan="3"><input type="text" name="ORDER_USE_POINT"
+							id="ORDER_USE_POINT" value="0"
+							style="width: 100px; text-align: right" readonly> P
+							&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="사용"
+							onclick="fn_price()"> (포인트 <input type="text"
+							name="POINT_TOTAL" id="POINT_TOTAL" value="${member.point}"
+							style="width: 100px; text-align: right; border: none;" readonly>
+							P)</td>
+					</tr>
+					<tr rowspan="3">
+						<td>선결제배송비</td>
+						<td colspan="3"><input type="text" id="ORDER_FEE"
+							name="ORDER_FEE" value="3000"
+							style="width: 100px; text-align: right; border: none;" readonly>원
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+
+			<br>
+			<br>
+			<div class="table-responsive">
+				<p>
+					<b>받으시는분(상품받으실분)</b> &nbsp;
+				</p>
+				<table class="table table-striped">
+					<colgroup>
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>이름</td>
+							<td style="text-align: left"><input type="text" name="name"
+								id="ORDER_NAME" value="${member.name}" style="width: 100px;">
+							</td>
+						</tr>
+						<tr>
+							<td>휴대폰번호</td>
+							<td style="text-align: left"><input type="text"
+								name="mobile" id="ORDER_PHONE" value="${member.mobile}"
+								style="width: 120px;"></td>
+						</tr>
+						<tr>
+							<td rowspan="3">주소</td>
+							<td style="text-align: left"><input type="text"
+								name="postcode" id="ORDER_ZIPCODE" value="${member.postcode}"
+								style="width: 80px;">
+								<button type="button" id="findAddrBtn" onclick="findAddr()">우편번호
+									찾기</button></td>
+						</tr>
+						<tr>
+							<td style="text-align: left"><input type="text"
+								name="address" id="ORDER_ADDR1" value="${member.address}"
+								style="width: 400px;"></td>
+						</tr>
+						<tr>
+							<td style="text-align: left"><input type="text"
+								name="addressdetail" id="ORDER_ADDR2"
+								value="${member.addressDetail}" style="width: 400px;">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<br>
+
+			<div class="table-responsive">
+				<p>
+					<b>결제선택</b>
+				</p>
+				<table class="table table-striped">
+					<colgroup>
+						<col width="20%" />
+						<col width="80%" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>총 결제금액</td>
+							<td style="text-align: left"><input type="text"
+								name="itemcost" id="ORDER_TOTAL_PAY_PRICE"
+								value="${item.itemcost }" style="width: 100px;" readonly>원
+							</td>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div style="text-align: center">
+				<input type="checkbox" name="orderChk" id="orderChk">
+				(필수)결제서비스 약관에 동의하며, 원활한 배송을 위한 개인정보 제공에 동의합니다. <br>
+				<br> <input type="button" name="all_order" value="장바구니"
+					onClick="location.href='/cart'"> <input type="submit"
+					name="order_pay" value="결제진행"
+					onclick="fn_order_pay(); return false;">
+			</div>
+
+		</form>
+</body>
 </html>
