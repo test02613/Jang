@@ -1,10 +1,13 @@
 package com.aplus.my;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.aplus.model.MemberVO;
+import com.aplus.order.OrderVO;
 
 @Repository
 public class MyDAOimpl implements MyDAO{
@@ -22,6 +25,13 @@ public class MyDAOimpl implements MyDAO{
 	public MemberVO myUpdate(MemberVO vo) throws Exception {
 
 		return sql.selectOne("mapper.My_SQL.my_update", vo);
+	}
+
+	//주문조회
+	@Override
+	public List<OrderVO> myOrder(String id) throws Exception {
+	
+		return sql.selectList("mapper.My_SQL.my_order", id);
 	}
 
 }

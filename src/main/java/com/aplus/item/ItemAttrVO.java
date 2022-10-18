@@ -1,5 +1,15 @@
 package com.aplus.item;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Builder
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemAttrVO {
 
 	private Integer itemnum;
@@ -9,8 +19,8 @@ public class ItemAttrVO {
 	private String itemname;
 	private String itemcolor;
 	private String itemgb;
-	
-	public Integer getItemnum() {
+
+	/*public Integer getItemnum() {
 		return itemnum;
 	}
 	public void setItemnum(Integer itemnum) {
@@ -69,6 +79,6 @@ public class ItemAttrVO {
 	public String toString() {
 		return "ItemAttrVO [itemnum=" + itemnum + ", itemcode=" + itemcode + ", itemcost=" + itemcost + ", itemstock="
 				+ itemstock + ", itemname=" + itemname + ", itemcolor=" + itemcolor + ", itemgb=" + itemgb + "]";
-	}
+	}*/
 	
 }

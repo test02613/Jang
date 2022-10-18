@@ -3,6 +3,17 @@ package com.aplus.event;
 import java.sql.Date;
 import java.util.List;
 
+import com.aplus.item.ItemAttrVO;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Builder
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EventVO {
 	
    private Integer eventnum;
@@ -11,7 +22,7 @@ public class EventVO {
    private String eventcontent;
  
    
-   public Integer getEventnum() {
+   /*public Integer getEventnum() {
       return eventnum;
    }
    public void setEventnum(Integer eventnum) {
@@ -49,7 +60,7 @@ public EventVO(Integer eventnum, Date eventdate, String eventtitle, String event
    public String toString() {
       return "EventVO [eventnum=" + eventnum + ", eventdate=" + eventdate + ", eventtitle=" + eventtitle
             + ", eventcontent=" + eventcontent + "]";
-   }
+   }*/
    
    
 

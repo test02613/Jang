@@ -2,6 +2,18 @@ package com.aplus.order;
 
 import java.sql.Date;
 
+import com.aplus.item.ItemAttrVO;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Builder
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderVO {
    
    private String id;
@@ -18,7 +30,9 @@ public class OrderVO {
    private String name;
    private Integer itemcode;
 
-	public String getId() {
+   private ItemAttrVO itemattrvo;
+   
+/*	public String getId() {
 		return id;
 	}
 
@@ -147,6 +161,6 @@ public class OrderVO {
 				+ shippingcost + ", ordercost=" + ordercost + ", orderdate=" + orderdate + ", payment=" + payment
 				+ ", postcode=" + postcode + ", address=" + address + ", addressdetail=" + addressdetail + ", mobile="
 				+ mobile + ", name=" + name + ", itemcode=" + itemcode + "]";
-	}
+	}*/
 
 }

@@ -1,6 +1,9 @@
 package com.aplus.my;
 
+import java.util.List;
+
 import com.aplus.model.MemberVO;
+import com.aplus.order.OrderVO;
 
 public interface MyDAO {
 	
@@ -9,4 +12,7 @@ public interface MyDAO {
 	
 	//회원정보 수정
 	public MemberVO myUpdate(MemberVO vo) throws Exception;
+	
+	//주문조회
+	public List<OrderVO> myOrder(String id) throws Exception;
 }

@@ -1,5 +1,7 @@
 package com.aplus.my;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aplus.controller.MemberController;
 import com.aplus.model.MemberVO;
+import com.aplus.order.OrderVO;
 import com.aplus.service.MemberService;
 
 @Controller
@@ -22,8 +25,12 @@ public class MyController {
    
    //마이페이지 메인
    @RequestMapping(value = "/mymain", method = RequestMethod.GET)
-   public String mymainGET() {
+   public String mymainGET(Model model, HttpSession session, MemberVO vo) throws Exception {
       logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 마이 페이지 진입");
+      
+      String memInfo = (String) session.getAttribute("id");//세션 id가져오기
+      vo = myservice.member(memInfo);//고객 정보 가져오기
+      model.addAttribute("member", vo);
       
       return "my/myMain";
    }
@@ -53,29 +60,40 @@ public class MyController {
 
    //주문조회 페이지
    @RequestMapping(value = "/myorder", method = {RequestMethod.GET,RequestMethod.POST})
-   public String myorderGET() {
+   public String myorderGET(Model model, OrderVO vo, HttpSession session) throws Exception {
       logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문조회 페이지 진입");
-      return "my/myorder";
+      
+      String id = (String) session.getAttribute("id");//세션 id가져오기
+      vo.setId(id);
+      List<OrderVO> orderlist = myservice.myOrder(id);
+      model.addAttribute("order", orderlist);//로그인 회원 주문정보 가져오기
+      
+      return "my/myOrder";
    }
    
    //포인트 조회 페이지
    @RequestMapping(value = "/mypoint", method = {RequestMethod.GET,RequestMethod.POST})
-   public String mypointGET() {
+   public String mypointGET(Model model, HttpSession session, MemberVO vo) throws Exception {
       logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 포인트 조회 페이지 진입");
-      return "my/mypoint";
+      
+      String memInfo = (String) session.getAttribute("id");//세션 id가져오기
+      vo = myservice.member(memInfo);//고객 정보 가져오기
+      model.addAttribute("member", vo);
+      
+      return "my/myPoint";
    }
    
    //리뷰조회 페이지
    @RequestMapping(value = "/myreview", method = {RequestMethod.GET,RequestMethod.POST})
-   public String myreviewGET() {
+   public String myreviewGET() throws Exception  {
       logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰관리 페이지 진입");
       return "my/myReview";
    }
    
    //1:1문의 페이지
    @RequestMapping(value = "/myqna", method = {RequestMethod.GET,RequestMethod.POST})
-   public String myqnaGET() {
+   public String myqnaGET() throws Exception  {
       logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 큐엔에이 페이지 진입");
-      return "my/myqna";
+      return "my/myQna";
    }
 }

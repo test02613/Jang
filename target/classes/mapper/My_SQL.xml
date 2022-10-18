@@ -2,21 +2,50 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="mapper.My_SQL">
-  
- 	 
+<mapper namespace="mapper.My_SQL">
+	<resultMap type="ItemAttrVO" id="itemAttr">
+
+		<result column="ITEMCOST" property="itemcost"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMSTOCK" property="itemstock"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMCOLOR" property="itemcolor"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+
+	<resultMap type="OrderVO" id="orderlist">
+
+		<result column="ORDERNUM" property="ordernum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ORDERCOST" property="ordercost"
+			jdbcType="VARCHAR" javaType="String" />
+		<collection property="itemattrvo" resultMap="itemAttr" />
+	</resultMap>
+
+
 	<!-- 고객 정보 가져오기 -->
-	<select id="member"  resultType="MemberVO">
-		select * from member where id = #{id} 
+	<select id="member" resultType="MemberVO">
+		select * from member where id =
+		#{id}
 	</select>
-	
-  	<!-- 회원정보 수정 -->
-  	<update id="my_update" parameterType="MemberVO">
-		UPDATE MEMBER 
-		SET name= #{name}, id= #{id}, pw= #{pw}, email= #{email}, mobile= #{mobile}, postcode= #{postcode}, 
-			address = #{address}, addressDetail= #{addressDetail}
+
+	<!-- 회원정보 수정 -->
+	<update id="my_update" parameterType="MemberVO">
+		UPDATE MEMBER
+		SET name= #{name}, id= #{id}, pw= #{pw}, email= #{email}, mobile=
+		#{mobile}, postcode= #{postcode},
+		address = #{address}, addressDetail= #{addressDetail}
 		WHERE id= #{id}
 	</update>
-	
-	
-  </mapper>
+
+	<!-- 주문조회 -->
+	<select id="my_order" resultMap="orderlist">
+		SELECT *
+		FROM ORDERTABLE a
+		JOIN ItemAttr b
+		on a.itemcode = b.itemcode
+		WHERE a.id = #{id}
+	</select>
+</mapper>

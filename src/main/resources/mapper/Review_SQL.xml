@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="mapper.Review_SQL">
+  
+  <!-- 게시글 등록 -->
+	<insert id="review_insert" parameterType="ReviewVO">
+		<selectKey keyProperty="reviewnum" resultType="int" order="BEFORE">
+	      select REVIEWNUM_SEQ.nextval FROM DUAL
+	   </selectKey>
+	      insert into event values(#{eventnum},
+	      sysdate, #{eventtitle},
+	      #{eventcontent} )
+	 </insert>
+  
+  </mapper>

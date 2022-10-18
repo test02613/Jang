@@ -2,6 +2,15 @@ package com.aplus.item;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Builder
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemVO {
 	private Integer itemnum;
 	private String itemname;
@@ -12,7 +21,7 @@ public class ItemVO {
 	private Integer itemcost;
 	private Integer itemstock;
 
-	public Integer getItemnum() {
+	/*public Integer getItemnum() {
 		return itemnum;
 	}
 
@@ -94,6 +103,6 @@ public class ItemVO {
 		return "ItemVO [itemnum=" + itemnum + ", itemname=" + itemname + ", itemcat2=" + itemcat2 + ", itemimg="
 				+ itemimg + ", itemdetailimg=" + itemdetailimg + ", itemcat1=" + itemcat1 + ", itemcost=" + itemcost
 				+ ", itemstock=" + itemstock + "]";
-	}
+	}*/
 
 }
