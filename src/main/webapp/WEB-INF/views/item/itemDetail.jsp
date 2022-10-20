@@ -410,8 +410,6 @@ p {
 				class="btn btn-outline-danger" id="goodsOrder" >구매하기</button>
 			
 			<br>
-	<h1><a href=/order>주문페이지 바로가기</a></h1>
-			<!-- <button id="update" onclick="fn_update()">수정하기</button> -->
 
 		</div>
 	</div>
@@ -420,12 +418,78 @@ p {
 
 
 
-	<div style="clear: both;"></div>
+<div style="clear: both;"></div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
 
 	<br>
 	<br>
 
-	
+	<div align="center">
+		<h1>리뷰</h1>
+		<div class="tab-content" id="myTabContent">
+
+
+			<div class="tab-pane fade show active" id="re3" role="tabpanel"
+				aria-labelledby="contact-tab">
+				<!-- 상품평 -->
+
+				<div class="xans-element- xans-product xans-product-review">
+					<div class="ec-base-table typeList">
+						
+						<table border="1" width="60%">
+							<caption></caption>
+							<colgroup>
+								<col style="width: 70px;">
+								<col style="width: auto">
+								<col style="width: 120px;">
+								<col style="width: 120px;">
+								<col style="width: 80px;" class="displaynone">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">제목</th>
+									<th scope="col">작성자</th>
+									<th colspan="2" scope="col">작성일</th>
+
+									<th scope="col" class="displaynone">평점</th>
+								</tr>
+							</thead>
+						<c:forEach var="review" items="${review}" varStatus="index">
+							<tbody id="reviewList" name="reviewList">
+								<tr>
+								<td >${review.reviewnum }</td>
+								<td >${review.reviewtitle }</td>
+								<td >${review.id }</td>
+								<td >${review.reviewdate }</td>
+								</tr>
+							</tbody>
+
+						</c:forEach>
+						</table>
+					</div>
+				</div>
+
+				<div id="PAGE_NAVI"></div>
+				<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
+				<div style="margin-left: 1050px">
+					<button type="button" class="btn btn-secondary btn-sm"
+						onclick="fn_Review()">WRITE</button>
+				</div>
+
+			</div>
+		</div>
+
+
+
 		<form id="commonForm" name="commonForm"></form>
 </body>
 </html>
@@ -506,7 +570,7 @@ function cart() {
 			});//아작스 끝
 	
 			
-				
+				//order.jsp로 code 태워서 보내기
 				location.href = "/cart?code="+code;
 			}
 	}

@@ -86,7 +86,7 @@ function order_ok(mem_no, order_no){
 		async:false,
 		success : function(data){
 		alert("수취확인이 완료되었습니다.");
-		location.href = "/stu/myOrderList.do";
+		location.href = "/stu/orderList.do";
 		}
 	})
 	}else{
@@ -145,7 +145,7 @@ h1 {
 	<div id="orderList">
 	<div class="row" align="center">
         <div>
-          <h2>주문 배송 내역</h2>
+          <h2>주문 내역</h2>
           <p>배송추적은 '수취확인' 상태부터 가능합니다.</p>
           <p>수취확인 후에는 반품/교환이 어렵습니다. 기한내 신청 바랍니다.</p>
         </div>
@@ -168,100 +168,22 @@ h1 {
 					<th scope="col">신청</th>
 				</tr>
 			</thead>
-			<form id="order_select">
+	
 			<tbody>
-			<c:choose>
+
 					
-				<c:when test="${fn:length(myorder) > 0}">
-					<c:forEach var="myorder" items="${myorder}" varStatus="index">					
+			
+					<c:forEach var="order" items="${order}" varStatus="index">					
 						<tr>
-							<td>${myorder.orderdate }<br /> / ${myorder.ordernum }</td>
-							<td >
-							<c:choose>
-								<c:when test="${myorder.HAP_CNT eq '1' }">
-								<a href="/stu/my_detail.do?order_no=${myorder.ordernum  }" name="title">${myorder.ordernum}</a>
-								<input type="hidden" id= "member_no" value="${myorder.ordernum}">
-								</c:when>
-								<c:otherwise>
-								<a href="/stu/my_detail.do?order_no=${myorder.ordernum  }" name="title">${myorder.itemattrvo.itemname }</a>외 ${myorder.HAP_CNT -1 }건
-								<input type="hidden" id="member_no" value="${myorder.id }">
-								</c:otherwise>
-							</c:choose>
-							</td>
-							<td>
-							<fmt:formatNumber type="number" maxFractionDigits="3" value="${myorder.itemattrvo.itemcost }" var="price" />
-							&#8361;${price }원</td>
-							<c:choose>
-								<c:when test="${myorder.ORDER_STATE eq '0' }">
-								<td>주문확인중</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '1' }">
-								<td>입금확인중</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '2' }">
-								<td>배송준비중</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '3' }">
-								<td>배송중</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '4' }">
-								<td><input type="button" onclick="order_ok(${myorder.id }, ${myorder.ordernum })" value="수취확인"></td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '5' }">
-								<td>배송완료</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '99' }">
-								<td>환불완료</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '98' }">
-								<td>주문취소</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '97' }">
-								<td>교환요청</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '96' }">
-								<td>AS요청</td>
-								</c:when>
-							</c:choose>
-							<c:choose>
-								<c:when test="${myorder.ORDER_STATE < 2 }">
-								<td><input type="button" onclick="order_cancle(${myorder.MEMBER_NO }, ${myorder.ORDER_NO })" value="주문취소"></td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '2' }">
-								<td><input type="button" onclick="order_change(${myorder.MEMBER_NO }, ${myorder.ORDER_NO })" value="교환/환불"></td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '3' }">
-								<td><input type="button" onclick="order_exp_num(${myorder.ORDER_STATE }, ${myorder.ORDER_NO })" value="송장확인"></td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '4' }">
-								<td><input type="button" onclick="order_exp_num(${myorder.ORDER_STATE }, ${myorder.ORDER_NO })" value="송장확인">
-								<br /><input type="button" onclick="order_change(${myorder.MEMBER_NO }, ${myorder.ORDER_NO })" value="교환/환불/AS요청"></td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '5' }"> <!-- 수취확인 후 교환-환불-AS는 상품문의 게시판으로 -->
-								<td><input type="button" onclick="order_review(${myorder.ORDER_STATE }, ${myorder.ORDER_NO })" value="리뷰쓰기">
-								<br /><input type="button" onclick="order_qna(${myorder.ORDER_STATE }, ${myorder.ORDER_NO })" value="교환/환불/AS요청"></td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '99' }">
-								<td>환불완료</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE eq '98' }">
-								<td>주문취소</td>
-								</c:when>
-								<c:when test="${myorder.ORDER_STATE > 95 && myorder.ORDER_STATE < 98 }">
-								<td>처리중</td>
-								</c:when>
-							</c:choose>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<td colspan="6">조회된 결과가 없습니다.</td>
-					</tr>
-				</c:otherwise>
-			</c:choose>
+							<td>${order.orderdate }<br /> / ${order.ordernum }</td>
+							<td>${order.itemattrvo.itemname }</td>
+							<td>${order.ordercost }</td>
+							<td></td>
+							<td></td>
+							</tr>
+							</c:forEach>
 		</tbody>
-		</form>
+
 		</table>
 		</div>
 	</div>

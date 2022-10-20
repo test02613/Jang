@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.aplus.model.MemberVO;
+import com.aplus.review.ReviewVO;
 
 @Repository
 public class ItemDAOImpl implements ItemDAO {
@@ -36,52 +37,28 @@ public class ItemDAOImpl implements ItemDAO {
 	//가격 받아오는 ajax
 	@Override
 	public List<ItemAttrVO> itemAttr(Integer num) throws Exception {
-		// TODO Auto-generated method stub
+
 		return sql.selectList("mapper.Item_SQL.item_attr",num);
 	}
 	
-	//상품 옵션박스
+	//상품 옵션박스 ajax
 	@Override
 	public ItemAttrVO itemOp(ItemAttrVO vo) throws Exception {
 	
 		return sql.selectOne("mapper.Item_SQL.item_op", vo);
 	}
-/*
-	//상품가격
+
+	//상품 리뷰 목록
 	@Override
-	public ItemVO  itemCost(Integer cost) throws Exception {
-		// TODO Auto-generated method stub
-		return sql.selectOne("mapper.Item_SQL.item_cost", cost);
+	public List<ReviewVO> itemreviewlist(Integer itemnum) throws Exception {
+
+		return sql.selectList("mapper.Item_SQL.itemreview_list", itemnum);
 	}
 
-	//상품 상세페이지에서 장바구니 추가
+	//상품 리뷰 상세
 	@Override
-	public void insertCart(Integer itemcode) throws Exception {
-		sql.insert("mapper.Item_SQL.insert_cart", itemcode);
-		
+	public ReviewVO itemreviewdetail(Integer itemnum) throws Exception {
+
+		return sql.selectOne("mapper.Item_SQL.itemreview_detail", itemnum);
 	}
-
-	//itemcode
-	@Override
-	public ItemVO itemCode(Integer itemcode) throws Exception {
-		// TODO Auto-generated method stub
-		return sql.selectOne("mapper.Item_SQL.item_code", itemcode);
-	}*/
-
-	@Override
-	public ItemAttrVO insert_cart(Integer code) {
-		// TODO Auto-generated method stub
-		return sql.selectOne("mapper.Item_SQL.insert_cart", code);
-	}
-
-	@Override
-	public MemberVO member(String id) {
-		// TODO Auto-generated method stub
-		return sql.selectOne("mapper.Item_SQL.insert_cartmember", id);
-	}
-
-	
-
-
-
 }

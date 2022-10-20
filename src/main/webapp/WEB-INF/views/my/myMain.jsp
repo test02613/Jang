@@ -17,7 +17,7 @@
 <h1><a href="/myupdate">정보수정</a></h1>
 <h1><a href="/myorder">주문정보</a></h1>
 <h1><a href="/mypoint">포인트</a></h1>
-<h1><a href="/myreview">리뷰</a></h1>
+<h1><a href="/myreview">리뷰관리</a></h1>
 <h1><a href="/cart">장바구니</a></h1>
 <h1><a href="/myqna">1대1문의</a></h1>
 </body>

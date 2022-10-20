@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
+import com.aplus.review.ReviewVO;
 
 public interface ItemDAO {
 	
@@ -19,19 +20,12 @@ public interface ItemDAO {
 	//가격 받아오는 ajax
 	public List<ItemAttrVO> itemAttr(Integer num) throws Exception;
 	
-	//상품상세페이지(옵션 박스)itemattr
+	//상품 옵션박스 ajax
 	public ItemAttrVO itemOp(ItemAttrVO vo) throws Exception;
 
-	public ItemAttrVO insert_cart(Integer code);
-
-	public MemberVO member(String id);
+	//상품 리뷰 목록
+	public List<ReviewVO> itemreviewlist(Integer itemnum) throws Exception;
 	
-/*	//상품금액
-	public ItemVO  itemCost(Integer cost) throws Exception;
-	
-	//itemcode
-	public ItemVO itemCode(Integer itemcode) throws Exception;
-
-	//상세페이지에서 장바구니 추가
-	public void insertCart(Integer itemcode) throws Exception;*/
+	//상품 리뷰 상세
+	public ReviewVO itemreviewdetail(Integer itemnum) throws Exception;
 }

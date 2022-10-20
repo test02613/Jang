@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aplus.model.MemberVO;
+import com.aplus.review.ReviewService;
+import com.aplus.review.ReviewVO;
 
 @Controller
 public class ItemController {
@@ -29,6 +31,9 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private ReviewService reviewservice;
 	
 	//상품 리스트 페이지 (카테고리-대분류)
 	@RequestMapping(value = "/itemListL", method = RequestMethod.GET)
@@ -55,8 +60,9 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 	}
 	
 	//상품 상세페이지
+	//상품리뷰 목록&상세 
 	@RequestMapping(value = "/itemDetail", method = { RequestMethod.GET, RequestMethod.POST })
-	public String itemDetail(Model model, Integer num, HttpServletResponse response) throws Exception {
+	public String itemDetail(Model model, Integer num, Integer itemnum, HttpServletResponse response) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 상세 페이지 진입");
 		
 		ItemVO vo = itemService.itemDetail(num);
@@ -64,19 +70,19 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		
 		List<ItemAttrVO> list = itemService.itemAttr(num);
 		model.addAttribute("list1", list);
-	
+
+		List<ReviewVO> review =  itemService.itemreviewlist(num);
+		model.addAttribute("review", review);
 		return "item/itemDetail";
 	}
 	
-	//상품 상세페이지 option ajax
+	//상품 상세페이지 option 선택 ajax
 	@RequestMapping(value = "/itemOp", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String itemOp(ItemAttrVO vo, Model model,@RequestParam("color") String color , @RequestParam("num") Integer num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
 		vo.setItemcolor(color);
 		vo.setItemnum(num);
-		
-		/*List<ItemAttrVO> list = itemservice.colorChk(vo);*/
 		vo = itemService.itemOp(vo);
 		
 		Integer cost = vo.getItemcost();
@@ -90,7 +96,6 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		return to;
 	}
 	
-	
 	//상품 상세페이지 옵션 선택시 가격 표시 ajax
 	@RequestMapping(value = "/itemCode", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
@@ -99,7 +104,6 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		vo.setItemcolor(color);
 		vo.setItemnum(num);
 		
-		/*List<ItemAttrVO> list = itemservice.colorChk(vo);*/
 		vo = itemService.itemOp(vo);
 		
 		Integer cost = vo.getItemcode();
@@ -110,23 +114,6 @@ private static final Logger logger = LoggerFactory.getLogger(ItemController.clas
 		
 		return to;
 	}
-	
-	
-	
-	//상품 상세페이지에서 장바구니 추가
-	@RequestMapping(value = "/insertCartAction", method = RequestMethod.POST)
-	public String insertCart(Model model, Integer code, HttpSession session, MemberVO mem) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문 페이지 진입");
-		
-		ItemAttrVO vo =itemService.insert_cart(code);//item 정보 가져오기
-		model.addAttribute("item",vo);
-		
-		String id = (String) session.getAttribute("id");//세션 id가져오기
-		mem=itemService.member(id);//고객 정보 가져오기
-		model.addAttribute("member", mem);
-		
-		return "cart/cart";
-		
-	}	
+
 
 }

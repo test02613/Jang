@@ -1,6 +1,9 @@
 package com.aplus.review;
 
+import java.sql.Date;
+
 import com.aplus.item.ItemVO;
+import com.aplus.order.OrderVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,8 +20,8 @@ public class ReviewVO {
 	private Integer itemnum;
 	private String id;
 	private Integer reviewnum;
-	private Integer reviewdate;
-	private Integer reviewtitle;
-	private Integer reviewcontent;
+	private Date reviewdate;
+	private String reviewtitle;
+	private String reviewcontent;
 	
 }

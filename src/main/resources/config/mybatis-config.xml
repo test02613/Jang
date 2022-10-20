@@ -15,7 +15,7 @@
         <typeAlias type="com.aplus.item.ItemAttrVO" alias="ItemAttrVO"></typeAlias>
         <typeAlias type="com.aplus.cart.CartVO" alias="CartVO"></typeAlias>
         <typeAlias type="com.aplus.order.OrderVO" alias="OrderVO"></typeAlias>
-        
+        <typeAlias type="com.aplus.review.ReviewVO" alias="ReviewVO"></typeAlias>
     </typeAliases>     
     <!-- <mappers>
     	<mapper resource="com.aplus.mapper.MemberMapper.xml"/>

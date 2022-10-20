@@ -21,7 +21,7 @@
 		</selectKey>
 	      INSERT INTO ORDERTABLE values(#{id} , #{ordernum} , 0,
 	      0, #{ordercost}, sysdate, 0, #{postcode},
-	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode} )
+	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode}, null )
 	 </insert>
 	 
  	<!-- 주문번호 가져오기 -->
@@ -36,4 +36,10 @@
 		WHERE id = #{id}
 	</update>
 	
+	<!-- 리뷰 작성시 1로 업데이트 -->
+	<update id="reveiw_update" parameterType="OrderVO">
+		UPDATE ORDERTABLE 
+		SET REVIEW = 1
+		WHERE ORDERNUM = #{ORDERNUM}
+	</update>
 </mapper>

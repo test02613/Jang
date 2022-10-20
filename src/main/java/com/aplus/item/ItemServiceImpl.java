@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.aplus.item.ItemDAO;
 import com.aplus.model.MemberVO;
+import com.aplus.review.ReviewVO;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -42,44 +43,24 @@ public class ItemServiceImpl implements ItemService {
 		return dao.itemAttr(num);
 	}
 	
-	//상품 상세페이지 (옵션)
+	//상품 옵션박스 ajax
 	@Override
 	public ItemAttrVO itemOp(ItemAttrVO vo) throws Exception {
 		
 		return dao.itemOp(vo);
 	}
 
+	//상품 리뷰 목록
 	@Override
-	public ItemAttrVO insert_cart(Integer code) {
-		// TODO Auto-generated method stub
-		return dao.insert_cart(code);
+	public List<ReviewVO> itemreviewlist(Integer itemnum) throws Exception {
+
+		return dao.itemreviewlist(itemnum);
 	}
 
+	//상품 리뷰 상세
 	@Override
-	public MemberVO member(String id) {
-		// TODO Auto-generated method stub
-		return dao.member(id);
+	public ReviewVO itemreviewdetail(Integer itemnum) throws Exception {
+
+		return dao.itemreviewdetail(itemnum);
 	}
-
-	/*//가격
-	@Override
-	public ItemVO itemCost(Integer cost) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.itemCost(cost);
-	}
-
-	//상세페이지에서 장바구니 추가
-	@Override
-	public void insertCart(Integer itemcode) throws Exception {
-		dao.insertCart(itemcode);
-		
-	}
-
-	@Override
-	public ItemVO itemCode(Integer itemcode) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.itemCode(itemcode);
-	}*/
-
-
 }

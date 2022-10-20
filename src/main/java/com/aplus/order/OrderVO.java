@@ -3,6 +3,7 @@ package com.aplus.order;
 import java.sql.Date;
 
 import com.aplus.item.ItemAttrVO;
+import com.aplus.item.ItemVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,9 +30,10 @@ public class OrderVO {
    private String mobile;
    private String name;
    private Integer itemcode;
-
-   private ItemAttrVO itemattrvo;
+   private Integer review;
    
+   private ItemAttrVO itemattrvo;
+   private ItemVO itemvo;
 /*	public String getId() {
 		return id;
 	}

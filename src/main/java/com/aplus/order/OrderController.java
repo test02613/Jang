@@ -20,6 +20,7 @@ import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemController;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
+import com.aplus.review.ReviewVO;
 
 @Controller
 public class OrderController {
@@ -68,14 +69,15 @@ public class OrderController {
 	@ResponseBody
 	public String getPoint(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
 		
-		int point = Integer.parseInt(getpoint);
+		int point = Integer.parseInt(getpoint); //ajax에서 포인트 가져오기
 		
-		String id = (String) session.getAttribute("id");//세션 id가져오기
+		String id = (String) session.getAttribute("id");//세션 id 가져오기
 				
 		vo.setPoint(point);//포인트 저장
 		vo.setId(id);//id 저장
 		
 		orderService.point_update(vo);
+		
 		return "point";
 	}
 	
@@ -89,5 +91,23 @@ public class OrderController {
 	
 		return "order/orderFinish";
 	}
+	
+	//리뷰 작성여부 업데이트
+	//리뷰 작성시 review컬럼 1로 업데이트 ajax
+	@RequestMapping(value = "/getReview", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public int getReview(@RequestParam("reviewchk1") String reviewchk1, HttpSession session, OrderVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
 		
+		int review = Integer.parseInt(reviewchk1); //ajax에서 1가져오기
+		String id = (String) session.getAttribute("id");//세션 id 가져오기
+		
+		vo.setReview(review);
+		vo.setId(id);
+		
+		orderService.review_update(vo); //review컬럼 1로 업데이트
+		logger.info("OrderVO" + vo);
+		
+		return review;
+	}	
 }

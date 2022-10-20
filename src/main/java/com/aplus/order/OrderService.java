@@ -19,4 +19,7 @@ public interface OrderService {
 	
 	//포인트 업데이트
 	public MemberVO point_update(MemberVO vo) throws Exception;
+
+	//리뷰 업데이트 ajax
+	public OrderVO review_update(OrderVO vo) throws Exception;
 }

@@ -3,15 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="mapper.Review_SQL">
-  
-  <!-- 게시글 등록 -->
+
+	<resultMap type="ReviewVO" id="reviewlist">
+		<result column="REVIEWNUM" property="reviewnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		
+		<result column="REVIEWTITLE" property="reviewtitle"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="REVIEWCONTENT" property="reviewcontent"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+
+	<!-- 리뷰 등록 -->
 	<insert id="review_insert" parameterType="ReviewVO">
-		<selectKey keyProperty="reviewnum" resultType="int" order="BEFORE">
-	      select REVIEWNUM_SEQ.nextval FROM DUAL
-	   </selectKey>
-	      insert into event values(#{eventnum},
-	      sysdate, #{eventtitle},
-	      #{eventcontent} )
-	 </insert>
-  
+		<selectKey keyProperty="reviewnum" resultType="int"
+			order="BEFORE">
+			select REVIEWNUM_SEQ.nextval FROM DUAL
+		</selectKey>
+		insert into review values(#{itemnum}, #{id}, #{reviewnum},
+		sysdate, #{reviewtitle}, #{reviewcontent} )
+	</insert>
+
+	<!-- 리뷰 목록 -->
+	<select id="myreview_list" resultMap="reviewlist">
+		SELECT *
+		FROM REVIEW
+		WHERE id = #{id}
+	</select>
   </mapper>

@@ -24,13 +24,14 @@ public class OrderDAOImpl implements OrderDAO{
 	//고객 정보 가져오기
 	@Override
 	public MemberVO member(String id) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return sql.selectOne("mapper.Order_SQL.order_member",id);
 	}
 
 	//주문 실행
 	@Override
 	public void order_insert(OrderVO vo) throws Exception {
+		
 		 sql.insert("mapper.Order_SQL.order_insert", vo);
 		
 	}
@@ -38,14 +39,21 @@ public class OrderDAOImpl implements OrderDAO{
 	//주문번호 가져오기
 	@Override
 	public OrderVO ordernum(Integer ordernum) throws Exception {
-		// TODO Auto-generated method stub
+	
 		return sql.selectOne("mapper.Order_SQL.ordernum", ordernum);
 	}
 
 	//포인트 업데이트
 	@Override
 	public MemberVO point_update(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
+	
 		return sql.selectOne("mapper.Order_SQL.point_update", vo);
+	}
+
+	//리뷰 업데이트 ajax
+	@Override
+	public OrderVO review_update(OrderVO vo) throws Exception {
+
+		return sql.selectOne("mapper.Order_SQL.review_update", vo);
 	}
 }
