@@ -24,7 +24,7 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewservice;
-	
+
 	@Autowired
 	private OrderService orderservice;
 
@@ -59,68 +59,68 @@ public class ReviewController {
 
 		String id = (String) session.getAttribute("id");// 세션 id가져오기
 		vo.setId(id);
-		//order = 1;
+		// order = 1;
 		model.addAttribute("order", order);
 		reviewservice.reviewCreate(vo);
 
 		return "redirect:/myorder";
 	}
 
-	//리뷰 작성시 리뷰 컬럼 1로 변경 ajax
+	// 리뷰 작성시 리뷰 컬럼 1로 변경 ajax
 	@RequestMapping(value = "/reviewUp", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public void reviewUp(OrderVO vo, Model model, @RequestParam("num") String num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
-		
-		Integer ordernum =Integer.parseInt(num);
+
+		Integer ordernum = Integer.parseInt(num);
 		vo.setOrdernum(ordernum);
 		reviewservice.review_up(vo);
 
 	}
 
-	//상세페이지 진입
+	// 상세페이지 진입
 	@RequestMapping(value = "/reviewDetail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reviewDetailGET(Integer num, Model model) throws Exception {
 
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰 상세페이지 진입");
 
-		ReviewVO vo = reviewservice.reviewDetail(num); //ordernum으로 리뷰 가져옴
+		ReviewVO vo = reviewservice.reviewDetail(num); // ordernum으로 리뷰 가져옴
 		model.addAttribute("detail", vo);
 		logger.info("vo" + vo);
 		return "review/reviewDetail";
 	}
-	
-	//리뷰 수정 페이지
+
+	// 리뷰 수정 페이지
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.GET)
-	public String reviewUpdateGET(ReviewVO vo,Model model,HttpSession session,Integer num) throws Exception {
+	public String reviewUpdateGET(ReviewVO vo, Model model, HttpSession session, Integer num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
-		
+
 		vo.setReviewnum(num);
 		vo = reviewservice.reviewnum(vo);
 		model.addAttribute("list", vo);
-		
+
 		return "review/reviewCreate";
 	}
-	
-	//리뷰 수정 실행
+
+	// 리뷰 수정 실행
 	@RequestMapping(value = "/reviewUpdateAction", method = RequestMethod.POST)
 	public String reviewUpdateAction(ReviewVO vo, Model model, HttpSession session, Integer num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
-		
+
 		vo.setReviewnum(num);
 		vo = reviewservice.reviewUpdate(vo);
 		model.addAttribute("list", vo);
-		
+
 		return "redirect:/myreview";
 	}
-	
-	//리뷰 삭제
+
+	// 리뷰 삭제
 	@RequestMapping(value = "/reviewDeleteAction", method = RequestMethod.GET)
-	public String reviewDeleteAction(ReviewVO vo,Integer num) throws Exception {
+	public String reviewDeleteAction(ReviewVO vo, Integer num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
-		
+
 		reviewservice.reviewDelete(num);
-		
+
 		return "redirect:/myreview";
 	}
 }

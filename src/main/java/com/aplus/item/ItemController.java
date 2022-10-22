@@ -27,93 +27,94 @@ import com.aplus.review.ReviewVO;
 
 @Controller
 public class ItemController {
-private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
 
 	@Autowired
 	private ItemService itemService;
-	
+
 	@Autowired
 	private ReviewService reviewservice;
-	
-	//상품 리스트 페이지 (카테고리-대분류)
+
+	// 상품 리스트 페이지 (카테고리-대분류)
 	@RequestMapping(value = "/itemListL", method = RequestMethod.GET)
 	public String itemListL(ItemVO vo, Model model, HttpServletResponse response, Integer cat) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 리스트 페이지 진입");
-		
+
 		List<ItemVO> list = itemService.itemListL(cat);
 		logger.info("---------------글 목록 확인---------" + list);
 		model.addAttribute("itemlist", list);
-		
+
 		return "item/itemList";
 	}
-	
-	//상품 리스트 페이지 (카테고리-중분류)
+
+	// 상품 리스트 페이지 (카테고리-중분류)
 	@RequestMapping(value = "/itemList", method = RequestMethod.GET)
 	public String itemList(ItemVO vo, Model model, HttpServletResponse response, Integer cat) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 리스트 페이지 진입");
-		
+
 		List<ItemVO> list = itemService.itemList(cat);
 		logger.info("---------------글 목록 확인---------" + list);
 		model.addAttribute("itemlist", list);
-		
+
 		return "item/itemList";
 	}
-	
-	//상품 상세페이지
-	//상품리뷰 목록&상세 
+
+	// 상품 상세페이지
+	// 상품리뷰 목록&상세
 	@RequestMapping(value = "/itemDetail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String itemDetail(Model model, Integer num, Integer itemnum, HttpServletResponse response) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 상세 페이지 진입");
-		
+
 		ItemVO vo = itemService.itemDetail(num);
 		model.addAttribute("detail", vo);
-		
+
 		List<ItemAttrVO> list = itemService.itemAttr(num);
 		model.addAttribute("list1", list);
 
-		List<ReviewVO> review =  itemService.itemreviewlist(num);
+		List<ReviewVO> review = itemService.itemreviewlist(num);
 		model.addAttribute("review", review);
 		return "item/itemDetail";
 	}
-	
-	//상품 상세페이지 option 선택 ajax
+
+	// 상품 상세페이지 option 선택 ajax
 	@RequestMapping(value = "/itemOp", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public String itemOp(ItemAttrVO vo, Model model,@RequestParam("color") String color , @RequestParam("num") Integer num) throws Exception {
+	public String itemOp(ItemAttrVO vo, Model model, @RequestParam("color") String color,
+			@RequestParam("num") Integer num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
 		vo.setItemcolor(color);
 		vo.setItemnum(num);
 		vo = itemService.itemOp(vo);
-		
+
 		Integer cost = vo.getItemcost();
 		Integer code = vo.getItemcode();
 		String to = Integer.toString(cost);
 		String tt = Integer.toString(code);
-		
-		logger.info("itemOp.cost"+cost);
-		logger.info("vo"+vo);
-		
-		return to;
-	}
-	
-	//상품 상세페이지 옵션 선택시 가격 표시 ajax
-	@RequestMapping(value = "/itemCode", method = { RequestMethod.GET, RequestMethod.POST })
-	@ResponseBody
-	public String itemCodeGET(ItemAttrVO vo, Model model,@RequestParam("color") String color , @RequestParam("num") Integer num) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
-		vo.setItemcolor(color);
-		vo.setItemnum(num);
-		
-		vo = itemService.itemOp(vo);
-		
-		Integer cost = vo.getItemcode();
-		String to = Integer.toString(cost);
-		
-		logger.info("itemCode.cost"+cost);
-		logger.info("vo"+vo);
-		
+
+		logger.info("itemOp.cost" + cost);
+		logger.info("vo" + vo);
+
 		return to;
 	}
 
+	// 상품 상세페이지 옵션 선택시 가격 표시 ajax
+	@RequestMapping(value = "/itemCode", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public String itemCodeGET(ItemAttrVO vo, Model model, @RequestParam("color") String color,
+			@RequestParam("num") Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
+		vo.setItemcolor(color);
+		vo.setItemnum(num);
+
+		vo = itemService.itemOp(vo);
+
+		Integer cost = vo.getItemcode();
+		String to = Integer.toString(cost);
+
+		logger.info("itemCode.cost" + cost);
+		logger.info("vo" + vo);
+
+		return to;
+	}
 
 }

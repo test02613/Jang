@@ -22,6 +22,7 @@ public interface AdminService {
 	//리뷰관리
 	public List<ReviewVO> reviewAdmin() throws Exception;
 	
+	
 	//-----------------------------------------미완성------------------------------------------- 
 	//상품등록
 	public void itemInsert(ItemVO item) throws Exception;

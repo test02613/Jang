@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.Cart_SQL">
+
 	<resultMap type="CartVO" id="list">
 		<result column="ITEMNAME" property="itemname"
 			jdbcType="VARCHAR" javaType="String" />
@@ -13,11 +14,9 @@
 	</resultMap>
 	
 	<select id="cart" resultMap="list">
-
 		SELECT *
 		FROM cart
 		WHERE id = #{id}
-
 	</select>
 	
 	<select id="addcart_item"  resultType="ItemAttrVO">

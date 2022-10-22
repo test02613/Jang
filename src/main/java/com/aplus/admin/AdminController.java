@@ -103,17 +103,6 @@ public class AdminController {
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//-----------------------------------------미완성------------------------------------------- 
 	//상품등록 페이지 
 	@RequestMapping(value = "/itemInsert", method = RequestMethod.GET)

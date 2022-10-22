@@ -37,7 +37,7 @@ public class AdminDAOImpl implements AdminDAO{
 		return sql.selectList("mapper.Admin_SQL.order_admin");
 	}
 	
-
+	//리뷰관리
 	@Override
 	public List<ReviewVO> reviewAdmin() throws Exception {
 

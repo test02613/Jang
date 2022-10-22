@@ -54,6 +54,36 @@
 		<result column="LEAVE" property="leave"/>
 	</resultMap>
 
+	<!-- 회원관리 -->
+    <select id="member_list" resultMap="memberlist">
+		SELECT *
+		FROM MEMBER
+	</select>
+	
+	<!-- 회원 블랙처리시 leave 0->2로 변경 -->
+	<update id="member_black" parameterType="MemberVO">
+		UPDATE MEMBER 
+		SET leave = 2
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 주문관리 -->
+	<select id="order_admin" resultMap="orderlist">
+		SELECT *
+		FROM ORDERTABLE a
+		JOIN
+		ItemAttr b
+		on a.itemcode = b.itemcode
+	</select>
+	
+	<!-- 리뷰관리 -->
+	<select id="review_admin" resultMap="reviewlist">
+		SELECT *
+		FROM REVIEW
+	</select>
+
+
+
 	<!-- 상품 등록 -->
 	<insert id ="item_insert">
      INSERT INTO ITEM
@@ -82,32 +112,4 @@
 			, #{ itemgb } 
 			)
     </insert>
-    
-    <!-- 회원관리 -->
-    <select id="member_list" resultMap="memberlist">
-		SELECT *
-		FROM MEMBER
-	</select>
-	
-	<!-- 회원 블랙처리시 leave 0->2로 변경 -->
-	<update id="member_black" parameterType="MemberVO">
-		UPDATE MEMBER 
-		SET leave = 2
-		WHERE id = #{id}
-	</update>
-	
-	<!-- 주문관리 -->
-	<select id="order_admin" resultMap="orderlist">
-		SELECT *
-		FROM ORDERTABLE a
-		JOIN
-		ItemAttr b
-		on a.itemcode = b.itemcode
-	</select>
-	
-	<!-- 리뷰관리 -->
-	<select id="review_admin" resultMap="reviewlist">
-		SELECT *
-		FROM REVIEW
-	</select>
 </mapper>

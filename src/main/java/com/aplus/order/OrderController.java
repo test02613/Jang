@@ -27,67 +27,69 @@ public class OrderController {
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	@Autowired
 	private OrderService orderService;
-	
-	//주문 페이지
+
+	// 주문 페이지
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String orderLGET(Model model,Integer code,HttpSession session,MemberVO mem) throws Exception {
+	public String orderLGET(Model model, Integer code, HttpSession session, MemberVO mem) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문 페이지 진입");
-		
-		ItemAttrVO vo =orderService.order_item(code);//item 정보 가져오기
-		model.addAttribute("item",vo);
-		
-		String id = (String) session.getAttribute("id");//세션 id가져오기
-		mem = orderService.member(id);//고객 정보 가져오기
+
+		ItemAttrVO vo = orderService.order_item(code);// item 정보 가져오기
+		model.addAttribute("item", vo);
+
+		String id = (String) session.getAttribute("id");// 세션 id가져오기
+		mem = orderService.member(id);// 고객 정보 가져오기
 		model.addAttribute("member", mem);
-		
-		logger.info("mem"+mem);
-		logger.info("id"+id);
-		logger.info("vo"+vo);
-		
+
+		logger.info("mem" + mem);
+		logger.info("id" + id);
+		logger.info("vo" + vo);
+
 		return "order/order";
 	}
-	
-	//주문서 넘기기
+
+	// 주문서 넘기기
 	@RequestMapping(value = "/orderAction", method = RequestMethod.POST)
-	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem,Integer ordernum) throws Exception {
+	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem, Integer ordernum)
+			throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>orderAction");
-		
-		String id = (String) session.getAttribute("id");//세션 id가져오기
-		mem = orderService.member(id);//고객 정보 가져오기
-		
+
+		String id = (String) session.getAttribute("id");// 세션 id가져오기
+		mem = orderService.member(id);// 고객 정보 가져오기
+
 		vo.setId(id);
 		orderService.order_insert(vo);
 		Integer num = vo.getOrdernum();
-		
+
 		return "redirect:/orderFinish?num=" + num;
 	}
-	
-	//포인트 업데이트
+
+	// 포인트 업데이트
 	@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public String getPoint(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
-		
-		int point = Integer.parseInt(getpoint); //ajax에서 포인트 가져오기
-		
-		String id = (String) session.getAttribute("id");//세션 id 가져오기
-				
-		vo.setPoint(point);//포인트 저장
-		vo.setId(id);//id 저장
-		
+	public String getPoint(@RequestParam("getpoint") String getpoint, HttpSession session, MemberVO vo)
+			throws Exception {
+
+		int point = Integer.parseInt(getpoint); // ajax에서 포인트 가져오기
+
+		String id = (String) session.getAttribute("id");// 세션 id 가져오기
+
+		vo.setPoint(point);// 포인트 저장
+		vo.setId(id);// id 저장
+
 		orderService.point_update(vo);
-		
+
 		return "point";
 	}
-	
-	//주문확인 페이지
+
+	// 주문확인 페이지
 	@RequestMapping(value = "/orderFinish", method = RequestMethod.GET)
 	public String orderFinish(Model model, HttpSession session, Integer num, SessionStatus status) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> orderFinish");
-		
+
 		OrderVO vo = orderService.ordernum(num);
 		model.addAttribute("order", vo);
-	
+
 		return "order/orderFinish";
 	}
-		
+
 }
