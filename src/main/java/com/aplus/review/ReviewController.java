@@ -75,7 +75,7 @@ public class ReviewController {
 		Integer ordernum =Integer.parseInt(num);
 		vo.setOrdernum(ordernum);
 		reviewservice.review_up(vo);
-		
+
 	}
 
 	//상세페이지 진입

@@ -25,8 +25,8 @@ public class EventController {
 		
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 페이지 진입");
 		
-		logger.info("---------------글 목록 확인---------" + vo);
 		model.addAttribute("list", eventService.list());
+		logger.info("---------------글 목록 확인---------" + vo);
 		return "event/event";
 	}
 

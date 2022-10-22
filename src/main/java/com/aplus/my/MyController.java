@@ -64,6 +64,22 @@ public class MyController {
 	   return "my/myMain";
    }
 
+   //회원탈퇴시 leave 1로 변경
+   @RequestMapping(value = "/memberBye", method = { RequestMethod.GET, RequestMethod.POST })
+
+	public String reviewUp(MemberVO vo, Model model, HttpSession session) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
+		
+		String memInfo = (String) session.getAttribute("id");//세션 id가져오기
+	    vo = myservice.member(memInfo);//고객 정보 가져오기
+	 
+		myservice.memberBye(vo);
+		
+		session.invalidate(); //세션 종료
+		
+		return "redirect:/main";
+	}
+   
    //주문조회 페이지
    @RequestMapping(value = "/myorder", method = {RequestMethod.GET,RequestMethod.POST})
    public String myorderGET(Model model, OrderVO vo, HttpSession session) throws Exception {
@@ -96,35 +112,24 @@ public class MyController {
             
       String memInfo = (String) session.getAttribute("id");//세션 id가져오기
       vo = myservice.member(memInfo);//고객 정보 가져오기
+      Integer a = vo.getPoint();
       myservice.pointUpdate(vo);
-            
-      return "my/myPoint";
+      Integer b = vo.getPoint();   
+      Integer pcharge = a+b;
+      vo.setPoint(pcharge);
+      myservice.pointUpdate(vo);
+      return "redirect:/mymain";
    }
    
-	//포인트 충전 ajax
-	@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
-	@ResponseBody
-	public String getPoint(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
-		
-		
-		
-		return "point";
-	}
    
    //리뷰관리 페이지 -> ReviewController로 이동
+   
    
    //1:1문의 페이지
    @RequestMapping(value = "/myqna", method = {RequestMethod.GET,RequestMethod.POST})
    public String myqnaGET(Model model, OrderVO vo, HttpSession session) throws Exception  {
       logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 큐엔에이 페이지 진입");
       
-   /*   String id = (String) session.getAttribute("id");//세션 id가져오기
-      vo.setId(id); //QnaVO에 로그인 정보 저장
-      model.addAttribute("myqna", vo);*/
-      String id = (String) session.getAttribute("id");//세션 id가져오기
-      vo.setId(id); //OrderVO에 세션 id 저장
-      List<OrderVO> orderlist = myservice.myOrder(id);
-      model.addAttribute("order", orderlist);//로그인 회원 주문정보 가져오기
       return "my/myQna";
    }
 }

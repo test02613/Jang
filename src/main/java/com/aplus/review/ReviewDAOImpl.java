@@ -33,7 +33,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 		return sql.selectOne("mapper.Review_SQL.myreview_detail", num);
 	}
 	
-	//리뷰 업데이트 ajax
+	//리뷰 작성여부 업데이트 ajax
 	@Override
 	public void review_up(OrderVO vo) throws Exception {
 

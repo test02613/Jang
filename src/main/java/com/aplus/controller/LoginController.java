@@ -43,6 +43,7 @@ public class LoginController {
 		session.invalidate();
 		return "member/login";
 	}
+	
 	//로그인 실행
 	@RequestMapping(value = "/loginAction", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView loginAction(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {

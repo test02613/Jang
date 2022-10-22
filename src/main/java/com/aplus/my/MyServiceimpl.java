@@ -27,6 +27,13 @@ public class MyServiceimpl implements MyService{
 		return dao.myUpdate(vo);
 	}
 
+	//회원탈퇴
+	@Override
+	public MemberVO memberBye(MemberVO vo) throws Exception {
+		
+		return dao.memberBye(vo);
+	}
+
 	//주문조회
 	@Override
 	public List<OrderVO> myOrder(String id) throws Exception {
@@ -40,5 +47,4 @@ public class MyServiceimpl implements MyService{
 		
 		return dao.pointUpdate(vo);
 	}
-
 }

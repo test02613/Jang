@@ -15,7 +15,7 @@ public interface ReviewDAO {
 	//로그인 회원 리뷰 상세
 	public ReviewVO reviewDetail(Integer num) throws Exception;
 
-	//리뷰 업데이트 ajax
+	//리뷰 작성여부 업데이트 ajax
 	public void review_up(OrderVO vo) throws Exception;
 	
 	//리뷰 수정 reviewnum 가져오기

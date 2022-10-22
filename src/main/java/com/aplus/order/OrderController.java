@@ -63,7 +63,7 @@ public class OrderController {
 	}
 	
 	//포인트 업데이트
-	/*@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String getPoint(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
 		
@@ -77,7 +77,7 @@ public class OrderController {
 		orderService.point_update(vo);
 		
 		return "point";
-	}*/
+	}
 	
 	//주문확인 페이지
 	@RequestMapping(value = "/orderFinish", method = RequestMethod.GET)

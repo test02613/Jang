@@ -26,6 +26,13 @@ public class MyDAOimpl implements MyDAO{
 
 		return sql.selectOne("mapper.My_SQL.my_update", vo);
 	}
+	
+	//회원탈퇴
+	@Override
+	public MemberVO memberBye(MemberVO vo) throws Exception {
+		
+		return sql.selectOne("mapper.My_SQL.member_bye", vo);
+	}
 
 	//주문조회
 	@Override
@@ -40,5 +47,7 @@ public class MyDAOimpl implements MyDAO{
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.My_SQL.mypoint_update", vo);
 	}
+
+	
 
 }

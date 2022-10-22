@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* 전체 회원 리스트 패널 */
+div#members_content_pnl {
+	display:flex;
+	width:100vw;
+	min-width:1200px;
+	height:calc(100vh - 200px);
+	/* background-color:lightgray; */
+}
+
+/* (기본/상세)주소 필드 전체 주소 보기(툴팁) */
+.address-tooltip {
+	--bs-tooltip-bg: var(--bs-primary);
+}
+
+/* 이메일 필드들 */
+input[id^=email] {
+	border:0;
+}
