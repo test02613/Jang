@@ -34,4 +34,11 @@ public class MyDAOimpl implements MyDAO{
 		return sql.selectList("mapper.My_SQL.my_order", id);
 	}
 
+	//포인트 충전
+	@Override
+	public MemberVO pointUpdate(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.My_SQL.mypoint_update", vo);
+	}
+
 }

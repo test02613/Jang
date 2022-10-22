@@ -1,281 +1,244 @@
 @charset "UTF-8";
 *{
-	margin: 0;
-	padding:0;
+   margin: 0;
+   padding:0;
 }
 
-/* 화면 전체 렙 */
-.wrapper{
-	max-width: 1020px;
-	margin: 0 auto;
-}
-
-/* content 랩 */
+/* 바디화면 전체 랩 : 기존 wrapper를 wrap으로 변경, common.css랑 명칭중복이라 화면이 틀어져서 */
 .wrap{
-	width : 800px;
-	margin: auto;
+   width: 500px;
+   margin: 0 auto;
+   margin-top: 50px;
+   text-align: center;
+   margin-bottom: 100px
 }
-/* 페이지 제목 */
+
+/* content 랩 : wrap을 두번이나 할 필요 없는거같아서 join.jsp에서 삭제함 */
+/* .wrap{ width : 800px; margin: auto;} */
+
+/* 페이지 상단 타이틀 : "회원가입" */
 .subjecet{
-	width: 100%;
-    height: 120px;
-    background-color: #8EC0E4;
-}
-.subjecet span{
-	margin-left: 31px;
-    font-size: 80px;
-    font-weight: 900;
-    color: white;
+   height : 100px;
+   color : #24292F;
+   font-size : 40px;
+   margin-top : 20px;
 }
 
-/* 아이디 영역 */
-.id_wrap{
-	width: 100%;
-    margin-top: 20px;
+/* 영역별 타이틀 중복코드 sub_title 로  통일 */
+.sub_title{ 
+   font-size: 20px; 
+   text-align: center;  
+   margin-top: 5px;
+   margin-bottom: 5px;
 }
-.id_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.id_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
-}
+
+/* sub_title로 변경시키고 삭제한 class들 :
+.id_name{ font-size: 25px; font-weight: bold; }
+.pw_name{ font-size: 25px; font-weight: bold; }
+.pwck_name{ font-size: 25px; font-weight: bold; }
+.user_name{ font-size: 25px; font-weight: bold; }
+.mail_name{ font-size: 25px; font-weight: bold; }
+.address_name{ font-size: 25px; font-weight: bold; } */
+
+
+/* 입력 영역별 div박스 삭제함
+.id_wrap{ width: 100%; }
+.pw_wrap{ width: 100%; }
+.pwck_wrap{ width: 100%;}
+.user_wrap{ width: 100%; }
+.mobile_input{ width: 100%; }
+.mail_wrap{ width: 100%; }
+.address_wrap{ width: 100%;} 
+*/
+
+/* input이랑 input box를 별도로 구분해뒀길래 input태그만 사용함
+.id_input_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+.pw_input_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+.pwck_input_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+.user_input_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+.mail_input_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+.address_input_2_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+.address_input_3_box{ border: 1px solid black; height:31px; padding: 10px 14px; }
+*/
+
+/* input박스들 : 속성 동일한데 일부 ajax에 사용되는게 있어서 한개로 통일 안시킴 */
 .id_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-
-/* 중복아이디 존재하지 않는경우 */
-.id_input_re_1{
-	color : green;
-	display : none;
-}
-/* 중복아이디 존재하는 경우 */
-.id_input_re_2{
-	color : red;
-	display : none;
-}
-
-/* 비밀번호 영역 */
-.pw_wrap{
-	width: 100%;
-    margin-top: 20px;
-}
-.pw_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.pw_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 .pw_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-
-/* 비밀번호 확인 영역 */
-.pwck_wrap{
-	width: 100%;
-    margin-top: 20px;
-}
-.pwck_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.pwck_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 .pwck_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-
-/* 이름 영역 */
-.user_wrap{
-	width: 100%;
-    margin-top: 20px;
-}
-.user_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.user_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 .user_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
-
-/* 메일 영역 */
-.mail_wrap{
-	width: 100%;
-    margin-top: 20px;
-}
-.mail_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.mail_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
+.mobile_input{
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 .mail_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-.mail_check_wrap{
-	margin-top: 20px;	
-}
-.mail_check_input_box{
-	border: 1px solid black;
-    height: 31px;
-    padding: 10px 14px;
-    width: 61%;
-    float: left;
-}
-.mail_check_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-.mail_check_button{
-    border: 1px solid black;
-    height: 51px;
-    width: 30%;
-    float: right;
-    line-height: 50px;
-    text-align: center;
-    font-size: 30px;
-    font-weight: 900;
-    background-color: #ececf7;
-    cursor: pointer;
-}
-
-/* 주소 영역 */
-.address_wrap{
-	width: 100%;
-    margin-top: 20px;
-}
-.address_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.address_input_1_box{
-	border: 1px solid black;
-    height: 31px;
-    padding: 10px 14px;
-    width: 61%;
-    float: left;	
-}
-.address_input_1{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;	
-}
-.address_button{
-    border: 1px solid black;
-    height: 51px;
-    width: 30%;
-    float: right;
-    line-height: 50px;
-    text-align: center;
-    font-size: 30px;
-    font-weight: 900;
-    background-color: #ececf7;
-    cursor: pointer;	
-}
-.address_input_2_wrap{
-	margin-top: 20px;
-}
-.address_input_2_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 .address_input_2{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-
-.address_input_3_wrap{
-	margin-top: 20px;
-}
-.address_input_3_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 .address_input_3{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
+   width:100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   font-size:20px;
+   margin-bottom: 10px;
 }
 
+/* /////////////////////////////////////////////////////// */
+
+/* 아이디 */
+   /* 중복아이디 존재하지 않는경우 */
+   .id_input_re_1{
+      color: green;
+      display: none;
+      font-size : 15px;
+      margin-bottom : 10px;
+   }
+   /* 중복아이디 존재하는 경우 */
+   .id_input_re_2{
+      color: red;
+      display: none;
+      font-size : 15px;
+      margin-bottom : 10px;
+   }
+   
+/* 이메일 */   
+   /* 이메일 인증 전 회색으로 처리 */
+   #mail_check_input_box_false{ 
+      background-color:lightgray;
+      border-radius : 10px;
+   } 
+
+   /* 이메일 인증번호 발송 후 회색css 해제 : css넣을 필요 없어서 삭제함
+   #mail_check_input_box_true{
+       background-color: none;
+      border-radius : 10px;
+   } */
+   
+   /* 메일인증 확인버튼*/
+   .mail_check_button{
+      width: 30%;
+       height: 50px;
+       background-color : #24292F;
+       font-size: 18px;
+       color : white;
+       line-height: 50px;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+       float: right;
+       cursor: pointer;
+   }
+
+   /* 메일 인증번호 확인란  */
+   .mail_check_input_box{
+      height: 50px;
+       width: 65%;
+       margin-bottom: 10px;
+       float: left;
+   }
+   .mail_check_input{
+      width:100%;
+      height:100%;
+      font-size:20px;
+      border: 1px solid #e0e0e0;
+      border-radius : 10px;
+   }
+   
+/* 주소 */
+   /* 주소찾기 버튼 */
+   .address_button{
+      width: 30%;
+       height: 50px;
+       background-color : #24292F;
+       font-size: 18px;
+       color : white;
+       line-height: 50px;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+       float: right;
+       cursor: pointer;   
+   }
+
+   /* 우편번호 입력란 */
+   .address_input_1_box{
+      height: 50px;
+       width: 65%;
+       margin-bottom: 10px;
+       float: left;
+   }
+   
+   .address_input_1{   
+      width:100%;
+      height:100%;
+      font-size:20px;
+      border: 1px solid #e0e0e0;
+      border-radius : 10px;
+   }
+   
 /* 가입하기 버튼 */
-.join_button_wrap{
-	margin-top: 40px;
-	text-align: center;
-}
-.join_button{
-	width: 100%;
-    height: 80px;
-    background-color: #6AAFE6;
-    font-size: 40px;
+.join_button{ /* ajax사용중 */
+   width: 100%;
+    height: 50px;
+    background-color : #24292F;
+    font-size: 20px;
     font-weight: 900;
     color: white;
+    text-align: center;
+    display: block;
+   border: none;
+   border-radius: 10px;
+   margin-top: 20px;
+   margin-bottom: 40px;
 }
 
-/* float 속성 해제 */
+/* float 속성 해제 : 얘는 용도가 뭐지?? */
 .clearfix{
-	clear: both;
-
-#mail_check_input_box_false{
-    background-color:#ebebe4;
-}
- 
-#mail_check_input_box_true{
-    background-color:white;
-}
-
-.correct {
-
-	color: green;
-}
-
-.incorrect {
-	color: red;
-}
-
+   clear: both;
 }

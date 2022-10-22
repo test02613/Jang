@@ -54,36 +54,43 @@ button {
 </head>
 <body>
    <!-- 게시판 부트스트랩 -->
-   <div class="wrapper">
-      <div id="wrapper"><!-- wrapper를 클래스랑 아이디 다 쓰는 이유는 무엇? -->
-         <div id="contents">리뷰 관리</div>
-         <table class="table">
-            <!-- 게시판 상단 메뉴 -->
-            <thead class="table-dark">
-               <tr>
-                  <th scope="col" class="col-2" id="title">번호</th>
-                  <th scope="col" class="col-7" id="title">제목</th>
-                  <th scope="col" class="col-3" id="title">작성일</th>
-               </tr>
-            </thead>
-            <!-- 게시글 목록 -->
-            <tbody>
-               <%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
-               <c:forEach items="${myreview}" var="myreview" varStatus="Status">
-                  <tr onClick="location.href='${path}/eventDetail?num=${myreview.reviewnum}'"  style="cursor:pointer;" id="myreview">
-                     <td id="center"><c:out value="${myreview.reviewnum}" /></td>
-                     <td><c:out value="${myreview.reviewtitle}" /></td>
-                     <td id="center"><c:out value="${myreview.reviewdate}" /></td>
-                  </tr>
-               </c:forEach>
-            </tbody>
-         </table>
-         <!-- 글쓰기 버튼 -->
-			<div id="button">
-	<a href="/reviewCreate"><button>글쓰기</button></a>
+	<div class="wrapper">
+		<div id="wrapper">
+			<!-- wrapper를 클래스랑 아이디 다 쓰는 이유는 무엇? -->
+			<div id="contents">리뷰 관리</div>
+			<table class="table">
+				<!-- 게시판 상단 메뉴 -->
+				<thead class="table-dark">
+					<tr>
+						<th scope="col" class="col-2" id="title">번호</th>
+						<th scope="col" class="col-7" id="title">제목</th>
+						<th scope="col" class="col-3" id="title">작성일</th>
+					</tr>
+				</thead>
+				<!-- 게시글 목록 -->
+				<tbody>
+					<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
+					<c:forEach items="${myreview}" var="myreview" varStatus="Status">
+						<tr onClick="location.href='${path}/reviewDetail?num=${myreview.ordernum}'"
+							style="cursor: pointer;" id="myreview">
+							<td id="center"><c:out value="${myreview.reviewnum}" /></td>
+							<td><c:out value="${myreview.reviewtitle}" /></td>
+							<td id="center"><c:out value="${myreview.reviewdate}" /></td>
+							
+							<td><a href="/reviewUpdate?num=${myreview.reviewnum}">
+									<button type="button" class="review">수정</button>
+							</a></td>
+							<td><a href="/reviewDeleteAction?num=${myreview.reviewnum}">
+									<button type="button" class="review">삭제</button>
+							</a></td>
+
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
-   </div>
-   <script
+	<script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"></script>

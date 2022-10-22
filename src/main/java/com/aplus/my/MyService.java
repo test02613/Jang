@@ -15,4 +15,7 @@ public interface MyService {
 	
 	//주문조회
 	public List<OrderVO> myOrder(String id) throws Exception;
+
+	//포인트 충전
+	public MemberVO pointUpdate(MemberVO vo) throws Exception;
 }

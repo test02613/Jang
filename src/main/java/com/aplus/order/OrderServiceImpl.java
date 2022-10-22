@@ -47,11 +47,5 @@ public class OrderServiceImpl implements OrderService {
 		return dao.point_update(vo);
 	}
 
-	//리뷰 업데이트 ajax
-	@Override
-	public OrderVO review_update(OrderVO vo) throws Exception {
-		
-		return dao.review_update(vo);
-	}
 	
 }

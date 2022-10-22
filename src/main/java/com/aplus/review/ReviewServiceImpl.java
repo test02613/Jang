@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aplus.order.OrderVO;
+
 
 @Service
 public class ReviewServiceImpl implements ReviewService{
@@ -26,8 +28,36 @@ public class ReviewServiceImpl implements ReviewService{
 
 	//로그인 회원 리뷰 상세
 	@Override
-	public ReviewVO reviewDetail(String id) throws Exception {
+	public ReviewVO reviewDetail(Integer num) throws Exception {
 
-		return dao.reviewDetail(id);
+		return dao.reviewDetail(num);
+	}
+
+	//리뷰 업데이트 ajax
+	@Override
+	public void review_up(OrderVO vo) throws Exception {
+		
+		dao.review_up(vo);
+	}
+	
+	//reviewnum 가져오기
+	@Override
+	public ReviewVO reviewnum(ReviewVO vo) throws Exception {
+	
+		return dao.reviewnum(vo);
+	}
+	
+	//리뷰 수정
+	@Override
+	public ReviewVO reviewUpdate(ReviewVO vo) throws Exception {
+
+		return dao.reviewUpdate(vo);
+	}
+
+	//리뷰 삭제
+	@Override
+	public ReviewVO reviewDelete(Integer num) throws Exception {
+ 
+		return dao.reviewDelete(num);
 	}
 }

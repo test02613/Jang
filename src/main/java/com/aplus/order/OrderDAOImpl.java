@@ -50,10 +50,5 @@ public class OrderDAOImpl implements OrderDAO{
 		return sql.selectOne("mapper.Order_SQL.point_update", vo);
 	}
 
-	//리뷰 업데이트 ajax
-	@Override
-	public OrderVO review_update(OrderVO vo) throws Exception {
-
-		return sql.selectOne("mapper.Order_SQL.review_update", vo);
-	}
+	
 }

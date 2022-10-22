@@ -34,4 +34,11 @@ public class MyServiceimpl implements MyService{
 		return dao.myOrder(id);
 	}
 
+	//포인트 충전
+	@Override
+	public MemberVO pointUpdate(MemberVO vo) throws Exception {
+		
+		return dao.pointUpdate(vo);
+	}
+
 }

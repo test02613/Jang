@@ -56,4 +56,11 @@
 		on a.itemcode = b.itemcode
 		WHERE a.id = #{id}
 	</select>
+	
+	<!-- 포인트 충전 -->
+	<update id="mypoint_update" parameterType="MemberVO">
+		UPDATE MEMBER
+		SET point = #{point}
+		WHERE id= #{id}
+	</update>
 </mapper>

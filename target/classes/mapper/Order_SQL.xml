@@ -26,20 +26,16 @@
 	 
  	<!-- 주문번호 가져오기 -->
 	<select id="ordernum"  resultType="OrderVO">
-		select * from ordertable where ordernum = #{ordernum}
+		SELECT * FROM ORDERTABLE 
+		WHERE ordernum = #{ordernum}
 	</select>
 	
 	<!-- 포인트 업데이트 -->
 	<update id="point_update" parameterType="MemberVO">
-		UPDATE member 
+		UPDATE MEMBER 
 		SET point= #{point}
 		WHERE id = #{id}
 	</update>
 	
-	<!-- 리뷰 작성시 1로 업데이트 -->
-	<update id="reveiw_update" parameterType="OrderVO">
-		UPDATE ORDERTABLE 
-		SET REVIEW = 1
-		WHERE ORDERNUM = #{ORDERNUM}
-	</update>
+	
 </mapper>

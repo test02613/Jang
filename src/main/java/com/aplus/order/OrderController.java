@@ -49,7 +49,7 @@ public class OrderController {
 	
 	//주문서 넘기기
 	@RequestMapping(value = "/orderAction", method = RequestMethod.POST)
-	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem,Integer ordernum, SessionStatus status) throws Exception {
+	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem,Integer ordernum) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>orderAction");
 		
 		String id = (String) session.getAttribute("id");//세션 id가져오기
@@ -58,14 +58,12 @@ public class OrderController {
 		vo.setId(id);
 		orderService.order_insert(vo);
 		Integer num = vo.getOrdernum();
-			
-		//status.setComplete(); // 중복 submit 방지(안하면 새로고침 할 때마다 데이터 계속 넘어감)
 		
 		return "redirect:/orderFinish?num=" + num;
 	}
 	
 	//포인트 업데이트
-	@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
+	/*@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String getPoint(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
 		
@@ -79,7 +77,7 @@ public class OrderController {
 		orderService.point_update(vo);
 		
 		return "point";
-	}
+	}*/
 	
 	//주문확인 페이지
 	@RequestMapping(value = "/orderFinish", method = RequestMethod.GET)
@@ -91,23 +89,5 @@ public class OrderController {
 	
 		return "order/orderFinish";
 	}
-	
-	//리뷰 작성여부 업데이트
-	//리뷰 작성시 review컬럼 1로 업데이트 ajax
-	@RequestMapping(value = "/getReview", method = { RequestMethod.GET, RequestMethod.POST })
-	@ResponseBody
-	public int getReview(@RequestParam("reviewchk1") String reviewchk1, HttpSession session, OrderVO vo) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
 		
-		int review = Integer.parseInt(reviewchk1); //ajax에서 1가져오기
-		String id = (String) session.getAttribute("id");//세션 id 가져오기
-		
-		vo.setReview(review);
-		vo.setId(id);
-		
-		orderService.review_update(vo); //review컬럼 1로 업데이트
-		logger.info("OrderVO" + vo);
-		
-		return review;
-	}	
 }
