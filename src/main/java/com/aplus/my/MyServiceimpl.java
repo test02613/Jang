@@ -29,9 +29,9 @@ public class MyServiceimpl implements MyService{
 
 	//회원탈퇴
 	@Override
-	public MemberVO memberBye(MemberVO vo) throws Exception {
+	public MemberVO memberLeave(MemberVO vo) throws Exception {
 		
-		return dao.memberBye(vo);
+		return dao.memberLeave(vo);
 	}
 
 	//주문조회

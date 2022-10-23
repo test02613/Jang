@@ -29,7 +29,7 @@ public class MyDAOimpl implements MyDAO{
 	
 	//회원탈퇴
 	@Override
-	public MemberVO memberBye(MemberVO vo) throws Exception {
+	public MemberVO memberLeave(MemberVO vo) throws Exception {
 		
 		return sql.selectOne("mapper.My_SQL.member_bye", vo);
 	}

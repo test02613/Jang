@@ -64,7 +64,7 @@ public class MyController {
 	}
 
 	// 회원탈퇴시 leave 1로 변경
-	@RequestMapping(value = "/memberBye", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/memberLeave", method = { RequestMethod.GET, RequestMethod.POST })
 
 	public String reviewUp(MemberVO vo, Model model, HttpSession session) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
@@ -72,7 +72,7 @@ public class MyController {
 		String memInfo = (String) session.getAttribute("id");// 세션 id가져오기
 		vo = myservice.member(memInfo);// 고객 정보 가져오기
 
-		myservice.memberBye(vo);
+		myservice.memberLeave(vo);
 
 		session.invalidate(); // 세션 종료
 

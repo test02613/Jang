@@ -53,9 +53,9 @@ text-align:center;
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
-						<c:if test="${num==1 }"><tr onClick="location.href='/iteminsert?num=${list.itemnum}'"  style="cursor:pointer;"></c:if><!-- 상품수정 -->
-						<c:if test="${num==2 }"><tr onClick="location.href='/attrinsert?num=${list.itemnum}'"  style="cursor:pointer;"></c:if><!-- 상품옵션등록 -->
-						<c:if test="${num==3 }"><tr onClick="location.href='/attrlist?num=${list.itemnum}'"  style="cursor:pointer;"></c:if><!-- 상품옵션수정 -->
+						<c:if test="${num==1 }"><tr onClick="location.href='/itemInsert?num=${list.itemnum}'"  style="cursor:pointer;"></c:if><!-- 상품수정 -->
+						<c:if test="${num==2 }"><tr onClick="location.href='/attrInsert?num=${list.itemnum}'"  style="cursor:pointer;"></c:if><!-- 상품옵션등록 -->
+						<c:if test="${num==3 }"><tr onClick="location.href='/attrList?num=${list.itemnum}'"  style="cursor:pointer;"></c:if><!-- 상품옵션수정 -->
 							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemnum}" /></td>
 							<td  ><c:out   value="${list.itemname}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.itemcat2}" /></td>

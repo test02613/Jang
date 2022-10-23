@@ -14,7 +14,7 @@ public interface MyService {
 	public MemberVO myUpdate(MemberVO vo) throws Exception;
 	
 	//회원탈퇴
-	public MemberVO memberBye(MemberVO vo) throws Exception;
+	public MemberVO memberLeave(MemberVO vo) throws Exception;
 	
 	//주문조회
 	public List<OrderVO> myOrder(String id) throws Exception;

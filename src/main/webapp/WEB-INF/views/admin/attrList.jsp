@@ -53,7 +53,7 @@ text-align:center;
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
-						<tr onClick="location.href='/attrinsert?code=${list.itemcode}'"  style="cursor:pointer;">
+						<tr onClick="location.href='/attrInsert?code=${list.itemcode}'"  style="cursor:pointer;">
 							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemname}" /></td>
 							<td  ><c:out   value="${list.itemcolor}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.itemcode}" /></td>

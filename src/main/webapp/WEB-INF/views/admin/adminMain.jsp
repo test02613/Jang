@@ -16,10 +16,10 @@
 <h1><a href="/orderAdmin">주문관리</a></h1>
 <h1><a href="/reviewAdmin">리뷰관리</a></h1>
 <br>
-<h1><a href="/iteminsert">상품등록</a></h1>
-<h1><a href="/itemselect?num=1">상품수정</a></h1>
-<h1><a href="/itemselect?num=2">상품옵션등록</a></h1>
-<h1><a href="/itemselect?num=3">상품옵션수정</a></h1>
+<h1><a href="/itemInsert">상품등록</a></h1>
+<h1><a href="/itemSelect?num=1">상품수정</a></h1>
+<h1><a href="/itemSelect?num=2">상품옵션등록</a></h1>
+<h1><a href="/itemSelect?num=3">상품옵션수정</a></h1>
 <br>
 <h1><a href="/qnaAdmin">1대1문의</a></h1>
 </body>

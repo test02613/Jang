@@ -76,15 +76,14 @@
 	</select>
 	
 	<!-- 상품리뷰 목록 -->
-		<select id="itemreview_list" resultMap="reviewlist">
+	<select id="itemreview_list" resultMap="reviewlist">
 		SELECT *
 		FROM REVIEW
-		
 		WHERE itemnum = #{itemnum}
 	</select>
 	
 	<!-- 상품리뷰 상세 -->
-		<select id="itemreview_detail" resultType="ReviewVO">
+	<select id="itemreview_detail" resultType="ReviewVO">
 		SELECT *
 		FROM REVIEW
 		WHERE itemnum = #{itemnum}

@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>event.jsp</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -33,7 +36,7 @@
 #title {
 	text-align: center;
 	align-content: center;
-} 
+}
 
 /* 목록에 마우스 가져다대면 회색으로 처리함 */
 #orderlist:hover {
@@ -52,53 +55,94 @@ button {
 </head>
 <body>
 	<!-- 게시판 부트스트랩 -->
-		<div id="wrapper">
-			<div id="contents">주문관리</div>
-			<table class="table">
-				<!-- 게시판 상단 메뉴 -->
-				<thead class="table-dark">
-					<tr>
-						<th scope="col" class="col-" id="title">주문날짜</th>
-						<th scope="col" class="col-" id="title">주문상품</th>
-						<th scope="col" class="col-" id="title">아이디</th>
-						<th scope="col" class="col-" id="title">주문자이름</th>
-						<th scope="col" class="col-" id="title">연락처</th>
-						<th scope="col" class="col-" id="title">우편번호</th>
+	<div id="wrapper">
+		<div id="contents">주문관리</div>
+		<table class="table">
+			<!-- 게시판 상단 메뉴 -->
+			<thead class="table-dark">
+				<tr>
+					<th scope="col" class="col-4" id="title">주문날짜</th>
+					<th scope="col" class="col-1" id="title">주문번호</th>
+					<th scope="col" class="col-1" id="title">아이디</th>
+					<th scope="col" class="col-1" id="title">주문자이름</th>
+					<th scope="col" class="col-1" id="title">연락처</th>
+					<!-- <th scope="col" class="col-" id="title">우편번호</th>
 						<th scope="col" class="col-" id="title">배송지</th>
-						<th scope="col" class="col-" id="title">상세주소</th>
-						<th scope="col" class="col-" id="title">결제금액</th>
-					</tr>
-				</thead>
-				<!-- 게시글 목록 -->
-				<tbody>
-					<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
-					<c:forEach items="${orderlist}" var="orderlist" varStatus="Status">
-						<%-- <tr onClick="location.href='${path}/eventDetail?num=${orderlist.eventnum}'"
+						<th scope="col" class="col-" id="title">상세주소</th> -->
+					<th scope="col" class="col-1" id="title">결제금액</th>
+					<th scope="col" class="col-9" id="title">주문상태</th>
+					<th scope="col" class="col-9" id="title">주문상태변경</th>
+				</tr>
+			</thead>
+			<!-- 게시글 목록 -->
+			<tbody>
+				<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
+				<c:forEach items="${orderlist}" var="orderlist" varStatus="Status">
+					<%-- <tr onClick="location.href='${path}/eventDetail?num=${orderlist.eventnum}'"
 							style="cursor: pointer;" id="orderlist"> --%>
-						<tr>	
-							<td id="center"><c:out value="${orderlist.orderdate}" /></td>
-							<td id="center"><c:out value="${orderlist.itemattrvo.itemname}" /></td>
-							<td id="center"><c:out value="${orderlist.id}" /></td>
-							<td id="center"><c:out value="${orderlist.name}" /></td>
-							<td id="center"><c:out value="${orderlist.mobile}" /></td>
-							<td id="center"><c:out value="${orderlist.postcode}" />
+					<tr>
+						<td id="center"><c:out value="${orderlist.orderdate}" /></td>
+						<td id="center">${orderlist.ordernum}<input type="hidden"
+							name="ordernum" id="ordernum" value="${orderlist.ordernum}"></td>
+						<td id="center"><c:out value="${orderlist.id}" /></td>
+						<td id="center"><c:out value="${orderlist.name}" /></td>
+						<td id="center"><c:out value="${orderlist.mobile}" /></td>
+						<%-- <td id="center"><c:out value="${orderlist.postcode}" />
 							<td id="center"><c:out value="${orderlist.address}" /></td>			
-							<td id="center"><c:out value="${orderlist.addressdetail}" /></td>
-							<td id="center"><c:out value="${orderlist.ordercost}" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+							<td id="center"><c:out value="${orderlist.addressdetail}" /></td> --%>
+						<td id="center"><c:out value="${orderlist.ordercost}" /></td>
+						<td id="center"><c:out value="${orderlist.state}" /></td>
+					
+						<td><select name="order_state" id="order_state"
+							class='order_state' style="width: 200px; height: 30px;">
+								<option value="">==선택==</option>
+								<option value="결제완료">결제완료</option>
+								<option value="배송중">배송중</option>
+								<option value="배송완료">배송완료</option>
+						</select>
+							<button id="change" class="change">변경</button></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 
-			<div id="button" >
-				<a href="/adminMain"><button>관리자페이지로 돌아가기</button></a>
-			</div>
-
+		<div id="button">
+			<a href="/adminMain"><button>관리자페이지로 돌아가기</button></a>
 		</div>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-			crossorigin="anonymous"></script>
+
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
 </body>
 </html>
+	<script type="text/javascript">
+$(document).ready(function() {
+$("#change").on("click", function() { // 구매 버튼
+	  //alert($("#order_state option:selected").val()); 
+	  //alert( document.getElementById("ordernum").value);
+   $.ajax({
+      type : "post",
+      url : "/state_selcted",
+      data : {state:$("#order_state option:selected").val(),
+            num:document.getElementById("ordernum").value},
+      dataType : "json",
+      success : function(result) {
+         var a = result;
+         if (result) {
+            alert("완료"+a); 
+         } else {
+              alert("전송된 값 없음"+result);  
+         }
+      },
+      error : function() {
+          alert("에러 발생"+result); 
+      }
+
+   });//아작스 끝
+   
+});
+})
+</script>

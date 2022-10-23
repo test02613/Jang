@@ -91,7 +91,7 @@
 		</table>
 		<input type="button" class="myUpdate_button" value="수정하기">
 	</form>
-	<a href="/memberBye">
+	<a href="memberLeave">
 		<button type="button" class="mm">탈퇴하기</button>
 	</a>
 	<script>

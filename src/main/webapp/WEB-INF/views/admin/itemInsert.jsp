@@ -76,7 +76,7 @@
 		$(document).ready(function() {
 
 			$(".insert_button").click(function() {
-				$("#update").attr("action", "/iteminsertAction");
+				$("#update").attr("action", "/itemInsertAction");
 				$("#update").submit();
 
 			})
@@ -84,7 +84,7 @@
 		$(document).ready(function() {
 
 			$(".update_button").click(function() {
-				$("#update").attr("action", "/itemupdateAction?num="+num);
+				$("#update").attr("action", "/itemUpdateAction?num="+num);
 				$("#update").submit();
 
 			})
