@@ -78,7 +78,7 @@ h1 {
            
             <div style="text-align:center">
           		<input type="button" name="main" value="메인으로" onClick="location.href='/main'">
-            	<input type="button" name="orderList" value="주문확인" onclick="location.href='/myOrderList'">
+            	<input type="button" name="orderList" value="주문확인" onclick="location.href='/myorder'">
             </div>
 </div>
   </body>

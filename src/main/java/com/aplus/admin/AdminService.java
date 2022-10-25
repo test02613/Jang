@@ -27,6 +27,9 @@ public interface AdminService {
 	
 	//리뷰관리
 	public List<ReviewVO> reviewAdmin() throws Exception;
+
+	//리뷰삭제
+	public ReviewVO reviewDeleteAdmin(Integer reviewnum) throws Exception;
 	
 	//상품등록
 	public void itemInsert(ItemVO item) throws Exception;

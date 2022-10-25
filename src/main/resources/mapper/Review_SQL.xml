@@ -21,7 +21,8 @@
 			order="BEFORE">
 			select REVIEWNUM_SEQ.nextval FROM DUAL
 		</selectKey>
-		insert into review values(#{itemnum}, #{id}, #{reviewnum},
+		INSERT INTO REVIEW 
+		VALUES(#{itemnum}, #{id}, #{reviewnum},
 		sysdate, #{reviewtitle}, #{reviewcontent}, #{ordernum})
 	</insert>
 

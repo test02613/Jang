@@ -1,148 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- c태그 사용 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>event.jsp</title>
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
+<title>Insert title here</title>
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
-
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+   crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+   crossorigin="anonymous"></script>
 <style>
+
 #wrapper {
-	width: 1300px;
-	margin: auto;
-	margin-top: 30px;
+   width: 1000px;
+   margin: auto;
+   margin-top: 30px;
+   border-radius : 10px ;
+}
+#title{
+text-align:center;
+align-content: center;
+}
+td:hover{
+text-decoration: underline;
+
 }
 
-/* 이벤트 타이틀 */
-#contents {
-	height: 100px;
-	color: #24292F;
-	font-size: 40px;
-	margin-top: 20px;
-	text-align: center;
+h1{
+text-align:center;
 }
-
-/* 게시판 상단 타이틀 */
-#title {
-	text-align: center;
-	align-content: center;
-}
-
-/* 목록에 마우스 가져다대면 회색으로 처리함 */
-#orderlist:hover {
-	background-color: lightgray;
-}
-/* 게시글번호, 작성일자 가운데정렬 */
-#center {
-	text-align: center;
-}
-
-button {
-	text-align: center;
-	align-content: left;
+#button{
+text-align:center;
 }
 </style>
 </head>
 <body>
-	<!-- 게시판 부트스트랩 -->
-	<div id="wrapper">
-		<div id="contents">주문관리</div>
-		<table class="table">
-			<!-- 게시판 상단 메뉴 -->
-			<thead class="table-dark">
-				<tr>
-					<th scope="col" class="col-4" id="title">주문날짜</th>
-					<th scope="col" class="col-1" id="title">주문번호</th>
-					<th scope="col" class="col-1" id="title">아이디</th>
-					<th scope="col" class="col-1" id="title">주문자이름</th>
-					<th scope="col" class="col-1" id="title">연락처</th>
-					<!-- <th scope="col" class="col-" id="title">우편번호</th>
-						<th scope="col" class="col-" id="title">배송지</th>
-						<th scope="col" class="col-" id="title">상세주소</th> -->
-					<th scope="col" class="col-1" id="title">결제금액</th>
-					<th scope="col" class="col-9" id="title">주문상태</th>
-					<th scope="col" class="col-9" id="title">주문상태변경</th>
-				</tr>
-			</thead>
-			<!-- 게시글 목록 -->
-			<tbody>
-				<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
-				<c:forEach items="${orderlist}" var="orderlist" varStatus="Status">
-					<%-- <tr onClick="location.href='${path}/eventDetail?num=${orderlist.eventnum}'"
-							style="cursor: pointer;" id="orderlist"> --%>
-					<tr>
-						<td id="center"><c:out value="${orderlist.orderdate}" /></td>
-						<td id="center">${orderlist.ordernum}<input type="hidden"
-							name="ordernum" id="ordernum" value="${orderlist.ordernum}"></td>
-						<td id="center"><c:out value="${orderlist.id}" /></td>
-						<td id="center"><c:out value="${orderlist.name}" /></td>
-						<td id="center"><c:out value="${orderlist.mobile}" /></td>
-						<%-- <td id="center"><c:out value="${orderlist.postcode}" />
-							<td id="center"><c:out value="${orderlist.address}" /></td>			
-							<td id="center"><c:out value="${orderlist.addressdetail}" /></td> --%>
-						<td id="center"><c:out value="${orderlist.ordercost}" /></td>
-						<td id="center"><c:out value="${orderlist.state}" /></td>
-					
-						<td><select name="order_state" id="order_state"
-							class='order_state' style="width: 200px; height: 30px;">
-								<option value="">==선택==</option>
-								<option value="결제완료">결제완료</option>
-								<option value="배송중">배송중</option>
-								<option value="배송완료">배송완료</option>
-						</select>
-							<button id="change" class="change">변경</button></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
 
+<form id="itemselect" method="post">
+   <!-- 게시판 부트스트랩 -->
+   <div class="wrapper">
+      <div id="wrapper">
+      <h1>주문관리</h1>
+      <select name="order_num" id="order_num" class='order_num' style="width: 200px; height: 30px;">
+                     <option value="">== 주문 번호 ==</option>
+                     <c:forEach items="${orderlist}" var="orderlist">
+                     <option value="${orderlist.ordernum}">${orderlist.ordernum}</option>
+                     </c:forEach>
+            </select>
+            <select name="order_state" id="order_state"
+                     class='order_state' style="width: 200px; height: 30px;">
+                        <option value="">== 주문 상태 변경 ==</option>
+                              <option value="결제 완료">결제 완료</option>
+                              <option value="배송중">배송중</option>
+                              <option value="배송완료">배송완료</option>
 
-		<div id="button">
-			<a href="/adminMain"><button>관리자페이지로 돌아가기</button></a>
-		</div>
-
-	</div>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-		crossorigin="anonymous"></script>
+                  </select>
+                  <button id = "change" class ="change" >변경</button>
+         <table class="table" >
+            <thead class="table-dark">
+               <tr >
+                  <th id="title" width="100" scope="col">주문 번호</th>
+                  <th id="title"   scope="col">상품명/옵션명</th>
+                  <th id="title" width="100"scope="col">아이디</th>
+                  <th id="title" width="100"scope="col">이름</th>
+                  <th id="title" width="100"scope="col">주문 상태</th>
+               </tr>
+            </thead>
+            <tbody>
+               <c:forEach items="${orderlist}" var="orderlist">
+                  <tr onClick="location.href='/orderAdmin?num=${orderlist.ordernum}'"style="cursor:pointer;">
+                     <td id="title"  style="text-decoration: none;">${orderlist.ordernum}</td>
+                     <td  ><c:out   value="${orderlist.itemattrvo.itemname}/${orderlist.itemattrvo.itemcolor}" /></td>
+                     <td style="text-decoration: none;"><c:out  value="${orderlist.id}" /></td>
+                     <td style="text-decoration: none;"><c:out   value="${orderlist.name}" /></td>
+                     <td style="text-decoration: none;"><c:out   value="${orderlist.state}" /></td>
+                  </tr>
+               </c:forEach>
+               
+               
+            </tbody>
+         </table>
+         </div>
+      </div>
+      </form>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+      
 </body>
-</html>
-	<script type="text/javascript">
-$(document).ready(function() {
+ <script type="text/javascript">
+$(document).ready(function() {order_num
 $("#change").on("click", function() { // 구매 버튼
-	  //alert($("#order_state option:selected").val()); 
-	  //alert( document.getElementById("ordernum").value);
    $.ajax({
       type : "post",
       url : "/state_selcted",
       data : {state:$("#order_state option:selected").val(),
-            num:document.getElementById("ordernum").value},
+            num:$("#order_num option:selected").val()},
       dataType : "json",
       success : function(result) {
          var a = result;
          if (result) {
-            alert("완료"+a); 
+            /* alert("완료"+a);  */
          } else {
-              alert("전송된 값 없음"+result);  
+              /* alert("전송된 값 없음"+result);   */
          }
       },
       error : function() {
-          alert("에러 발생"+result); 
+          /* alert("에러 발생"+result);  */
       }
 
    });//아작스 끝
    
 });
 })
-</script>
+</script> 
+</html>

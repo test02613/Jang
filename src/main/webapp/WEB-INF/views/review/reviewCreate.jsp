@@ -16,9 +16,10 @@
 		<h1>주문번호 ${order}번의 리뷰</h1>
 		<form id="reviewCreate_form" method="post">
 			<table border="1" cellpadding="0" cellspacing="0">
+				<!-- 새글쓰기 -->
+				<c:if test="${list.reviewnum == null}">
 				<tr>
-					<td><c:if test="${list.reviewnum == null}">
-						<input type="hidden" id=ordernum name="ordernum" value="${order}">
+					<td><input type="hidden" id=ordernum name="ordernum" value="${order}">
 						<input type="hidden" name="itemnum" value="${item}"></td>
 				</tr>
 				<tr>
@@ -31,6 +32,8 @@
 							rows="10"></textarea></td>
 				</tr>
 				</c:if>
+				
+				<!-- 수정 -->
 				<c:if test="${list.reviewnum!=null}">
 					<tr>
 						<td bgcolor="orange" width="70">제목</td>
@@ -48,17 +51,32 @@
 				<input type="button" class="reviewCreate_button" value="등록하기">
 			</c:if>
 			<c:if test="${list.reviewnum!=null }">
-				<input type="button" class="reviewCreate_button" value="수정하기">
+				<input type="button" class="reviewUpdate_button" value="수정하기">
 			</c:if>
+			</form>
 	</center>
-	</form>
+	
+	<script>
+
+ 
+$(document).ready(function() {
+    // 수정 버튼
+    $(".reviewUpdate_button").click(function() {
+       $("#reviewCreate_form").attr("action", '${path}/reviewUpdateAction?num=${list.reviewnum}');
+       $("#reviewCreate_form").submit();
+
+    })
+ }) 
+ 
+</script>
 	<script>
 var a = document.getElementById("ordernum").value
 
 $(document).ready(function() {
-    // 새글 등록 버튼
+    // 등록 버튼
     $(".reviewCreate_button").click(function() {
        $("#reviewCreate_form").attr("action", "/reviewCreateAction");
+       //alert(a); 
        $.ajax({
        type : "GET",
        url : "/reviewUp",
@@ -88,14 +106,6 @@ $(document).ready(function() {
 
     })
  })
-$(document).ready(function() {
-    // 새글 등록 버튼
-    $(".reviewCreate_button").click(function() {
-       $("#reviewCreate_form").attr("action", '${path}/reviewUpdateAction?num=${list.reviewnum}');
-       $("#reviewCreate_form").submit();
-
-    })
- }) 
-</script>
+ 	</script>
 </body>
 </html>

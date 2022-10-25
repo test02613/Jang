@@ -27,6 +27,9 @@ public interface AdminDAO {
 	
 	//리뷰관리
 	public List<ReviewVO> reviewAdmin() throws Exception;
+
+	//리뷰삭제
+	public ReviewVO reviewDeleteAdmin(Integer reviewnum) throws Exception;
 	
 	//상품(대분류)등록
 	public void itemInsert(ItemVO vo) throws Exception;

@@ -59,11 +59,18 @@ public class AdminServiceImpl implements AdminService {
 		return dao.reviewAdmin();
 	}
 	
+	//리뷰삭제
+	@Override
+	public ReviewVO reviewDeleteAdmin(Integer reviewnum) throws Exception {
+
+		return dao.reviewDeleteAdmin(reviewnum);
+	}
+	
 	//상품등록
 	@Override
 	public void itemInsert(ItemVO item) throws Exception {
-		dao.itemInsert(item);
 		
+		dao.itemInsert(item);
 	}
 
 	//상품상세 등록
@@ -107,6 +114,7 @@ public class AdminServiceImpl implements AdminService {
 
 		return dao.attrInfo(attr);
 	}
+
 
 
 

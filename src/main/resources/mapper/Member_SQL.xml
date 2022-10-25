@@ -39,6 +39,7 @@
 		SELECT * FROM member 
 	    WHERE pw = #{pw}
 	    AND id = #{id}
+	    AND leave = 0
 	</select>
 	
 	<!-- 관리자 로그인 -->

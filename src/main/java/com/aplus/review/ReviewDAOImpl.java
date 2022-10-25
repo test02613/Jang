@@ -15,8 +15,8 @@ public class ReviewDAOImpl implements ReviewDAO{
 	//리뷰 등록
 	@Override
 	public void reviewCreate(ReviewVO vo) throws Exception {
-		sql.insert("mapper.Review_SQL.review_insert", vo);
 		
+		sql.insert("mapper.Review_SQL.review_insert", vo);
 	}
 
 	//로그인 회원 리뷰 목록

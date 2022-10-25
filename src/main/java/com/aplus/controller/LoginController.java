@@ -52,21 +52,21 @@ public class LoginController {
 		logger.info("MemberVO2:" + vo);
 		logger.info("sessions:" + session);
 		logger.info("Name1:" + name);
+		
 		ModelAndView mav = new ModelAndView();
 		if (name != null) { // 로그인 성공 시
 			int admin = memberService.loginAction_admin(vo);
 			vo.setAdmin(admin);
-			/*vo.getAdmin();*/
+			
 			mav.setViewName("main/main"); // 뷰의 이름
 			session.setAttribute("admin", vo.getAdmin());
 
-		} else { // 로그인 실패 시
+		} else { //로그인 실패 시(탈퇴회원, 블랙회원)
 			mav.setViewName("member/login");
-			mav.addObject("message", "보노보노");
+			mav.addObject("message", "탈퇴한 회원이거나, 해당하는 아이디가 없습니다.");
 		}
 		logger.info("Name:" + name);
 		logger.info("vo:" + vo);
-		/* logger.info("admin:"+admin); */
 
 		return mav;
 	}
@@ -74,9 +74,7 @@ public class LoginController {
 	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
-
 		session.invalidate();
-
 		return "redirect:/";
 	}
 
@@ -117,9 +115,8 @@ public class LoginController {
 		if(pw == null) {
 			/*out.print("등록되지 않은 아이디입니다.");
 			out.close();*/
-			out.print("<script>alert('\" 보노보노 \"'); history.go(-1);</script>" 
-			);
-	out.close();
+			out.print("<script>alert('\" 보노보노 \"'); history.go(-1);</script>");
+			out.close();
 	
 		}
 		else {

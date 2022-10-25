@@ -58,18 +58,19 @@ button {
 				<!-- 게시판 상단 메뉴 -->
 				<thead class="table-dark">
 					<tr>
-						<th scope="col" class="col-" id="title">등록날짜</th>
-						<th scope="col" class="col-" id="title">주문번호</th>
-						<th scope="col" class="col-" id="title">상품번호</th>
-						<th scope="col" class="col-" id="title">아이디</th>
-						<th scope="col" class="col-" id="title">제목</th>
+						<th scope="col" class="col-2" id="title">등록날짜</th>
+						<th scope="col" class="col-2" id="title">주문번호</th>
+						<th scope="col" class="col-1" id="title">상품번호</th>
+						<th scope="col" class="col-1" id="title">아이디</th>
+						<th scope="col" class="col-1" id="title">제목</th>
+						<th scope="col" class="col-2" id="title">-</th>
 					</tr>
 				</thead>
 				<!-- 게시글 목록 -->
 				<tbody>
 					<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
 					<c:forEach items="${reviewlist}" var="reviewlist" varStatus="Status">
-						<%-- <tr onClick="location.href='${path}/eventDetail?num=${reviewlist.eventnum}'"
+						<%-- <tr onClick="location.href='${path}/reviewDetail?num=${reviewlist.ordernum}'"
 							style="cursor: pointer;" id="reviewlist"> --%>
 						<tr>	
 							<td id="center"><c:out value="${reviewlist.reviewdate}" /></td>
@@ -77,6 +78,8 @@ button {
 							<td id="center"><c:out value="${reviewlist.itemnum}" /></td>
 							<td id="center"><c:out value="${reviewlist.id}" /></td>
 							<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
+							<td id="center"><a href='${path}/reviewDetail?num=${reviewlist.ordernum}'><button type="button">리뷰상세보기</button></a>
+							<a href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'><button type="button">삭제</button></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -91,9 +91,7 @@
 		</table>
 		<input type="button" class="myUpdate_button" value="수정하기">
 	</form>
-	<a href="memberLeave">
-		<button type="button" class="mm">탈퇴하기</button>
-	</a>
+		<button type="button" onclick="removeMember();"> 탈퇴하기 </button>
 	<script>
 		//회원정보 수정 버튼
 		$(document).ready(function() {
@@ -186,6 +184,14 @@
 							}
 						}
 					}).open();
+		}
+		
+		//탈퇴버튼 누르면 경고창 띄우기
+		function removeMember() {
+			if(window.confirm("탈퇴하시겠습니까?")){
+			location.href="/memberLeave";
+			}
+			
 		}
 	</script>
 </body>

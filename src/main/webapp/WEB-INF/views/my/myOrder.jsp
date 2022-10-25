@@ -11,6 +11,7 @@
 	<c:forEach var="order" items="${order}" varStatus="index">
 		<%-- <c:out value="${order.ordernum }" />
 		<c:out value="${order.ordercost }" /> --%>
+		<center>
 		<table>
 			<colgroup>
 				<col width="20" />
@@ -45,12 +46,13 @@
 						href="/reviewCreate?item=${order.itemvo.itemnum }&order=${order.ordernum}"><button
 								type="button" class="review">리뷰 쓰기</button></a></td></c:if>
 					 <c:if test="${order.review == 1}">
-	                     <td><a href="#"><button type="button" class="myreview">내가 쓴 리뷰 보기</button></a></td></c:if>
+	                     <td><a href="/reviewDetail?num=${order.ordernum }"><button type="button" class="myreview">내가 쓴 리뷰 보기</button></a></td></c:if>
                    
 				</tr>
 			</tbody>
 		</table>
+			</center>
 	</c:forEach>
 </body>
-</script>
+
 </html>

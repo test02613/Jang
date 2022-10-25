@@ -1,5 +1,7 @@
 package com.aplus.review;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -35,8 +37,9 @@ public class ReviewController {
 
 		String id = (String) session.getAttribute("id");// 세션 id가져오기
 		vo.setId(id); // ReviewVO에 로그인 정보 저장
-
-		model.addAttribute("myreview", reviewservice.reviewList(id));
+		List<ReviewVO> list = reviewservice.reviewList(id);
+		
+		model.addAttribute("myreview", list);
 
 		return "my/myReview";
 	}
@@ -59,7 +62,6 @@ public class ReviewController {
 
 		String id = (String) session.getAttribute("id");// 세션 id가져오기
 		vo.setId(id);
-		// order = 1;
 		model.addAttribute("order", order);
 		reviewservice.reviewCreate(vo);
 

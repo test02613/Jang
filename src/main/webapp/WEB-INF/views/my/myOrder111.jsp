@@ -57,33 +57,34 @@ button {
 	<div class="wrapper">
 		<div id="wrapper">
 			<!-- wrapper를 클래스랑 아이디 다 쓰는 이유는 무엇? -->
-			<div id="contents">리뷰 관리</div>
+			<div id="contents">주문 정보</div>
 			<table class="table">
 				<!-- 게시판 상단 메뉴 -->
 				<thead class="table-dark">
 					<tr>
-						<th scope="col" class="col-2" id="title">번호</th>
-						<th scope="col" class="col-2" id="title">작성일</th>
-						<th scope="col" class="col-3" id="title">제목</th>
-						<th scope="col" class="col-4" id="title">#</th>
+						<th scope="col" class="col-2" id="title">주문번호</th>
+						<th scope="col" class="col-7" id="title">상품명/옵션</th>
+						<th scope="col" class="col-3" id="title">주문금액</th>
+						<th scope="col" class="col-3" id="title">리뷰</th>
 					</tr>
 				</thead>
 				<!-- 게시글 목록 -->
 				<tbody>
 					<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
-					<c:forEach items="${myreview}" var="myreview" varStatus="Status">
-						<tr onClick="location.href='${path}/reviewDetail?num=${myreview.ordernum}'"
-							style="cursor: pointer;" id="myreview">
-							<td id="center"><c:out value="${myreview.reviewnum}" /></td>
-							<td id="center"><c:out value="${myreview.reviewdate}" /></td>
-							<td id="center"><c:out value="${myreview.reviewtitle}" /></td>
-							
-							<td id="center"><a href="/reviewUpdate?num=${myreview.reviewnum}">
-									<button type="button" class="review">수정</button>
-									</a><a href="/reviewDeleteAction?num=${myreview.reviewnum}">
-									<button type="button" class="review">삭제</button>
-									</a></td>
-						</tr>
+					<c:forEach items="${order}" var="order" varStatus="Status">
+						<%-- <tr onClick="location.href='${path}/reviewDetail?num=${myreview.ordernum}'"
+							style="cursor: pointer;" id="myreview"> --%>
+							<td id="center"><c:out value="${order.ordernum}" /></td>
+							<td><c:out value="${${order.itemattrvo.itemname}/${order.itemattrvo.itemcolor}" /></td>
+							<td id="center"><c:out value="${order.ordercost}"/>원</td>
+							<c:if test="${order.review != 1}">
+					<td><a
+						href="/reviewCreate?item=${order.itemvo.itemnum }&order=${order.ordernum}"><button
+								type="button" class="review">리뷰 쓰기</button></a></td></c:if>
+					 <c:if test="${order.review == 1}">
+	                     <td><a href="#"><button type="button" class="myreview">내가 쓴 리뷰 보기</button></a></td></c:if>
+
+						<!-- </tr> -->
 					</c:forEach>
 				</tbody>
 			</table>

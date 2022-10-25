@@ -373,8 +373,8 @@ function findAddr() {
 			</div>
 			<br>
 			<div style="text-align: center">
-				<input type="checkbox" name="orderChk" id="orderChk">
-				(필수)결제서비스 약관에 동의하며, 원활한 배송을 위한 개인정보 제공에 동의합니다. <br> <br> 
+				<!-- <input type="checkbox" name="orderChk" id="orderChk">
+				(필수)결제서비스 약관에 동의하며, 원활한 배송을 위한 개인정보 제공에 동의합니다. <br> <br>  -->
 				<input type="button" name="all_order" value="장바구니"
 					onClick="location.href='/cart'"> 
 				<input type="submit" name="order_pay" value="결제진행"

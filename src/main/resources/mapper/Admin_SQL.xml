@@ -99,7 +99,14 @@
 		SELECT *
 		FROM REVIEW
 	</select>
-
+	
+	<!-- 리뷰삭제 -->
+	 <delete id="reviewdelete_admin">
+		DELETE 
+		FROM REVIEW
+		WHERE reviewnum = #{reviewnum}
+	</delete>
+	
 	<!-- 상품 등록 -->
 	<insert id="item_insert">
 		INSERT INTO item

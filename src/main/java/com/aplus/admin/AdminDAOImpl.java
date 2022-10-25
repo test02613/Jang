@@ -57,7 +57,14 @@ public class AdminDAOImpl implements AdminDAO{
 
 		return sql.selectList("mapper.Admin_SQL.review_admin");
 	}
-	
+
+	//리뷰삭제
+	@Override
+	public ReviewVO reviewDeleteAdmin(Integer reviewnum) throws Exception {
+
+		return sql.selectOne("mapper.Admin_SQL.reviewdelete_admin", reviewnum);
+	}
+
 	//상품등록
 	@Override
 	public void itemInsert(ItemVO vo) throws Exception {

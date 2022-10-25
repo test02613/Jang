@@ -51,21 +51,24 @@
 
       <div class="carousel-item active">
 		  <!--가로-->
+		  <a href="/eventDetail?num=14">
 		  <img class="d-block w-100" 
 		    src="../resources/img/iphone.png?auto=compress&cs=tinysrgb&h=650&w=940"
-		    alt="First slide"> 
+		    alt="First slide"></a>
 		    <div class="carousel-caption d-none d-md-block">
 		  </div>
 		</div>
 		<div class="carousel-item">
+		 <a href="/eventDetail?num=14">
 		  <img class="d-block w-100"
 		    src="../resources/img/max.png?auto=compress&cs=tinysrgb&h=650&w=940"
-		    alt="Second slide">
+		    alt="Second slide"></a>
 		</div>
 		<div class="carousel-item">
+		 <a href="/eventDetail?num=14">
 		  <img class="d-block w-100"
 		    src="../resources/img/airpods.png?auto=compress&cs=tinysrgb&h=650&w=940"
-		    alt="Third slide">
+		    alt="Third slide"></a>
 		</div>
 	<!-- / 슬라이드 쇼 끝 -->
 
@@ -97,13 +100,13 @@
 	<!-- 상품 바로가기 이미지 -->
 	<div id= "boot_imgradius2">
 	<div id= "image_click_mainwrapper">
-		<a href="https://neptunekorea.com/product/list.html?cate_no=5">
+		<a href="http://localhost:8181/itemDetail?num=1">
 	  	<img class="bd-placeholder-img rounded float-end" width="390" height="250" src="../resources/img/go1.png" role="img" /> </a>
 		
-	    <a href="https://neptunekorea.com/product/list.html?cate_no=5">
+	    <a href="http://localhost:8181/itemDetail?num=1">
 	    <img class="bd-placeholder-img rounded float-end" width="390" height="250" src="../resources/img/go2.png" role="img" /> </a>
 	    	
-	    <a href="https://neptunekorea.com/product/list.html?cate_no=5">
+	    <a href="http://localhost:8181/itemDetail?num=1">
 	    <img class="bd-placeholder-img rounded float-end" width="390" height="250" src="../resources/img/go3.png" role="img" /> </a>
 	   
 	    </div>

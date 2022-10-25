@@ -21,6 +21,7 @@ import com.aplus.item.ItemService;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
+import com.aplus.review.ReviewVO;
 
 @Controller
 public class AdminController {
@@ -113,12 +114,23 @@ public class AdminController {
 	
 	//리뷰관리 페이지
 	@RequestMapping(value = "/reviewAdmin", method = RequestMethod.GET)
-	public String reviewAdminGET(MemberVO vo, Model model, HttpServletResponse response, HttpSession session) throws Exception {
+	public String reviewAdminGET(Model model) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰관리 페이지 진입");
 		
-		model.addAttribute("reviewlist", adminservice.reviewAdmin());
+		List<ReviewVO> list = adminservice.reviewAdmin();
+		model.addAttribute("reviewlist", list);
 		
 		return "admin/reviewAdmin";
+	}
+	
+	//리뷰 삭제
+	@RequestMapping(value = "/reviewAdminDeleteAction", method = RequestMethod.GET)
+	public String reviewAdminDeleteAction(MemberVO vo, Model model, Integer reviewnum ) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰관리 페이지 진입");
+		
+		adminservice.reviewDeleteAdmin(reviewnum);
+		
+		return "redirect:/reviewAdmin";
 	}
 	
 	//1대1문의 페이지
@@ -128,7 +140,15 @@ public class AdminController {
 		
 		return "admin/qnaAdmin";
 	}
-
+	
+	//상품관리 페이지
+	@RequestMapping(value = "/itemAdmin", method = RequestMethod.GET)
+	public String itemAdmin(MemberVO vo, HttpServletResponse response, HttpSession session) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 관리자 페이지 진입");
+		
+		return "admin/itemAdmin";
+	}
+	
 	//상품등록 페이지 
 	@RequestMapping(value = "/itemInsert", method = RequestMethod.GET)
 	public String itemInsert(Model model,HttpSession session,ItemVO vo ,Integer num) throws Exception {
