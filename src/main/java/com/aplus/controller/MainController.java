@@ -12,16 +12,16 @@ public class MainController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	//홈 진입
+	/* 홈 진입 */
 	@RequestMapping("/")
 	public String homeGet() {
-		
+
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>home 진입");
 		return "redirect:/main";
-		
+
 	}
 
-	//메인 페이지 진입
+	/* 메인 페이지 진입 */
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainPageGet() {
 

@@ -542,6 +542,7 @@ var num ;
 						return code;
 					} else {
 						  //alert("전송된 값 없음"+result);  
+						  
 					}
 				},
 				error : function() {

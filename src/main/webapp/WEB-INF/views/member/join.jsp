@@ -1,96 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
-   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-   crossorigin="anonymous"></script>
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="/resources/css/join.css">
 
 </head>
 
 <body>
-   <!-- wrapper : 화면 전체랩 -->
-   <div class="wrap">
+	<!-- wrapper : 화면 전체랩 -->
+	<div class="wrap">
 
-      <!-- form -->
-      <form id="join_form" method="post">
+		<!-- form -->
+		<form id="join_form" method="post">
 
-         <!-- 페이지 타이틀 -->
-         <div class="subjecet">회원가입</div>
+			<!-- 페이지 타이틀 -->
+			<div class="subjecet">회원가입</div>
 
-         <!-- 아이디 -->
-         <div>
-            <div class="sub_title">아이디</div>
-            <input class="input_box_l id_input" name="id" placeholder="아이디"> 
-            <span class="id_input_re_1">사용 가능한 아이디입니다.</span> 
-            <span class="id_input_re_2">아이디가 이미 존재합니다.</span>
-         </div>
+			<!-- 아이디 -->
+			<div>
+				<div class="sub_title">아이디</div>
+				<input class="input_box_l id_input" name="id" placeholder="아이디">
+				<span class="id_input_re_1">사용 가능한 아이디입니다.</span> <span
+					class="id_input_re_2">아이디가 이미 존재합니다.</span>
+			</div>
 
-         <!-- 비밀번호 -->
-         <div>   
-            <div class="sub_title">비밀번호</div>
-            <input class="pw_input" type="password" id="pw" name="pw" placeholder="비밀번호" />
-            <input class="pwck_input" type="password" id="pwcheck" placeholder="비밀번호 확인" />
-            <div>
-               <!-- 비밀번호 일치여부 확인 -->
-               <font id="chkNotice" size="3"></font>
-            </div>
-         </div>
+			<!-- 비밀번호 -->
+			<div>
+				<div class="sub_title">비밀번호</div>
+				<input class="pw_input" type="password" id="pw" name="pw"
+					placeholder="비밀번호" /> <input class="pwck_input" type="password"
+					id="pwcheck" placeholder="비밀번호 확인" />
+				<div>
+					<!-- 비밀번호 일치여부 확인 -->
+					<font id="chkNotice" size="3"></font>
+				</div>
+			</div>
 
-         <!-- 이름 -->
-         <div>
-            <div class="sub_title">이름</div>
-            <input class="user_input" name="name" placeholder="이름">
-         </div>
+			<!-- 이름 -->
+			<div>
+				<div class="sub_title">이름</div>
+				<input class="user_input" name="name" placeholder="이름">
+			</div>
 
-         <!-- 전화번호 -->
-         <div>
-            <div class="sub_title">전화번호</div>
-            <input class="mobile_input" name="mobile" placeholder="전화번호">
-         </div>
+			<!-- 전화번호 -->
+			<div>
+				<div class="sub_title">전화번호</div>
+				<input class="mobile_input" name="mobile" placeholder="전화번호">
+			</div>
 
-         <!-- 이메일 전체영역 -->
-         <div>
-            <div class="sub_title">이메일</div>
+			<!-- 이메일 전체영역 -->
+			<div>
+				<div class="sub_title">이메일</div>
 
-            <div class="mail_input_box">
-               <input class="mail_input" name="email" placeholder="이메일">
-            </div>
+				<div class="mail_input_box">
+					<input class="mail_input" name="email" placeholder="이메일">
+				</div>
 
-            <div class="mail_check_input_box" id="mail_check_input_box_false">
-               <input class="mail_check_input" disabled="disabled" placeholder="이메일 인증번호">
-            </div>
-            <div class="mail_check_button">인증번호 전송</div>
-            <div class="clearfix"></div>
-            <span id="mail_check_input_box_warn"></span>
-         </div>
+				<div class="mail_check_input_box" id="mail_check_input_box_false">
+					<input class="mail_check_input" disabled="disabled"
+						placeholder="이메일 인증번호">
+				</div>
+				<div class="mail_check_button">인증번호 전송</div>
+				<div class="clearfix"></div>
+				<span id="mail_check_input_box_warn"></span>
+			</div>
 
-         <!-- 주소 전체영역 -->
-         <div>   
-            <div class="sub_title">주소</div>
-            <div class="address_input_1_box">
-               <input class="address_input_1" name="postcode" readonly="readonly" placeholder="우편번호">
-            </div>
-            <div class="address_button" onclick="execution_daum_address()">주소 찾기</div>
-            <div class="clearfix"></div>
-            <input class="address_input_2" name="address" readonly="readonly" placeholder="주소">
-            <input class="address_input_3" name="addressDetail" readonly="readonly" placeholder="상세주소">
-         </div>
+			<!-- 주소 전체영역 -->
+			<div>
+				<div class="sub_title">주소</div>
+				<div class="address_input_1_box">
+					<input class="address_input_1" name="postcode" readonly="readonly"
+						placeholder="우편번호">
+				</div>
+				<div class="address_button" onclick="execution_daum_address()">주소
+					찾기</div>
+				<div class="clearfix"></div>
+				<input class="address_input_2" name="address" readonly="readonly"
+					placeholder="주소"> <input class="address_input_3"
+					name="addressDetail" readonly="readonly" placeholder="상세주소">
+			</div>
 
-         <!-- 가입하기 버튼 -->
-         <input type="button" class="join_button" value="가입하기">
+			<!-- 가입하기 버튼 -->
+			<input type="button" class="join_button" value="가입하기">
 
-      </form> <!-- form 끝 -->
-   </div> <!-- 화면 전체랩 끝 -->
+		</form>
+		<!-- form 끝 -->
+	</div>
+	<!-- 화면 전체랩 끝 -->
 
-<!-- ////////////////////////////////////////////////////////////////////////////// -->
+	<!-- ////////////////////////////////////////////////////////////////////////////// -->
 
-   <script>
+	<script>
       $(document).ready(function() {
          // 회원가입 버튼
          $(".join_button").click(function() {
@@ -247,9 +254,9 @@
       });
    </script>
 
-   <!-- 주소찾기 -->
-   <script
-      src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<!-- 주소찾기 -->
+	<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </body>
 </html>

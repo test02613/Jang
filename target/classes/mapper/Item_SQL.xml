@@ -88,4 +88,11 @@
 		FROM REVIEW
 		WHERE itemnum = #{itemnum}
 	</select>
+	
+	<!-- 상품검색 -->
+	<select id="item_search">
+		SELECT *
+		FROM ITEM
+		WHERE itemname = #{itemname}
+	</select>
 </mapper>

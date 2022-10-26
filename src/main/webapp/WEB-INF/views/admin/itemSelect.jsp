@@ -54,6 +54,7 @@ text-align:center;
 						<th id="title"   scope="col">이름</th>
 						<th id="title" width="100"scope="col">카테고리</th>
 						<c:if test="${num==1 }"><th id="title" width="100"scope="col">#</th></c:if>
+						<c:if test="${num==1 }"><th id="title" width="100"scope="col">#</th></c:if>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +65,7 @@ text-align:center;
 							<td id="center" style="text-decoration: none;"><c:out  value="${list.itemnum}" /></td>
 							<td id="center"><c:out   value="${list.itemname}" /></td>
 							<td id="center" style="text-decoration: none;"><c:out   value="${list.itemcat2}" /></td>
+							<c:if test="${num==1 }"><td id="center"><a href='${path}/itemInsert?num=${list.itemnum}'><button type="button">수정</button></a></c:if></td>
 							<c:if test="${num==1 }"><td id="center"><a href='${path}/itemDeleteAction?itemnum=${list.itemnum}'><button type="button" onclick="itemDelete();">삭제</button></a></c:if></td>
 							</tr>
 					</c:forEach>

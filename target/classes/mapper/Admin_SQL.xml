@@ -178,21 +178,28 @@
 	<!-- 상품삭제(item) -->
 	<delete id="item_delete">
 		DELETE
-		FROM item 
+		FROM item
 		WHERE itemnum = #{itemnum}
 	</delete>
 
 	<!-- 상품옵션 한번에 삭제 -->
 	<delete id="attr_delete">
 		DELETE
-		FROM ITEMATTR 
+		FROM ITEMATTR
 		WHERE itemnum = #{itemnum}
 	</delete>
-	
+
 	<!-- 상품옵션 개별 삭제 -->
 	<delete id="attrselect_delete">
 		DELETE
-		FROM ITEMATTR 
+		FROM ITEMATTR
 		WHERE itemcode = #{itemcode}
 	</delete>
+
+	<!-- 이미지등록 -->
+	<insert id="item_img" parameterType="ItemVO">
+		INSERT INTO ITEM
+		VALUES(#{itemnum},#{itemname},#{itemcat1},#{itemcat2},#{itemimg},#{itemdetailimg}
+		)
+	</insert>
 </mapper>

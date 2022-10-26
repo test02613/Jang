@@ -7,11 +7,10 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- <mybatis-spring:scan
-		base-package="mapper" /> -->
+	<!-- <mybatis-spring:scan base-package="mapper" /> -->
 	<context:component-scan
 		base-package="com.aplus.*" />
-	
+
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="com.aplus"></context:component-scan>
@@ -30,19 +29,22 @@
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
-	<!-- <bean id="sqlSessionFactory"
+	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+		<property name="dataSource" ref="datasource"></property> </bean> -->
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSession"></constructor-arg>
+	</bean>
+
+	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="datasource"></property>
-
-	</bean> -->
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-	<constructor-arg name="sqlSessionFactory" ref="sqlSession"></constructor-arg>
-</bean>
-
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource" />
-		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/mapper/*_SQL.xml" />
+		<property name="configLocation"
+			value="classpath:config/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:/mapper/*_SQL.xml" />
 	</bean>
 	<!-- navermail설정 -->
 	<bean id="mailSender"

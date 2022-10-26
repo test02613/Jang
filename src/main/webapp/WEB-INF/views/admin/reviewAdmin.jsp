@@ -33,7 +33,7 @@
 #title {
 	text-align: center;
 	align-content: center;
-} 
+}
 
 /* 목록에 마우스 가져다대면 회색으로 처리함 */
 #reviewlist:hover {
@@ -52,48 +52,57 @@ button {
 </head>
 <body>
 	<!-- 게시판 부트스트랩 -->
-		<div id="wrapper">
-			<div id="contents">리뷰관리</div>
-			<table class="table">
-				<!-- 게시판 상단 메뉴 -->
-				<thead class="table-dark">
-					<tr>
-						<th scope="col" class="col-2" id="title">등록날짜</th>
-						<th scope="col" class="col-2" id="title">주문번호</th>
-						<th scope="col" class="col-1" id="title">상품번호</th>
-						<th scope="col" class="col-1" id="title">아이디</th>
-						<th scope="col" class="col-1" id="title">제목</th>
-						<th scope="col" class="col-2" id="title">-</th>
-					</tr>
-				</thead>
-				<!-- 게시글 목록 -->
-				<tbody>
-					<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
-					<c:forEach items="${reviewlist}" var="reviewlist" varStatus="Status">
-						<%-- <tr onClick="location.href='${path}/reviewDetail?num=${reviewlist.ordernum}'"
+	<div id="wrapper">
+		<div id="contents">리뷰관리</div>
+		<table class="table">
+			<!-- 게시판 상단 메뉴 -->
+			<thead class="table-dark">
+				<tr>
+					<th scope="col" class="col-2" id="title">등록날짜</th>
+					<th scope="col" class="col-2" id="title">주문번호</th>
+					<th scope="col" class="col-1" id="title">상품번호</th>
+					<th scope="col" class="col-1" id="title">아이디</th>
+					<th scope="col" class="col-1" id="title">제목</th>
+					<th scope="col" class="col-2" id="title">-</th>
+				</tr>
+			</thead>
+			<!-- 게시글 목록 -->
+			<tbody>
+				<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
+				<c:forEach items="${reviewlist}" var="reviewlist" varStatus="Status">
+					<%-- <tr onClick="location.href='${path}/reviewDetail?num=${reviewlist.ordernum}'"
 							style="cursor: pointer;" id="reviewlist"> --%>
-						<tr>	
-							<td id="center"><c:out value="${reviewlist.reviewdate}" /></td>
-							<td id="center"><c:out value="${reviewlist.ordernum}" /></td>
-							<td id="center"><c:out value="${reviewlist.itemnum}" /></td>
-							<td id="center"><c:out value="${reviewlist.id}" /></td>
-							<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
-							<td id="center"><a href='${path}/reviewDetail?num=${reviewlist.ordernum}'><button type="button">리뷰상세보기</button></a>
-							<a href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'><button type="button">삭제</button></a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					<tr>
+						<td id="center"><c:out value="${reviewlist.reviewdate}" /></td>
+						<td id="center"><c:out value="${reviewlist.ordernum}" /></td>
+						<td id="center"><c:out value="${reviewlist.itemnum}" /></td>
+						<td id="center"><c:out value="${reviewlist.id}" /></td>
+						<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
+						<td id="center"><a
+							href='${path}/reviewDetail?num=${reviewlist.ordernum}'><button
+									type="button">리뷰상세보기</button></a> <a
+							href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'><button
+									type="button"  onclick="reviewDelete();">삭제</button></a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 
-			<div id="button" >
-				<a href="/adminMain"><button>관리자페이지로 돌아가기</button></a>
-			</div>
-
+		<div id="button">
+			<a href="/adminMain"><button>관리자페이지로 돌아가기</button></a>
 		</div>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-			crossorigin="anonymous"></script>
+
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+		<script>
+		//삭제버튼 누르면 경고창 띄우기
+		function reviewDelete() {
+			alert("리뷰를 삭제하시겠습니까?")
+		}
+		</script>
 </body>
 </html>

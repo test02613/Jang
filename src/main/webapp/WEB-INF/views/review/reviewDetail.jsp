@@ -64,7 +64,6 @@ h1 {
 						<td colspan="3" height="500" scope="col"><c:out
 								value="${detail.reviewcontent}" /></td>
 					</tr>
-
 				</tbody>
 			</table>
 		</div>

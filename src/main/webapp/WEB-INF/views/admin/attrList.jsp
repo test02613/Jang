@@ -51,17 +51,20 @@ text-align:center;
 				<thead class="table-dark">
 					<tr >
 						<th id="title" width="100" scope="col">번호</th>
-						<th id="title"   scope="col">이름</th>
+						<th id="title"   scope="col">이름/색상</th>
 						<th id="title" width="100"scope="col">상품코드</th>
+						<th id="title" width="100"scope="col">#</th>
 						<th id="title" width="100"scope="col">#</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
 						<tr onClick="location.href='/attrInsert?code=${list.itemcode}'"  style="cursor:pointer;">
-							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemname}" /></td>
-							<td id="center"><c:out   value="${list.itemcolor}" /></td>
+							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemnum}" />
+							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemname}" />
+							/<c:out   value="${list.itemcolor}" /></td>
 							<td id="center" style="text-decoration: none;"><c:out   value="${list.itemcode}" /></td>
+							<td id="center"><a href='${path}/attrInsert?code=${list.itemcode}'><button type="button" >수정</button></a></td>
 							<td id="center"><a href='${path}/attrselectDeleteAction?itemcode=${list.itemcode}&num=${list.itemnum}'><button type="button" onclick="attrDelete();">삭제</button></a></td>
 						</tr>
 					</c:forEach>
@@ -80,10 +83,10 @@ text-align:center;
 	
 	//삭제버튼 누르면 경고창 띄우기
 	function attrDelete() {
-		window.confirm("상품을 삭제하시겠습니까?")
+		alert("상품을 삭제하시겠습니까?")
 	}
 	</script>
-	</script>
+
 		
 </body>
 </html>

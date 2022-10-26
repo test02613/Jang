@@ -30,8 +30,8 @@
 	max-width: 1400px;
 	margin: 0 auto;
 	height: 100%;
-    text-align: center;
-   	border-radius: 10px;
+	text-align: center;
+	border-radius: 10px;
 	/* background-color: red; */
 }
 
@@ -41,15 +41,15 @@
 	height: 100%;
 	margin-top: 30px;
 	margin-bottom: 30px;
-    text-align: center;
- }
- 
- /* 부트스트랩 슬라이드쇼 이미지 속성 */
-#boot_imgradius1{
+	text-align: center;
+}
+
+/* 부트스트랩 슬라이드쇼 이미지 속성 */
+#boot_imgradius1 {
 	border-radius: 10px;
 }
- /* 부트스트랩 바로가기 이미지 속성 */
-#boot_imgradius2{
+/* 부트스트랩 바로가기 이미지 속성 */
+#boot_imgradius2 {
 	border-radius: 20px;
 }
 
@@ -58,10 +58,11 @@
 	position: relative;
 }
 /* 이벤트 */
-#event{
+#event {
 	color: white;
 	text-decoration: none;
 }
+
 #event a:link {
 	color: white;
 	text-decoration: none;
@@ -252,7 +253,7 @@
 	padding-top: 20px;
 }
 
-#footer2 p{
+#footer2 p {
 	padding-top: 20px;
 	font-size: 10px;
 }

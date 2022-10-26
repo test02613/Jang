@@ -12,158 +12,57 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Builder
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderVO {
-   
-   private String id;
-   private Integer ordernum;
-   private String shippingnum;
-   private String shippingcost;
-   private String ordercost;
-   private Date orderdate;
-   private String payment;
-   private String postcode;
-   private String address;
-   private String addressdetail;
-   private String mobile;
-   private String name;
-   private Integer itemcode;
-   private Integer review;
-   private String state; 
-   
-   private ItemAttrVO itemattrvo;
-   private ItemVO itemvo;
-/*	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	/* 회원아이디 */
+	private String id;
 
-	public Integer getOrdernum() {
-		return ordernum;
-	}
+	/* 상품번호 */
+	private Integer ordernum;
+	
+	/* 송장번호 */
+	private String shippingnum;
+	
+	/* 배송비 */
+	private String shippingcost;
+	
+	/* 주문가격 */
+	private String ordercost;
+	
+	/* 주문날짜 */
+	private Date orderdate;
+	
+	/* 결제방법 */
+	private String payment;
+	
+	/* 우편번호 */
+	private String postcode;
+	
+	/* 배송지 주소 */
+	private String address;
+	
+	/* 배송지 상세주소 */
+	private String addressdetail;
+	
+	/* 핸드폰 */
+	private String mobile;
+	
+	/* 주문자이름 */
+	private String name;
+	
+	/* 상품코드 */
+	private Integer itemcode;
+	
+	/* 리뷰작성여부 */
+	private Integer review;
+	
+	/* 배송/주문상태 */
+	private String state;
 
-	public void setOrdernum(Integer ordernum) {
-		this.ordernum = ordernum;
-	}
-
-	public String getShippingnum() {
-		return shippingnum;
-	}
-
-	public void setShippingnum(String shippingnum) {
-		this.shippingnum = shippingnum;
-	}
-
-	public String getShippingcost() {
-		return shippingcost;
-	}
-
-	public void setShippingcost(String shippingcost) {
-		this.shippingcost = shippingcost;
-	}
-
-	public String getOrdercost() {
-		return ordercost;
-	}
-
-	public void setOrdercost(String ordercost) {
-		this.ordercost = ordercost;
-	}
-
-	public Date getOrderdate() {
-		return orderdate;
-	}
-
-	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
-	}
-
-	public String getPayment() {
-		return payment;
-	}
-
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
-
-	public String getPostcode() {
-		return postcode;
-	}
-
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getAddressdetail() {
-		return addressdetail;
-	}
-
-	public void setAddressdetail(String addressdetail) {
-		this.addressdetail = addressdetail;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getItemcode() {
-		return itemcode;
-	}
-
-	public void setItemcode(Integer itemcode) {
-		this.itemcode = itemcode;
-	}
-
-	public OrderVO(String id, Integer ordernum, String shippingnum, String shippingcost, String ordercost,
-			Date orderdate, String payment, String postcode, String address, String addressdetail, String mobile,
-			String name, Integer itemcode) {
-		super();
-		this.id = id;
-		this.ordernum = ordernum;
-		this.shippingnum = shippingnum;
-		this.shippingcost = shippingcost;
-		this.ordercost = ordercost;
-		this.orderdate = orderdate;
-		this.payment = payment;
-		this.postcode = postcode;
-		this.address = address;
-		this.addressdetail = addressdetail;
-		this.mobile = mobile;
-		this.name = name;
-		this.itemcode = itemcode;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderVO [id=" + id + ", ordernum=" + ordernum + ", shippingnum=" + shippingnum + ", shippingcost="
-				+ shippingcost + ", ordercost=" + ordercost + ", orderdate=" + orderdate + ", payment=" + payment
-				+ ", postcode=" + postcode + ", address=" + address + ", addressdetail=" + addressdetail + ", mobile="
-				+ mobile + ", name=" + name + ", itemcode=" + itemcode + "]";
-	}*/
-
+	private ItemAttrVO itemattrvo;
+	private ItemVO itemvo;
 }

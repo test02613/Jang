@@ -109,12 +109,12 @@ h1 {
 	<script>
 		//블랙버튼 누르면 경고창 띄우기
 		function blackMember() {
-			window.confirm("블랙처리하시겠습니까?")
+			alert("블랙처리하시겠습니까?")
 		}
 
 		//되돌리기버튼 누르면 경고창 띄우기
 		function blackCancle() {
-			window.confirm("되돌리시겠습니까?")
+			alert("되돌리시겠습니까?")
 		}
 	</script>
 </body>
