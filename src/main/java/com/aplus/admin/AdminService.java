@@ -51,4 +51,13 @@ public interface AdminService {
 	
 	//상품상세 수정시 값 들고오기
 	public ItemAttrVO attrInfo(ItemAttrVO attr) throws Exception;
+	
+	//상품삭제 item
+	public ItemVO itemDelete(Integer itemnum) throws Exception;
+	
+	//상품옵션 한번에 삭제 
+	public ItemAttrVO attrDelete(Integer itemnum) throws Exception;
+	
+	//상품옵션 개별 삭제
+	public ItemAttrVO attrselectDelete(Integer itemcode) throws Exception;
 }

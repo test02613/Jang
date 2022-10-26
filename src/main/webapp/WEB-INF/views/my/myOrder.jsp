@@ -23,7 +23,6 @@
 			<thead>
 				<tr>
 					<th colspan="2" style="text-align: center">상품명/옵션</th>
-					<th></th>
 					<th style="text-align: center">주문금액</th>
 				</tr>
 			</thead>

@@ -115,12 +115,24 @@ public class AdminServiceImpl implements AdminService {
 		return dao.attrInfo(attr);
 	}
 
+	//상품삭제 item
+	@Override
+	public ItemVO itemDelete(Integer itemnum) throws Exception {
 
+		return dao.itemDelete(itemnum);
+	}
 
+	//상품옵션 한번에 삭제
+	@Override
+	public ItemAttrVO attrDelete(Integer itemnum) throws Exception {
 
+		return dao.attrDelete(itemnum);
+	}
+	
+	//상품옵션 개별 삭제
+	@Override
+	public ItemAttrVO attrselectDelete(Integer itemcode) throws Exception {
 
-
-
-
-
+		return dao.attrselectDelete(itemcode);
+	}
 }

@@ -114,5 +114,26 @@ public class AdminDAOImpl implements AdminDAO{
 		return sql.selectOne("mapper.Admin_SQL.attr_info", attr);
 	}
 
+	//상품삭제 item
+	@Override
+	public ItemVO itemDelete(Integer itemnum) throws Exception {
+		
+		return sql.selectOne("mapper.Admin_SQL.item_delete", itemnum);
+	}
+
+	//상품옵션 한번에 삭제
+	@Override
+	public ItemAttrVO attrDelete(Integer itemnum) throws Exception {
+		
+		return sql.selectOne("mapper.Admin_SQL.attr_delete", itemnum);
+	}
+
+	//상품옵션 개별 삭제
+	@Override
+	public ItemAttrVO attrselectDelete(Integer itemcode) throws Exception {
+		
+		return sql.selectOne("mapper.Admin_SQL.attrselect_delete", itemcode);
+	}
+
 
 }

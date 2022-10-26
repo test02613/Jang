@@ -13,30 +13,25 @@
 			javaType="String"/> -->
 	</resultMap>
 	
+	<!-- 장바구니 목록 -->
 	<select id="cart" resultMap="list">
 		SELECT *
 		FROM cart
 		WHERE id = #{id}
 	</select>
 	
-	<select id="addcart_item"  resultType="ItemAttrVO">
-		select * from ITEMATTR where itemcode = #{itemcode} 
-	</select>
-
-	<select id="addcart_member"  resultType="MemberVO">
-		select * from member where id = #{id} 
-	</select>
-	
 	<!-- 장바구니 추가 -->
-	<!-- <insert id="cart_insert" parameterType="CartVO">
-		<selectKey keyProperty="eventnum" resultType="int" order="BEFORE">
-	      select EVENTNUM_SEQ.nextval FROM DUAL
-	   </selectKey>
+	<insert id="cart_insert" parameterType="CartVO">
 	      INSERT INTO CART VALUES(#{id},#{itemname},
 	      #{itemcode}, #{itemcost},
 	      #{itemimg} )
-	 </insert> -->
+	 </insert>
 	 
+	<!-- item 정보 가져오기 -->
+	<select id="cart_item"  resultType="ItemAttrVO">
+		select * from ITEMATTR where itemcode = #{itemcode} 
+	</select>
+	
 	<!-- 장바구니 목록 -->
 	<!-- <select id="cart_list" resultMap="list">
 		SELECT *

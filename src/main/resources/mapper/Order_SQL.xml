@@ -21,7 +21,7 @@
 		</selectKey>
 	      INSERT INTO ORDERTABLE values(#{id} , #{ordernum} , 0,
 	      0, #{ordercost}, sysdate, 0, #{postcode},
-	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode},0,0)
+	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode},0,'결제완료')
 	 </insert>
 	 
  	<!-- 주문번호 가져오기 -->

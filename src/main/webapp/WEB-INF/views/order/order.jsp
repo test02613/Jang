@@ -117,7 +117,8 @@ function fn_order_pay(){
    var a=document.getElementById("ORDER_TOTAL_PAY_PRICE").value
    var b = document.getElementById("POINT_TOTAL").value		
    if(a>0){
-      alert("포인트 사용하세요")
+      alert("포인트를 사용하세요")
+  
    } else {
 	   $.ajax({
 		 	type : "get",
@@ -133,6 +134,7 @@ function fn_order_pay(){
 					  /*  alert("완료"+code);  
 					return code; */
 				} else {
+					
 					  /* alert("전송된 값 없음"+result);   */
 				}
 			},
@@ -141,7 +143,8 @@ function fn_order_pay(){
 			}
 
 		});//아작스 끝
-	   f.submit();
+		alert("결제하시겠습니까?");
+   		f.submit();
    }    
 }
 
@@ -375,7 +378,7 @@ function findAddr() {
 			<div style="text-align: center">
 				<!-- <input type="checkbox" name="orderChk" id="orderChk">
 				(필수)결제서비스 약관에 동의하며, 원활한 배송을 위한 개인정보 제공에 동의합니다. <br> <br>  -->
-				<input type="button" name="all_order" value="장바구니"
+				<input type="button" name="all_order" value="장바구니목록"
 					onClick="location.href='/cart'"> 
 				<input type="submit" name="order_pay" value="결제진행"
 					onclick="fn_order_pay(); return false;">

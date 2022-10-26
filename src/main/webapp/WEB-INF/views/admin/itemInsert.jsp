@@ -65,12 +65,14 @@
 					<td>디테일 이미지 경로</td>
 					<td align="left"><input type="text" name="itemdetailimg"  value="${item.itemdetailimg }"/></td>
 				</tr>
+				
 			</c:if>
 		</table>
+		
 		<c:if test="${item.itemnum == null }"><input type="button" class="insert_button" value="등록"></c:if>
-		<c:if test="${item.itemnum != null }"><input type="button" class="update_button" value="등록"></c:if>
-
+		<c:if test="${item.itemnum != null }"><input type="button" class="update_button" value="수정"></c:if>
 	</form>
+	
 	<script>
 	var num = document.getElementById("itemnum").value;
 		$(document).ready(function() {

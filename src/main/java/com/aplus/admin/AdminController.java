@@ -26,9 +26,7 @@ import com.aplus.review.ReviewVO;
 @Controller
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
-	@Autowired
-	private AdminDAO admindao; 
+
 	@Autowired
 	private AdminService adminservice;
 	@Autowired
@@ -241,8 +239,28 @@ public class AdminController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 속성 진행 페이지 진입");
 		
 		adminservice.attrUpdate(attr);
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 진행 페이지 진입");
 		
 		return "redirect:/adminMain";
+	}
+	
+	//상품 한번에 삭제 
+	@RequestMapping(value = "/itemDeleteAction", method = RequestMethod.GET)
+	public String itemDeleteActionGET(ItemVO vo,Integer itemnum) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템 삭제");
+
+		adminservice.itemDelete(itemnum);
+		adminservice.attrDelete(itemnum);
+		
+		return "redirect:/itemSelect?num=1";
+	}
+	
+	//상품옵션 개별 삭제
+	@RequestMapping(value = "/attrselectDeleteAction", method = RequestMethod.GET)
+	public String attrDeleteActionGET(Model model,HttpSession session,ItemAttrVO attr,Integer itemcode,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템옵션 삭제");
+		
+		adminservice.attrselectDelete(itemcode);
+		
+		return "redirect:/attrList?num="+num;
 	}
 }

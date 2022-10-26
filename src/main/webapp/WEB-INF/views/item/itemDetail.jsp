@@ -398,40 +398,22 @@ p {
 					<td>
 				</tr>
 			</table>
-
 			<button style="width: 124px; height: 58px;"
 				class="btn btn-outline-danger" id="insertLike"
 				onclick="fn_InsertLike()">
 				<font size="5px">#</font>
 			</button>
 			<button style="width: 270px; height: 58px;"
-				class="btn btn-outline-danger" id="insertBasket" onclick="fn_InsertBasket()">장바구니</button>
+				class="btn btn-outline-danger" id="insertBasket">장바구니</button>
 			<button style="width: 270px; height: 58px;"
 				class="btn btn-outline-danger" id="goodsOrder" >구매하기</button>
-			
 			<br>
-
 		</div>
 	</div>
-
 	</div>
-
-
-
 <div style="clear: both;"></div>
-
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-
-	<br>
-	<br>
-
 	<div align="center">
 		<h1>리뷰</h1>
 		<div class="tab-content" id="myTabContent">
@@ -484,17 +466,11 @@ p {
 					<button type="button" class="btn btn-secondary btn-sm"
 						onclick="fn_Review()">WRITE</button>
 				</div>
-
 			</div>
 		</div>
-
-
-
 		<form id="commonForm" name="commonForm"></form>
 </body>
 </html>
-
-
 
 <script type="text/javascript">
 var color ;
@@ -531,54 +507,12 @@ var num ;
 		
 		
 	})
-		var code ;
-	$("#insertBasket").on("click", function(){ // 장바구니 버튼
-		
-		/*  alert(num); */ 
-		
-		
-		cart();	
-	});
+	//장바구니버튼
+	 
 	
-function cart() {
-		
-		if(num == undefined ){
-			alert("상품을 선택해 주세요");
-		}else{
-			$.ajax({
-				type : "get",
-				url : "/itemCode",
-				data : {color : color,
-				num : num},
-				async:false,//전역 변수 보내기
-				dataType : "json",
-				success : function(result) {
-					code = result;
-					
-					console.log("확인 : " + result);
-					if (result) {
-						  /* alert("완료"+code);  */
-						return code;
-					} else {
-						  //alert("전송된 값 없음"+result);  
-					}
-				},
-				error : function() {
-					 // alert("에러 발생"+result); 
-				}
-
-			});//아작스 끝
-	
-			
-				//order.jsp로 code 태워서 보내기
-				location.href = "/cart?code="+code;
-			}
-	}
-	
-	
-	
+	//구매버튼
 	var code ;
-	$("#goodsOrder").on("click", function(){ // 구매 버튼
+	$("#goodsOrder").on("click", function(){
 		
 		/*  alert(num); */ 
 		
@@ -604,6 +538,7 @@ function cart() {
 					console.log("확인 : " + result);
 					if (result) {
 						  /* alert("완료"+code);  */
+						alert("결제하시겠습니까?");
 						return code;
 					} else {
 						  //alert("전송된 값 없음"+result);  
@@ -614,61 +549,7 @@ function cart() {
 				}
 
 			});//아작스 끝
-	
-			
-				
 				location.href = "/order?code="+code;
 			}
 	} 
-	
-	/* function order() { // 구매하기
-		if(doubleSubmitCheck()) return; // 중복클릭 방지
-
-		if(${SESSION_NO ne null}){
-			var arraycode = document.getElementsByName("BASKET_GOODS_AMOUNT");
-			var len = arraycode.length;
-			if(len==0){
-				alert("상품을 추가해 주세요.");
-			}else{
-				var comSubmit = new ComSubmit("frm");
-				comSubmit.setUrl("<c:url value='/shop/goodsOrder.do'/>");
-				comSubmit.submit();
-			}
-		}else {
-			alert("로그인 후 이용해주세요.");
-			location.href = "/stu/loginForm.do";
-		}
-	   
-	} */
-	/* $("#insertBasket").on("click", function(e){ // 장바구니 버튼
-		e.preventDefault(); 
-		fn_InsertBasket();	
-	});
-	
-	function fn_InsertBasket() { // 장바구니
-		
-		if(doubleSubmitCheck()) return; // 중복클릭 방지
-
-		if(${SESSION_NO ne null}){
-			var arraycode = document.getElementsByName("BASKET_GOODS_AMOUNT");
-			var len = arraycode.length;
-			if(len==0){
-				alert("상품을 추가해 주세요.");
-			}else{
-				var url = "/basketPopUp";
-				var name = "popup";
-				var option = "width=382, height=227, top=500, left=800, location=no";
-				
-			    var comSubmit = new ComSubmit("frm");
-				comSubmit.setUrl("<c:url value='/cart'/>");
-				window.open(url,name,option);
-				comSubmit.submit();
-			}
-		}else {
-			alert("로그인 후 이용해주세요.");
-			location.href = "/login";
-		}
-		
-	} */
-	
 </script>

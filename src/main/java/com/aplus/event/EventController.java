@@ -1,5 +1,7 @@
 package com.aplus.event;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,5 +97,14 @@ public class EventController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 이벤트 글 삭제 실행");
 		
 		return "redirect:/event";
+	}
+	
+	// 게시물 목록 + 페이징 추가
+	@RequestMapping(value = "/eventListPage", method = RequestMethod.GET)
+	public void eventListPageGET(Model model) throws Exception {
+	  
+	 //List list = null; 
+	 List<EventVO> list = eventService.list();
+	 model.addAttribute("list", list);   
 	}
 }

@@ -61,23 +61,26 @@
 	<select id="member_list" resultMap="memberlist">
 		SELECT *
 		FROM MEMBER
-		WHERE admin=0
+		WHERE
+		admin=0
 	</select>
 
 	<!-- 회원 블랙처리시 leave 0->2로 변경 -->
 	<update id="member_black" parameterType="MemberVO">
 		UPDATE MEMBER
-		SET leave = 2
+		SET leave =
+		2
 		WHERE id = #{id}
 	</update>
 
 	<!-- 블랙->일반회원 / leave 2->0로 변경 -->
 	<update id="black_return" parameterType="MemberVO">
 		UPDATE MEMBER
-		SET leave = 0
+		SET leave =
+		0
 		WHERE id = #{id}
 	</update>
-	
+
 	<!-- 주문관리 -->
 	<select id="order_admin" resultMap="orderlist">
 		SELECT *
@@ -86,77 +89,110 @@
 		ItemAttr b
 		on a.itemcode = b.itemcode
 	</select>
-	
+
 	<!-- 주문상태 변경 -->
 	<update id="state_change" parameterType="OrderVO">
 		UPDATE ORDERTABLE
-		SET state = #{state}
+		SET
+		state = #{state}
 		WHERE ordernum = #{ordernum}
 	</update>
-	
+
 	<!-- 리뷰관리 -->
 	<select id="review_admin" resultMap="reviewlist">
 		SELECT *
 		FROM REVIEW
 	</select>
-	
+
 	<!-- 리뷰삭제 -->
-	 <delete id="reviewdelete_admin">
-		DELETE 
+	<delete id="reviewdelete_admin">
+		DELETE
 		FROM REVIEW
 		WHERE reviewnum = #{reviewnum}
 	</delete>
-	
+
 	<!-- 상품 등록 -->
 	<insert id="item_insert">
 		INSERT INTO item
-		values(#{itemnum} , #{itemname} , #{itemcat2} ,
+		values(#{itemnum} , #{itemname} ,
+		#{itemcat2} ,
 		#{itemimg} ,
-		#{itemdetailimg}, #{itemcat1},#{itemcost},#{itemstock})
+		#{itemdetailimg},
+		#{itemcat1},#{itemcost},#{itemstock})
 	</insert>
 
 	<!-- 상품수정 -->
 	<update id="item_update" parameterType="ItemVO">
-		update item set itemname = #{itemname} , itemcat2 = #{itemcat2}  , itemimg = #{itemimg}  , itemdetailimg = #{itemdetailimg}
-		, itemcat1 = #{itemcat1} , itemcost = #{itemcost} , itemstock = #{itemstock}
+		update item set itemname
+		= #{itemname} , itemcat2 = #{itemcat2} , itemimg = #{itemimg} ,
+		itemdetailimg = #{itemdetailimg}
+		, itemcat1 = #{itemcat1} , itemcost =
+		#{itemcost} , itemstock = #{itemstock}
 		where itemnum = #{itemnum}
 	</update>
-	
+
 	<!-- 상품 상세 등록 -->
 	<insert id="itemattr_insert">
 		INSERT INTO ITEMATTR
 		VALUES(
-		#{ itemnum }, #{ itemcode }, #{ itemcost },
+		#{ itemnum }, #{ itemcode
+		}, #{ itemcost },
 		#{ itemstock }, #{ itemname }, #{ itemcolor },
-		#{ itemgb }
+		#{
+		itemgb }
 		)
 	</insert>
-	
+
 	<!-- 상품 상세 수정 -->
 	<update id="attr_update" parameterType="ItemAttrVO">
-		UPDATE ITEMATTR 
-		SET  itemcost = #{itemcost}  , itemstock = #{itemstock}
-			, itemcolor = #{itemcolor}
+		UPDATE ITEMATTR
+		SET
+		itemcost = #{itemcost} , itemstock = #{itemstock}
+		, itemcolor =
+		#{itemcolor}
 		WHERE itemcode = #{itemcode}
 	</update>
-	
+
 	<!-- 상품 구분 -->
 	<select id="item_select" resultMap="itemlist">
 		SELECT *
 		FROM ITEM
 	</select>
-	
+
 	<!-- 상품등록(대분류)값 들고오기 -->
 	<select id="item_info" resultType="ItemVO">
 		SELECT *
 		FROM item
-		WHERE itemnum = #{itemnum}
+		WHERE itemnum
+		= #{itemnum}
 	</select>
-	
+
 	<!-- 상품상세 수정시 값 들고오기 -->
 	<select id="attr_info" resultType="ItemAttrVO">
 		SELECT *
 		FROM ITEMATTR
-		WHERE itemcode = #{itemcode}
+		WHERE
+		itemcode = #{itemcode}
 	</select>
+
+	<!-- 상품삭제(item) -->
+	<delete id="item_delete">
+		DELETE
+		FROM item 
+		WHERE itemnum = #{itemnum}
+	</delete>
+
+	<!-- 상품옵션 한번에 삭제 -->
+	<delete id="attr_delete">
+		DELETE
+		FROM ITEMATTR 
+		WHERE itemnum = #{itemnum}
+	</delete>
+	
+	<!-- 상품옵션 개별 삭제 -->
+	<delete id="attrselect_delete">
+		DELETE
+		FROM ITEMATTR 
+		WHERE itemcode = #{itemcode}
+	</delete>
 </mapper>

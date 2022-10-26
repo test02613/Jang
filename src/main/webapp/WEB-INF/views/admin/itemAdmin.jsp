@@ -11,7 +11,6 @@
 <h1><a href="/itemSelect?num=1">상품수정</a></h1>
 <h1><a href="/itemSelect?num=2">상품옵션등록</a></h1>
 <h1><a href="/itemSelect?num=3">상품옵션수정</a></h1>
-<br>
-<h1><a href="/itemSelect?num=3">상품삭제</a></h1>
+
 </body>
 </html>

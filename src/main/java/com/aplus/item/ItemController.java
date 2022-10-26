@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aplus.cart.CartVO;
 import com.aplus.model.MemberVO;
 import com.aplus.review.ReviewService;
 import com.aplus.review.ReviewVO;
@@ -85,7 +86,7 @@ public class ItemController {
 		vo.setItemcolor(color);
 		vo.setItemnum(num);
 		vo = itemService.itemOp(vo);
-
+		
 		Integer cost = vo.getItemcost();
 		Integer code = vo.getItemcode();
 		String to = Integer.toString(cost);
@@ -117,4 +118,5 @@ public class ItemController {
 		return to;
 	}
 
+	
 }

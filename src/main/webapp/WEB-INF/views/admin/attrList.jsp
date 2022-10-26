@@ -13,6 +13,10 @@
 	crossorigin="anonymous">
 
 <style>
+/* 게시글번호, 작성일자 가운데정렬 */
+#center {
+	text-align: center;
+}
 #wrapper {
 	width: 1000px;
 	margin: auto;
@@ -42,21 +46,23 @@ text-align:center;
 	<!-- 게시판 부트스트랩 -->
 	<div class="wrapper">
 		<div id="wrapper">
-		<h1>아이템</h1>
+		<h1>상품 옵션 관리</h1>
 			<table class="table" >
 				<thead class="table-dark">
 					<tr >
 						<th id="title" width="100" scope="col">번호</th>
 						<th id="title"   scope="col">이름</th>
-						<th id="title" width="100"scope="col">카테고리</th>
+						<th id="title" width="100"scope="col">상품코드</th>
+						<th id="title" width="100"scope="col">#</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
 						<tr onClick="location.href='/attrInsert?code=${list.itemcode}'"  style="cursor:pointer;">
 							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemname}" /></td>
-							<td  ><c:out   value="${list.itemcolor}" /></td>
-							<td style="text-decoration: none;"><c:out   value="${list.itemcode}" /></td>
+							<td id="center"><c:out   value="${list.itemcolor}" /></td>
+							<td id="center" style="text-decoration: none;"><c:out   value="${list.itemcode}" /></td>
+							<td id="center"><a href='${path}/attrselectDeleteAction?itemcode=${list.itemcode}&num=${list.itemnum}'><button type="button" onclick="attrDelete();">삭제</button></a></td>
 						</tr>
 					</c:forEach>
 					
@@ -70,6 +76,14 @@ text-align:center;
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
+	<script>
+	
+	//삭제버튼 누르면 경고창 띄우기
+	function attrDelete() {
+		window.confirm("상품을 삭제하시겠습니까?")
+	}
+	</script>
+	</script>
 		
 </body>
 </html>

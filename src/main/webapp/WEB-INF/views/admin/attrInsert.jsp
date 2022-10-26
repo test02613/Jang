@@ -78,11 +78,12 @@
 		</table>
 		<c:if test="${num == 1}">
 			<input type="button" class="insert_button" value="등록">
+		
 		</c:if>
 		<c:if test="${num == 2}">
-			<input type="button" class="update_button" value="1등록">
+			<input type="button" class="update_button" value="수정">
+		
 		</c:if>
-
 	</form>
 	<script>
 		var itemcode = document.getElementById("itemcode").value;

@@ -46,6 +46,13 @@ public class EventServiceImpl implements EventService {
 
 		return dao.eventDelete(num);
 	}
+	
+	//(페이징)게시물 총 갯수
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.count();
+	}
 
 
 	

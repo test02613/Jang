@@ -10,40 +10,59 @@
 		<result column="EVENTTITLE" property="eventtitle"
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
-	
+
 	<!-- 게시글 등록 -->
 	<insert id="event_insert" parameterType="EventVO">
-		<selectKey keyProperty="eventnum" resultType="int" order="BEFORE">
-	      select EVENTNUM_SEQ.nextval FROM DUAL
-	   </selectKey>
-	      insert into event values(#{eventnum},
-	      sysdate, #{eventtitle},
-	      #{eventcontent} )
-	 </insert>
-	 
+		<selectKey keyProperty="eventnum" resultType="int"
+			order="BEFORE">
+			select EVENTNUM_SEQ.nextval FROM DUAL
+		</selectKey>
+		insert into event values(#{eventnum},
+		sysdate, #{eventtitle},
+		#{eventcontent} )
+	</insert>
+
 	<!-- 게시글 목록 -->
 	<select id="event_list" resultMap="list">
 		SELECT *
 		FROM EVENT
-		ORDER BY eventnum DESC
+		ORDER BY
+		eventnum DESC
 	</select>
-	
+
 	<!-- 이벤트 상세 -->
 	<select id="event_detail" resultType="EventVO">
-		SELECT * 
-		FROM EVENT 
+		SELECT *
+		FROM EVENT
 		WHERE eventnum = #{eventnum}
 	</select>
-	
+
 	<!-- 글 수정 -->
 	<update id="event_update" parameterType="EventVO">
-		UPDATE EVENT 
+		UPDATE EVENT
 		SET eventtitle= #{eventtitle}, eventcontent= #{eventcontent}
-		WHERE eventnum = #{eventnum}
+		WHERE
+		eventnum = #{eventnum}
 	</update>
-	
+
 	<!-- 글 삭제 -->
-	  <delete id="event_delete" >
-        delete from EVENT where eventnum = #{eventnum}
-    </delete>
+	<delete id="event_delete">
+		delete from EVENT where eventnum = #{eventnum}
+	</delete>
+
+	<!-- 게시물 총 갯수 -->
+	<select id="event_count" resultType="int">
+		select count(eventnum) from EVENT
+	</select>
+
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="event_listPage" parameterType="hashMap"
+		resultType="EventVO">
+		select
+		eventnum, eventdate, eventtitle, eventcontent
+		from EVENT
+		order by eventnum desc
+		limit #{displayPost}, #{postNum}
+	</select>
+
 </mapper>
