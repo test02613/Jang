@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aplus.event.EventController;
 import com.aplus.item.ItemAttrVO;
+import com.aplus.item.ItemService;
+import com.aplus.item.ItemVO;
 
 @Controller
 public class CartController {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+	@Autowired
+	private ItemService itemService;
 
 	@Autowired
 	private CartService cartService;
@@ -34,6 +38,10 @@ public class CartController {
 		String color = attr.getItemcolor();
 		Integer cost = attr.getItemcost();
 		String name = attr.getItemname();
+		Integer num=attr.getItemnum();
+		ItemVO vo1 = itemService.itemDetail(num);
+		String itemimg=vo1.getItemimg();
+		vo.setItemimg(itemimg);
 		vo.setItemcode(code);
 		vo.setItemcost(cost);
 		vo.setItemname(name);

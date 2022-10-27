@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="mapper.Member_SQL">
 
 	<!-- 회원가입 -->
@@ -16,14 +15,15 @@
 
 	<!-- 아이디 찾기 -->
 	<select id="findId" parameterType="MemberVO" resultType="String">
-		select
-		id from member where name = #{name} AND email = #{email}
+		SELECT id
+		FROM member
+		WHERE name = #{name}
+		AND email = #{email}
 	</select>
 
 	<!-- 비밀번호 초기화용 -->
 	<select id="findPw" parameterType="MemberVO" resultType="String">
-		SELECT
-		pw
+		SELECT pw
 		FROM member
 		WHERE id = #{id}
 		AND email = #{email}
@@ -57,6 +57,7 @@
 	<select id="idCheck" resultType="int">
 		SELECT count(*)
 		FROM member
-		WHERE id = #{id}
+		WHERE
+		id = #{id}
 	</select>
 </mapper>

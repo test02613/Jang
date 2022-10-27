@@ -37,14 +37,4 @@
         DELETE FROM CART
         WHERE itemcode = #{itemcode}
     </delete>
-	
-
-	
-	<!-- 장바구니 수정 -->
-	<!-- <update id="cart_update" parameterType="CartVO">
-		UPDATE CART 
-		SET eventtitle= #{eventtitle}, eventcontent= #{eventcontent}
-		WHERE eventnum = #{eventnum}
-	</update> -->
-	
 </mapper>

@@ -55,6 +55,7 @@
 		select count(eventnum) from EVENT
 	</select>
 
+	<!-- 구현중.. -->
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="event_listPage" parameterType="hashMap"
 		resultType="EventVO">

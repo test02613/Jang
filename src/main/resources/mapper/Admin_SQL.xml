@@ -76,8 +76,7 @@
 	<!-- 블랙->일반회원 / leave 2->0로 변경 -->
 	<update id="black_return" parameterType="MemberVO">
 		UPDATE MEMBER
-		SET leave =
-		0
+		SET leave = 0
 		WHERE id = #{id}
 	</update>
 
@@ -126,8 +125,8 @@
 		update item set itemname
 		= #{itemname} , itemcat2 = #{itemcat2} , itemimg = #{itemimg} ,
 		itemdetailimg = #{itemdetailimg}
-		, itemcat1 = #{itemcat1} , itemcost =
-		#{itemcost} , itemstock = #{itemstock}
+		, itemcat1 = #{itemcat1} , itemcost = #{itemcost} , 
+		itemstock = #{itemstock}
 		where itemnum = #{itemnum}
 	</update>
 
@@ -135,11 +134,9 @@
 	<insert id="itemattr_insert">
 		INSERT INTO ITEMATTR
 		VALUES(
-		#{ itemnum }, #{ itemcode
-		}, #{ itemcost },
+		#{ itemnum }, #{ itemcode}, #{ itemcost },
 		#{ itemstock }, #{ itemname }, #{ itemcolor },
-		#{
-		itemgb }
+		#{itemgb }
 		)
 	</insert>
 

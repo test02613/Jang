@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Order_SQL">
+
+	<!-- item 정보 가져오기 -->
+	<select id="order_item"  resultType="ItemAttrVO">
+		select * from ITEMATTR where itemcode = #{itemcode} 
+	</select>
+	
+	<!-- 고객 정보 가져오기 -->
+	<select id="order_member"  resultType="MemberVO">
+		select * from member where id = #{id} 
+	</select>
+
+	<!-- 주문서 넘기기 -->
+	<insert id="order_insert" parameterType="OrderVO">
+		<selectKey keyProperty="ordernum" resultType="INTEGER" order="BEFORE">
+	      SELECT ITEMNUM_SEQ.nextval FROM DUAL
+		</selectKey>
+	      INSERT INTO ORDERTABLE values(#{id} , #{ordernum} , 0,
+	      0, #{ordercost}, sysdate, 0, #{postcode},
+	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode},0,'결제완료')
+	 </insert>
+	 
+ 	<!-- 주문번호 가져오기 -->
+	<select id="ordernum"  resultType="OrderVO">
+		SELECT * FROM ORDERTABLE 
+		WHERE ordernum = #{ordernum}
+	</select>
+	
+	<!-- 포인트 업데이트 -->
+	<update id="point_update" parameterType="MemberVO">
+		UPDATE MEMBER 
+		SET point= #{point}
+		WHERE id = #{id}
+	</update>
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="mapper.Review_SQL">
+
+	<resultMap type="ReviewVO" id="reviewlist">
+		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
+			javaType="Integer" />
+		<result column="REVIEWNUM" property="reviewnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="REVIEWTITLE" property="reviewtitle"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="REVIEWCONTENT" property="reviewcontent"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+
+	<!-- 리뷰 등록 -->
+	<insert id="review_insert" parameterType="ReviewVO">
+		<selectKey keyProperty="reviewnum" resultType="int"
+			order="BEFORE">
+			select REVIEWNUM_SEQ.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO REVIEW 
+		VALUES(#{itemnum}, #{id}, #{reviewnum},
+		sysdate, #{reviewtitle}, #{reviewcontent}, #{ordernum})
+	</insert>
+
+	<!-- 리뷰 목록 -->
+	<select id="myreview_list" resultMap="reviewlist">
+		SELECT *
+		FROM REVIEW
+		WHERE id = #{id}
+	</select>
+	
+	<!-- 리뷰 상세 (디테일) -->
+	<select id="myreview_detail" resultMap="reviewlist">
+		SELECT *
+		FROM REVIEW
+		WHERE ordernum = #{ordernum}
+	</select>
+	
+	<!-- 리뷰 작성시 1로 업데이트 -->
+	<update id="reveiw_up" parameterType="OrderVO">
+		UPDATE ORDERTABLE 
+		SET REVIEW = 1
+		WHERE ordernum = #{ordernum}
+	</update>
+	
+	<!-- reviewnum 가져오기 -->
+	<select id="review_num" resultType="ReviewVO">
+		SELECT *
+		FROM REVIEW
+		WHERE reviewnum = #{reviewnum}
+	</select>
+	
+	<!-- 리뷰 수정 -->
+	 <update id="review_update" parameterType="ReviewVO">
+		update REVIEW set reviewtitle = #{reviewtitle} , reviewcontent = #{reviewcontent}
+		where reviewnum = #{reviewnum}
+	</update>
+
+	<!-- 리뷰 삭제 -->
+	<delete id="review_delete">
+		DELETE FROM REVIEW WHERE reviewnum = #{reviewnum}
+	</delete>
+  </mapper>
