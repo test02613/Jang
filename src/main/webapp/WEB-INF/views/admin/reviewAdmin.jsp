@@ -78,11 +78,10 @@ button {
 						<td id="center"><c:out value="${reviewlist.itemnum}" /></td>
 						<td id="center"><c:out value="${reviewlist.id}" /></td>
 						<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
-						<td id="center"><a
-							href='${path}/reviewDetail?num=${reviewlist.ordernum}'><button
-									type="button">리뷰상세보기</button></a> <a
-							href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'><button
-									type="button"  onclick="reviewDelete();">삭제</button></a></td>
+						<td id="center"><a href='${path}/reviewDetail?num=${reviewlist.ordernum}'>
+						<button type="button">리뷰상세보기</button></a> 
+						<a href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'>
+						<button type="button" onclick="reviewDelete();">삭제</button></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

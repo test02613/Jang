@@ -30,5 +30,6 @@ public interface ItemDAO {
 	/* 상품 리뷰 상세 */
 	public ReviewVO itemreviewdetail(Integer itemnum) throws Exception;
 
+	/*-----------상품검색 구현중----------*/
 	public ItemVO itemSearch(String itemname) throws Exception;
 }

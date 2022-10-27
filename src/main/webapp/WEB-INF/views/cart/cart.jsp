@@ -63,7 +63,8 @@ button {
                <tr>
                   <th scope="col" class="col-2" id="title">상품</th>
                   <th scope="col" class="col-2" id="title">가격</th>
- 
+				<th scope="col" class="col-2" id="title">#</th>		
+				<th scope="col" class="col-2" id="title">#</th>		
                </tr>
             </thead>
             <!-- 게시글 목록 -->
@@ -71,8 +72,12 @@ button {
                <%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
                <c:forEach items="${cartlist}" var="cartlist" varStatus="Status">
                   <tr onClick="location.href='${path}/itemDetail?num=${item.itemcode}'"  style="cursor:pointer;" id="list">
-                      <td id="center"><img src='' width="70px" height="70px"><c:out value="${item.itemname}" /></td>
-                      <td id="center"><c:out value="${item.itemcost}" />원</td>
+                      <td id="center"><img src='' width="70px" height="70px"><c:out value="${cartlist.itemname}/${cartlist.itemattr}" /></td>
+                      <td id="center"><c:out value="${cartlist.itemcost}" />원</td>
+                     <td id="center"> <a href='${path}/order?code=${cartlist.itemcode}'>
+                     <button>결제</button></a></td>
+                     <td id="center"> <a href='${path}/cartDeleteAction?code=${cartlist.itemcode}'>
+                     <button>삭제</button></a></td>
                   </tr>
                </c:forEach>
             </tbody>

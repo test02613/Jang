@@ -50,7 +50,7 @@ public class MemberVO {
 	/* 회원 포인트 */
 	private Integer point;
 
-	/* 회원 탈퇴 */
+	/* 회원 상태 */
 	private String leave;
 
 	/*

@@ -24,7 +24,7 @@
 	<insert id="cart_insert" parameterType="CartVO">
 	      INSERT INTO CART VALUES(#{id},#{itemname},
 	      #{itemcode}, #{itemcost},
-	      #{itemimg} )
+	      #{itemimg},#{itemattr} )	      
 	 </insert>
 	 
 	<!-- item 정보 가져오기 -->
@@ -32,12 +32,13 @@
 		select * from ITEMATTR where itemcode = #{itemcode} 
 	</select>
 	
-	<!-- 장바구니 목록 -->
-	<!-- <select id="cart_list" resultMap="list">
-		SELECT *
-		FROM CART
-		ORDER BY eventnum DESC
-	</select> -->
+	<!-- 장바구니 삭제 -->
+	<delete id="cart_delete" >
+        DELETE FROM CART
+        WHERE itemcode = #{itemcode}
+    </delete>
+	
+
 	
 	<!-- 장바구니 수정 -->
 	<!-- <update id="cart_update" parameterType="CartVO">
@@ -46,8 +47,4 @@
 		WHERE eventnum = #{eventnum}
 	</update> -->
 	
-	<!-- 장바구니 삭제 -->
-	<!-- <delete id="cart_delete" >
-        DELETE FROM CART WHERE eventnum = #{eventnum}
-    </delete> -->
 </mapper>

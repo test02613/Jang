@@ -30,7 +30,7 @@ public class OrderController {
 
 	/* 주문 페이지 */
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String orderLGET(Model model, Integer code, HttpSession session, MemberVO mem) throws Exception {
+	public String orderLGET(String cartId, Model model, Integer code, HttpSession session, MemberVO mem) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문 페이지 진입");
 
 		ItemAttrVO vo = orderService.order_item(code); /* code로 해당 item 정보 가져오기 */

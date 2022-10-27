@@ -63,8 +63,10 @@ public class ItemDAOImpl implements ItemDAO {
 		return sql.selectOne("mapper.Item_SQL.itemreview_detail", itemnum);
 	}
 
+	/*-----------상품검색 구현중----------*/
 	@Override
 	public ItemVO itemSearch(String itemname) throws Exception {
+		
 		return sql.selectOne("mapper.Item_SQL.item_search", itemname);
 	}
 }

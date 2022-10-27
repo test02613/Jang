@@ -350,39 +350,22 @@ p {
 				<table>
 					<tr>
 						<td><select name="ColorList" id="ColorList"
-							class='total_cartAdd' 
-							style="width: 600px; height: 30px;">
+							class='total_cartAdd' style="width: 600px; height: 30px;">
 								<option value="">==(필수)옵션: 색상 선택 ==</option>
 								<c:forEach var="list1" items="${list1}" varStatus="index">
-									<c:if test="${list1.itemstock == 0}" ><option id="ba" value="${list1.itemcolor}" disabled="disabled">${list1.itemcolor} (품절) </option></c:if>
-									<c:if test="${list1.itemstock != 0}" ><option value="${list1.itemcolor}">${list1.itemcolor}  </option></c:if>
-									
+									<c:if test="${list1.itemstock == 0}">
+										<option id="ba" value="${list1.itemcolor}" disabled="disabled">${list1.itemcolor}
+											(품절)</option>
+									</c:if>
+									<c:if test="${list1.itemstock != 0}">
+										<option value="${list1.itemcolor}">${list1.itemcolor}
+										</option>
+									</c:if>
 								</c:forEach>
 						</select></td>
-
-
 					</tr>
-
-					
 				</table>
 			</div>
-
-			<form id="frm" name="frm" method="post">
-
-				<div>
-					<table style="border: 1px;" id="dynamicTable">
-						<thead>
-						</thead>
-
-						<tbody id="dynamicTbody">
-
-						</tbody>
-
-					</table>
-				</div>
-
-			</form>
-
 			<div class="totals-item totals-item-total"
 				style="float: left; margin-left: 400px;">
 				<label class="total_price">총상품금액</label>&nbsp;&nbsp;
@@ -390,8 +373,6 @@ p {
 				<div class="totals-value" id="cart-total" style="float: right;">0</div>
 			</div>
 			<br>
-			<br>
-
 			<table>
 				<tr>
 					<td><hr style="border-top: 1px solid #bbb;" width=670px>
@@ -404,14 +385,15 @@ p {
 				<font size="5px">#</font>
 			</button>
 			<button style="width: 270px; height: 58px;"
-				class="btn btn-outline-danger" id="insertBasket">장바구니</button>
+							class="btn btn-outline-danger" id="insertBasket"
+							>장바구니</button>
 			<button style="width: 270px; height: 58px;"
-				class="btn btn-outline-danger" id="goodsOrder" >구매하기</button>
+				class="btn btn-outline-danger" id="goodsOrder">구매하기</button>
 			<br>
 		</div>
 	</div>
 	</div>
-<div style="clear: both;"></div>
+	<div style="clear: both;"></div>
 	<br>
 	<br>
 	<div align="center">
@@ -459,13 +441,6 @@ p {
 						</table>
 					</div>
 				</div>
-
-				<div id="PAGE_NAVI"></div>
-				<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
-				<div style="margin-left: 1050px">
-					<button type="button" class="btn btn-secondary btn-sm"
-						onclick="fn_Review()">WRITE</button>
-				</div>
 			</div>
 		</div>
 		<form id="commonForm" name="commonForm"></form>
@@ -475,14 +450,14 @@ p {
 <script type="text/javascript">
 var color ;
 var num ;
-	$('#ColorList').on("change", function() {//셀렉트 박스
+var itemcode ;
+	$('#ColorList').on("change", function() {/* 셀렉트 박스 */
 		color = $("#ColorList option:selected").val();
 		num = ${detail.itemnum}
 		
 		var data = {
 			color : color,
 			num : num
-
 		}
 		$.ajax({
 			type : "get",
@@ -503,14 +478,12 @@ var num ;
 				 /* alert("에러 발생"+result); */
 			}
 
-		});//아작스 끝
+		});/* 아작스 끝 */
 		
 		
 	})
-	//장바구니버튼
-	 
 	
-	//구매버튼
+	/* 구매버튼 */
 	var code ;
 	$("#goodsOrder").on("click", function(){
 		
@@ -541,16 +514,45 @@ var num ;
 						alert("결제하시겠습니까?");
 						return code;
 					} else {
-						  //alert("전송된 값 없음"+result);  
+						  /* alert("전송된 값 없음"+result); */  
 						  
 					}
 				},
 				error : function() {
-					 // alert("에러 발생"+result); 
+					 /* alert("에러 발생"+result); */ 
 				}
 
-			});//아작스 끝
+			});/* 아작스 끝 */
 				location.href = "/order?code="+code;
 			}
 	} 
+	 /* 장바구니버튼 */
+		$("#insertBasket").on("click", function() { // 장바구니
+			$.ajax({
+				type : "get",
+				url : "/itemCode",
+				data : {
+					color : color,
+					num : num
+				},
+				async : false,//전역 변수 보내기
+				dataType : "json",
+				success : function(result) {
+					code = result;
+					console.log("확인 : " + result);
+					if (result) {
+						/* alert("완료"+code);  */
+						return code;
+					} else {
+						//alert("전송된 값 없음"+result);  
+					}
+				},
+				error : function() {
+					// alert("에러 발생"+result); 
+				}
+			});//아작스 끝
+			alert("장바구니에 추가하시겠습니까?");
+			location.href = "/cartInsertAction?code=" + code;
+		});
+		
 </script>

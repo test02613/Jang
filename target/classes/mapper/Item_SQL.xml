@@ -89,7 +89,7 @@
 		WHERE itemnum = #{itemnum}
 	</select>
 	
-	<!-- 상품검색 -->
+	<!-- 상품검색(구현중) -->
 	<select id="item_search">
 		SELECT *
 		FROM ITEM
