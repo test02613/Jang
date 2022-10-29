@@ -98,24 +98,22 @@
 		<!-- 인디케이터 끝 -->
 		<!-- 이미지 슬라이드 끝 -->
 
-
 		<!-- 상품 바로가기 이미지 -->
 		<div id="boot_imgradius2">
 			<div id="image_click_mainwrapper">
-				<a href="http://localhost:8181/itemDetail?num=1"> <img
+				<a href="http://localhost:8181/itemListL?cat=4"> <img
 					class="bd-placeholder-img rounded float-end" width="390"
 					height="250" src="../resources/img/go1.png" role="img" />
 				</a> <a href="http://localhost:8181/itemDetail?num=1"> <img
 					class="bd-placeholder-img rounded float-end" width="390"
 					height="250" src="../resources/img/go2.png" role="img" />
-				</a> <a href="http://localhost:8181/itemDetail?num=1"> <img
+				</a> <a href="http://localhost:8181/itemListL?cat=6"> <img
 					class="bd-placeholder-img rounded float-end" width="390"
 					height="250" src="../resources/img/go3.png" role="img" />
 				</a>
 
 			</div>
 		</div>
-
 		<!-- 상품 바로가기 이미지 끝 -->
 
 	</div>

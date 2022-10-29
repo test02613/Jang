@@ -19,22 +19,37 @@
 	margin-top: 30px;
 	border-radius: 10px;
 }
-
-#title {
+/* 페이지 상단 타이틀 : "이벤트" */
+#subjecet {
 	text-align: center;
-	align-content: center;
+	font-weight: bold;
+	height: 100px;
+	color: #24292F;
+	font-size: 40px;
+	height: 100px;
 }
-
-td:hover {
-	
-}
-
-h1 {
+/* 중앙정렬 */
+.center {
 	text-align: center;
 }
-
-#button {
+/* 제목라인 */
+#title{
+text-align:center;
+align-content: center;
+	font-weight: bold;
+}
+/* 수정,삭제 버튼 */
+.ebutton {
+	width: 90px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
 	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
 }
 </style>
 </head>
@@ -42,37 +57,38 @@ h1 {
 	<!-- 게시판 부트스트랩 -->
 	<div class="wrapper">
 		<div id="wrapper">
-			<h1>이벤트</h1>
+			<div id="subjecet">이벤트</div>
 			<table class="table">
 
 				<thead class="table-dark">
 					<tr>
 						<th id="title" width="100" scope="col">번호</th>
 						<th id="title" scope="col">제목</th>
-						<th id="title" width="100" scope="col">작성일</th>
+						<th id="title" width="200" scope="col">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td id="title" style="text-decoration: none;"><c:out
 								value="${detail.eventnum}" /></td>
-						<td><c:out value="${detail.eventtitle}" /></td>
-						<td style="text-decoration: none;"><c:out
+						<td id="title" ><c:out value="${detail.eventtitle}" /></td>
+						<td id="title" style="text-decoration: none;"><c:out
 								value="${detail.eventdate}" /></td>
 					</tr>
 					<tr>
-						<td colspan="3" height="500" scope="col"><c:out
+						<td id="title" colspan="3" height="200" scope="col"><c:out
 								value="${detail.eventcontent}" /></td>
 					</tr>
-
 				</tbody>
 			</table>
-		</div>
-		<div id="button">
+		<div class="center">
 			<c:if test="${admin eq 1}">
-				<a href='${path}/eventUpdate?num=${detail.eventnum}'><button>수정하기</button></a>
-				<a href='${path}/eventDeleteAction?num=${detail.eventnum}'><button>삭제하기</button></a>
+				<a href='${path}/eventUpdate?num=${detail.eventnum}'><button class="ebutton">수정하기</button></a>
+				<a href='${path}/eventDeleteAction?num=${detail.eventnum}'><button class="ebutton">삭제하기</button></a>
 			</c:if>
+		</div>
+			<div style="text-align: right;">
+				<a href="/event"><button class="ebutton">글 목록 가기</button></a></div>
 		</div>
 	</div>
 	<script

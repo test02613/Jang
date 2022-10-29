@@ -16,11 +16,5 @@ public interface CartDAO {
 	public void cartInsert(CartVO vo) throws Exception;
 
 	/* 장바구니 삭제 */
-	public CartVO cartDelete(Integer itemcode) throws Exception;
-	
-	
-	//장바구니 수정 public void cartUpdate()throws Exception;
-	  
-	  
-	 
+	public CartVO cartDelete(Integer itemcode) throws Exception;	 
 }

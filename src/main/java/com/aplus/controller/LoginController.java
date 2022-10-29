@@ -100,7 +100,7 @@ public class LoginController {
 	}
 
 	/* 임시 비밀번호 이메일로 보내기 */
-	@RequestMapping(value = "/findPwAction", method = RequestMethod.POST)
+	@RequestMapping(value = "/findPwAction", method = { RequestMethod.GET, RequestMethod.POST })
 	public String findPwAction(HttpServletResponse response, @ModelAttribute MemberVO vo, Model md) throws Exception {
 		PrintWriter out = response.getWriter();
 		ModelAndView mav = new ModelAndView();
@@ -109,15 +109,11 @@ public class LoginController {
 		String id = vo.getId();
 		logger.info("Member55:" + vo);
 
-		if (pw == null) {
-			
-			out.print("<script>alert('\" 보노보노 \"'); history.go(-1);</script>");
-			out.close();
+		if (pw != null){
 
-		} else {
-			
-			out.print("<script>alert('\" 이메일로 임시 비밀번호를 발송하였습니다. \"'); history.go(-1);</script>");
+			out.print("<script>alert('\" 이메일로 임시 비밀번호를 발송하였습니다. \"'); history.go(-1);</script>");			
 			out.close();
+			
 			logger.info("========================== 이메일 데이터 전송 확인 ============================");
 			logger.info("인증번호 : [ " + email + " ]");
 
@@ -149,10 +145,17 @@ public class LoginController {
 			String num = Integer.toString(pw1);
 			vo.setPw(num);
 			memberService.updatePw(response, vo);
+			
+		
+
+		} else if(pw == null){
+
+			out.print("<script>alert('\" 해당하는 아이디나 이메일이 없습니다. \"'); </script>");
+			out.close();
 
 		}
 		
-		return "member/findPwAction";
+		return "redirect:/login";
 
 	}
 

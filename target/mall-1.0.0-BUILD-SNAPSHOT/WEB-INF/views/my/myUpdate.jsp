@@ -18,83 +18,151 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.correct {
-	color: green;
+/* 전체 wrap */
+#wrap {
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 50px;
+	text-align: center;
+	margin-bottom: 100px
 }
-
-.incorrect {
-	color: red;
+/* 페이지 상단 타이틀 : "회원정보수정" */
+.subjecet {
+	font-weight: bold;
+	height: 100px;
+	color: #24292F;
+	font-size: 40px;
+	margin-top: 20px;
+	height: 100px;
+}
+/* 영역별 타이틀 중복코드 sub_title 로  통일 */
+.sub_title {
+	font-size: 20px;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+/* 우편번호 입력란 */
+#address_input_1_box {
+	height: 50px;
+	width: 65%;
+	margin-bottom: 10px;
+	float: left;
+}
+/* 주소찾기 버튼 */
+.address_button {
+	width: 30%;
+	height: 50px;
+	background-color: #24292F;
+	font-size: 18px;
+	color: white;
+	line-height: 50px;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	float: right;
+	cursor: pointer;
+}
+/* input 영역 */
+.input {
+	width: 100%;
+	height: 50px;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+/* 수정 불가 영역 */
+.no-input{
+     background-color:lightgray;
+	width: 100%;
+	height: 50px;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+/* 수정,탈퇴 버튼 */
+#btt {
+	width: 100%;
+	height: 50px;
+	background-color: #24292F;
+	font-size: 20px;
+	font-weight: 900;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 10px;
 }
 </style>
 </head>
 <body>
-	<form id="myUpdate_form" method="POST">
-		<table class="table table-striped">
-			<colgroup>
-				<col width="15%" />
-				<col width="*" />
-			</colgroup>
-			<tbody>
-				<tr>
-					<td>이름</td>
-					<td style="text-align: left"><input type="text" name="name"
-						id="MY_NAME" value="${member.name}" style="width: 100px;">
-					</td>
-				</tr>
-				<tr>
-					<td>아이디</td>
-					<td style="text-align: left"><input type="text" name="id"
-						id="MY_ID" value="${member.id}" style="width: 100px;"
-						readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" id="pw" name="pw"
-						placeholder="비밀번호" /></td>
-				</tr>
-				<tr>
-					<td>비밀번호 확인</td>
-					<td><input type="password" id="pwcheck" placeholder="비밀번호 확인" />
-						<font id="chkNotice" size="2"></font></td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td style="text-align: left"><input type="text" name="email"
-						id="MY_EMAIL" value="${member.email}" style="width: 100px;"
-						readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>휴대폰번호</td>
-					<td style="text-align: left"><input type="text" name="mobile"
-						id="MY_PHONE" value="${member.mobile}" style="width: 120px;">
-					</td>
-				</tr>
-				<tr>
-					<td rowspan="3">주소</td>
-					<td style="text-align: left"><input type="text"
-						name="postcode" id="MY_ZIPCODE" value="${member.postcode}"
-						style="width: 80px;">
-						<button type="button" id="findAddrBtn" onclick="findAddr()">우편번호
-							찾기</button></td>
-				</tr>
-				<tr>
-					<td style="text-align: left"><input type="text" name="address"
-						id="MY_ADDR1" value="${member.address}" style="width: 400px;"></td>
-				</tr>
-				<tr>
-					<td style="text-align: left"><input type="text"
-						name="addressDetail" id="MY_ADDR2" value="${member.addressDetail}"
-						style="width: 400px;"></td>
-				</tr>
-			</tbody>
-		</table>
-		<input type="button" class="myUpdate_button" value="수정하기">
-	</form>
-		<button type="button" onclick="removeMember();"> 탈퇴하기 </button>
+	<div id="wrap">
+		<div class="subjecet">회원 정보수정</div>
+		<hr>
+		<br><br>
+		<form id="myUpdate_form" method="POST">
+			<div class="sub_title">이름</div>
+			<div>
+				<input class="input" type="text" name="name" id="MY_NAME"
+					value="${member.name}">
+			</div>
+			<div class="sub_title">아이디</div>
+			<div>
+				<input class="no-input" type="text" name="id" id="MY_ID"
+					value="${member.id}" readonly="readonly">
+			</div>
+			<div class="sub_title">비밀번호</div>
+			<div>
+				<input class="input" type="password" id="pw" name="pw"
+					placeholder="비밀번호" />
+			</div>
+			<div>
+				<input class="input" type="password" id="pwcheck"
+					placeholder="비밀번호 확인" /> <font id="chkNotice" size="5"></font>
+			</div>
+			<div class="sub_title">이메일</div>
+			<div>
+				<input class="no-input" type="text" name="email" id="MY_EMAIL"
+					value="${member.email}" readonly="readonly">
+			</div>
+			<div class="sub_title">휴대폰번호</div>
+			<div>
+				<input class="input" type="text" name="mobile" id="MY_PHONE"
+					value="${member.mobile}">
+			</div>
+			<div class="sub_title">주소</div>
+			<div>
+				<input class="input" type="text" name="postcode"
+					id="address_input_1_box" value="${member.postcode}">
+				<button type="button" class="address_button" id="findAddrBtn"
+					onclick="findAddr()">우편번호 찾기</button>
+			</div>
+			<div>
+				<input class="input" type="text" name="address" id="MY_ADDR1"
+					value="${member.address}">
+			</div>
+			<div>
+				<input class="input" type="text" name="addressDetail" id="MY_ADDR2"
+					value="${member.addressDetail}">
+			</div>	
+			<br>	
+			<hr><br>
+			<br> <input type="button" id="btt" class="myUpdate_button"
+				value="수정하기"><br>
+			<button type="button" id="btt" onclick="removeMember();">탈퇴하기</button>
+		</form>
+	</div>
 	<script>
 		//회원정보 수정 버튼
 		$(document).ready(function() {
 			$(".myUpdate_button").click(function() {
+				alert("회원정보를 수정하시겠습니까?")
 				$("#myUpdate_form").attr("action", "/myUpdateAction");
 				$("#myUpdate_form").submit();
 
@@ -184,14 +252,15 @@
 						}
 					}).open();
 		}
-		
+
 		//탈퇴버튼 누르면 경고창 띄우기
 		function removeMember() {
-			if(window.confirm("탈퇴하시겠습니까?")){
-			location.href="/memberLeave";
+			if (window.confirm("탈퇴하시겠습니까?")) {
+				location.href = "/memberLeave";
 			}
-			
+
 		}
 	</script>
+
 </body>
 </html>

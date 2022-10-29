@@ -42,6 +42,7 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminservice;
+	
 	@Autowired
 	private ItemService itemservice;
 
@@ -113,7 +114,7 @@ public class AdminController {
 		return "admin/orderAdmin";
 	}
 
-	/* 주문-배송상태 변경 */
+	/* 주문,배송상태 변경 */
 	@RequestMapping(value = "/state_selcted", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public void state_selctedGET(OrderVO vo, Model model, @RequestParam("state") String state,
@@ -189,7 +190,7 @@ public class AdminController {
 		vo.setItemnum(num);
 		adminservice.itemUpdate(vo);
 
-		return "redirect:/adminMain";
+		return "redirect:/itemSelect?num=1";
 	}
 
 	/* 상품 선택 */
@@ -282,25 +283,24 @@ public class AdminController {
 	}
 	
 	/* 첨부 파일 업로드 */
-	//<form> 태그를 이용하던 방식과 동일한 방식으로 처리됨
-		//Ajax 방식으로 결과 데이터를 전달하므로 Model을 사용하지 않음.
+	/*<form> 태그를 이용하던 방식과 동일한 방식으로 처리됨*/
+		/*Ajax 방식으로 결과 데이터를 전달하므로 Model을 사용하지 않음.*/
 		@ResponseBody
 		@RequestMapping(value="/uploadAjaxAction", method = { RequestMethod.GET, RequestMethod.POST })
-		//public List<AttachFileVO> uploadAjaxAction(MultipartFile[] uploadFile) {
 		public ResponseEntity<List<AttachFileVO>> uploadAjaxAction(MultipartFile[] uploadFile) {
 			
 			String uploadFolder = "D:\\jsj60\\works\\egov39_1\\aaplus\\src\\main\\webapp\\resources\\itemImg";
 			
-			//연/월/일 폴더 생성 시작-------
+			/*연/월/일 폴더 생성 시작-------*/
 			File uploadPath = new File(uploadFolder, getFolder());
 			logger.info("uploadPath : " + uploadPath);
 			
 			if(uploadPath.exists()==false) {//해당 경로가 없으면 생성해줘야함
 				uploadPath.mkdirs();			
 			}
-			//연/월/일 폴더 생성 끝-------
+			/*연/월/일 폴더 생성 끝-------*/
 			
-			//첨부된 파일의 이름을 담을 List
+			/*첨부된 파일의 이름을 담을 List*/
 			List<AttachFileVO> list = new ArrayList<AttachFileVO>();
 						
 			for(MultipartFile multipartFile : uploadFile) {
@@ -310,36 +310,36 @@ public class AdminController {
 				logger.info("파일크기 : " + multipartFile.getSize());
 				
 				AttachFileVO attachFileVO = new AttachFileVO();
-				//1) fileName
+				/*1) fileName*/
 				attachFileVO.setFileName(multipartFile.getOriginalFilename());
 				
-				//-----------UUID 파일명 처리 시작 ----------------------------
-				//동일한 이름으로 업로드되면 기존 파일을 지우게 되므로 이를 방지하기 위함
+				/*-----------UUID 파일명 처리 시작 ----------------------------*/
+				/*동일한 이름으로 업로드되면 기존 파일을 지우게 되므로 이를 방지하기 위함*/
 				UUID uuid = UUID.randomUUID();
 				
 				String uploadFileName = uuid.toString() + "-" + multipartFile.getOriginalFilename();
-				// c:\\upload\\gongu03.jpg으로 조립
-				// 이렇게 업로드 하겠다라고 설계 uploadFolder -> uploadPath
+				/* c:\\upload\\gongu03.jpg으로 조립*/
+				/* 이렇게 업로드 하겠다라고 설계 uploadFolder -> uploadPath*/
 				File saveFile = new File(uploadPath,uploadFileName);
-				//-----------UUID 파일명 처리 끝 ----------------------------
+				/*-----------UUID 파일명 처리 끝 ----------------------------*/
 				
 				try {
 					
-					//transferTo() : 물리적으로 파일 업로드가 됨
+					/*transferTo() : 물리적으로 파일 업로드가 됨*/
 					multipartFile.transferTo(saveFile);
 				
-					//2) uploadPath
+					/*2) uploadPath*/
 					attachFileVO.setUploadPath(uploadPath.getPath());
-					//3) uuid
+					/*3) uuid*/
 					attachFileVO.setUuid(uuid.toString());
-					//-------썸네일 처리 시작---------
-					//이미지 파일인지 체킹
+					/*-------썸네일 처리 시작---------*/
+					/*이미지 파일인지 체킹*/
 					if(checkImageType(saveFile)) {
 						logger.info("이미지 파일? true");
-						//4) image여부
+						/*4) image여부*/
 						attachFileVO.setImage(true);
-						//uploadPath : 연/월/일이 포함된 경로
-						//uploadFileName : UUID가 포함된 파일명
+						/*uploadPath : 연/월/일이 포함된 경로*/
+						/*uploadFileName : UUID가 포함된 파일명*/
 						FileOutputStream thumbnail = 
 								new FileOutputStream(
 										new File(uploadPath,"s_"+uploadFileName));
@@ -349,20 +349,20 @@ public class AdminController {
 					}else {
 						logger.info("이미지 파일? false");
 					}
-					//-------썸네일 처리 끝---------
+					/*-------썸네일 처리 끝---------*/
 					
-					//파일 실제 명을 list에 담음
+					/*파일 실제 명을 list에 담음*/
 					list.add(attachFileVO);
 				}catch(Exception e){
 					logger.info(e.getMessage());
-				}//end catch
-			}//end for
+				}/*end catch*/
+			}/*end for*/
 			
-			//return list;
+			/*return list;*/
 			return new ResponseEntity<List<AttachFileVO>>(list, HttpStatus.OK);
-		}//end uploadAjaxAction
+		}/*end uploadAjaxAction*/
 		
-		//첨부파일을 보관하는 폴더를 연/월/일 계층 형태로 생성하기 위함
+		/*첨부파일을 보관하는 폴더를 연/월/일 계층 형태로 생성하기 위함*/
 		private String getFolder() {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = new Date();
@@ -370,14 +370,14 @@ public class AdminController {
 			return str.replace("-", File.separator);
 		}
 		
-		//특정한 파일이 이미지 타입인지 검사해주는 메소드
+		/*특정한 파일이 이미지 타입인지 검사해주는 메소드*/
 		private boolean checkImageType(File file) {
 			try {
-				//file.toPath() : 파일의 전체 경로
+				/*file.toPath() : 파일의 전체 경로*/
 				logger.info("file.toPath() : " + file.toPath());
 				String contentType = Files.probeContentType(file.toPath());
 				logger.info("contentType : " + contentType);
-				//contentType이 image로 시작하면 이미지 타입이므로 true를 리턴함
+				/*contentType이 image로 시작하면 이미지 타입이므로 true를 리턴함*/
 				return contentType.startsWith("image");
 			}catch(IOException e) {
 				e.printStackTrace();

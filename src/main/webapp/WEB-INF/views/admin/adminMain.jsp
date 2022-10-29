@@ -9,97 +9,53 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <style>
-/* 페이지 전체 영역 css */
-#aminform {
-	width: 500px;
-	margin: 0 auto;
-	margin-top: 50px;
-	text-align: center;
-	margin-bottom: 100px
+/* 전체 랩 */
+#wrapper {
+	width: 1200px;
+	margin: auto;
+	margin-top: 30px;
 }
-/* 타이틀 */
-.contents {
+/* 중앙정렬 */
+.center {
 	text-align: center;
-	height: 100px;
-	color: #24292F;
-	font-size: 40px;
-	margin-top: 20px;
 }
-/* 버튼 */
-#admin_button {
-	text-decoration-line: none;
-	margin-left: 250px;
-	width: 400px;
-	height: 150px;
-	display: block;
-	border: none;
-	border-radius: 10px;
-	margin-top: 20px;
-	margin-bottom: 40px;
-	font-size: 70px;
+/*  버튼 */
+#btt {
+	width: 250px;
+	height: 80px;
+	background-color: #24292F;
+	font-size: 35px;
 	color: white;
 	text-align: center;
-	background-color: #24292F;
-}
-
-#a {
-	margin-left: 750px;
-	width: 400px;
-	height: 150px;
-	display: block;
 	border: none;
 	border-radius: 10px;
-	margin-top: 20px;
-	margin-bottom: 40px;
-	font-size: 70px;
-	color: white;
-	text-align: center;
-	background-color: #24292F;
+	cursor: pointer;
+	margin-bottom: 20px;
+	margin-right: 20px;
 }
 </style>
 </head>
 <body>
-	<div id="loginform">
-		<h1 class="contents">관리자 페이지 입니다.</h1>
-		<h1>
-			<a href="/memberAdmin">회원관리</a>
-		</h1>
-		<h1>
-			<a href="/orderAdmin">주문관리</a>
-		</h1>
-		<h1>
-			<a href="/reviewAdmin">리뷰관리</a>
-		</h1>
-		<h1>
-			<a href="/itemAdmin">상품관리</a>
-		</h1>
+	<div id="wrapper">
+		<h1 style="text-align: center">관리자 페이지</h1>
 		<br>
-		<h1>
-			<a href="/qnaAdmin">1대1문의</a>
-		</h1>
-		<br>
-
- <!-- css 적용중 -->
-		<div id="admin_button">
-			<a href='/memberAdmin'>회원관리</a>
+		<div align="center">
+			<hr width=1000px>
 		</div>
-		<div id="admin_button">
-			<a href='/itemAdmin'>상품관리</a>
-		</div>
-		<div id="admin_button">
-			<a href='/orderAdmin'>주문관리</a>
-		</div>
-		<div id="admin_button">
-			<a href='/reviewAdmin'>리뷰관리</a>
-		</div>
-
-
-
 		<br>
-		<br>
-		<br>
+		<div class="center">
+			<br>
+			<div>
+				<a href="/memberAdmin"><button id="btt">회원관리</button></a> <a
+					href="/itemAdmin"><button id="btt">상품관리</button></a>
+			</div>
+			<div>
+				<a href="/orderAdmin"><button id="btt">주문관리</button></a> <a
+					href="/reviewAdmin"><button id="btt">리뷰관리</button></a>
+			</div>
 
+			<br>
+		</div>
 	</div>
-
 </body>
 </html>

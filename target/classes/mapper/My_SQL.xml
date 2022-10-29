@@ -27,6 +27,8 @@
 			jdbcType="VARCHAR" javaType="String" />
 		<result column="REVIEW" property="review" jdbcType="INTEGER"
 			javaType="Integer" />
+		<result column="STATE" property="state" />
+		<result column="ORDERDATE" property="orderdate" />
 		<collection property="itemattrvo" resultMap="itemAttr" />
 		<collection property="itemvo" resultMap="item" />
 	</resultMap>

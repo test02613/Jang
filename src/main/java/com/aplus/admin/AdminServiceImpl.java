@@ -136,7 +136,8 @@ public class AdminServiceImpl implements AdminService {
 
 		return dao.attrselectDelete(itemcode);
 	}
-
+	
+	/* 이미지 파일 업로드 */
 	@Override
 	public void registItem(ItemVO vo) throws Exception {
 

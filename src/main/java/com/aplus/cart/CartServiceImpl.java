@@ -39,10 +39,4 @@ public class CartServiceImpl implements CartService {
 		
 		return dao.cartDelete(itemcode); 
 	  }
-
-	// 장바구니 수정
-
-	/*@Override public void cartUpdate() throws Exception { // TODO Auto-generated
-	  method stub dao.cartUpdate(); }*/
-
 }

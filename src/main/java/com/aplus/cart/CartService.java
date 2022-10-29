@@ -17,10 +17,4 @@ public interface CartService {
 
 	/* 장바구니 삭제 */
 	public CartVO cartDelete(Integer itemcode) throws Exception;
-
-	/*
-	 * //장바구니 수정 public void cartUpdate()throws Exception;
-	 * 
-	 * //장바구니 삭제 public void cartDelete()throws Exception;
-	 */
 }

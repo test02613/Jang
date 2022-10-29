@@ -61,5 +61,6 @@ public interface AdminDAO {
 	/* 상품옵션 개별 삭제 */
 	public ItemAttrVO attrselectDelete(Integer itemcode) throws Exception;
 	
+	/* 이미지 파일 업로드 */
 	public void registItem(ItemVO vo) throws Exception;
 }

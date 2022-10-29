@@ -14,27 +14,44 @@
 	crossorigin="anonymous">
 
 <style>
+/* 전체 랩 */
 #wrapper {
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 	margin-top: 30px;
 }
 
-/* 이벤트 타이틀 */
-#contents {
+/* 페이지 상단 타이틀 : "이벤트" */
+#subjecet {
+	text-align: center;
+	font-weight: bold;
 	height: 100px;
 	color: #24292F;
 	font-size: 40px;
-	margin-top: 20px;
+	height: 100px;
+}
+/* 중앙정렬 */
+.center {
 	text-align: center;
 }
-
 /* 게시판 상단 타이틀 */
 #title {
 	text-align: center;
 	align-content: center;
 }
-
+/* 글쓰기 버튼 */
+#eventwrite {
+	width: 110px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
 /* 목록에 마우스 가져다대면 회색으로 처리함 */
 #list:hover {
 	background-color: lightgray;
@@ -43,19 +60,13 @@
 #center {
 	text-align: center;
 }
-
-button {
-	text-align: center;
-	align-content: left;
-}
 </style>
 </head>
 <body>
 	<!-- 게시판 부트스트랩 -->
-	<div class="wrapper">
 		<div id="wrapper">
 			<!-- wrapper를 클래스랑 아이디 다 쓰는 이유는 무엇? -->
-			<div id="contents">이벤트</div>
+			<div id="subjecet">이벤트</div>
 			<table class="table">
 				<!-- 게시판 상단 메뉴 -->
 				<thead class="table-dark">
@@ -79,13 +90,12 @@ button {
 					</c:forEach>
 				</tbody>
 			</table>
-			<!-- 글쓰기 버튼 -->
+			<!-- 글쓰기 버튼(관리자만) -->
 			<c:if test="${admin eq 1}">
-				<div id="button">
-					<a href="/eventCreate"><button>글쓰기</button></a>
-				</div>
+				<div class="center">
+					<a href="/eventCreate"><button id="eventwrite">글쓰기</button></a></div>
 			</c:if>
-		</div>
+	</div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"

@@ -11,102 +11,318 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 </head>
+<style>
+/* 전체 랩 */
+#wrapper {
+	width: 1200px;
+	margin: auto;
+	margin-top: 30px;
+}
+/* 글자 속성 */
+#itemtext {
+	font-size: 25px;
+	text-align: center;
+}
+/* 파일 선택 */
+#file {
+	font-size: 20px;
+	text-align: center;
+}
+/* 테이블 */
+.itemtable {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 25px;
+}
+/* input 영역 */
+.input {
+	width: 250px;
+	height: 25px;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+/* 페이지 상단 타이틀 : "상품등록" */
+.subject {
+	text-align: center;
+	font-weight: bold;
+	height: 100px;
+	color: #24292F;
+	font-size: 40px;
+}
+/* upload 버튼 */
+#uploadbutton {
+	width: 100px;
+	height: 30px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/* 상품등록,수정 버튼 */
+#insertbutton {
+	width: 130px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/*상품등록,수정 버튼 가운데정렬 */
+.regist_button_wrap {
+	text-align: center;
+}
+/* 목록에 마우스 가져다대면 회색으로 처리함 */
+#reviewlist:hover {
+	background-color: lightgray;
+}
+/* 관리자페이지로 가기 */
+.adminbutton {
+	width: 200px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/* 중앙정렬 */
+.center {
+	text-align: center;
+}
+
+.selectbox {
+	width: 250px;
+	height: 25px;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	font-size: 15px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+</style>
 <body>
 	<form id="item_regist_form" method="post">
-		<div class="wrap">
-			<h3>상품등록정보</h3>
-
+		<div id="wrapper">
+			<c:if test="${item.itemnum == null }">
+				<div class="subject">상품등록</div>
+			</c:if>
+			<c:if test="${item.itemnum != null }">
+				<div class="subject">상품수정</div>
+			</c:if>
+			<hr>
+			<br>
 			<div class="boardWrite">
-				<table border="1" summary="">
+				<table class="itemtable">
 
 					<tbody>
-						<tr>
-							<th scope="row">상품번호</th>
-							<td><input id="itemnum" name="itemnum" class="inputTypeText"
-								value="" type="text" />
-						</tr>
-						<tr>
-							<th scope="row">상품명</th>
-							<td><input id="itemname" name="itemname"
-								class="inputTypeText" value="" type="text" />
-						</tr>
-						<tr id="category">
-							<th>카테고리1</th>
-							<td><select id="itemcategory" name="itemcat1">
-									<option value="" selected="selected">카테고리를 선택 해주세요.</option>
-									<option value="1">MAC</option>
-									<option value="2">iPad</option>
-									<option value="3">iPhone</option>
-									<option value="4">Apple Watch</option>
-									<option value="5">AirPods</option>
-									<option value="6">Accessory</option>
-							</select></td>
-						</tr>
-						<tr id="category">
-							<th>카테고리2</th>
-							<td><select id="itemcategory" name="itemcat2">
-									<option value="" selected="selected">카테고리를 선택 해주세요.</option>
-									<option value="11">iMAC</option>
-									<option value="12">MacBook Pro</option>
-									<option value="13">MacBook Air</option>
-									<option value="21">iPad Pro</option>
-									<option value="22">iPad Air</option>
-									<option value="23">iPad</option>
-									<option value="24">iPad mini</option>
-									<option value="31">iPhone14</option>
-									<option value="32">iPhone13</option>
-									<option value="33">iPhoneSE</option>
-									<option value="34">iPhone12</option>
-									<option value="41">Apple Watch Ultra</option>
-									<option value="42">Apple Watch 8</option>
-									<option value="43">Apple Watch SE</option>
-									<option value="44">Apple Watch Hermes</option>
-									<option value="51">AirPods2</option>
-									<option value="52">AirPods3</option>
-									<option value="53">AirPods Pro2</option>
-									<option value="54">AirPods Max</option>
-									<option value="61">case</option>
-									<option value="62">cable</option>
-									<option value="63">MacSafe</option>
-									<option value="64">AirTag</option>
-							</select></td>
-						</tr>
-						<tr>
-							<th scope="row" class="uploadDiv">썸네일 이미지 업로드</th>
-							<td><input type="file" id="input_img" name="uploadFile"
-								style="height: 30px;" multiple />
+						<c:if test="${item.itemnum == null }">
+							<tr>
+								<td id="itemtext">상품번호</td>
+								<td><input id="itemnum" name="itemnum" class="input"
+									value="" type="text" />
+							</tr>
+							<tr>
+								<td id="itemtext">상품명</td>
+								<td><input id="itemname" name="itemname" class="input"
+									value="" type="text" />
+							</tr>
+							<tr id="category">
+								<td id="itemtext">카테고리1</td>
+								<td><select id="itemcategory" name="itemcat1"
+									class="selectbox">
+										<option value="" selected="selected">카테고리를 선택 해주세요.</option>
+										<option value="1">MAC</option>
+										<option value="2">iPad</option>
+										<option value="3">iPhone</option>
+										<option value="4">Apple Watch</option>
+										<option value="5">AirPods</option>
+										<option value="6">Accessory</option>
+								</select></td>
+							</tr>
+							<tr id="category">
+								<td id="itemtext">카테고리2</td>
+								<td><select id="itemcategory" name="itemcat2"
+									class="selectbox">
+										<option value="${item.itemcat2 }" selected="selected">카테고리를
+											선택 해주세요.</option>
+										<option value="11">iMAC</option>
+										<option value="12">MacBook Pro</option>
+										<option value="13">MacBook Air</option>
+										<option value="21">iPad Pro</option>
+										<option value="22">iPad Air</option>
+										<option value="23">iPad</option>
+										<option value="24">iPad mini</option>
+										<option value="31">iPhone14</option>
+										<option value="32">iPhone13</option>
+										<option value="33">iPhoneSE</option>
+										<option value="34">iPhone12</option>
+										<option value="41">Apple Watch Ultra</option>
+										<option value="42">Apple Watch 8</option>
+										<option value="43">Apple Watch SE</option>
+										<option value="44">Apple Watch Hermes</option>
+										<option value="51">AirPods2</option>
+										<option value="52">AirPods3</option>
+										<option value="53">AirPods Pro2</option>
+										<option value="54">AirPods Max</option>
+										<option value="61">case</option>
+										<option value="62">cable</option>
+										<option value="63">MacSafe</option>
+										<option value="64">AirTag</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td id="itemtext" class="uploadDiv">썸네일 이미지 업로드</td>
+								<td><input class="input" type="file" id="input_img"
+									name="uploadFile" style="height: 50px; width: 270px;" multiple />
 
-								<button type="button" id="uploadBtn">Upload</button>
-								<div class="img_wrap"></div></td>
-						</tr>
-						<tr>
-							<th scope="row">썸네일 이미지 등록</th>
-							<td><input type="text" id="itemImg" name="itemimg"
-								style="height: 30px;" value="" readonly></td>
-						<tr>
-							<th scope="row">상세 이미지 등록</th>
-							<td><input type="text" id="itemDetailImg"
-								name="itemdetailimg" style="height: 30px;" value="" readonly></td>
-						</tr>
+									<button id="uploadbutton" type="button" id="uploadBtn">Upload</button>
+									<div class="img_wrap"></div></td>
+							</tr>
+							<tr>
+								<td id="itemtext">썸네일 이미지 등록</td>
+								<td><input class="input" type="text" id="itemImg"
+									name="itemimg" style="height: 30px;" value="" readonly></td>
+							<tr>
+								<td id="itemtext">상세 이미지 등록</td>
+								<td><input class="input" type="text" id="itemDetailImg"
+									name="itemdetailimg" style="height: 30px;" value="" readonly></td>
+							</tr>
+						</c:if>
+						<c:if test="${item.itemnum != null }">
+							<tr>
+								<td id="itemtext">상품번호</td>
+								<td><input class="input" id="itemnum" name="itemnum"
+									class="inputTypeText" value="${item.itemnum }" type="text"
+									readonly />
+							</tr>
+							<tr>
+								<td id="itemtext">상품명</td>
+								<td><input class="input" id="itemname" name="itemname"
+									class="inputTypeText" value="${item.itemname }" type="text" />
+							</tr>
+							<tr id="category">
+								<td id="itemtext">카테고리1</td>
+								<td><select class="selectbox" id="itemcategory"
+									name="itemcat1">
+										<option value="${item.itemcat1 }" selected="selected">카테고리를
+											선택 해주세요.</option>
+										<option value="1">MAC</option>
+										<option value="2">iPad</option>
+										<option value="3">iPhone</option>
+										<option value="4">Apple Watch</option>
+										<option value="5">AirPods</option>
+										<option value="6">Accessory</option>
+								</select></td>
+							</tr>
+							<tr id="category">
+								<td id="itemtext">카테고리2</td>
+								<td><select id="itemcategory" name="itemcat2"
+									class="selectbox">
+										<option value="${item.itemcat2 }" selected="selected">카테고리를
+											선택 해주세요.</option>
+										<option value="11">iMAC</option>
+										<option value="12">MacBook Pro</option>
+										<option value="13">MacBook Air</option>
+										<option value="21">iPad Pro</option>
+										<option value="22">iPad Air</option>
+										<option value="23">iPad</option>
+										<option value="24">iPad mini</option>
+										<option value="31">iPhone14</option>
+										<option value="32">iPhone13</option>
+										<option value="33">iPhoneSE</option>
+										<option value="34">iPhone12</option>
+										<option value="41">Apple Watch Ultra</option>
+										<option value="42">Apple Watch 8</option>
+										<option value="43">Apple Watch SE</option>
+										<option value="44">Apple Watch Hermes</option>
+										<option value="51">AirPods2</option>
+										<option value="52">AirPods3</option>
+										<option value="53">AirPods Pro2</option>
+										<option value="54">AirPods Max</option>
+										<option value="61">case</option>
+										<option value="62">cable</option>
+										<option value="63">MacSafe</option>
+										<option value="64">AirTag</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td id="itemtext" class="uploadDiv">썸네일 이미지 업로드</td>
+								<td><input class="input" type="file" id="input_img"
+									name="uploadFile" style="height: 50px; width: 270px;" multiple />
 
+									<button id="uploadbutton" type="button" id="uploadBtn">Upload</button>
+									<div class="img_wrap"></div></td>
+							</tr>
+							<tr>
+								<td id="itemtext">썸네일 이미지 등록</td>
+								<td><input class="input" type="text" id="itemImg"
+									name="itemimg" style="height: 30px;" value="${item.itemimg }"
+									readonly></td>
+							<tr>
+								<td id="itemtext">상세 이미지 등록</td>
+								<td><input class="input" type="text" id="itemDetailImg"
+									name="itemdetailimg" style="height: 30px;"
+									value="${item.itemdetailimg }" readonly></td>
+							</tr>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
+			<br>
+
+			<hr>
 			<div class="regist_button_wrap">
-				<input type="button" class="regist_button" value="상품 등록하기">
+				<c:if test="${item.itemnum == null }">
+					<input type="button" id="insertbutton" class="regist_button"
+						value="상품 등록하기">
+				</c:if>
+				<c:if test="${item.itemnum != null }">
+					<input type="button" id="insertbutton" class="update_button"
+						value="상품 수정하기">
+				</c:if>
 			</div>
 		</div>
 	</form>
+
 
 	<script type="text/javascript">
 		$(document).ready(function() {
 			// 상품등록 버튼
 			$(".regist_button").click(function() {
-				$("#item_regist_form").attr("action", "/itemInsertAction");
+				$("#item_regist_form").attr("action", "/itemRegistAction");
 				$("#item_regist_form").submit();
 
 			})
 		})
+		var num = document.getElementById("itemnum").value;
+		$(document).ready(
+				function() {
+					// 상품등록 버튼
+					$(".update_button").click(
+							function() {
+								$("#item_regist_form").attr("action",
+										"/itemUpdateAction?num=" + num);
+								$("#item_regist_form").submit();
+
+							})
+				})
 
 		var sel_file = [];
 
@@ -228,10 +444,6 @@
 														.slice(-28);
 												console.log("uploadpath2: "
 														+ uploadpath2);
-
-												/* var a = "C:\Users\hss61\Desktop\Java\works\teamproject\APLUS_Mall\src\main\webapp\resources\itemImg";
-												var b = "/resources/itemImg";
-												a = b; */
 
 												var itemImg = uploadpath2
 														+ "\\s_" + uuid + "-"

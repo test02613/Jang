@@ -33,14 +33,17 @@ public class CartController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 insert 진입");
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
+		
 		attr.setItemcode(code);
 		attr = cartService.cart_item(attr);
+		
 		String color = attr.getItemcolor();
 		Integer cost = attr.getItemcost();
 		String name = attr.getItemname();
 		Integer num=attr.getItemnum();
 		ItemVO vo1 = itemService.itemDetail(num);
-		String itemimg=vo1.getItemimg();
+		String itemimg = vo1.getItemimg();
+		
 		vo.setItemimg(itemimg);
 		vo.setItemcode(code);
 		vo.setItemcost(cost);
@@ -75,16 +78,5 @@ public class CartController {
 		cartService.cartDelete(code);
 		return "redirect:/cart";
 	}
-
-	// 장바구니 수정
-	/*
-	 * @RequestMapping(value = "/cartUpdate", method = RequestMethod.GET) public
-	 * String cartUpdate(CartVO vo, Model model) throws Exception {
-	 * 
-	 * logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 장바구니 페이지 진입");
-	 * 
-	 * //model.addAttribute("cartlist", cartService.cartlist()); return
-	 * "redirect:/cartList"; }
-	 */
 
 }

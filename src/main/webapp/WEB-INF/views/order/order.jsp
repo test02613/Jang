@@ -185,7 +185,7 @@ function findAddr() {
 
 </head>
 
-<body onload="fn_allPrice()">
+<body>
 	<div class="container">
 
 		<div
@@ -208,9 +208,7 @@ function findAddr() {
          <!-- member정보 -->
          <input type="hidden" name="map" value="${map }"> --%>
 			<div class="table-responsive">
-				<p>
-					<b>주문작성/결제</b>
-				</p>
+				
 				<table class="table table-striped">
 					<colgroup>
 						<col width="20" />
@@ -279,7 +277,7 @@ function findAddr() {
 							style="width: 100px; text-align: right; border: none;" readonly>
 							P)</td>
 					</tr>
-					<tr rowspan="3">
+					<!-- <tr rowspan="3">
 						<td>선결제배송비</td>
 						<td colspan="3"><input type="text" id="ORDER_FEE"
 							name="ORDER_FEE" value="3000"
@@ -287,12 +285,12 @@ function findAddr() {
 						</td>
 						<td></td>
 						<td></td>
-					</tr>
+					</tr> -->
 				</table>
 			</div>
 
 			<br>
-			<br>
+
 			<div class="table-responsive">
 				<p>
 					<b>받으시는분(상품받으실분)</b> &nbsp;
@@ -377,5 +375,6 @@ function findAddr() {
 			</div>
 
 		</form>
+		</div>
 </body>
 </html>

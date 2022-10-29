@@ -136,6 +136,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectOne("mapper.Admin_SQL.attrselect_delete", itemcode);
 	}
 	
+	/* 이미지 파일 업로드 */
 	@Override
 	public void registItem(ItemVO vo) throws Exception {
 		sql.insert("mapper.Admin_SQL.registItem",vo);

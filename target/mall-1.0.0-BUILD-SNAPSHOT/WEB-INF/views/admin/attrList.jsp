@@ -17,11 +17,45 @@
 #center {
 	text-align: center;
 }
+/* 전체 랩 */
 #wrapper {
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 	margin-top: 30px;
-	border-radius : 10px ;
+}
+/* 페이지 상단 타이틀 : "주문관리" */
+.subjecet {
+	text-align: center;
+	font-weight: bold;
+	height: 100px;
+	color: #24292F;
+	font-size: 40px;
+}
+/* 상품관리 페이지로 가기 */
+.adminbutton {
+	width: 200px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/* 수정,삭제 버튼 */
+.itembutton {
+	width: 85px;
+	height: 40px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
 }
 #title{
 text-align:center;
@@ -46,12 +80,13 @@ text-align:center;
 	<!-- 게시판 부트스트랩 -->
 	<div class="wrapper">
 		<div id="wrapper">
-		<h1>상품 옵션 관리</h1>
+		<h1 class="subjecet">상품옵션 수정/삭제</h1>
 			<table class="table" >
 				<thead class="table-dark">
 					<tr >
-						<th id="title" width="100" scope="col">번호</th>
-						<th id="title"   scope="col">이름/색상</th>
+						<th id="title" width="100" scope="col">상품번호</th>
+						<th id="title"  scope="col">상품이름</th>
+						<th id="title"  scope="col">색상/용량</th>
 						<th id="title" width="100"scope="col">상품코드</th>
 						<th id="title" width="100"scope="col">#</th>
 						<th id="title" width="100"scope="col">#</th>
@@ -60,16 +95,21 @@ text-align:center;
 				<tbody>
 					<c:forEach items="${list}" var="list">
 						<tr onClick="location.href='/attrInsert?code=${list.itemcode}'"  style="cursor:pointer;">
-							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemnum}" />
-							<td id="title" style="text-decoration: none;"><c:out  value="${list.itemname}" />
-							/<c:out   value="${list.itemcolor}" /></td>
+							<td id="title" style="text-decoration: none;"><c:out value="${list.itemnum}" />
+							<td id="title" style="text-decoration: none;"><c:out value="${list.itemname}" />
+							<td id="title" style="text-decoration: none;"><c:out value="${list.itemcolor}" />
+							/<c:out  value="${list.itemgb}" /></td>
 							<td id="center" style="text-decoration: none;"><c:out   value="${list.itemcode}" /></td>
-							<td id="center"><a href='${path}/attrInsert?code=${list.itemcode}'><button type="button" >수정</button></a></td>
-							<td id="center"><a href='${path}/attrselectDeleteAction?itemcode=${list.itemcode}&num=${list.itemnum}'><button type="button" onclick="attrDelete();">삭제</button></a></td>
+							<td id="center"><a href='${path}/attrInsert?code=${list.itemcode}'><button class="itembutton" type="button" >수정</button></a></td>
+							<td id="center"><a href='${path}/attrselectDeleteAction?itemcode=${list.itemcode}&num=${list.itemnum}'><button type="button" class="itembutton" onclick="attrDelete();">삭제</button></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+				<div style="text-align: center" id="button">
+				<a href="/itemAdmin"><button type="button" class="adminbutton">상품관리
+						페이지로 가기</button></a>
+			</div>
 			</div>
 		</div>
 		</form>
