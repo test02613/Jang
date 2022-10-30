@@ -33,17 +33,17 @@ public class CartController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 insert 진입");
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		
+
 		attr.setItemcode(code);
 		attr = cartService.cart_item(attr);
-		
+
 		String color = attr.getItemcolor();
 		Integer cost = attr.getItemcost();
 		String name = attr.getItemname();
-		Integer num=attr.getItemnum();
+		Integer num = attr.getItemnum();
 		ItemVO vo1 = itemService.itemDetail(num);
 		String itemimg = vo1.getItemimg();
-		
+
 		vo.setItemimg(itemimg);
 		vo.setItemcode(code);
 		vo.setItemcost(cost);
@@ -72,16 +72,16 @@ public class CartController {
 
 	/* 장바구니 삭제 */
 	@RequestMapping(value = "/cartDeleteAction", method = RequestMethod.GET)
-	public String cartDeleteGet(HttpSession session,CartVO vo, Model model, Integer code) throws Exception {
+	public String cartDeleteGet(HttpSession session, CartVO vo, Model model, Integer code) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 장바구니 삭제");
-	
+
 		cartService.cartDelete(code);
 		return "redirect:/cart";
 	}
-	
-  	/*해당 회원 장바구니 전체삭제*/
+
+	/* 해당 회원 장바구니 전체삭제 */
 	@RequestMapping(value = "/cartDeleteAllAction", method = RequestMethod.GET)
-	public String cartDeleteAllGet(HttpSession session,CartVO vo, Model model, Integer code) throws Exception {
+	public String cartDeleteAllGet(HttpSession session, CartVO vo, Model model, Integer code) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 장바구니 삭제");
 		String id = (String) session.getAttribute("id"); /* 세션에서 아이디 가져와서 CartVO에 저장 */
 

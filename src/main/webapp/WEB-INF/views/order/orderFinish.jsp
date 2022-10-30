@@ -87,25 +87,22 @@ h1 {
 
 <body>
 	<div id="wrapper">
-
 		<div id="subjecet">주문완료</div>
 		<hr>
+		<br>
 		<div id="center">주문이 완료되었습니다.</div>
 		<div id="center">
 			주문번호는 <a href="/my_detail?ordernum=${order.ordernum}">${order.ordernum}</a>입니다.
 		</div>
-
-	</div>
-	<br>
-	<br>
-	<hr>
-	<br>
-	<div style="text-align: center">
-		<input type="button" id="btt" name="main" value="메인으로"
-			onClick="location.href='/main'"> <input type="button"
-			id="btt" name="orderList" value="주문확인"
-			onclick="location.href='/myorder'">
-	</div>
+		<br>
+		<hr>
+		<br>
+		<div style="text-align: center">
+			<input type="button" id="btt" name="main" value="메인으로"
+				onClick="location.href='/main'"> <input type="button"
+				id="btt" name="orderList" value="주문확인"
+				onclick="location.href='/myorder'">
+		</div>
 	</div>
 </body>
 </html>

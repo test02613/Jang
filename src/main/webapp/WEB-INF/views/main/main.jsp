@@ -60,20 +60,20 @@
 							<!--가로-->
 							<a href="/eventDetail?num=14"> <img id="slideradius"
 								class="d-block w-100"
-								src="../resources/img/iphone.png?auto=compress&cs=tinysrgb&h=650&w=940"
+								src="../resources/img/slide.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="First slide"></a>
 							<div class="carousel-caption d-none d-md-block"></div>
 						</div>
 						<div class="carousel-item">
 							<a href="/eventDetail?num=14"> <img id="slideradius"
 								class="d-block w-100"
-								src="../resources/img/max.png?auto=compress&cs=tinysrgb&h=650&w=940"
+								src="../resources/img/slide2.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="Second slide"></a>
 						</div>
 						<div class="carousel-item">
 							<a href="/eventDetail?num=14"> <img id="slideradius"
 								class="d-block w-100"
-								src="../resources/img/airpods.png?auto=compress&cs=tinysrgb&h=650&w=940"
+								src="../resources/img/slide3.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="Third slide"></a>
 						</div>
 						<!-- / 슬라이드 쇼 끝 -->
@@ -105,15 +105,15 @@
 		<!-- 상품 바로가기 이미지 -->
 		<div id="boot_imgradius2">
 			<div id="image_click_mainwrapper">
-				<a href="http://localhost:8181/itemListL?cat=4"> <img
+				<a href="http://localhost:8181/itemListL?cat=1"> <img
 					class="bd-placeholder-img rounded float-end" width="460"
-					height="250" src="../resources/img/go1.png" role="img" />
-				</a> <a href="http://localhost:8181/itemDetail?num=2"> <img
+					height="320" src="../resources/img/banner2.png" role="img" />
+				</a> <a href="http://localhost:8181/itemListL?cat=2"> <img
 					class="bd-placeholder-img rounded float-end" width="460"
-					height="250" src="../resources/img/go2.png" role="img" />
+					height="320" src="../resources/img/banner.png" role="img" />
 				</a> <a href="http://localhost:8181/itemListL?cat=6"> <img
 					class="bd-placeholder-img rounded float-end" width="460"
-					height="250" src="../resources/img/go3.png" role="img" />
+					height="320" src="../resources/img/banner3.png" role="img" />
 				</a>
 
 			</div>
