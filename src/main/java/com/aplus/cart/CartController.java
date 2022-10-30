@@ -72,11 +72,20 @@ public class CartController {
 
 	/* 장바구니 삭제 */
 	@RequestMapping(value = "/cartDeleteAction", method = RequestMethod.GET)
-	public String cartDelete(HttpSession session,CartVO vo, Model model, Integer code) throws Exception {
+	public String cartDeleteGet(HttpSession session,CartVO vo, Model model, Integer code) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 장바구니 삭제");
 	
 		cartService.cartDelete(code);
 		return "redirect:/cart";
 	}
+	
+  	/*해당 회원 장바구니 전체삭제*/
+	@RequestMapping(value = "/cartDeleteAllAction", method = RequestMethod.GET)
+	public String cartDeleteAllGet(HttpSession session,CartVO vo, Model model, Integer code) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 장바구니 삭제");
+		String id = (String) session.getAttribute("id"); /* 세션에서 아이디 가져와서 CartVO에 저장 */
 
+		cartService.cartDeleteAll(id);
+		return "redirect:/cart";
+	}
 }

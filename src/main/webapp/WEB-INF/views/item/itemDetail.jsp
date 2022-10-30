@@ -25,7 +25,7 @@
 	width: 500px;
 	margin: 0 auto;
 	s text-align: center;
-	margin-bottom: 100px
+	margin-bottom: 100px;
 }
 /* 상단 상품명 */
 .itemtext {
@@ -228,10 +228,7 @@
 	var itemcode;
 	$('#ColorList').on("change", function() {/* 셀렉트 박스 */
 		color = $("#ColorList option:selected").val();
-		num = $
-		{
-			detail.itemnum
-		}
+		num = ${detail.itemnum}
 		var data = {
 			color : color,
 			num : num
@@ -304,159 +301,33 @@
 	}
 	/* 장바구니버튼 */
 	$("#insertBasket").on("click", function() { // 장바구니
-		alert("상품을 선택해 주세요");
-		return
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-								
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-										
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-								
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-      												
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-								
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-										
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-								
-
-		
-
-				
-
-		
-
-						
-
-		
-
-				
-
-		
-
-		$.ajax({
-			type : "get",
-			url : "/itemCode",
-			data : {
-				color : color,
-				num : num
-			},
-			async : false,//전역 변수 보내기
-			dataType : "json",
-			success : function(result) {
-				code = result;
-				console.log("확인 : " + result);
-				if (result) {
-					/* alert("완료"+code);  */
-					return code;
-				} else {
-					//alert("전송된 값 없음"+result);  
+		if (num == undefined) {
+			alert("상품을 선택해 주세요");
+		} else {
+			$.ajax({
+				type : "get",
+				url : "/itemCode",
+				data : {
+					color : color,
+					num : num
+				},
+				async : false,//전역 변수 보내기
+				dataType : "json",
+				success : function(result) {
+					code = result;
+					console.log("확인 : " + result);
+					if (result) {
+						/* alert("완료"+code);  */
+						return code;
+					} else {
+						//alert("전송된 값 없음"+result);  
+					}
+				},
+				error : function() {
+					// alert("에러 발생"+result); 
 				}
-			},
-			error : function() {
-				// alert("에러 발생"+result); 
-			}
-		});//아작스 끝
-		alert("장바구니에 추가하시겠습니까?");
-		location.href = "/cartInsertAction?code=" + code;
+			});//아작스 끝 		alert("장바구니에 추가하시겠습니까?");
+			location.href = "/cartInsertAction?code=" + code;
+		}
 	});
 </script>

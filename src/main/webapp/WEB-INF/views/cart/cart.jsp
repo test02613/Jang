@@ -60,11 +60,13 @@
 .center {
 	text-align: center;
 }
+.right {
+	text-align: right;
+}
 </style>
 <body>
 	<div id="wrapper">
 		<h1 class="subjecet">장바구니</h1>
-
 		<table class="table">
 			<thead class="table-dark">
 				<tr>
@@ -98,6 +100,10 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="right" id="button">
+			<a href="/cartDeleteAllAction"><button type="button" class="orderbutton">장바구니 비우기
+				</button></a>
+		</div>
 		<br>
 
 		<div class="center" id="button">

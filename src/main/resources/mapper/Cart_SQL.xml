@@ -37,4 +37,10 @@
         DELETE FROM CART
         WHERE itemcode = #{itemcode}
     </delete>
+    
+   	<!-- 해당 회원 장바구니 전체삭제 -->
+	<delete id="cart_deleteall">
+		DELETE FROM CART
+		WHERE id = #{id}
+	</delete>
 </mapper>

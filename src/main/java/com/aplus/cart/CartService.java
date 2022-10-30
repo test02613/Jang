@@ -17,4 +17,7 @@ public interface CartService {
 
 	/* 장바구니 삭제 */
 	public CartVO cartDelete(Integer itemcode) throws Exception;
+	
+   	/*해당 회원 장바구니 전체삭제*/
+	public CartVO cartDeleteAll(String id) throws Exception;	
 }
