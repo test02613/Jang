@@ -80,9 +80,10 @@
 			<tbody>
 				<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
 				<c:forEach items="${cartlist}" var="cartlist" varStatus="Status">
-					<tr
-						onClick="location.href='${path}/itemDetail?num=${item.itemcode}'"
-						style="cursor: pointer;" id="list">
+					<tr>
+					<%-- <tr
+						onClick="location.href='${path}/itemDetail?num=${cartlist.itemcode}'"
+						style="cursor: pointer;" id="list"> --%>
 						<td style="text-align: center" style="text-decoration: none;"><img
 							src="${cartlist.itemimg}" style="width: 100px; height: 100px;" /></td>
 						<td class="center"><c:out
@@ -107,7 +108,7 @@
 		<br>
 
 		<div class="center" id="button">
-			<a href="/#"><button type="button" class="orderbutton">구매하기
+			<a href="#"><button type="button" class="orderbutton">구매하기
 				</button></a>
 		</div>
 		<br>

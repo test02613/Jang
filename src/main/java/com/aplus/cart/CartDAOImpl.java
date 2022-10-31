@@ -47,4 +47,11 @@ public class CartDAOImpl implements CartDAO {
 
 		return sql.selectOne("mapper.Cart_SQL.cart_deleteall", id);
 	}
+
+	/* 결제완료시 장바구니에서 삭제 */
+	@Override
+	public CartVO cartOrderDelete(CartVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Cart_SQL.cart_OrderDelete", vo);
+	}
 }

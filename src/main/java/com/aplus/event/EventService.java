@@ -21,6 +21,6 @@ public interface EventService {
 	/* 글 삭제 */
 	public EventVO eventDelete(Integer num) throws Exception;
 
-	/* (페이징)게시물 총 갯수 */
+	/* (페이징)게시물 총 갯수 진행중 */
 	public int count() throws Exception;
 }

@@ -20,6 +20,7 @@ import com.aplus.item.ItemVO;
 @Controller
 public class CartController {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+	
 	@Autowired
 	private ItemService itemService;
 
@@ -30,26 +31,32 @@ public class CartController {
 	@RequestMapping(value = "/cartInsertAction", method = RequestMethod.GET)
 	public String cartInsert(HttpSession session, CartVO vo, Model model, Integer code, ItemAttrVO attr)
 			throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 insert 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 insert 진입");
+
+		/* 세션 아이디 vo에 저장 */
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 
+		/* 상품 정보 가져오기 */
 		attr.setItemcode(code);
 		attr = cartService.cart_item(attr);
-
 		String color = attr.getItemcolor();
 		Integer cost = attr.getItemcost();
 		String name = attr.getItemname();
+
+		/* 사진 가져오기 */
 		Integer num = attr.getItemnum();
 		ItemVO vo1 = itemService.itemDetail(num);
 		String itemimg = vo1.getItemimg();
-
 		vo.setItemimg(itemimg);
+
+		/* CartVO에 정보 저장 */
 		vo.setItemcode(code);
 		vo.setItemcost(cost);
 		vo.setItemname(name);
 		vo.setItemattr(color);
 
+		/* insert */
 		cartService.cartInsert(vo);
 
 		return "redirect:/cart";
@@ -58,7 +65,7 @@ public class CartController {
 	/* 장바구니 목록 */
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String cartGet(Model model, HttpSession session, Integer code) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 목록");
 
 		String id = (String) session.getAttribute("id"); /* 세션에서 아이디 가져와서 CartVO에 저장 */
 

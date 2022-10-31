@@ -20,4 +20,7 @@ public interface CartDAO {
 	
    	/*해당 회원 장바구니 전체삭제*/
 	public CartVO cartDeleteAll(String id) throws Exception;	
+	
+	/* 결제완료시 장바구니에서 삭제 */
+	public CartVO cartOrderDelete(CartVO vo) throws Exception;	
 }

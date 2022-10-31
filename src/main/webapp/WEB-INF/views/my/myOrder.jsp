@@ -87,7 +87,7 @@
 			<table class="table">
 				<thead class="table-dark">
 					<tr>
-						<th class="center">주문 날짜/주문번호</th>
+						<th class="center">주문 날짜 / 주문번호</th>
 						<th class="center">이미지</th>
 						<th class="center">상품정보</th>
 						<th class="center">상품구매가격</th>
@@ -98,7 +98,7 @@
 				<tbody>
 					<c:forEach items="${order}" var="order">
 						<tr>
-							<td style="text-align: center">${order.orderdate}/
+							<td style="text-align: center">${order.orderdate} /
 								${order.ordernum}</td>
 							<td style="text-align: center"><img
 								src="${order.itemvo.itemimg}"
@@ -107,7 +107,7 @@
 							<td style="text-align: center">${order.ordercost}원</td>
 							<td id="orderstate2">${order.state}</td>
 
-							<c:if test="${order.review != 1}">
+							<c:if test="${order.review == 0}">
 								<td class="center"><a
 									href="/reviewCreate?item=${order.itemvo.itemnum}&order=${order.ordernum}"><button
 											type="button" class="reviewbutton">리뷰 작성</button></a></td>

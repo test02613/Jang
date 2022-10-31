@@ -24,7 +24,7 @@
 	<insert id="cart_insert" parameterType="CartVO">
 	      INSERT INTO CART VALUES(#{id},#{itemname},
 	      #{itemcode}, #{itemcost},
-	      #{itemimg},#{itemattr} )	      
+	      #{itemimg},#{itemattr})	      
 	 </insert>
 	 
 	<!-- item 정보 가져오기 -->
@@ -42,5 +42,14 @@
 	<delete id="cart_deleteall">
 		DELETE FROM CART
 		WHERE id = #{id}
+	</delete>
+	
+	<!-- 결제완료시 장바구니에서 삭제  -->
+	<delete id="cart_OrderDelete" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM CART
+			WHERE id = #{id}
+			AND itemcode = #{itemcode}
+		]]>
 	</delete>
 </mapper>

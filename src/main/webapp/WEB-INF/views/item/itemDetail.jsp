@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
 <!DOCTYPE>
 <html>
 <head>
@@ -99,9 +98,7 @@
 <body>
 	<div id="wrapper">
 		<input type="hidden" id="IDX" name="IDX" value="${detail.itemnum}">
-
 		<br>
-
 		<div
 			style="width: 100%; position: relative; left: calc(50% - 600px); height: 600px; display: inline">
 
@@ -113,7 +110,6 @@
 					</tr>
 				</table>
 			</div>
-
 			<div>
 				<table>
 					<tr>
@@ -136,9 +132,8 @@
 						<td><font size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;국내배송</font></td>
 					</tr>
 				</table>
-
-				<br> <br>
-
+				<br> 
+				<br>
 				<div id="item_option">
 					<table>
 						<tr>
@@ -207,10 +202,10 @@
 					<c:forEach var="review" items="${review}" varStatus="index">
 						<tbody id="reviewList" name="reviewList">
 							<tr>
-								<td class="center">${review.reviewdate }</td>
-								<td class="center">${review.id }</td>
-								<td class="center">${review.reviewtitle }</td>
-								<td class="center">${review.reviewcontent }</td>
+								<td class="center">${review.reviewdate}</td>
+								<td class="center">${review.id}</td>
+								<td class="center">${review.reviewtitle}</td>
+								<td class="center">${review.reviewcontent}</td>
 							</tr>
 						</tbody>
 					</c:forEach>
@@ -296,7 +291,7 @@
 				}
 
 			});/* 아작스 끝 */
-			location.href = "/order?code=" + code;
+			location.href = "/order?code="+code;
 		}
 	}
 	/* 장바구니버튼 */

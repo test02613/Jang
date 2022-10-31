@@ -87,7 +87,6 @@ public class MyController {
 		String id = (String) session.getAttribute("id"); /* 세션 id가져오기 */
 		vo.setId(id); /* OrderVO에 세션 id 저장 */
 		
-		
 		List<OrderVO> orderlist = myservice.myOrder(id);
 		model.addAttribute("order", orderlist); /* 로그인 회원 주문정보 가져오기 */
 

@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+/* 중앙정렬 */
+.center {
+	text-align: center;
+}
+</style>
 <body>
 	<div class="wrapper">
 		<div id="header_wrap">
@@ -54,7 +60,8 @@
 			</div>
 			<div id="logo_area">
 				<div id="logo">
-					<a href="main"> <img src="../resources/img/logo.png" />
+					<a href="main"> <img width="310"
+					height="110" class="center" src="../resources/img/apluslogo.png" />
 					</a>
 				</div>
 			</div>

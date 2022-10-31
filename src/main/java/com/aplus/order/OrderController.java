@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.aplus.cart.CartService;
+import com.aplus.cart.CartVO;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemController;
+import com.aplus.item.ItemService;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.review.ReviewVO;
@@ -27,11 +30,24 @@ public class OrderController {
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private CartService cartService;
+	@Autowired
+	private ItemService itemService;
 
 	/* 주문 페이지 */
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String orderLGET(String cartId, Model model, Integer code, HttpSession session, MemberVO mem) throws Exception {
+	public String orderGET(Model model, Integer code, HttpSession session, MemberVO mem, ItemAttrVO attr)
+			throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문 페이지 진입");
+
+		// 사진 가져오기
+		/*Integer itemnum = attr.getItemnum();
+		ItemVO vo1 = itemService.itemDetail(itemnum);  사진 가져오기 
+		String itemimg = vo1.getItemimg();  사진 가져오기 
+
+		vo1.setItemimg(itemimg);  사진 가져오기 
+		model.addAttribute("vo1", vo1);*/
 
 		ItemAttrVO vo = orderService.order_item(code); /* code로 해당 item 정보 가져오기 */
 		model.addAttribute("item", vo);
@@ -49,15 +65,20 @@ public class OrderController {
 
 	/* 주문서 넘기기 */
 	@RequestMapping(value = "/orderAction", method = RequestMethod.POST)
-	public String orderAction(OrderVO vo, Model model, HttpSession session, MemberVO mem, Integer ordernum)
+	public String orderAction(CartVO cart, OrderVO vo, Model model, HttpSession session, MemberVO mem, Integer code)
 			throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>orderAction");
 
 		String id = (String) session.getAttribute("id"); /* id가져오기 */
 		mem = orderService.member(id); /* 고객 정보 가져오기 */
 
+		Integer itemcode = code;
+		cart.setItemcode(itemcode);
+		cart.setId(id);
+		cartService.cartOrderDelete(cart); /* 결제완료시 장바구니에서 상품 삭제 */
+
 		vo.setId(id);
-		orderService.order_insert(vo);
+		orderService.order_insert(vo); /* 주문서 넘기기 */
 		Integer num = vo.getOrdernum();
 
 		return "redirect:/orderFinish?num=" + num;

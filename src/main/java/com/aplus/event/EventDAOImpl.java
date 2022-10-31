@@ -45,7 +45,7 @@ public class EventDAOImpl implements EventDAO {
 		return sql.selectOne("mapper.Event_SQL.event_delete", num);
 	}
 
-	/* (페이징)게시물 총 갯수 */
+	/* (페이징)게시물 총 갯수 진행중 */
 	@Override
 	public int count() throws Exception {
 

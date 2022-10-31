@@ -47,7 +47,7 @@ public class ReviewController {
 	/* 리뷰작성 페이지 */
 	@RequestMapping(value = "/reviewCreate", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reviewCreateGET(Model model, Integer order, Integer item) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
 
 		model.addAttribute("item", item);
 		model.addAttribute("order", order);
@@ -58,7 +58,7 @@ public class ReviewController {
 	/* 리뷰작성 실행 */
 	@RequestMapping(value = "/reviewCreateAction", method = RequestMethod.POST)
 	public String reviewCreateAction(Model model, HttpSession session, ReviewVO vo, Integer order) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 실행");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 실행");
 
 		String id = (String) session.getAttribute("id"); /* 세션 id가져오기 */
 		vo.setId(id);
@@ -84,7 +84,7 @@ public class ReviewController {
 	@RequestMapping(value = "/reviewDetail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reviewDetailGET(Integer num, Model model) throws Exception {
 
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰 상세페이지 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰 상세페이지 진입");
 
 		ReviewVO vo = reviewservice.reviewDetail(num); /* ordernum으로 리뷰 가져옴 */
 		model.addAttribute("detail", vo);
@@ -95,7 +95,6 @@ public class ReviewController {
 	/* 리뷰 수정 페이지 */
 	@RequestMapping(value = "/reviewUpdate", method = RequestMethod.GET)
 	public String reviewUpdateGET(ReviewVO vo, Model model, HttpSession session, Integer num) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
 
 		vo.setReviewnum(num);
 		vo = reviewservice.reviewnum(vo);
@@ -119,7 +118,7 @@ public class ReviewController {
 	/* 리뷰 삭제 */
 	@RequestMapping(value = "/reviewDeleteAction", method = RequestMethod.GET)
 	public String reviewDeleteAction(ReviewVO vo, Integer num) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰작성 페이지 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰삭제");
 
 		reviewservice.reviewDelete(num);
 

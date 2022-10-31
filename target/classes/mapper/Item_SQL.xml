@@ -59,7 +59,7 @@
 		FROM ITEM
 		WHERE itemnum = #{itemnum}
 	</select>
-
+	
 	<!-- 옵션 박스 ajax -->
 	<select id="item_attr" resultMap="itemAttr">
 		SELECT *

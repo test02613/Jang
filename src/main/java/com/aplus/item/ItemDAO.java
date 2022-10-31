@@ -17,7 +17,7 @@ public interface ItemDAO {
 
 	/* 상품상세페이지 item */
 	public ItemVO itemDetail(Integer num) throws Exception;
-
+	
 	/* 가격 받아오는 ajax */
 	public List<ItemAttrVO> itemAttr(Integer num) throws Exception;
 

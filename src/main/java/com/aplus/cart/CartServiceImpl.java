@@ -46,4 +46,11 @@ public class CartServiceImpl implements CartService {
 
 		return dao.cartDeleteAll(id); 
 	}
+
+	/* 결제완료시 장바구니에서 삭제 */
+	@Override
+	public CartVO cartOrderDelete(CartVO vo) throws Exception {
+
+		return dao.cartOrderDelete(vo); 
+	}
 }

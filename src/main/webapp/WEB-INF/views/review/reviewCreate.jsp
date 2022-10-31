@@ -85,7 +85,7 @@
 	<center>
 		<div id="wrapper">
 			<c:if test="${list.reviewnum == null}">
-				<div id="subjecet">주문번호 ${list.ordernum}번의 리뷰 작성</div>
+				<div id="subjecet">주문번호 ${order}번의 리뷰 작성</div>
 			</c:if>
 			<c:if test="${list.reviewnum != null}">
 				<div id="subjecet">주문번호 ${list.ordernum}번의 리뷰 수정</div>
@@ -143,21 +143,20 @@
 		</div>
 	</center>
 	<script>
-		$(document)
-				.ready(
-						function() {
-							// 수정 버튼
-							$(".reviewUpdate_button")
-									.click(
-											function() {
-												$("#reviewCreate_form")
-														.attr("action",
-																'${path}/reviewUpdateAction?num=${list.reviewnum}');
-												$("#reviewCreate_form")
-														.submit();
 
-											})
-						})
+		$(document).ready(
+		function() {
+		// 수정 버튼
+		$(".reviewUpdate_button").click(
+			function() {
+				$("#reviewCreate_form")
+						.attr("action",
+								'${path}/reviewUpdateAction?num=${list.reviewnum}');
+				$("#reviewCreate_form")
+						.submit();
+
+				})
+		})
 	</script>
 	<script>
 		var a = document.getElementById("ordernum").value

@@ -89,10 +89,7 @@
 		font-size: 15px;
 }
 </style>
-
-
 </head>
-
 <body>
 	<div id="wrapper">
 
@@ -101,7 +98,7 @@
 		<!-- tables -->
 		<form id="commonForm" name="commonForm"></form>
 		<form name="orderWrite" id="orderWrite" method="post"
-			action="/orderAction">
+			action="/orderAction?code=${item.itemcode}">
 			<%-- <!-- goods정보 -->
          <input type="hidden" name="list" value="${list }">
          <!-- coupon정보 -->
@@ -121,7 +118,6 @@
 						</tr>
 					</thead>
 					<tbody>
-
 						<tr>
 							<td class="center"><img src='' width="70px" height="70px"></td>
 							<td class="center"><a
@@ -172,9 +168,7 @@
 					</tr>
 				</table>
 			</div>
-
 			<br>
-
 			<div class="table-responsive">
 				<p>
 					<b id="fontsize">받으시는분(상품받으실분)</b> &nbsp;
@@ -325,6 +319,10 @@
 		var f = document.orderWrite;
 		var a = document.getElementById("ORDER_TOTAL_PAY_PRICE").value
 		var b = document.getElementById("POINT_TOTAL").value
+		if( document.getElementById("orderChk").checked==false){
+ 			alert("서비스 약관에 동의해주세요.");
+ 			return false;
+ 		}
 		if (a > 0) {
 			alert("포인트를 사용하세요")
 

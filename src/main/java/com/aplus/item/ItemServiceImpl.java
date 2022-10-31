@@ -36,7 +36,7 @@ public class ItemServiceImpl implements ItemService {
 
 		return dao.itemDetail(num);
 	}
-
+	
 	/* 가격 받아오는 ajax */
 	@Override
 	public List<ItemAttrVO> itemAttr(Integer num) throws Exception {
@@ -71,4 +71,6 @@ public class ItemServiceImpl implements ItemService {
 
 		return dao.itemSearch(itemname);
 	}
+
+	
 }

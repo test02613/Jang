@@ -31,7 +31,6 @@
 
 <body>
 	<div class="wrapper">
-
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 			crossorigin="anonymous"></script>
@@ -60,7 +59,7 @@
 							<!--가로-->
 							<a href="/eventDetail?num=14"> <img id="slideradius"
 								class="d-block w-100"
-								src="../resources/img/slide.png?auto=compress&cs=tinysrgb&h=650&w=940"
+								src="../resources/img/slide3.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="First slide"></a>
 							<div class="carousel-caption d-none d-md-block"></div>
 						</div>
@@ -73,7 +72,7 @@
 						<div class="carousel-item">
 							<a href="/eventDetail?num=14"> <img id="slideradius"
 								class="d-block w-100"
-								src="../resources/img/slide3.png?auto=compress&cs=tinysrgb&h=650&w=940"
+								src="../resources/img/slide.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="Third slide"></a>
 						</div>
 						<!-- / 슬라이드 쇼 끝 -->
@@ -107,13 +106,13 @@
 			<div id="image_click_mainwrapper">
 				<a href="http://localhost:8181/itemListL?cat=1"> <img
 					class="bd-placeholder-img rounded float-end" width="460"
-					height="320" src="../resources/img/banner2.png" role="img" />
+					height="340" src="../resources/img/banner2.png" role="img" />
 				</a> <a href="http://localhost:8181/itemListL?cat=2"> <img
 					class="bd-placeholder-img rounded float-end" width="460"
-					height="320" src="../resources/img/banner.png" role="img" />
+					height="340" src="../resources/img/banner.png" role="img" />
 				</a> <a href="http://localhost:8181/itemListL?cat=6"> <img
 					class="bd-placeholder-img rounded float-end" width="460"
-					height="320" src="../resources/img/banner3.png" role="img" />
+					height="340" src="../resources/img/banner3.png" role="img" />
 				</a>
 
 			</div>

@@ -34,7 +34,7 @@ public class ItemDAOImpl implements ItemDAO {
 
 		return sql.selectOne("mapper.Item_SQL.item_detail", num);
 	}
-
+	
 	/* 가격 받아오는 ajax */
 	@Override
 	public List<ItemAttrVO> itemAttr(Integer num) throws Exception {
@@ -69,4 +69,6 @@ public class ItemDAOImpl implements ItemDAO {
 		
 		return sql.selectOne("mapper.Item_SQL.item_search", itemname);
 	}
+
+
 }

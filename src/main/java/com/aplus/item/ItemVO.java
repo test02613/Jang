@@ -33,10 +33,4 @@ public class ItemVO {
 	/* 상품카테고리1 */
 	private Integer itemcat1;
 
-	/* 상품가격 */
-	private Integer itemcost;
-
-	/* 상품재고 */
-	private Integer itemstock;
-
 }
