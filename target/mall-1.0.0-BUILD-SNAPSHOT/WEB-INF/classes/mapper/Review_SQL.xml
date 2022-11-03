@@ -64,4 +64,5 @@
 	<delete id="review_delete">
 		DELETE FROM REVIEW WHERE reviewnum = #{reviewnum}
 	</delete>
+	
   </mapper>

@@ -24,7 +24,7 @@
 	<insert id="cart_insert" parameterType="CartVO">
 	      INSERT INTO CART VALUES(#{id},#{itemname},
 	      #{itemcode}, #{itemcost},
-	      #{itemimg},#{itemattr})	      
+	      #{itemimg},#{itemoption})	      
 	 </insert>
 	 
 	<!-- item 정보 가져오기 -->

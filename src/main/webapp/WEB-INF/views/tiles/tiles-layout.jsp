@@ -8,8 +8,7 @@
 <!-- 공통변수 처리 -->
 <c:set var="CONTEXT_PATH" value="${pageContext.request.contextPath}"
 	scope="application" />
-<c:set var="RESOURCES_PATH" value="${CONTEXT_PATH}/resources"
-	scope="application" />
+<c:set var="RESOURCES_PATH" value="${CONTEXT_PATH}/resources" scope="application" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +25,7 @@
 <link rel="stylesheet" href="${RESOURCES_PATH}/css/common.css">
 <title><tiles:insertAttribute name="title" /></title>
 <style>
+/* 헤더 고정 */
 .sticky {
 	position: sticky;
 	top: 0px;
@@ -36,13 +36,10 @@
 <body>
 	<div class="wrapper">
 		<tiles:insertAttribute name="topMenu" />
-
 		<div class="sticky">
 			<tiles:insertAttribute name="header" />
 		</div>
-
 		<tiles:insertAttribute name="body" />
-
 		<tiles:insertAttribute name="footer" />
 	</div>
 </body>

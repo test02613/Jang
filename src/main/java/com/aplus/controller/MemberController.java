@@ -33,58 +33,54 @@ public class MemberController {
 	@Autowired
 	private JavaMailSender mailSender;
 
-	/* 회원가입 페이지 이동 */
+	// 회원가입 페이지 이동
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String joinGET() {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 페이지 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 페이지 진입");
 		return "member/join";
 	}
 
-	/* 회원가입 실행 */
+	// 회원가입 실행
 	@RequestMapping(value = "/joinAction", method = RequestMethod.POST)
 	public String joinPost(MemberVO member) throws Exception {
 
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 진입");
 
-		/* 회원가입 서비스 실행 */
+		// 회원가입 서비스 실행
 		memberService.memberJoin(member);
 
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 성공");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 회원가입 성공");
 
 		return "redirect:/main";
 	}
 
-	/* 아이디 중복 검사 */
+	// 아이디 중복 검사
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String id) throws Exception {
 
-		/* logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> memberIdChk 진입"); */
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> memberIdChk 진입");
 		logger.info("vo 진입" + id);
 		int result = memberService.idCheck(id);
 
-		logger.info("결과값 : " + result);
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>결과값 : " + result);
 
 		if (result != 0) {
 
-			return "fail"; /* 중복아이디가 존재하면 fail */
+			return "fail"; // 중복아이디가 존재하면 fail
 
 		} else {
 
-			return "success"; /* 중복아이디가 존재하지 않는다면 success */
+			return "success"; // 중복아이디가 존재하지 않는다면 success
 		}
 	}
 
-	/* 이메일 인증 */
+	// 이메일 인증
 	@RequestMapping(value = "mailCheck", method = RequestMethod.GET)
 	@ResponseBody
-	/* 변경전 */
-	/* public void mailCheckGET(String email) throws Exception{ */
-
-	/* 변경후 */
 	public String mailCheckGET(String email) throws Exception {
 
-		/* 뷰에서 넘어온 데이터 확인 */
+		// 뷰에서 넘어온 데이터 확인
 		logger.info("========================== 이메일 데이터 전송 확인 ============================");
 		logger.info("인증번호 : [ " + email + " ]");
 
@@ -92,7 +88,7 @@ public class MemberController {
 		int checkNum = random.nextInt(888888) + 111111;
 		logger.info("인증번호(checkNum) [ " + checkNum + " ]");
 
-		/* 이메일 보내기 */
+		// 이메일 보내기
 		String setFrom = "dhkdwk997@gmail.com";
 		String toMail = email;
 		String title = "회원가입 인증 이메일 입니다.";

@@ -20,9 +20,10 @@
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ITEMSTOCK" property="itemstock"
 			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMCODE" property="itemcode"/>
 		<result column="ITEMNAME" property="itemname"
 			jdbcType="VARCHAR" javaType="String" />
-		<result column="ITEMCOLOR" property="itemcolor"
+		<result column="ITEMOPTION" property="itemoption"
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
 
@@ -30,6 +31,8 @@
 		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
 			javaType="Integer" />
 		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMIMG" property="itemimg"
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
 
@@ -83,10 +86,10 @@
 	<!-- 주문관리 -->
 	<select id="order_admin" resultMap="orderlist">
 		SELECT *
-		FROM ORDERTABLE a
-		JOIN
-		ItemAttr b
-		on a.itemcode = b.itemcode
+		FROM ORDERTABLE a, ItemAttr b, item c
+		where a.itemcode = b.itemcode and b.itemnum = c.itemnum
+		order by a.ordernum DESC
+
 	</select>
 
 	<!-- 주문상태 변경 -->
@@ -117,7 +120,7 @@
 		#{itemcat2} ,
 		#{itemimg} ,
 		#{itemdetailimg},
-		#{itemcat1},#{itemcost},#{itemstock})
+		#{itemcat1})
 	</insert>
 
 	<!-- 상품수정 -->
@@ -125,8 +128,7 @@
 		update item set itemname
 		= #{itemname} , itemcat2 = #{itemcat2} , itemimg = #{itemimg} ,
 		itemdetailimg = #{itemdetailimg}
-		, itemcat1 = #{itemcat1} , itemcost = #{itemcost} , 
-		itemstock = #{itemstock}
+		, itemcat1 = #{itemcat1}
 		where itemnum = #{itemnum}
 	</update>
 
@@ -135,8 +137,7 @@
 		INSERT INTO ITEMATTR
 		VALUES(
 		#{ itemnum }, #{ itemcode}, #{ itemcost },
-		#{ itemstock }, #{ itemname }, #{ itemcolor },
-		#{itemgb }
+		#{ itemstock }, #{ itemname }, #{ itemoption }
 		)
 	</insert>
 
@@ -145,8 +146,8 @@
 		UPDATE ITEMATTR
 		SET
 		itemcost = #{itemcost} , itemstock = #{itemstock}
-		, itemcolor =
-		#{itemcolor}
+		, itemoption =
+		#{itemoption}
 		WHERE itemcode = #{itemcode}
 	</update>
 

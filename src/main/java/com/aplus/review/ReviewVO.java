@@ -17,24 +17,24 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ReviewVO {
 	
-	/*상품번호*/
+	//상품번호
 	private Integer itemnum;
 	
-	/*회원아이디*/
+	//회원아이디
 	private String id;
 	
-	/*리뷰번호*/
+	//리뷰번호
 	private Integer reviewnum;
 	
-	/*리뷰등록날짜*/
+	//리뷰등록날짜
 	private Date reviewdate;
 	
-	/*리뷰제목*/
+	//리뷰제목
 	private String reviewtitle;
 	
-	/*리뷰내용*/
+	//리뷰내용
 	private String reviewcontent;
 	
-	/*주문번호*/
+	//주문번호
 	private Integer ordernum;
 }

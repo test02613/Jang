@@ -35,6 +35,7 @@
 	cursor: pointer;
 }
 
+/* 랩 */
 #wrapper {
 	width: 1200px;
 	margin: auto;

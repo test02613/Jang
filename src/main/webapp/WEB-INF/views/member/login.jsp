@@ -7,7 +7,6 @@
 	content="840345488051-t7d9q5tg8he8kt3om4dmlovpjom64m3q.apps.googleusercontent.com">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script
@@ -84,34 +83,31 @@
 			<p>아직 회원이 아니신가요? <a href="join">회원가입하기</a></p>
 		</div>
 	</div>
-
-
 	<script type="text/javascript">
-if('${message}' != "") {
-	alert('${message}');
-}
-
-
-//공란 확인
- $(document).ready(function() {
-	
-	$("#login").unbind("click").click(function(e) {
-		e.preventDefault();
-		fn_login();
-	});
-
-	function fn_login() {
-		if($("#id").val()==""){
-			alert("아이디를 입력해주세요");
-			$("#id").focus();
-		} else if($("#pw").val()==""){
-			alert("비밀번호를 입력해주세요");
-			$("#pw").focus();
-		} else {
-			$("#frm").submit();
-		}
+	if('${message}' != "") {
+		alert('${message}');
 	}
-}); 
+
+	//공란 확인
+	 $(document).ready(function() {
+		
+		$("#login").unbind("click").click(function(e) {
+			e.preventDefault();
+			fn_login();
+		});
+	
+		function fn_login() {
+			if($("#id").val()==""){
+				alert("아이디를 입력해주세요");
+				$("#id").focus();
+			} else if($("#pw").val()==""){
+				alert("비밀번호를 입력해주세요");
+				$("#pw").focus();
+			} else {
+				$("#frm").submit();
+			}
+		}
+	}); 
 </script>
 </body>
 </html>

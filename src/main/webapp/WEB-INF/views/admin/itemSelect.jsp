@@ -148,7 +148,7 @@ td:hover {
 	<script>
 		//삭제버튼 누르면 경고창 띄우기
 		function itemDelete() {
-			window.confirm("상품을 삭제하시겠습니까?")
+			alert("상품을 삭제하시겠습니까?")
 		}
 	</script>
 

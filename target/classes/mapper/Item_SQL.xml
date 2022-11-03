@@ -14,6 +14,7 @@
 	<resultMap type="ItemVO" id="itemlist">
 		<result column="ITEMNUM" property="itemnum"
 			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMIMG" property="itemimg" />
 		<result column="ITEMCAT1" property="itemcat1"
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ITEMCAT2" property="itemcat2"
@@ -31,11 +32,9 @@
 			jdbcType="INTEGER" javaType="Integer" />	
 		<result column="ITEMCOST" property="itemcost"
 			jdbcType="INTEGER" javaType="Integer" />
-		<result column="ITEMCOLOR" property="itemcolor"
+		<result column="ITEMOPTION" property="itemoption"
 			jdbcType="VARCHAR" javaType="String" />
 		<result column="ITEMNAME" property="itemname"
-			jdbcType="VARCHAR" javaType="String" />
-		<result column="ITEMGB" property="itemgb"
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
 	
@@ -72,7 +71,7 @@
 		SELECT *
 		FROM ITEMATTR
 		WHERE itemnum = #{itemnum}
-		AND itemcolor = #{itemcolor}
+		AND itemoption = #{itemoption}
 	</select>
 	
 	<!-- 상품리뷰 목록 -->

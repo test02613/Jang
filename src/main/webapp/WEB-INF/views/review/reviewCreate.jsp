@@ -143,7 +143,6 @@
 		</div>
 	</center>
 	<script>
-
 		$(document).ready(
 		function() {
 		// 수정 버튼
@@ -155,8 +154,8 @@
 				$("#reviewCreate_form")
 						.submit();
 
+					})
 				})
-		})
 	</script>
 	<script>
 		var a = document.getElementById("ordernum").value

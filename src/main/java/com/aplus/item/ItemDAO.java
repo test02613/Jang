@@ -9,27 +9,27 @@ import com.aplus.review.ReviewVO;
 
 public interface ItemDAO {
 
-	/* 상품 목록 대분류 */
+	// 상품 목록 대분류
 	public List<ItemVO> itemListL(Integer cat) throws Exception;
 
-	/* 상품 목록 중분류 */
+	// 상품 목록 중분류
 	public List<ItemVO> itemList(Integer cat) throws Exception;
 
-	/* 상품상세페이지 item */
+	// 상품상세페이지 item
 	public ItemVO itemDetail(Integer num) throws Exception;
-	
-	/* 가격 받아오는 ajax */
+
+	// 가격 받아오는 ajax
 	public List<ItemAttrVO> itemAttr(Integer num) throws Exception;
 
-	/* 상품 옵션박스 ajax */
+	// 상품 옵션박스 ajax
 	public ItemAttrVO itemOp(ItemAttrVO vo) throws Exception;
 
-	/* 상품 리뷰 목록 */
+	// 상품 리뷰 목록
 	public List<ReviewVO> itemreviewlist(Integer itemnum) throws Exception;
 
-	/* 상품 리뷰 상세 */
+	// 상품 리뷰 상세
 	public ReviewVO itemreviewdetail(Integer itemnum) throws Exception;
 
-	/*-----------상품검색 구현중----------*/
+	// -----------상품검색 구현중----------
 	public ItemVO itemSearch(String itemname) throws Exception;
 }

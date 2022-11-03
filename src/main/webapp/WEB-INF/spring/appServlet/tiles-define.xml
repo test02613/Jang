@@ -13,7 +13,6 @@
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
 	
-	
 	<!-- tiles body -->
 	<definition name="*/*" extends="layout-tiles">
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />

@@ -18,16 +18,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EventVO {
 
-	/* 이벤트번호 */
+	// 이벤트번호
 	private Integer eventnum;
 
-	/* 이벤트등록날짜 */
+	// 이벤트등록날짜
 	private Date eventdate;
 
-	/* 이벤트제목 */
+	// 이벤트제목
 	private String eventtitle;
 
-	/* 이벤트내용 */
+	// 이벤트내용
 	private String eventcontent;
 
 }

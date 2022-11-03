@@ -86,6 +86,7 @@
 			<hr>
 			<br>
 			<table class="attrtable">
+			<!-- 등록 -->
 				<c:if test="${num == 1}">
 					<tr>
 						<td class="center">상품번호</td>
@@ -105,7 +106,7 @@
 					<tr>
 						<td class="center">색/용량</td>
 						<td align="left"><input class="input" type="text"
-							name="itemcolor" /></td>
+							name="itemoption" /></td>
 					</tr>
 					<tr>
 						<td class="center">가격</td>
@@ -118,6 +119,8 @@
 							name="itemstock" /></td>
 					</tr>
 				</c:if>
+				
+				<!-- 수정 -->
 				<c:if test="${num == 2}">
 					<tr>
 						<td class="center">상품번호</td>
@@ -138,7 +141,7 @@
 					<tr>
 						<td class="center">색/용량</td>
 						<td align="left"><input class="input" type="text"
-							name="itemcolor" value="${item.itemcolor }" /></td>
+							name="itemoption" value="${item.itemoption }" /></td>
 					</tr>
 					<tr>
 						<td class="center">가격</td>
@@ -172,25 +175,22 @@
 	</form>
 	<script>
 		var itemcode = document.getElementById("itemcode").value;
+		//등록
 		$(document).ready(function() {
-
 			$(".insert_button").click(function() {
 				$("#update").attr("action", "/attrInsertAction");
 				$("#update").submit();
-
 			})
 		})
+		
+		//수정
 		$(document).ready(
-				function() {
-
-					$(".update_button").click(
-							function() {
-								$("#update").attr("action",
-										"/attrUpdateAction?num=" + itemcode);
-								$("#update").submit();
-
-							})
-				})
+			function() {
+			$(".update_button").click( function() {
+			$("#update").attr("action","/attrUpdateAction?num=" + itemcode);
+			$("#update").submit();
+			})
+		})
 	</script>
 </body>
 </html>

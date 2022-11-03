@@ -23,7 +23,7 @@
 			<!-- 아이디 -->
 			<div>
 				<div class="sub_title">아이디</div>
-				<input class="input_box_l id_input" name="id" placeholder="아이디">
+				<input class="input_box_l id_input" name="id" id="id" placeholder="아이디">
 				<span class="id_input_re_1">사용 가능한 아이디입니다.</span> <span
 					class="id_input_re_2">아이디가 이미 존재합니다.</span>
 			</div>
@@ -43,13 +43,13 @@
 			<!-- 이름 -->
 			<div>
 				<div class="sub_title">이름</div>
-				<input class="user_input" name="name" placeholder="이름">
+				<input class="user_input" id ="name" name="name" placeholder="이름">
 			</div>
 
 			<!-- 전화번호 -->
 			<div>
 				<div class="sub_title">전화번호</div>
-				<input class="mobile_input" name="mobile" placeholder="전화번호">
+				<input class="mobile_input" id="mobile" name="mobile" placeholder="전화번호">
 			</div>
 
 			<!-- 이메일 전체영역 -->
@@ -57,11 +57,11 @@
 				<div class="sub_title">이메일</div>
 
 				<div class="mail_input_box">
-					<input class="mail_input" name="email" placeholder="이메일">
+					<input class="mail_input"id="email" name="email" placeholder="이메일">
 				</div>
 
 				<div class="mail_check_input_box" id="mail_check_input_box_false">
-					<input class="mail_check_input" disabled="disabled"
+					<input class="mail_check_input" disabled="disabled" id ="mail_check"
 						placeholder="이메일 인증번호">
 				</div>
 				<div class="mail_check_button">인증번호 전송</div>
@@ -73,7 +73,7 @@
 			<div>
 				<div class="sub_title">주소</div>
 				<div class="address_input_1_box">
-					<input class="address_input_1" name="postcode" readonly="readonly"
+					<input class="address_input_1" name="postcode" id="postcode" readonly="readonly"
 						placeholder="우편번호">
 				</div>
 				<div class="address_button" onclick="execution_daum_address()">주소
@@ -92,27 +92,22 @@
 	</div>
 	<!-- 화면 전체랩 끝 -->
 
-	<!-- ////////////////////////////////////////////////////////////////////////////// -->
-
 	<script>
-      $(document).ready(function() {
-         // 회원가입 버튼
-         $(".join_button").click(function() {
-            $("#join_form").attr("action", "/joinAction");
-            $("#join_form").submit();
-         })
-      })
+      
 
       // id 중복검사
       $('.id_input').on(
             "propertychange change keyup paste input",
             function() {
-
+            	
                var id = $('.id_input').val();
                var data = {
                   id : id
                }
-
+if(id==""){
+	
+$('.id_input_re_1').css("display", "none");
+}else{
                $.ajax({
                   type : "post",
                   url : "/memberIdChk",
@@ -131,8 +126,9 @@
                      }
                   }
                }); // ajax 끝
+}
             })
-
+            
       var code = ""; // 이메일 전송 인증번호 저장 코드
 
       /* 인증번호 이메일 전송 */
@@ -148,6 +144,7 @@
          $.ajax({
 
             type : "GET",
+            async : false,//전역 변수 보내기
             url : "mailCheck?email=" + email,
             success : function(data) {
 
@@ -161,21 +158,7 @@
          });
 
       });
-      /* 인증번호 비교 */
-      $(".mail_check_input").blur(function() {
-         var inputCode = $(".mail_check_input").val(); // 입력코드   
-         var checkResult = $("#mail_check_input_box_warn"); // 비교 결과    
-
-         if (inputCode == code) { // 일치할 경우
-            checkResult.html("인증번호가 일치합니다");
-            checkResult.attr("class", "correct");
-            //mailnumCheck = true;
-         } else { // 일치하지 않을 경우
-            checkResult.html("인증번호를 다시 확인해주세요");
-            checkResult.attr("class", "incorrect");
-            //mailnumCheck = false;
-         }
-      });
+     
 
       // 다음 주소 연동
       function execution_daum_address() {
@@ -249,8 +232,48 @@
 
          });
       });
+      
+      $(document).ready(function() {
+          // 회원가입 버튼
+          $(".join_button").click(function() {
+         				if($("#id").val()==""){
+         					alert("아이디를 입력해주세요");
+         					$("#id").focus();
+         				} else if($("#pw").val()==""){
+         					alert("비밀번호를 입력해주세요");
+         					$("#pw").focus();
+         				}else if($("#pwcheck").val()==""){
+         					alert("비밀번호 확인 입력해주세요");
+         					$("#pwcheck").focus();
+         				}else if($("#pwcheck").val()!=$('#pw').val()){
+         					alert("비밀번호가 일치하지 않음");
+         					$("#pwcheck").focus();
+         				}else if($("#name").val()==""){
+         					alert("이름 입력해주세요");
+         					$("#name").focus();
+         				}else if($("#mobile").val()==""){
+         					alert("휴대폰번호를 입력해주세요");
+         					$("#mobile").focus();
+         				}else if($("#email").val()==""){
+         					alert("이메일을 입력해주세요");
+         					$("#email").focus();
+         				}else if($("#postcode").val()==""){
+         					alert("주소 입력해주세요");
+         					$("#postcode").focus();
+         				}else if($("#mail_check").val()!=code){
+         					alert("인증번호 입력해주세요");
+         					$("#mail_check").focus();
+         				}
+         			
+         				else {
+         					 $("#join_form").attr("action", "/joinAction");
+         			            $("#join_form").submit();
+         				}
+           
+          })
+       })
    </script>
-	<!-- 주소찾기 -->
+	<!-- 주소찾기 --> 
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>

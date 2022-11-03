@@ -88,12 +88,12 @@
 			<!-- 게시판 상단 메뉴 -->
 			<thead class="table-dark">
 				<tr>
-					<th scope="col" class="col-2" id="title">등록날짜 / 주문번호</th>
+					<th scope="col" class="col-4" id="title">등록날짜 / 주문번호</th>
 					<th scope="col" class="col-2" id="title">작성자</th>
 					<th scope="col" class="col-4" id="title">제목</th>
 					<th scope="col" class="col-4" id="title">내용</th>
-						<th scope="col" class="col-1" id="title">#</th>
-					<th scope="col" class="col-1" id="title">#</th>
+						<th scope="col" class="col-2" id="title">#</th>
+					<th scope="col" class="col-2" id="title">#</th>
 				</tr>
 			</thead>
 			<!-- 게시글 목록 -->

@@ -90,6 +90,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<br>
 			<!-- 글쓰기 버튼(관리자만) -->
 			<c:if test="${admin eq 1}">
 				<div class="center">

@@ -22,7 +22,7 @@
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ITEMNAME" property="itemname"
 			jdbcType="VARCHAR" javaType="String" />
-		<result column="ITEMCOLOR" property="itemcolor"
+		<result column="ITEMOPTION" property="itemoption"
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
 
@@ -135,8 +135,7 @@
 		INSERT INTO ITEMATTR
 		VALUES(
 		#{ itemnum }, #{ itemcode}, #{ itemcost },
-		#{ itemstock }, #{ itemname }, #{ itemcolor },
-		#{itemgb }
+		#{ itemstock }, #{ itemname }, #{ itemoption }
 		)
 	</insert>
 
@@ -145,8 +144,8 @@
 		UPDATE ITEMATTR
 		SET
 		itemcost = #{itemcost} , itemstock = #{itemstock}
-		, itemcolor =
-		#{itemcolor}
+		, itemoption =
+		#{itemoption}
 		WHERE itemcode = #{itemcode}
 	</update>
 

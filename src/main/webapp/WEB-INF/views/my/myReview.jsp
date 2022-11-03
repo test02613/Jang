@@ -127,6 +127,5 @@
 			window.confirm("리뷰 삭제시 다시 작성할 수 없습니다.")
 		}
 	</script>
-
 </body>
 </html>

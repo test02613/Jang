@@ -19,7 +19,7 @@
 .center {
 	text-align: center;
 }
-/*  버튼 */
+/*버튼 */
 #btt {
 	width: 250px;
 	height: 80px;

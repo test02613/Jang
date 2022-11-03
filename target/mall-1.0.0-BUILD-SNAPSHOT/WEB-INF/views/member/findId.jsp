@@ -12,6 +12,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style>
+#wrapper {
+	width: 1200px;
+	margin: auto;
+	margin-top: 30px;
+	border-radius: 10px;
+}
+
 #findMemform {
 	width: 500px;
 	margin: 0 auto;
@@ -79,46 +86,53 @@ button {
 	left: calc(50% - 200px/ 2);
 	z-index: 100;
 }
+
+#center {
+	text-align: center;
+}
 </style>
 </head>
 <body>
-	<!-- 로딩중 -->
-	<div id="loadingBar" style="display: none;">
-		<img id="loading-image" src="../img/Spinner.gif" alt="loading..." />
-	</div>
-
-
-	<input type="hidden" name="alert" value="${resultMsg}" />
-	<input type="hidden" name="isResult" value="${isResult}" />
-	<form action="/findIdAction" method="post">
-		<div id="findMemform">
-			<c:if test="${id == null }">
-				<h3 class="contents">아이디 찾기</h3>
-			</c:if>
-			<c:if test="${id != null }">
-				<h3 class="contents">결과</h3>
-			</c:if>
-			<div class="findid">
-				<c:if test="${id != null }">
-					<h2>찾으시는 아이디는' ${id}' 입니다.</h2>
-				</c:if>
+	<div id="wrapper">
+		<input type="hidden" name="alert" value="${resultMsg}" /> <input
+			type="hidden" name="isResult" value="${isResult}" />
+		<form action="/findIdAction" method="post">
+			<div id="findMemform">
 				<c:if test="${id == null }">
-					<input type="text" class="form-control" name="name"
-						id="MEMBER_NAME" placeholder="이름">
-					<input type="email" class="form-control" name="email"
-						id="MEMBER_EMAIL" placeholder="이메일주소">
+					<h3 class="contents">아이디 찾기</h3>
 				</c:if>
-				<a href="/login">로그인</a> <a href="/findPw">비밀번호 재설정</a>
-				<button class="defaultBtn loginBtn" type="submit" id="findIdBtn">아이디
-					찾기</button>
+				<c:if test="${id != null }">
+					<h3 class="contents">아이디 찾기 결과</h3>
+				</c:if>
+				<div class="findid">
+					<c:if test="${id != null }">
+						<h2>찾으시는 아이디는' ${id}' 입니다.</h2>
+					</c:if>
+					<br>
+					<c:if test="${id == null }">
+						<input type="text" class="form-control" name="name"
+							id="MEMBER_NAME" placeholder="이름">
+						<input type="email" class="form-control" name="email"
+							id="MEMBER_EMAIL" placeholder="이메일주소">
+					</c:if>
+					<div id="center">
+						<c:if test="${id != null }">
+							<a href="/login"><button type="button" id=" ">로그인
+									페이지 가기</button></a>
+						</c:if>
+						<c:if test="${id == null }">
+							<a href="/findPw">비밀번호 재설정</a>
+							<button class="defaultBtn loginBtn" type="submit" id="findIdBtn">아이디
+								찾기</button>
+					</div>
+					<p>
+						아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
+					</p>
+					</c:if>
+				</div>
 			</div>
-			<p>
-				아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
-			</p>
-		</div>
+	</div>
 	</form>
-	<script>
-		
-	</script>
+	</div>
 </body>
 </html>

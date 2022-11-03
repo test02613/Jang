@@ -23,19 +23,19 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDAO dao;
 
-	/* 회원가입 */
+	// 회원가입
 	@Override
 	public void memberJoin(MemberVO member) throws Exception {
 
 		dao.memberJoin(member);
 	}
 
-	/* 로그인 */
+	// 로그인
 	@Override
 	public String loginAction(MemberVO vo, HttpSession session) throws Exception {
 		String name = dao.loginAction(vo);
 		logger.info("Name2:" + name);
-		if (name != null) { /* 세션 변수 저장 */
+		if (name != null) { // 세션 변수 저장
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("admin", vo.getAdmin());
 			session.setAttribute("name", name);
@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 		return name;
 	}
 
-	/* 관리자 로그인 */
+	// 관리자 로그인
 	@Override
 	public int loginAction_admin(MemberVO vo) throws Exception {
 		int admin = dao.loginAction_admin(vo);
@@ -52,13 +52,13 @@ public class MemberServiceImpl implements MemberService {
 		return admin;
 	}
 
-	/* 아이디 중복 검사 */
+	// 아이디 중복 검사
 	@Override
 	public int idCheck(String id) throws Exception {
 		return dao.idCheck(id);
 	}
 
-	/* 아이디 찾기 */
+	// 아이디 찾기
 	@Override
 	public String findId(HttpServletResponse response, MemberVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
@@ -77,7 +77,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
-	/* 비밀번호 찾기 */
+	// 비밀번호 찾기
 	@Override
 	public String findPw(HttpServletResponse response, MemberVO vo) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
@@ -87,7 +87,7 @@ public class MemberServiceImpl implements MemberService {
 		return pw;
 	}
 
-	/* 비밀번호 변경 */
+	// 비밀번호 변경
 	@Override
 	public String updatePw(HttpServletResponse response, MemberVO vo) throws Exception {
 

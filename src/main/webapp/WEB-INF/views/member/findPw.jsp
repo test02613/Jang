@@ -17,7 +17,6 @@
 	text-align: center;
 	margin-bottom: 100px
 }
-
 .contents {
 	height: 100px;
 	color: #24292F;

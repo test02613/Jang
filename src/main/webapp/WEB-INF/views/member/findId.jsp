@@ -86,6 +86,7 @@ button {
 	left: calc(50% - 200px/ 2);
 	z-index: 100;
 }
+
 #center {
 	text-align: center;
 }
@@ -115,21 +116,23 @@ button {
 							id="MEMBER_EMAIL" placeholder="이메일주소">
 					</c:if>
 					<div id="center">
-					<c:if test="${id != null }">
-						<a href="/login"><button type="button" id=" ">로그인 페이지
-								가기</button></a>
+						<c:if test="${id != null }">
+							<a href="/login"><button type="button" id=" ">로그인
+									페이지 가기</button></a>
+						</c:if>
+						<c:if test="${id == null }">
+							<a href="/findPw">비밀번호 재설정</a>
+							<button class="defaultBtn loginBtn" type="submit" id="findIdBtn">아이디
+								찾기</button>
+					</div>
+					<p>
+						아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
+					</p>
 					</c:if>
-					<c:if test="${id == null }">
-						<a href="/findPw">비밀번호 재설정</a>
-						<button class="defaultBtn loginBtn" type="submit" id="findIdBtn">아이디
-							찾기</button>
 				</div>
-				<p>
-					아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
-				</p>
-				</c:if>
-			</div>	</div></div>
-		</form>
+			</div>
+	</div>
+	</form>
 	</div>
 </body>
 </html>

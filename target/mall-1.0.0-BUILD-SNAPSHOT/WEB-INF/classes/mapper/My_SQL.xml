@@ -11,22 +11,19 @@
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ITEMNAME" property="itemname"
 			jdbcType="VARCHAR" javaType="String" />
-		<result column="ITEMCOLOR" property="itemcolor"
-			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMOPTION" property="itemoption"/>
 	</resultMap>
 
 	<resultMap type="ItemVO" id="item">
 		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
 			javaType="Integer" />
+		<result column="ITEMIMG" property="itemimg" />
 	</resultMap>
 
 	<resultMap type="OrderVO" id="orderlist">
-		<result column="ORDERNUM" property="ordernum"
-			jdbcType="INTEGER" javaType="Integer" />
-		<result column="ORDERCOST" property="ordercost"
-			jdbcType="VARCHAR" javaType="String" />
-		<result column="REVIEW" property="review" jdbcType="INTEGER"
-			javaType="Integer" />
+		<result column="ORDERNUM" property="ordernum"/>
+		<result column="ORDERCOST" property="ordercost"/>
+		<result column="REVIEW" property="review"/>
 		<result column="STATE" property="state" />
 		<result column="ORDERDATE" property="orderdate" />
 		<collection property="itemattrvo" resultMap="itemAttr" />
@@ -60,12 +57,10 @@
 
 	<!-- 주문조회 -->
 	<select id="my_order" resultMap="orderlist">
-		SELECT *
-		FROM ORDERTABLE a
-		JOIN
-		ItemAttr b
-		on a.itemcode = b.itemcode
-		WHERE a.id = #{id}
+	      select *
+	      from ordertable a, itemattr b, item c
+	      where a.itemcode = b.itemcode and b.itemnum = c.itemnum and a.id=#{id}
+	      order by a.ordernum DESC
 	</select>
 
 	<!-- 포인트 충전 -->

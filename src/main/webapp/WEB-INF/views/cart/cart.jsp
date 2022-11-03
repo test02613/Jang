@@ -60,8 +60,15 @@
 .center {
 	text-align: center;
 }
+/* 우측정렬 */
 .right {
 	text-align: right;
+}
+/* 장바구니 비어있음 */
+.emptycart {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
 }
 </style>
 <body>
@@ -71,7 +78,8 @@
 			<thead class="table-dark">
 				<tr>
 					<th style="text-align: center" scope="col" class="col-5" id="title">이미지</th>
-					<th style="text-align: center" scope="col" class="col-5" id="title">상품이름 / 컬러</th>
+					<th style="text-align: center" scope="col" class="col-5" id="title">상품이름
+						/ 컬러</th>
 					<th style="text-align: center" scope="col" class="col-4" id="title">가격</th>
 					<th style="text-align: center" scope="col" class="col-" id="title">#</th>
 					<th style="text-align: center" scope="col" class="col-" id="title">#</th>
@@ -81,13 +89,13 @@
 				<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
 				<c:forEach items="${cartlist}" var="cartlist" varStatus="Status">
 					<tr>
-					<%-- <tr
+						<%-- <tr
 						onClick="location.href='${path}/itemDetail?num=${cartlist.itemcode}'"
 						style="cursor: pointer;" id="list"> --%>
 						<td style="text-align: center" style="text-decoration: none;"><img
 							src="${cartlist.itemimg}" style="width: 100px; height: 100px;" /></td>
 						<td class="center"><c:out
-								value="${cartlist.itemname} / ${cartlist.itemattr}" /></td>
+								value="${cartlist.itemname} / ${cartlist.itemoption}" /></td>
 						<td class="center"><c:out value="${cartlist.itemcost}" />원</td>
 						<td class="center"><a
 							href='${path}/order?code=${cartlist.itemcode}'>
@@ -101,17 +109,21 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="right" id="button">
-			<a href="/cartDeleteAllAction"><button type="button" class="orderbutton">장바구니 비우기
-				</button></a>
-		</div>
 		<br>
-
-		<div class="center" id="button">
-			<a href="#"><button type="button" class="orderbutton">구매하기
-				</button></a>
-		</div>
-		<br>
+		<c:if test="${not empty cartlist}">
+			<div class="right" id="button">
+				<a href="/cartDeleteAllAction"><button type="button"
+						class="orderbutton" onclick="allDelete();" >장바구니 비우기</button></a>
+			</div>
+			<div class="center" id="button">
+				<a href="/cartOrder?id=${id}"><button type="button"
+						class="orderbutton">구매하기</button></a>
+			</div>
+		</c:if>
+		<c:if test="${empty cartlist}">
+			<div class="emptycart">담긴 물품이 없습니다.</div>
+		</c:if>
+		<br> <br> <br>
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -119,4 +131,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script>
+	//삭제버튼 누르면 경고창 띄우기
+	function allDelete() {
+		alert("장바구니를 비우시겠습니까?") 
+	})
+	</script>
 </html>

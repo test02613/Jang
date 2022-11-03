@@ -143,11 +143,11 @@
 										================</option>
 									<c:forEach var="list1" items="${list1}" varStatus="index">
 										<c:if test="${list1.itemstock == 0}">
-											<option id="ba" value="${list1.itemcolor}"
-												disabled="disabled">${list1.itemcolor}(품절)</option>
+											<option id="ba" value="${list1.itemoption}"
+												disabled="disabled">${list1.itemoption}(품절)</option>
 										</c:if>
 										<c:if test="${list1.itemstock != 0}">
-											<option value="${list1.itemcolor}">${list1.itemcolor}
+											<option value="${list1.itemoption}">${list1.itemoption}
 											</option>
 										</c:if>
 									</c:forEach>
@@ -221,7 +221,7 @@
 	var color;
 	var num;
 	var itemcode;
-	$('#ColorList').on("change", function() {/* 셀렉트 박스 */
+	$('#ColorList').on("change", function() { // 셀렉트 박스 
 		color = $("#ColorList option:selected").val();
 		num = ${detail.itemnum}
 		var data = {
@@ -238,23 +238,23 @@
 				console.log("확인 : " + result);
 				var a = result;
 				if (result) {
-					/* alert("완료"+a); */
+					// alert("완료"+a);
 				} else {
-					/*  alert("전송된 값 없음"+result);  */
+					//  alert("전송된 값 없음"+result);  
 				}
 			},
 			error : function() {
-				/* alert("에러 발생"+result); */
+				// alert("에러 발생"+result); 
 			}
-		});/* 아작스 끝 */
+		});// 아작스 끝 
 
 	})
 
-	/* 구매버튼 */
+	// 구매버튼 
 	var code;
 	$("#goodsOrder").on("click", function() {
 
-		/*  alert(num); */
+		//  alert(num); 
 
 		order();
 	});
@@ -271,27 +271,28 @@
 					color : color,
 					num : num
 				},
-				async : false,//전역 변수 보내기
+				async : false,// 전역 변수 보내기
 				dataType : "json",
 				success : function(result) {
 					code = result;
 
 					console.log("확인 : " + result);
 					if (result) {
-						/* alert("완료"+code);  */
-						alert("결제하시겠습니까?");
-						return code;
+						// alert("완료"+code);  
 					} else {
-						/* alert("전송된 값 없음"+result); */
+						// alert("전송된 값 없음"+result); 
 
 					}
 				},
 				error : function() {
-					/* alert("에러 발생"+result); */
+					// alert("에러 발생"+result); 
 				}
 
-			});/* 아작스 끝 */
-			location.href = "/order?code="+code;
+			});// 아작스 끝 
+			if (window.confirm("구매하시겠습니까?")) {
+				location.href = "/order?code="+code;
+	         }
+			
 		}
 	}
 	/* 장바구니버튼 */
@@ -312,7 +313,7 @@
 					code = result;
 					console.log("확인 : " + result);
 					if (result) {
-						/* alert("완료"+code);  */
+						// alert("완료"+code);  
 						return code;
 					} else {
 						//alert("전송된 값 없음"+result);  
@@ -321,7 +322,7 @@
 				error : function() {
 					// alert("에러 발생"+result); 
 				}
-			});//아작스 끝 		alert("장바구니에 추가하시겠습니까?");
+			});// 아작스 끝 alert("장바구니에 추가하시겠습니까?");
 			location.href = "/cartInsertAction?code=" + code;
 		}
 	});

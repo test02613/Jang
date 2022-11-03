@@ -29,7 +29,7 @@
 <style>
 /* 전체 랩 */
 #wrapper {
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 	margin-top: 30px;
 }
@@ -77,6 +77,11 @@
 .center {
 	text-align: center;
 }
+/* td */
+.centerff {
+	text-align: center;
+	font-size: 15px;
+}
 /* 오른쪽 정렬 */
 .right {
 	text-align: right;
@@ -92,22 +97,15 @@
 </head>
 <body>
 	<div id="wrapper">
-
 		<div class="subject">주문서 작성</div>
 
 		<!-- tables -->
 		<form id="commonForm" name="commonForm"></form>
 		<form name="orderWrite" id="orderWrite" method="post"
 			action="/orderAction?code=${item.itemcode}">
-			<%-- <!-- goods정보 -->
-         <input type="hidden" name="list" value="${list }">
-         <!-- coupon정보 -->
-         <input type="hidden" name="list2" value="${list2 }">
-         <!-- member정보 -->
-         <input type="hidden" name="map" value="${map }"> --%>
-			<div class="table-responsive">
+		<div class="table-responsive">
 
-				<table id="ordertable" class="table table-striped">
+					<table class="table table-striped">
 
 					<thead class="table-dark">
 						<tr>
@@ -119,14 +117,14 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="center"><img src='' width="70px" height="70px"></td>
-							<td class="center"><a
-								href="${path}/itemDetail?num=${item.itemnum}">${item.itemname}</a></td>
-							<td class="center"><input type="text"
-								value="${item.itemcolor}" style="border: none;" readonly>
+							<td class="centerff"><img src='${vo1.itemimg}'  width="100px" height="100px"></td>
+							  <td class="centerff" style="width: 60px;"><a
+								href="">${item.itemname}</a></td>
+							<td class="centerff"><input type="text"
+								value="${item.itemoption}" style="border: none;" readonly>
 								<input type="hidden" name="itemcode" value="${item.itemcode}"
 								style="text-align: right; border: none;" readonly></td>
-							<td class="center"><input type="text" name="ordercost"
+							<td class="centerff"><input type="text" name="ordercost"
 								value="${item.itemcost}" style="border: none;" readonly>원</td>
 						</tr>
 					</tbody>
@@ -287,23 +285,6 @@
 		document.getElementById("ORDER_SAVE_POINT").value = point; //할인과 상관없이 주문금액별 적립
 	}
 
-	//주문자정보와 동일
-	function fn_chkinfo() {
-		var chk = document.getElementById("chkinfo").checked;
-		if (chk == true) {
-			document.getElementById("ORDER_NAME").value = "${map.MEMBER_NAME}";
-			document.getElementById("ORDER_PHONE").value = "${map.MEMBER_PHONE}";
-			document.getElementById("ORDER_ZIPCODE").value = "${map.MEMBER_ZIPCODE}";
-			document.getElementById("ORDER_ADDR1").value = "${map.MEMBER_ADDR1}";
-			document.getElementById("ORDER_ADDR2").value = "${map.MEMBER_ADDR2}";
-		} else if (chk == false) {
-			document.getElementById("ORDER_NAME").value = "";
-			document.getElementById("ORDER_PHONE").value = "";
-			document.getElementById("ORDER_ZIPCODE").value = "";
-			document.getElementById("ORDER_ADDR1").value = "";
-			document.getElementById("ORDER_ADDR2").value = "";
-		}
-	}
 
 	//쿠폰, 포인트 사용
 	function fn_price() {
@@ -352,8 +333,11 @@
 				}
 
 			});//아작스 끝
-			alert("결제하시겠습니까?");
-			f.submit();
+			if (window.confirm("구매하시겠습니까?")) {
+				f.submit();
+
+	         }
+			
 		}
 	}
 

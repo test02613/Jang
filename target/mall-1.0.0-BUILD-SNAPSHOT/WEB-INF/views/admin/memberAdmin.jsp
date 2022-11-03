@@ -35,6 +35,7 @@
 	cursor: pointer;
 }
 
+/* 랩 */
 #wrapper {
 	width: 1200px;
 	margin: auto;
@@ -81,7 +82,6 @@ h1 {
 <body>
 	<form id="itemselect" method="post">
 		<!-- 게시판 부트스트랩 -->
-		<div class="wrapper">
 			<div id="wrapper">
 				<h1 class="subjecet">회원관리</h1>
 				<table class="table">
@@ -157,7 +157,6 @@ h1 {
 							가기</button></a>
 				</div>
 			</div>
-		</div>
 	</form>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

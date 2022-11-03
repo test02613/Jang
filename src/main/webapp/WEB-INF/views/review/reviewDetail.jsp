@@ -106,10 +106,7 @@ align-content: center;
 		crossorigin="anonymous"></script>
 	<script>
 	//삭제버튼 누르면 경고창 띄우기
-	function r_delete() {
-		if (alert("리뷰를 삭제하시겠습니까?")) {
-		}
-	})
+
 	</script>
 </body>
 </html>

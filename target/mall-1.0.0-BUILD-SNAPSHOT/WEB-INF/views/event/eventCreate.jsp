@@ -138,20 +138,15 @@
 			})
 		})
 
-		$(document)
-				.ready(
-						function() {
-							// 수정 버튼
-							$(".eventUpdate_button")
-									.click(
-											function() {
-												$("#eventCreate_form")
-														.attr("action",
-																"/eventUpdateAction?num=${detail.eventnum}");
-												$("#eventCreate_form").submit();
-
-											})
-						})
+		$(document).ready(function() {
+			// 수정 버튼
+			$(".eventUpdate_button")
+				.click(
+				function() {
+				$("#eventCreate_form").attr("action","/eventUpdateAction?num=${detail.eventnum}");
+				$("#eventCreate_form").submit();
+				})
+			})
 	</script>
 </body>
 </html>

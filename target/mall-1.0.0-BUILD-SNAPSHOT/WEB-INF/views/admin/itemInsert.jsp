@@ -132,6 +132,7 @@
 				<table class="itemtable">
 
 					<tbody>
+						<!-- 등록 -->	
 						<c:if test="${item.itemnum == null }">
 							<tr>
 								<td id="itemtext">상품번호</td>
@@ -205,6 +206,8 @@
 									name="itemdetailimg" style="height: 30px;" value="" readonly></td>
 							</tr>
 						</c:if>
+						
+						<!-- 수정 -->
 						<c:if test="${item.itemnum != null }">
 							<tr>
 								<td id="itemtext">상품번호</td>
@@ -334,7 +337,7 @@
 			// change 이벤트 설정하면  e는 이벤트가 된다. handleImgFileSelect에 파라미터 주면 e가 이벤트가 아니라 그냥 파라미터가 됨.
 			function handleImgFileSelect(e) {
 
-				console.log("여길봐라: " + JSON.stringify(e));
+				console.log("이벤트: " + JSON.stringify(e));
 				//e.target : 파일객체
 				//e.target.files : 파일객체 안의 파일들
 				var files = e.target.files;
@@ -413,7 +416,7 @@
 									formData.append("uploadFile", files[i]);
 								}
 
-								//없어?카드가?또?
+								//카드가 없을 경우
 								//processData,contentType은 반드시 false여야 전송됨
 								$
 										.ajax({

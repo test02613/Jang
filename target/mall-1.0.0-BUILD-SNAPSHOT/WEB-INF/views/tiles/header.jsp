@@ -9,7 +9,6 @@
 <body>
 	<div class="wrapper">
 		<div id="header_wrap">
-
 			<!-- 네비영역 -->
 			<div id="nav">
 				<ul>

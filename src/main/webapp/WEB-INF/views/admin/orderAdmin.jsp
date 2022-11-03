@@ -15,6 +15,7 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <style>
+/* 전체 랩 */
 #wrapper {
 	width: 1200px;
 	margin: auto;
@@ -49,6 +50,7 @@
 	font-weight: :bold;
 }
 
+/* 주문관리 타이틀 */
 #ordertitle {
 	text-align: center;
 	align-content: center;
@@ -70,6 +72,7 @@ td:hover {
 	align-content: center;
 }
 
+/* 버튼 */
 #button {
 	text-align: center;
 }
@@ -131,9 +134,9 @@ td:hover {
 								style="cursor: pointer;">
 								<td id="title" style="text-decoration: none;">${orderlist.ordernum}</td>
 								<td style="text-align: center" style="text-decoration: none;"><img
-									src="" style="width: 100px; height: 100px;" /></td>
+									src="${orderlist.itemvo.itemimg} " style="width: 100px; height: 100px;" /></td>
 								<td id="title" style="text-decoration: none;"><c:out
-										value="${orderlist.itemattrvo.itemname}/${orderlist.itemattrvo.itemcolor}" /></td>
+										value="${orderlist.itemattrvo.itemname}/${orderlist.itemattrvo.itemoption}" /></td>
 								<td id="title" style="text-decoration: none;"><c:out
 										value="${orderlist.id}" /></td>
 								<td id="title" style="text-decoration: none;"><c:out

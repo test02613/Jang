@@ -97,8 +97,7 @@ text-align:center;
 						<tr onClick="location.href='/attrInsert?code=${list.itemcode}'"  style="cursor:pointer;">
 							<td id="title" style="text-decoration: none;"><c:out value="${list.itemnum}" />
 							<td id="title" style="text-decoration: none;"><c:out value="${list.itemname}" />
-							<td id="title" style="text-decoration: none;"><c:out value="${list.itemcolor}" />
-							/<c:out  value="${list.itemgb}" /></td>
+							<td id="title" style="text-decoration: none;"><c:out value="${list.itemoption}" /></td>
 							<td id="center" style="text-decoration: none;"><c:out   value="${list.itemcode}" /></td>
 							<td id="center"><a href='${path}/attrInsert?code=${list.itemcode}'><button class="itembutton" type="button" >수정</button></a></td>
 							<td id="center"><a href='${path}/attrselectDeleteAction?itemcode=${list.itemcode}&num=${list.itemnum}'><button type="button" class="itembutton" onclick="attrDelete();">삭제</button></a></td>

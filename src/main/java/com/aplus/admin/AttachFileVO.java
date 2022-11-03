@@ -10,17 +10,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AttachFileVO {
-	
-	/*파일명*/
+
+	// 파일명
 	private String fileName;
-	
-	/*업로드 경로*/
+
+	// 업로드 경로
 	private String uploadPath;
-	
-	/*파일명-난수*/
+
+	// 파일명-난수
 	private String uuid;
-	
-	/*이미지*/
+
+	// 이미지
 	private boolean image;
 
 }

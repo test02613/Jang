@@ -139,7 +139,7 @@
 			<div class="sub_title">주소</div>
 			<div>
 				<input class="input" type="text" name="postcode"
-					id="address_input_1_box" value="${member.postcode}">
+					id="MY_ZIPCODE" value="${member.postcode}">
 				<button type="button" class="address_button" id="findAddrBtn"
 					onclick="findAddr()">우편번호 찾기</button>
 			</div>
@@ -168,30 +168,6 @@
 
 			})
 		})
-
-		//주문자정보와 동일
-		function fn_chkinfo() {
-			var chk = document.getElementById("chkinfo").checked;
-			if (chk == true) {
-				document.getElementById("MY_NAME").value = "${map.MEMBER_NAME}";
-				document.getElementById("MY_ID").value = "${map.MEMBER_ID}";
-				document.getElementById("MY_EMAIL").value = "${map.MEMBER_EMAIL}";
-				document.getElementById("MY_PHONE").value = "${map.MEMBER_PHONE}";
-				document.getElementById("MY_ZIPCODE").value = "${map.MEMBER_ZIPCODE}";
-				document.getElementById("MY_ADDR1").value = "${map.MEMBER_ADDR1}";
-				document.getElementById("MY_ADDR2").value = "${map.MEMBER_ADDR2}";
-
-			} else if (chk == false) {
-				document.getElementById("MY_NAME").value = "";
-				document.getElementById("MY_ID").value = "";
-				document.getElementById("MY_EMAIL").value = "";
-				document.getElementById("MY_PHONE").value = "";
-				document.getElementById("MY_ZIPCODE").value = "";
-				document.getElementById("MY_ADDR1").value = "";
-				document.getElementById("MY_ADDR2").value = "";
-
-			}
-		}
 
 		// 기존 비밀번호 일치 여부 
 		$(function() {

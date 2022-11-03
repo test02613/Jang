@@ -81,6 +81,7 @@
 				<thead class="table-dark">
 					<tr>
 						<th scope="col" class="col-2" id="title">번호</th>
+						<th scope="col" class="col-2" id="title">주문번호</th>
 						<th scope="col" class="col-3" id="title">작성일</th>
 						<th scope="col" class="col-10" id="title">제목</th>
 						<th scope="col" class="col-3" id="title">#</th>
@@ -95,6 +96,7 @@
 							onClick="location.href='${path}/reviewDetail?num=${myreview.ordernum}'"
 							style="cursor: pointer;" id="myreview">
 							<td id="center"><c:out value="${myreview.reviewnum}" /></td>
+							<td id="center"><c:out value="${myreview.ordernum}" /></td>
 							<td id="center"><c:out value="${myreview.reviewdate}" /></td>
 							<td id="center"><c:out value="${myreview.reviewtitle}" /></td>
 
@@ -125,6 +127,5 @@
 			window.confirm("리뷰 삭제시 다시 작성할 수 없습니다.")
 		}
 	</script>
-
 </body>
 </html>

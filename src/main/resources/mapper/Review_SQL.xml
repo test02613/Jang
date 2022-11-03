@@ -47,13 +47,6 @@
 		WHERE ordernum = #{ordernum}
 	</update>
 	
-	<!-- 리뷰 삭제시 3으로 업데이트 -->
-	<update id="reveiw_x" parameterType="OrderVO">
-		UPDATE ORDERTABLE 
-		SET REVIEW = 3
-		WHERE ordernum = #{ordernum}
-	</update>
-	
 	<!-- reviewnum 가져오기 -->
 	<select id="review_num" resultType="ReviewVO">
 		SELECT *

@@ -18,49 +18,49 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderVO {
 
-	/* 회원아이디 */
+	// 회원아이디
 	private String id;
 
-	/* 상품번호 */
+	// 상품번호
 	private Integer ordernum;
-	
-	/* 송장번호 */
+
+	// 송장번호
 	private String shippingnum;
-	
-	/* 배송비 */
+
+	// 배송비
 	private String shippingcost;
-	
-	/* 주문가격 */
-	private String ordercost;
-	
-	/* 주문날짜 */
+
+	// 주문가격
+	private Integer ordercost;
+
+	// 주문날짜
 	private Date orderdate;
-	
-	/* 결제방법 */
+
+	// 결제방법
 	private String payment;
-	
-	/* 우편번호 */
+
+	// 우편번호
 	private String postcode;
-	
-	/* 배송지 주소 */
+
+	// 배송지 주소
 	private String address;
-	
-	/* 배송지 상세주소 */
+
+	// 배송지 상세주소
 	private String addressdetail;
-	
-	/* 핸드폰 */
+
+	// 핸드폰
 	private String mobile;
-	
-	/* 주문자이름 */
+
+	// 주문자이름
 	private String name;
-	
-	/* 상품코드 */
+
+	// 상품코드
 	private Integer itemcode;
-	
-	/* 리뷰작성여부 */
+
+	// 리뷰작성여부
 	private Integer review;
-	
-	/* 배송/주문상태 */
+
+	// 배송/주문상태
 	private String state;
 
 	private ItemAttrVO itemattrvo;

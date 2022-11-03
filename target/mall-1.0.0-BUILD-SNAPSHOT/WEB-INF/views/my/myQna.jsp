@@ -5,12 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+/* 중앙정렬 */
+.center {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<br>
 	<h1 style="text-align: center">1대1 문의</h1>
 	<br>
-	<hr>
+	<div align="center">
+			<hr width=1000px>
+		</div>
 	<br>
 	<h1 style="text-align: center">
 	<!-- <img src="/resources/img/kakao.png" style="width: 100px; height: 100px;" /> -->

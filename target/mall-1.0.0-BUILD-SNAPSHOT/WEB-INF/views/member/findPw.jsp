@@ -17,7 +17,6 @@
 	text-align: center;
 	margin-bottom: 100px
 }
-
 .contents {
 	height: 100px;
 	color: #24292F;
@@ -102,12 +101,11 @@ button {
 					<input type="email" class="form-control" name="email" id="email"
 						placeholder="이메일주소">
 				</c:if>
-				<a href="/login">로그인</a> <a href="/findId">아이디 찾기</a>
 				<button class="defaultBtn loginBtn" type="submit" id="pwResetBtn">비밀번호
 					재설정</button>
 			</div>
 			<p>
-				아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
+				아직 회원이 아니신가요? <a href="/join">회원가입하기</a> /  <a href="/login">로그인</a>
 			</p>
 		</div>
 	</form>
