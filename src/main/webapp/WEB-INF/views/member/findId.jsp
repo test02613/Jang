@@ -12,13 +12,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <style>
+/* 전체 랩 */
 #wrapper {
 	width: 1200px;
 	margin: auto;
 	margin-top: 30px;
 	border-radius: 10px;
 }
-
+/* 아이디 찾기 폼 */
 #findMemform {
 	width: 500px;
 	margin: 0 auto;
@@ -86,7 +87,7 @@ button {
 	left: calc(50% - 200px/ 2);
 	z-index: 100;
 }
-
+/* 가운데 정렬 */
 #center {
 	text-align: center;
 }
@@ -132,7 +133,6 @@ button {
 				</div>
 			</div>
 	</div>
-	</form>
-	</div>
+	</form></div>
 </body>
 </html>

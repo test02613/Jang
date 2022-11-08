@@ -5,13 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aplus.dao.MemberDAO;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
 import com.aplus.review.ReviewVO;
-import com.aplus.service.MemberService;
 
 @Service
 public class AdminServiceImpl implements AdminService {

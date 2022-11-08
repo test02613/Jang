@@ -36,7 +36,6 @@
 	font-size: 15px;
 	color: white;
 	text-align: center;
-
 	border-radius: 10px;
 	cursor: pointer;
 }
@@ -61,26 +60,27 @@
 }
 </style>
 <body>
-	<br>
-	<br>
-	<div class="container">
-		<h1 class="subjecet">포인트 충전</h1>
-		<hr>
-		<br>
-		<form id="update" method="post">
+	<form id="update" method="post">
+		<br> <br>
+		<div class="container">
+			<h1 class="subjecet">포인트 충전</h1>
+			<hr>
+			<br>
 			<div class="text">
-				<input type="text" id="pointbox" name="point" /> <input
-					type="button" class="update_button" id="pointbutton" value="충전하기">
+				<input type="text" id="pointbox" name="point" />
+				<button type="button" class="update_button" id="pointbutton"
+					value="충전하기">충전하기</button>
 			</div>
 			<br>
 			<div class="text">잔여 포인트 : ${member.point}</div>
 			<br>
 			<hr>
-	</div>
-	<div style="text-align: center" id="button">
-		<a href="/mymain"><button type="button" class="mybutton">마이페이지로
-				가기</button></a>
-	</div>
+		</div>
+		<div style="text-align: center" id="button">
+			<a href="/mymain"><button type="button" class="mybutton">마이페이지로
+					가기</button></a>
+		</div>
+	</form>
 </body>
 <script>
 	$(document).ready(function() {

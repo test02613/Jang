@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +58,30 @@
 	border-radius: 10px;
 	cursor: pointer;
 }
+/* 사용 버튼 */
+.pointusebutton {
+	width: 50px;
+	height: 30px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+/* 우편번호 찾기 버튼 */
+.inbutton {
+	width: 110px;
+	height: 30px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
 /* 결제하기 버튼 */
 .orderbutton {
 	width: 160px;
@@ -80,7 +102,7 @@
 /* td */
 .centerff {
 	text-align: center;
-	font-size: 15px;
+	font-size: 17px;
 }
 /* 오른쪽 정렬 */
 .right {
@@ -88,11 +110,12 @@
 }
 /* 폰트 사이즈 조정 */
 #fontsize {
-	font-size: 15px;
+	font-size: 17px;
 }
 
 .fontsize2 {
-	font-size: 15px;
+	font-size: 17px;
+	text-align: center;
 }
 </style>
 </head>
@@ -101,46 +124,38 @@
 		<div class="subject">주문서 작성</div>
 
 		<!-- tables -->
-		<form id="commonForm" name="commonForm"></form>
 		<form name="orderWrite" id="orderWrite" method="post"
 			action="cartOrderAction">
-
-			<%-- <!-- goods정보 -->
-         <input type="hidden" name="list" value="${list }">
-         <!-- coupon정보 -->
-         <input type="hidden" name="list2" value="${list2 }">
-         <!-- member정보 -->
-         <input type="hidden" name="map" value="${map }"> --%>
 			<div class="table-responsive">
 
 				<table class="table table-striped">
 
 					<thead class="table-dark">
 						<tr>
-							<th colspan="" style="text-align: center">이미지</th>
-							<th colspan="" style="text-align: center">상품명</th>
-							<th colspan="" style="text-align: center">컬러</th>
-							<th colspan="40%" style="text-align: center">주문금액</th>
+							<th class="fontsize2">이미지</th>
+							<th class="fontsize2">상품명</th>
+							<th class="fontsize2">컬러</th>
+							<th class="fontsize2">주문금액</th>
 						</tr>
 					</thead>
 					<c:forEach var="list" items="${list}">
 						<tbody>
-
 							<tr>
-								<td class="centerff"><img src="${list.itemimg}"
+								<td class="fontsize2"><img src="${list.itemimg}"
 									width="100px" height="100px"></td>
-								<td class="centerff" style="width: 60px;"><a href="">${list.itemname}</a>
+								<td class="fontsize2" style="width: 80px;"><a href="">${list.itemname}</a>
 									<br></td>
-								<td class="centerff" style="text-align: center"><input
+								<td class="fontsize2" style="text-align: center"><input
 									type="text" value="${list.itemoption}"
-									style="width: 80px; text-align: right; border: none;" readonly>
-									<input type="hidden" name="itemcode" value="${list.itemcode}"
-									style="width: 80px; text-align: right; border: none;" readonly>
+									style="width: 80px; border-radius: 10px; text-align: center; border: none;"
+									readonly> <input type="hidden" name="itemcode"
+									value="${list.itemcode}"
+									style="width: 80px; text-align: center; border: none;" readonly>
 								</td>
-								<td class="centerff" style="text-align: center"><input
+								<td class="fontsize2" style="text-align: center"><input
 									type="text" name="ordercost" value="${list.itemcost}"
-									style="width: 80px; text-align: right; border: none;" readonly>원
-								</td>
+									style="width: 100px; text-align: center; border-radius: 10px; border: none;"
+									readonly>원</td>
 							</tr>
 
 						</tbody>
@@ -152,35 +167,38 @@
 			<div class="table-responsive">
 				<table id="ordertable" class="table table-striped"
 					style="width: 1000px">
-					<col width="11%" />
-					<col width="*%" />
-					<col width="*%" />
-					<col width="*%" />
-					<col width="*%" />
+					<colgroup>
+						<col width="11%" />
+						<col width="*%" />
+						<col width="*%" />
+						<col width="*%" />
+						<col width="*%" />
 					</colgroup>
 					<tr>
-						<td>주문금액</td>
+						<td class="fontsize2">주문금액</td>
 						<td style="text-align: left"><input type="text"
 							name="ORDER_TOTAL_ORDER_PRICE" id="ORDER_TOTAL_ORDER_PRICE"
-							value="" style="width: 100px; text-align: right; border: none;"
-							readonly>원</td>
+							class="fontsize2" value=""
+							style="width: 100px; text-align: center; border-radius: 10px; border: none;" readonly>원</td>
 					</tr>
-					<tr rowspan="5">
+					<tr>
 						<td></td>
 						<td></td>
 					</tr>
-					<tr rowspan="5">
-						<td>포인트</td>
+					<tr>
+						<td class="fontsize2">포인트</td>
 						<td colspan="3"><input type="text" name="ORDER_USE_POINT"
-							id="ORDER_USE_POINT" value="0"
-							style="width: 100px; text-align: right" readonly> P
-							&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="사용"
-							onclick="fn_price()"> (포인트 <input type="text"
-							name="POINT_TOTAL" id="POINT_TOTAL" value="${member.point}"
-							style="width: 100px; text-align: right; border: none;" readonly>
-							P)</td>
+							class="fontsize2" id="ORDER_USE_POINT" value="0"
+							style="width: 100px; text-align: center; border-radius: 10px; border: none;"
+							readonly> P &nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+							class="pointusebutton" value="사용" onclick="fn_price()">
+							(포인트 <input type="text" class="fontsize2" name="POINT_TOTAL"
+							id="POINT_TOTAL" value="${member.point}"
+							style="width: 100px; text-align: center; border-radius: 10px; border: none;"
+							readonly> P)</td>
+						<!-- 없으면 가격표시 동작 안함 -->
+						<td><input type="hidden" id="ORDER_FEE" name="ORDER_FEE"></td>
 					</tr>
-					<input type="hidden" id="ORDER_FEE" name="ORDER_FEE">
 				</table>
 			</div>
 
@@ -200,31 +218,36 @@
 							<td style="text-align: left"><input type="hidden" name="id"
 								value="${member.id}" style="width: 100px;"> <input
 								class="fontsize2" type="text" name="name" id="ORDER_NAME"
-								value="${member.name}" style="width: 100px;"></td>
+								value="${member.name}"
+								style="width: 100px; border-radius: 10px; border: none;"></td>
 						</tr>
 						<tr>
 							<td id="fontsize">휴대폰번호</td>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="mobile" id="ORDER_PHONE"
-								value="${member.mobile}" style="width: 120px;"></td>
+								value="${member.mobile}"
+								style="width: 120px; border-radius: 10px; border: none;"></td>
 						</tr>
 						<tr>
 							<td id="fontsize" rowspan="3">주소</td>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="postcode" id="ORDER_ZIPCODE"
-								value="${member.postcode}" style="width: 80px;">
-								<button type="button" id="findAddrBtn" class="fontsize2"
+								value="${member.postcode}"
+								style="width: 100px; border-radius: 10px; border: none;">
+								<button type="button" id="findAddrBtn" class="inbutton"
 									onclick="findAddr()">우편번호 찾기</button></td>
 						</tr>
 						<tr>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="address" id="ORDER_ADDR1"
-								value="${member.address}" style="width: 400px;"></td>
+								value="${member.address}"
+								style="width: 400px; border-radius: 10px; border: none;"></td>
 						</tr>
 						<tr>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="addressdetail" id="ORDER_ADDR2"
-								value="${member.addressDetail}" style="width: 400px;"></td>
+								value="${member.addressDetail}"
+								style="width: 400px; border-radius: 10px; border: none;"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -242,17 +265,12 @@
 					</colgroup>
 					<tbody>
 						<tr>
-							<td>총 결제금액</td>
-							<td style="text-align: left"><input type="text"
-								name="itemcost" id="ORDER_TOTAL_PAY_PRICE"
-								value="${item.itemcost }" style="width: 100px;" readonly>원
-							</td>
-						</tr>
-						<tr>
-						</tr>
-						<tr>
-						</tr>
-						<tr>
+							<td class="fontsize2">총 결제금액</td>
+							<td style="text-align: left" class="fontsize2"><input
+								type="text" name="itemcost" id="ORDER_TOTAL_PAY_PRICE"
+								class="fontsize2" value="${item.itemcost }"
+								style="width: 100px; border-radius: 10px; border: none;"
+								readonly>원</td>
 						</tr>
 					</tbody>
 				</table>
@@ -266,28 +284,19 @@
 					type="submit" class="orderbutton" name="order_pay" value="결제진행"
 					onclick="fn_order_pay(); return false;">
 			</div>
-
 		</form>
 	</div>
-
 </body>
-
 <script type="text/javascript">
    //기본 주문금액 계산
    function fn_allPrice() {
       var array1 = document.getElementsByName("ordercost");
-/*       var array1 = document.getElementsByName("goods_sell_price");
-      var array2 = document.getElementsByName("basket_goods_amount");
-      var array3 = document.getElementsByName("ORDER_DETAIL_PRICE");
-      var array4 = document.getElementsByName("ORDER_DISCOUNT_APPLY"); */
 
       var len = array1.length;
       var hap = 0;
       for (var i = 0; i < len; i++) {
          var sell = array1[i].value;
-         /* var amt = array2[i].value; */
          var pri = Number(sell);
-/*          var pri = Number(sell) * Number(amt); //각 상품별 주문금액 */
          hap = Number(hap) + Number(pri); //주문금액 총합 구하기
          
       }
@@ -298,43 +307,13 @@
       document.getElementById("ORDER_TOTAL_PAY_PRICE").value = pay; //(최초,할인들어가기전)최종결제금액
       document.getElementById("pay_price1").value = pay; //결제예정금액(바꿔야됨)
 
-      var array7 = document.getElementsByName("member_grade");
-      var grade = array7[0].value;
-      var val = 0;
-      if ("NOMAL" == grade) {
-         val = 0.03;
-      } else if ("GOLD" == grade) {
-         val = 0.05;
-      } else {
-         val = 0.1;
-      }
-      var point = Number(hap) * Number(val); //등급별 적립율
-      document.getElementById("ORDER_SAVE_POINT").value = point; //할인과 상관없이 주문금액별 적립
    }
    
-    var all_price = document.getElementById("all_price");
+   var all_price = document.getElementById("all_price");
    var cost = document.getElementsByName("ordercost").value;
    console.log(cost); 
    
-   //주문자정보와 동일
-   function fn_chkinfo() {
-      var chk = document.getElementById("chkinfo").checked;
-      if (chk == true) {
-         document.getElementById("ORDER_NAME").value = "${map.MEMBER_NAME}";
-         document.getElementById("ORDER_PHONE").value = "${map.MEMBER_PHONE}";
-         document.getElementById("ORDER_ZIPCODE").value = "${map.MEMBER_ZIPCODE}";
-         document.getElementById("ORDER_ADDR1").value = "${map.MEMBER_ADDR1}";
-         document.getElementById("ORDER_ADDR2").value = "${map.MEMBER_ADDR2}";
-      } else if (chk == false) {
-         document.getElementById("ORDER_NAME").value = "";
-         document.getElementById("ORDER_PHONE").value = "";
-         document.getElementById("ORDER_ZIPCODE").value = "";
-         document.getElementById("ORDER_ADDR1").value = "";
-         document.getElementById("ORDER_ADDR2").value = "";
-      }
-   }
-
-   //쿠폰, 포인트 사용
+   //포인트 사용
    function fn_price() {
       document.getElementById("ORDER_USE_POINT").value = document.getElementById("ORDER_TOTAL_ORDER_PRICE").value; //상품가격
       document.getElementById("POINT_TOTAL").value = ${member.point}-document.getElementById("ORDER_TOTAL_ORDER_PRICE").value; //포인트-상품가격 차감 금액
@@ -352,7 +331,7 @@
       } else {
          $.ajax({
             type : "get",
-            url : "/pointUpdateAction",
+            url : "/pointUp",
             data : {
                getpoint : b
             },

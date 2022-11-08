@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aplus.controller.MemberController;
-import com.aplus.event.EventVO;
-import com.aplus.item.ItemAttrVO;
-import com.aplus.order.OrderService;
 import com.aplus.order.OrderVO;
 
 @Controller
@@ -26,9 +22,6 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewservice;
-
-	@Autowired
-	private OrderService orderservice;
 
 	// 로그인 회원 리뷰 목록 페이지
 	@RequestMapping(value = "/myreview", method = { RequestMethod.GET, RequestMethod.POST })

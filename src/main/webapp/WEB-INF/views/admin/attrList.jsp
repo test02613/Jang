@@ -57,18 +57,17 @@
 	border-radius: 10px;
 	cursor: pointer;
 }
+/* 중앙정렬 */
 #title{
 text-align:center;
 align-content: center;
 }
+/* td 호버 */
 td:hover{
 text-decoration: underline;
 
 }
-
-h1{
-text-align:center;
-}
+/* 버튼 중앙정렬 */
 #button{
 text-align:center;
 }

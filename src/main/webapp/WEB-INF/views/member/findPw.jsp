@@ -10,6 +10,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
+/* 비밀번호 재설정 폼 */
 #findMemform {
 	width: 500px;
 	margin: 0 auto;
@@ -17,13 +18,14 @@
 	text-align: center;
 	margin-bottom: 100px
 }
+/* 제목 : 비밀번호 제설정 */
 .contents {
 	height: 100px;
 	color: #24292F;
 	font-size: 40px;
 	margin-top: 20px;
 }
-
+/* h2 공통 */
 h2 {
 	width: 100%;
 	height: 50px;
@@ -33,13 +35,7 @@ h2 {
 	text-align: center;
 	padding-top: 10px;
 }
-
-.findpwd>a {
-	float: center;
-	margin-top: 50px;
-	padding: 10px;
-}
-
+/* 비밀번호 input box */
 .findpwd>input {
 	width: 100%;
 	height: 50px;
@@ -47,7 +43,12 @@ h2 {
 	border-radius: 10px;
 	margin-bottom: 20px;
 }
-
+.findpwd>a {
+	float: center;
+	margin-top: 50px;
+	padding: 10px;
+}
+/* 버튼 속성 */
 button {
 	width: 100%;
 	height: 50px;

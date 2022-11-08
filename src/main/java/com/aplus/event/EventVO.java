@@ -1,9 +1,6 @@
 package com.aplus.event;
 
 import java.sql.Date;
-import java.util.List;
-
-import com.aplus.item.ItemAttrVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

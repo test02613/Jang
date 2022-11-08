@@ -28,11 +28,12 @@
 	font-size: 40px;
 	height: 100px;
 }
+/* 타이틀 중앙정렬 */
 #title {
 	text-align: center;
 	align-content: center;
 }
-
+/* td 호버 */
 td:hover {
 	
 }
@@ -55,6 +56,7 @@ text-align:center;
 align-content: center;
 	font-weight: bold;
 }
+/* 버튼 중앙정렬 */
 #button {
 	text-align: center;
 }

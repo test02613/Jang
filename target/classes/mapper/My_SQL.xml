@@ -66,8 +66,7 @@
 	<!-- 포인트 충전 -->
 	<update id="mypoint_update" parameterType="MemberVO">
 		UPDATE MEMBER
-		SET point
-		= #{point}
+		SET point = #{point}
 		WHERE id= #{id}
 	</update>
 </mapper>

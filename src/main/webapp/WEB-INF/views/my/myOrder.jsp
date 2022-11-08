@@ -17,6 +17,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 <style>
+/* 전체 랩 */
 #wrapper {
 	width: 1200px;
 	margin: auto;
@@ -82,8 +83,6 @@
 <body>
 	<div id="wrapper">
 		<h1 class="subjecet">주문 정보 조회</h1>
-		<form id="update" method="post">
-
 			<table class="table">
 				<thead class="table-dark">
 					<tr>

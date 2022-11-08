@@ -94,8 +94,6 @@
 			<br>
 			<form id="reviewCreate_form" method="post">
 				<table id="createform">
-					<center>
-					
 						<!-- 글쓰기 -->
 						<c:if test="${list.reviewnum == null}">
 							<tr>

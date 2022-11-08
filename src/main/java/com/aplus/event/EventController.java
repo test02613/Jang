@@ -10,9 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.aplus.controller.MemberController;
-import com.aplus.service.MemberService;
-
 @Controller
 public class EventController {
 	private static final Logger logger = LoggerFactory.getLogger(EventController.class);

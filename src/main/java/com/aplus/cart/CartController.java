@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.aplus.event.EventController;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemService;
 import com.aplus.item.ItemVO;

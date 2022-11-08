@@ -2,7 +2,6 @@ package com.aplus.service;
 
 import java.io.PrintWriter;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.aplus.model.MemberVO;
 import com.aplus.controller.LoginController;
 import com.aplus.dao.MemberDAO;
-import com.aplus.model.MemberVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {

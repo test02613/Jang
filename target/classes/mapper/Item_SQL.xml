@@ -93,6 +93,7 @@
 	<select id="item_search">
 		SELECT *
 		FROM ITEM
-		WHERE itemname = #{itemname}
+		WHERE itemname like '%service%'
+		order by itemnum desc
 	</select>
 </mapper>

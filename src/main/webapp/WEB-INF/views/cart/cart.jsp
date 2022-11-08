@@ -17,6 +17,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 </head>
 <style>
+/* 전체 랩 */
 #wrapper {
 	width: 1200px;
 	margin: auto;
@@ -133,8 +134,5 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script>
 	//삭제버튼 누르면 경고창 띄우기
-	function allDelete() {
-		alert("장바구니를 비우시겠습니까?") 
-	})
 	</script>
 </html>

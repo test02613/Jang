@@ -104,10 +104,10 @@
                var data = {
                   id : id
                }
-if(id==""){
-	
-$('.id_input_re_1').css("display", "none");
-}else{
+				if(id==""){
+					
+				$('.id_input_re_1').css("display", "none");
+				}else{
                $.ajax({
                   type : "post",
                   url : "/memberIdChk",
@@ -126,7 +126,7 @@ $('.id_input_re_1').css("display", "none");
                      }
                   }
                }); // ajax 끝
-}
+				}
             })
             
       var code = ""; // 이메일 전송 인증번호 저장 코드

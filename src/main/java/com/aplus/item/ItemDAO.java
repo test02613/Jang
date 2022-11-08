@@ -1,10 +1,7 @@
 package com.aplus.item;
 
 import java.util.List;
-import java.util.Map;
-
 import com.aplus.item.ItemVO;
-import com.aplus.model.MemberVO;
 import com.aplus.review.ReviewVO;
 
 public interface ItemDAO {

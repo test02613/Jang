@@ -28,13 +28,13 @@
 	crossorigin="anonymous">
 <style>
 /* 전체 랩 */
-#wrapper {
+#wrapper1 {
 	width: 1200px;
 	margin: auto;
 	margin-top: 30px;
 }
 /* 페이지 상단 타이틀 : "장바구니" */
-.subject {
+.subject1 {
 	text-align: center;
 	font-weight: bold;
 	height: 100px;
@@ -73,59 +73,85 @@
 	cursor: pointer;
 	margin-bottom: 20px;
 }
-/* 중앙정렬 */
-.center {
+/* 사용 버튼 */
+.pointusebutton {
+	width: 50px;
+	height: 30px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
 	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+/* 우편번호 찾기 버튼 */
+.inbutton {
+	width: 110px;
+	height: 30px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
 }
 /* td */
 .centerff {
 	text-align: center;
-	font-size: 15px;
+	font-size: 17px;
 }
 /* 오른쪽 정렬 */
 .right {
 	text-align: right;
 }
 /* 폰트 사이즈 조정 */
-#fontsize{
-		font-size: 15px;
+#fontsize {
+	font-size: 17px;
 }
-.fontsize2{
-		font-size: 15px;
+
+.fontsize2 {
+	font-size: 17px;
+	text-align: center;
 }
 </style>
 </head>
 <body>
-	<div id="wrapper">
-		<div class="subject">주문서 작성</div>
+	<div id = "wrapper1">
+		<div class = "subject1">주문서 작성</div>
 
 		<!-- tables -->
 		<form id="commonForm" name="commonForm"></form>
 		<form name="orderWrite" id="orderWrite" method="post"
 			action="/orderAction?code=${item.itemcode}">
-		<div class="table-responsive">
+			<div class="table-responsive">
 
-					<table class="table table-striped">
+				<table class="table table-striped">
 
 					<thead class="table-dark">
 						<tr>
-							<th colspan="" style="text-align: center">이미지</th>
-							<th colspan="" style="text-align: center">상품명</th>
-							<th colspan="" style="text-align: center">컬러</th>
-							<th colspan="40%" style="text-align: center">주문금액</th>
+							<th class="fontsize2">이미지</th>
+							<th class="fontsize2">상품명</th>
+							<th class="fontsize2">컬러</th>
+							<th class="fontsize2">주문금액</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td class="centerff"><img src='${vo1.itemimg}'  width="100px" height="100px"></td>
-							  <td class="centerff" style="width: 60px;"><a
-								href="">${item.itemname}</a></td>
-							<td class="centerff"><input type="text"
-								value="${item.itemoption}" style="border: none;" readonly>
-								<input type="hidden" name="itemcode" value="${item.itemcode}"
+							<td class="fontsize2"><img src='${vo1.itemimg}'
+								width="100px" height="100px"></td>
+							<td class="fontsize2" style="width: 100px;"><a href="">${item.itemname}</a></td>
+							<td class="fontsize2"><input type="text"
+								value="${item.itemoption}"
+								style="text-align: center; border: none; border-radius: 10px;"
+								readonly> <input type="hidden" name="itemcode"
+								value="${item.itemcode}"
 								style="text-align: right; border: none;" readonly></td>
-							<td class="centerff"><input type="text" name="ordercost"
-								value="${item.itemcost}" style="border: none;" readonly>원</td>
+							<td class="fontsize2"><input type="text" name="ordercost"
+								value="${item.itemcost}"
+								style="text-align: center; border: none; border-radius: 10px;"
+								readonly>원</td>
 						</tr>
 					</tbody>
 				</table>
@@ -143,26 +169,28 @@
 						<col width="*%" />
 					</colgroup>
 					<tr>
-						<td>주문금액</td>
+						<td class="fontsize2">주문금액</td>
 						<td style="text-align: left"><input type="text"
-							name="ORDER_TOTAL_ORDER_PRICE" value="${item.itemcost}"
-							style="width: 100px; text-align: right; border: none;" readonly>원
+							class="fontsize2" name="ORDER_TOTAL_ORDER_PRICE"
+							value="${item.itemcost}"
+							style="width: 100px; text-align: center; border-radius: 10px; border: none;" readonly>원
 						</td>
 					</tr>
-					<tr rowspan="5">
+					<tr>
 						<td></td>
 						<td></td>
 					</tr>
-					<tr rowspan="5">
-						<td>포인트</td>
+					<tr>
+						<td class="fontsize2">포인트</td>
 						<td colspan="3"><input type="text" name="ORDER_USE_POINT"
-							id="ORDER_USE_POINT" value="0"
-							style="width: 100px; text-align: right" readonly> P
-							&nbsp;&nbsp;&nbsp;&nbsp; <input type="button" value="사용"
-							onclick="fn_price()"> (포인트 <input type="text"
-							name="POINT_TOTAL" id="POINT_TOTAL" value="${member.point}"
-							style="width: 100px; text-align: right; border: none;" readonly>
-							P)</td>
+							class="fontsize2" id="ORDER_USE_POINT" value="0"
+							style="width: 100px; text-align: center; border-radius: 10px; border: none;"
+							readonly> P &nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+							class="pointusebutton" value="사용" onclick="fn_price()">
+							(포인트 <input type="text" class="fontsize2" name="POINT_TOTAL"
+							id="POINT_TOTAL" value="${member.point}"
+							style="width: 100px; text-align: center; border-radius: 10px; border: none;"
+							readonly> P)</td>
 					</tr>
 				</table>
 			</div>
@@ -179,33 +207,39 @@
 					<tbody>
 						<tr>
 							<td id="fontsize">이름</td>
-							<td style="text-align: left"><input type="text" name="name"
-								class="fontsize2" id="ORDER_NAME" value="${member.name}"
-								style="width: 100px;"></td>
+							<td style="text-align: left"><input type="hidden" name="id"
+								value="${member.id}" style="width: 100px;"> <input
+								class="fontsize2" type="text" name="name" id="ORDER_NAME"
+								value="${member.name}"
+								style="width: 100px; border-radius: 10px; border: none;"></td>
 						</tr>
 						<tr>
 							<td id="fontsize">휴대폰번호</td>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="mobile" id="ORDER_PHONE"
-								value="${member.mobile}" style="width: 120px;"></td>
+								value="${member.mobile}"
+								style="width: 120px; border-radius: 10px; border: none;"></td>
 						</tr>
 						<tr>
 							<td id="fontsize" rowspan="3">주소</td>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="postcode" id="ORDER_ZIPCODE"
-								value="${member.postcode}" style="width: 80px;">
-								<button type="button" class="fontsize2" id="findAddrBtn"
+								value="${member.postcode}"
+								style="width: 100px; border-radius: 10px; border: none;">
+								<button type="button" id="findAddrBtn" class="inbutton"
 									onclick="findAddr()">우편번호 찾기</button></td>
 						</tr>
 						<tr>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="address" id="ORDER_ADDR1"
-								value="${member.address}" style="width: 400px;"></td>
+								value="${member.address}"
+								style="width: 400px; border-radius: 10px; border: none;"></td>
 						</tr>
 						<tr>
 							<td style="text-align: left"><input type="text"
 								class="fontsize2" name="addressdetail" id="ORDER_ADDR2"
-								value="${member.addressDetail}" style="width: 400px;"></td>
+								value="${member.addressDetail}"
+								style="width: 400px; border-radius: 10px; border: none;"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -214,7 +248,7 @@
 
 			<div class="table-responsive">
 				<p>
-					<b id="fontsize">결제선택</b>
+					<b class="fontsize2">결제선택</b>
 				</p>
 				<table id="ordertable" class="table table-striped">
 					<colgroup>
@@ -223,11 +257,12 @@
 					</colgroup>
 					<tbody>
 						<tr>
-							<td>총 결제금액</td>
+							<td class="fontsize2">총 결제금액</td>
 							<td style="text-align: left"><input type="text"
-								name="itemcost" id="ORDER_TOTAL_PAY_PRICE"
-								value="${item.itemcost }" style="width: 100px;" readonly>원
-							</td>
+								name="itemcost" id="ORDER_TOTAL_PAY_PRICE" class="fontsize2"
+								value="${item.itemcost }"
+								style="width: 100px; border-radius: 10px; border: none;"
+								readonly>원</td>
 						</tr>
 					</tbody>
 				</table>
@@ -246,53 +281,13 @@
 </body>
 
 <script type="text/javascript">
-	//기본 주문금액 계산
-	function fn_allPrice() {
-
-		var array1 = document.getElementsByName("goods_sell_price");
-		var array2 = document.getElementsByName("basket_goods_amount");
-		var array3 = document.getElementsByName("ORDER_DETAIL_PRICE");
-		var array4 = document.getElementsByName("ORDER_DISCOUNT_APPLY");
-
-		var len = array2.length;
-		var hap = 0;
-		for (var i = 0; i < len; i++) {
-			var sell = array1[i].value;
-			var amt = array2[i].value;
-			var pri = Number(sell) * Number(amt); //각 상품별 주문금액
-			hap = Number(hap) + Number(pri); //주문금액 총합 구하기
-			array3[i].value = pri;
-			array4[i].value = pri;
-		}
-		var fee = document.getElementById("ORDER_FEE").value;
-		pay = Number(hap) + Number(fee);
-
-		document.getElementById("ORDER_TOTAL_ORDER_PRICE").value = hap; //총주문금액
-		document.getElementById("ORDER_TOTAL_PAY_PRICE").value = pay; //(최초,할인들어가기전)최종결제금액
-		document.getElementById("pay_price1").value = pay; //결제예정금액(바꿔야됨)
-
-		var array7 = document.getElementsByName("member_grade");
-		var grade = array7[0].value;
-		var val = 0;
-		if ("NOMAL" == grade) {
-			val = 0.03;
-		} else if ("GOLD" == grade) {
-			val = 0.05;
-		} else {
-			val = 0.1;
-		}
-		var point = Number(hap) * Number(val); //등급별 적립율
-		document.getElementById("ORDER_SAVE_POINT").value = point; //할인과 상관없이 주문금액별 적립
-	}
-
-
-	//쿠폰, 포인트 사용
+	//포인트 사용
 	function fn_price() {
 		document.getElementById("ORDER_USE_POINT").value = "${item.itemcost}"; //상품가격
-		document.getElementById("POINT_TOTAL").value = ${member.point}-${item.itemcost}; 
+		document.getElementById("POINT_TOTAL").value = ${member.point}-${item.itemcost};
 		//포인트-상품가격 차감 금액
 		document.getElementById("ORDER_TOTAL_PAY_PRICE").value = document
-				.getElementById("ORDER_USE_POINT").value-${item.itemcost};//결제할 금액
+				.getElementById("ORDER_USE_POINT").value- ${item.itemcost};//결제할 금액
 	}
 
 	//주문완료, 회원 포인트 차감
@@ -300,10 +295,10 @@
 		var f = document.orderWrite;
 		var a = document.getElementById("ORDER_TOTAL_PAY_PRICE").value
 		var b = document.getElementById("POINT_TOTAL").value
-		if( document.getElementById("orderChk").checked==false){
- 			alert("서비스 약관에 동의해주세요.");
- 			return false;
- 		}
+		if (document.getElementById("orderChk").checked == false) {
+			alert("서비스 약관에 동의해주세요.");
+			return false;
+		}
 		if (a > 0) {
 			alert("포인트를 사용하세요")
 
@@ -336,8 +331,8 @@
 			if (window.confirm("구매하시겠습니까?")) {
 				f.submit();
 
-	         }
-			
+			}
+
 		}
 	}
 

@@ -1,7 +1,5 @@
 package com.aplus.cart;
 
-import com.aplus.item.ItemAttrVO;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

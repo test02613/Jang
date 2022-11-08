@@ -25,7 +25,7 @@
 	color: #24292F;
 	font-size: 40px;
 }
-
+/* 중앙정렬 */
 .center {
 	text-align: center;
 }

@@ -11,23 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.aplus.controller.MemberController;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
-import com.aplus.review.ReviewService;
-import com.aplus.review.ReviewVO;
-import com.aplus.service.MemberService;
 
 @Controller
 public class MyController {
 	private static final Logger logger = LoggerFactory.getLogger(MyController.class);
 	@Autowired
 	private MyService myservice;
-	@Autowired
-	private ReviewService reviewservice;
 
 	// 마이페이지 메인
 	@RequestMapping(value = "/mymain", method = RequestMethod.GET)
@@ -104,21 +95,22 @@ public class MyController {
 	}
 
 	// 포인트 충전
-	@RequestMapping(value = "/mypointUpdateAction", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypointUpdateAction", method = { RequestMethod.GET, RequestMethod.POST })
 	public String mypointUpdateAction(HttpSession session, MemberVO vo) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 포인트 조회 페이지 진입");
 
-		String memInfo = (String) session.getAttribute("id"); // 세션 id가져오기
-		vo = myservice.member(memInfo); // 고객 정보 가져오기
+		String id = (String) session.getAttribute("id"); // 세션 id가져오기
+		vo = myservice.member(id); // 고객 정보 저장
+		logger.info(">>>>>>>>>>>>>>>>>vo1"+vo);
 		
 		Integer a = vo.getPoint(); 
-		myservice.pointUpdate(vo); // 1차:기존 포인트 가져와서 vo에 저장
+		myservice.pointUpdate(vo); // 기존 포인트 가져와서 업데이트
 		
-		Integer b = vo.getPoint();
-		Integer pcharge = a + b;
-		vo.setPoint(pcharge);  // 2차:충전할 포인트 가져와서 vo에 저장
+		Integer b = vo.getPoint(); // 충전할 포인트 금액
+		Integer pcharge = a + b; // 충전할 포인트와 합침
+		vo.setPoint(pcharge);  // 충전할 포인트 가져와서 vo에 저장
 		
-		myservice.pointUpdate(vo);  // 3차:기존+충전할 포인트 합쳐서 vo에 저장
+		myservice.pointUpdate(vo);  // 기존+충전할 포인트 합쳐서 업데이트
 		
 		return "redirect:/mypoint";
 	}

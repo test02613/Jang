@@ -1,8 +1,5 @@
 package com.aplus.order;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,16 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
-
 import com.aplus.cart.CartService;
 import com.aplus.cart.CartVO;
 import com.aplus.item.ItemAttrVO;
-import com.aplus.item.ItemController;
 import com.aplus.item.ItemService;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
-import com.aplus.review.ReviewVO;
 
 @Controller
 public class OrderController {
@@ -47,7 +40,7 @@ public class OrderController {
 		String id = (String) session.getAttribute("id"); // 세션 id가져오기
 		mem = orderService.member(id); // 고객 정보 가져오기
 		model.addAttribute("member", mem);
-		
+
 		Integer itemnum = vo.getItemnum();
 		ItemVO vo1 = itemService.itemDetail(itemnum); // 사진 가져오기
 

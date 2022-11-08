@@ -2,9 +2,6 @@ package com.aplus.review;
 
 import java.sql.Date;
 
-import com.aplus.item.ItemVO;
-import com.aplus.order.OrderVO;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

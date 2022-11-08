@@ -17,9 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aplus.model.MemberVO;
 import com.aplus.service.MemberService;
@@ -62,7 +60,7 @@ public class LoginController {
 
 		} else { // 로그인 실패 시(탈퇴회원, 블랙회원)
 			mav.setViewName("member/login");
-			mav.addObject("message", "탈퇴한 회원이거나, 해당하는 아이디가 없습니다.");
+			mav.addObject("message", "탈퇴한 회원이거나, 해당하는 회원정보가 없습니다.");
 		}
 		logger.info("Name:" + name);
 		logger.info("vo:" + vo);

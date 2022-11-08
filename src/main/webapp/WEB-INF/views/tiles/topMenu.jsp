@@ -12,6 +12,24 @@
 .center {
 	text-align: center;
 }
+/* 검색버튼 */
+.right {
+	margin-left: 600px;
+	text-align: right;
+		align-content: right;
+}
+/* 검색버튼 */
+.searchbutton {
+	width: 90px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
 </style>
 <body>
 	<div class="wrapper">
@@ -60,12 +78,17 @@
 			</div>
 			<div id="logo_area">
 				<div id="logo">
-					<a href="main"> <img width="310"
-					height="110" class="center" src="../resources/img/apluslogo.png" />
+					<a href="main"> <img width="310" height="110" class="center"
+						src="../resources/img/apluslogo.png" />
 					</a>
 				</div>
 			</div>
-
+			<%-- 	<form action="${ pageContext.servletContext.contextPath }/"
+					method="post" style="display: flex; width: 350px;">
+					<input class="right" id="search" name="searchValue"
+						type="search" placeholder="상품 이름 검색" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form> --%>
 		</div>
 	</div>
 </body>

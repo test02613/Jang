@@ -16,12 +16,7 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <style>
-.carousel-inner>.carousel-item>img {
-	/* width: 640px;
-      height: 720px; */
-	
-}
-
+/* 이미지 모서리 둥글게 */
 #slideradius {
 	border-radius: 10px;
 }

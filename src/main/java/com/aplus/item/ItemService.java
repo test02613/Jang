@@ -2,10 +2,7 @@ package com.aplus.item;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import com.aplus.item.ItemVO;
-import com.aplus.model.MemberVO;
 import com.aplus.review.ReviewVO;
 
 public interface ItemService {

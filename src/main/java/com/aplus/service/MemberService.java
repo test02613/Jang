@@ -3,7 +3,6 @@ package com.aplus.service;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.aplus.dao.MemberDAO;
 import com.aplus.model.MemberVO;
 
 public interface MemberService {
