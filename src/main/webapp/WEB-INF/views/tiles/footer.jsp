@@ -18,7 +18,7 @@
 			<div id="footer2">
 				<p>
 					<span>저자 : bonobono</span><br /> <span>이메일
-						:dhkdwk997@gmail.com</span><br /> <span>Copyright 2022.
+						: dhkdwk997@gmail.com</span><br /> <span>Copyright 2022.
 						bonobono.All Rights Reserved.</span>
 				</p>
 			</div>

@@ -10,6 +10,17 @@
 .center {
 	text-align: center;
 }
+/* 충전하기 버튼 */
+#qnabutton {
+	width: 200px;
+	height: 50px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border-radius: 10px;
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -17,18 +28,19 @@
 	<h1 style="text-align: center">1대1 문의</h1>
 	<br>
 	<div align="center">
-			<hr width=1000px>
-		</div>
+		<hr width=1000px>
+	</div>
+	<br>
 	<br>
 	<h1 style="text-align: center">
-	<!-- <img src="/resources/img/kakao.png" style="width: 100px; height: 100px;" /> -->
-				
-		<a href='https://kakao.com' target='_blank'>1대1 문의 바로가기</a>
+		<a href="https://kakao.com"><img
+			src="../resources/img/openchat.png" width="250px" height="250px" /></a>
+		<br>
+		<br>
+		<button id="qnabutton" href='https://kakao.com' target='_blank'>1대1
+			문의 바로가기</button>
 	</h1>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>	<br>
 </body>
 </html>

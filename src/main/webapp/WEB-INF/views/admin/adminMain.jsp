@@ -38,7 +38,7 @@
 <body>
 	<div id="wrapper">
 		<h1 style="text-align: center">관리자 페이지</h1>
-		<br>
+		<br> <br>
 		<div align="center">
 			<hr width=1000px>
 		</div>
@@ -49,12 +49,13 @@
 				<a href="/memberAdmin"><button id="btt">회원관리</button></a> <a
 					href="/itemAdmin"><button id="btt">상품관리</button></a>
 			</div>
+			<br>
 			<div>
 				<a href="/orderAdmin"><button id="btt">주문관리</button></a> <a
-					href="/reviewAdmin"><button id="btt">리뷰관리</button></a>
+					href="/boardAdmin"><button id="btt">게시판 관리</button></a> <a
+					href="/qnaAdmin"><button id="btt">1대1문의</button></a>
 			</div>
-
-			<br>
+			<br> <br>
 		</div>
 	</div>
 </body>

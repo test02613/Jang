@@ -16,7 +16,7 @@
 .right {
 	margin-left: 600px;
 	text-align: right;
-		align-content: right;
+	align-content: right;
 }
 /* 검색버튼 */
 .searchbutton {
@@ -39,7 +39,8 @@
 
 				<div id="top_menu_left">
 					<ul>
-						<li><a href="#">매장안내</a></li>
+						<li><a
+							href="https://map.naver.com/v5/search/%EB%8D%94%EC%A1%B0%EC%9D%80%EC%BB%B4%ED%93%A8%ED%84%B0%ED%95%99%EC%9B%90/place/38506774?c=14140460.0143748,4508287.6229117,15,0,0,0,dh&placePath=%3Fentry%253Dbmp">매장안내</a></li>
 						<li><a href="/event">이벤트</a></li>
 					</ul>
 				</div>

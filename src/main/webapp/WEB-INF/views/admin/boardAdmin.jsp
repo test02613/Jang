@@ -18,7 +18,7 @@
 }
 /*  버튼 */
 #btt {
-	width: 350px;
+	width: 300px;
 	height: 80px;
 	background-color: #24292F;
 	font-size: 35px;
@@ -34,7 +34,7 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1 style="text-align: center">상품 관리</h1>
+		<h1 style="text-align: center">게시판 관리</h1>
 		<br> <br>
 		<div align="center">
 			<hr width=1000px>
@@ -42,16 +42,9 @@
 		<br>
 		<div class="center">
 			<br>
-
 			<div>
-				<a href="/itemInsert"><button id="btt">상품등록</button></a> <a
-					href="/itemSelect?num=1"><button id="btt">상품수정/삭제</button></a>
-			</div>
-			<div></div>
-			<br>
-			<div>
-				<a href="/itemSelect?num=2"><button id="btt">상품옵션등록</button></a> <a
-					href="/itemSelect?num=3"><button id="btt">상품옵션수정/삭제</button></a>
+				<a href="/event"><button id="btt">이벤트 관리</button></a> <a
+					href="/reviewAdmin"><button id="btt">리뷰 관리</button></a>
 			</div>
 			<div></div>
 			<br> <br>

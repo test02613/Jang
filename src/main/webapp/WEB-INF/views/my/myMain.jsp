@@ -43,22 +43,24 @@
 			<hr width=1000px>
 		</div>
 		<br>
-		<h3 style="text-align: center">${member.name}님/잔여포인트 :
+		<h3 style="text-align: center">${member.name}님/잔여포인트:
 			${member.point}</h3>
-				<br>
+		<br>
 		<div class="center">
-				<br>
-			<div >
+			<br>
+			<div>
 				<a href="/myupdate"><button id="btt">정보수정</button></a> <a
 					href="/cart"><button id="btt">장바구니</button></a> <a href="/mypoint"><button
-						id="btt">포인트</button></a>
+						id="btt">포인트 충전</button></a>
 			</div>
-				<div>
+			<br>
+			<div>
 				<a href="/myorder"><button id="btt">주문정보</button></a> <a
 					href="/myreview"><button id="btt">리뷰관리</button></a> <a
 					href="/myqna"><button id="btt">1대1문의</button></a>
 			</div>
 			<br> <br>
-		</div>	</div>
+		</div>
+	</div>
 </body>
 </html>

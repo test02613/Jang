@@ -30,7 +30,6 @@
 		<collection property="itemvo" resultMap="item" />
 	</resultMap>
 
-
 	<!-- 고객 정보 가져오기 -->
 	<select id="member" resultType="MemberVO">
 		select * from member where id

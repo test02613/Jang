@@ -125,6 +125,13 @@ public class AdminController {
 		adminservice.stateChange(vo);
 	}
 
+	// 게시판 관리 페이지
+	@RequestMapping(value = "/boardAdmin", method = RequestMethod.GET)
+	public String boardAdminGET() throws Exception {
+
+		return "admin/boardAdmin";
+	}
+
 	// 리뷰관리 페이지
 	@RequestMapping(value = "/reviewAdmin", method = RequestMethod.GET)
 	public String reviewAdminGET(Model model) throws Exception {

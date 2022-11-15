@@ -106,7 +106,7 @@
 .center {
 	text-align: center;
 }
-
+/* 셀렉트 박스 */
 .selectbox {
 	width: 250px;
 	height: 25px;
@@ -132,7 +132,7 @@
 				<table class="itemtable">
 
 					<tbody>
-						<!-- 등록 -->	
+						<!-- 등록 -->
 						<c:if test="${item.itemnum == null }">
 							<tr>
 								<td id="itemtext">상품번호</td>
@@ -192,7 +192,6 @@
 								<td id="itemtext" class="uploadDiv">썸네일 이미지 업로드</td>
 								<td><input class="input" type="file" id="input_img"
 									name="uploadFile" style="height: 50px; width: 270px;" multiple />
-
 									<button class="uploadbutton" type="button" id="uploadBtn">Upload</button>
 									<div class="img_wrap"></div></td>
 							</tr>
@@ -206,7 +205,7 @@
 									name="itemdetailimg" style="height: 30px;" value="" readonly></td>
 							</tr>
 						</c:if>
-						
+
 						<!-- 수정 -->
 						<c:if test="${item.itemnum != null }">
 							<tr>

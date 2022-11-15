@@ -90,10 +90,10 @@
 	
 	<!-- 구현중.. -->
 	<!-- 상품검색  -->
-	<select id="item_search">
+<!-- 	<select id="item_search">
 		SELECT *
 		FROM ITEM
 		WHERE itemname like '%service%'
 		order by itemnum desc
-	</select>
+	</select> -->
 </mapper>
