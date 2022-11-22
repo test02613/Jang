@@ -80,7 +80,7 @@ public class OrderController {
 	public String getPoint(@RequestParam("getpoint") String getpoint, HttpSession session, MemberVO vo)
 			throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> pointUp");
-		int point = Integer.parseInt(getpoint); // ajax에서 포인트 가져오기
+		Integer point =Integer.parseInt(getpoint); // ajax에서 포인트 가져오기
 
 		String id = (String) session.getAttribute("id"); // 세션 id 가져오기
 

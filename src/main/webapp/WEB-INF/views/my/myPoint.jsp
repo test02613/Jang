@@ -60,14 +60,17 @@
 }
 </style>
 <body>
-	<form id="update" method="post">
+	<form id="update" method="post" >
 		<br> <br>
 		<div class="container">
 			<h1 class="subjecet">포인트 충전</h1>
 			<hr>
 			<br>
+			<p style="text-align: center; color: red;">1회 최대 충전 가능 금액은 "
+				5,000,000 원 " 입니다.</p>
+			<br>
 			<div class="text">
-				<input type="text" id="pointbox" name="point" />
+				<input type="text" class="wr_2" id="pointbox" name="point" />
 				<button type="button" class="update_button" id="pointbutton"
 					value="충전하기">충전하기</button>
 			</div>
@@ -86,10 +89,31 @@
 	$(document).ready(function() {
 
 		$(".update_button").click(function() {
-			$("#update").attr("action", "/mypointUpdateAction");
-			$("#update").submit();
-
+			if ($("#pointbox").val() == "") {
+				alert('충전할 금액을 입력하세요.');
+			} else {
+				$("#update").attr("action", "/mypointUpdateAction");
+				$("#update").submit();
+			}
 		})
 	})
+
+	$('.wr_2').on('keyup', function() {
+		if (/\D/.test(this.value)) {
+			this.value = this.value.replace(/\D/g, '')
+			alert('숫자만 입력가능합니다.');
+		}
+		if (this.value > 5000000) {
+			this.value = 5000000;
+			alert('최대 충전 금액을 초과하였습니다.');
+		}
+	});
+	
+	//Input Enter submit 막기
+	document.addEventListener('keydown', function(event) {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		}, true);
 </script>
 </html>

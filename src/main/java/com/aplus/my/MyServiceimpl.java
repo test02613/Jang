@@ -1,5 +1,6 @@
 package com.aplus.my;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class MyServiceimpl implements MyService {
 
 	// 회원 정보 가져오기
 	@Override
-	public MemberVO member(String memInfo) throws Exception {
+	public MemberVO member(String memInfo) throws IOException {
 
 		return dao.member(memInfo);
 	}
@@ -43,7 +44,7 @@ public class MyServiceimpl implements MyService {
 
 	// 포인트 충전
 	@Override
-	public MemberVO pointUpdate(MemberVO vo) throws Exception {
+	public MemberVO pointUpdate(MemberVO vo) throws IOException {
 
 		return dao.pointUpdate(vo);
 	}

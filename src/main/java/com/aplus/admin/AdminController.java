@@ -39,7 +39,7 @@ import net.coobird.thumbnailator.Thumbnailator;
 @Controller
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-
+ 
 	@Autowired
 	private AdminService adminservice;
 

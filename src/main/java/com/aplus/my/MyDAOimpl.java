@@ -1,5 +1,6 @@
 package com.aplus.my;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +17,7 @@ public class MyDAOimpl implements MyDAO {
 
 	// 회원 정보 가져오기
 	@Override
-	public MemberVO member(String memInfo) throws Exception {
+	public MemberVO member(String memInfo) throws IOException {
 
 		return sql.selectOne("mapper.My_SQL.member", memInfo);
 	}
@@ -44,7 +45,7 @@ public class MyDAOimpl implements MyDAO {
 
 	// 포인트 충전
 	@Override
-	public MemberVO pointUpdate(MemberVO vo) throws Exception {
+	public MemberVO pointUpdate(MemberVO vo) throws IOException {
 	
 		return sql.selectOne("mapper.My_SQL.mypoint_update", vo);
 	}

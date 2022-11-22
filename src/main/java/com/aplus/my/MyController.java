@@ -1,5 +1,6 @@
 package com.aplus.my;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -96,23 +97,22 @@ public class MyController {
 
 	// 포인트 충전
 	@RequestMapping(value = "/mypointUpdateAction", method = { RequestMethod.GET, RequestMethod.POST })
-	public String mypointUpdateAction(HttpSession session, MemberVO vo) throws Exception {
+	public String mypointUpdateAction(HttpSession session, MemberVO vo) throws IOException {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 포인트 조회 페이지 진입");
 
-		String id = (String) session.getAttribute("id"); // 세션 id가져오기
-		vo = myservice.member(id); // 고객 정보 저장
-		logger.info(">>>>>>>>>>>>>>>>>vo1"+vo);
+		String memInfo = (String) session.getAttribute("id"); // 세션 id가져오기
+		Integer c = vo.getPoint(); //충전할금액  
+		vo = myservice.member(memInfo); // 고객 정보 가져오기
 		
-		Integer a = vo.getPoint(); 
-		myservice.pointUpdate(vo); // 기존 포인트 가져와서 업데이트
+		Integer a = vo.getPoint(); // 기존금액 
+
+		Integer pcharge = a + c;
+		vo.setPoint(pcharge);  // 2차:충전할 포인트 가져와서 vo에 저장
 		
-		Integer b = vo.getPoint(); // 충전할 포인트 금액
-		Integer pcharge = a + b; // 충전할 포인트와 합침
-		vo.setPoint(pcharge);  // 충전할 포인트 가져와서 vo에 저장
-		
-		myservice.pointUpdate(vo);  // 기존+충전할 포인트 합쳐서 업데이트
+		myservice.pointUpdate(vo);  // 3차:기존+충전할 포인트 합쳐서 vo에 저장
 		
 		return "redirect:/mypoint";
+
 	}
 
 	// 리뷰관리 페이지 -> ReviewController로 이동
