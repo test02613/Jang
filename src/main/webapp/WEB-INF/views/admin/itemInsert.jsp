@@ -417,8 +417,7 @@
 
 								//카드가 없을 경우
 								//processData,contentType은 반드시 false여야 전송됨
-								$
-										.ajax({
+								$.ajax({
 											url : '/uploadAjaxAction',
 											processData : false,
 											contentType : false,

@@ -33,10 +33,15 @@
 	text-align: center;
 }
 /* 제목라인 */
-#title{
-text-align:center;
-align-content: center;
+#title {
+	text-align: center;
+	align-content: center;
 	font-weight: bold;
+}
+/* 내용 글 */
+#econtent {
+	text-align: center;
+	align-content: center;
 }
 /* 수정,삭제 버튼 */
 .ebutton {
@@ -68,6 +73,27 @@ align-content: center;
 					</tr>
 				</thead>
 				<tbody>
+				<!-- eventdetailimg 있는 경우 -->
+				<c:if test="${detail.eventdetailimg != null}">
+					<tr>
+						<td id="title" style="text-decoration: none;"><c:out
+								value="${detail.eventnum}" /></td>
+						<td id="title"><c:out value="${detail.eventtitle}" /></td>
+						<td id="title" style="text-decoration: none;"><c:out
+								value="${detail.eventdate}" /></td>
+					</tr>
+					<tr>
+						<td id="title" colspan="3" height="200" scope="col"><img src='${detail.eventdetailimg}'
+								width="940px" height="650px"></td>
+					</tr>
+					<tr>
+						<td id="econtent" colspan="3" height="200" scope="col"><c:out
+								value="${detail.eventcontent}" /></td>
+					</tr>
+					</c:if>
+					
+					<!-- eventdetailimg 없는 경우 -->
+					<c:if test="${detail.eventdetailimg == null}">
 					<tr>
 						<td id="title" style="text-decoration: none;"><c:out
 								value="${detail.eventnum}" /></td>
@@ -76,19 +102,24 @@ align-content: center;
 								value="${detail.eventdate}" /></td>
 					</tr>
 					<tr>
-						<td id="title" colspan="3" height="200" scope="col"><c:out
+						<td id="econtent" colspan="3" height="200" scope="col"><c:out
 								value="${detail.eventcontent}" /></td>
 					</tr>
+						</c:if>
 				</tbody>
 			</table>
-		<div class="center">
-			<c:if test="${admin eq 1}">
-				<a href='${path}/eventUpdate?num=${detail.eventnum}'><button class="ebutton">수정하기</button></a>
-				<a href='${path}/eventDeleteAction?num=${detail.eventnum}'><button class="ebutton">삭제하기</button></a>
-			</c:if>
-		</div>
-			<div style="text-align: right;">
-				<a href="/event"><button class="ebutton">글 목록 가기</button></a></div>
+			<div class="center">
+				<c:if test="${admin eq 1}">
+					<a href='${path}/eventUpdate?num=${detail.eventnum}'><button
+							class="ebutton">수정하기</button></a>
+					<a href='${path}/eventDeleteAction?num=${detail.eventnum}'><button
+							class="ebutton">삭제하기</button></a>
+				</c:if>
+			</div>
+			<br>
+			<div style="text-align: center;">
+				<a href="/event"><button class="ebutton">글 목록 가기</button></a>
+			</div>
 		</div>
 	</div>
 	<script

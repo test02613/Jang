@@ -19,30 +19,22 @@
 		</selectKey>
 		insert into event values(#{eventnum},
 		sysdate, #{eventtitle},
-		#{eventcontent} )
+		#{eventcontent}, #{eventdetailimg} )
 	</insert>
-
-	<!-- 게시글 목록 -->
-	<select id="event_list" resultMap="list">
-		SELECT *
-		FROM EVENT
-		ORDER BY
-		eventnum DESC
-	</select>
 
 	<!-- 이벤트 상세 -->
 	<select id="event_detail" resultType="EventVO">
 		SELECT *
 		FROM EVENT
-		WHERE eventnum = #{eventnum}
+		WHERE
+		eventnum = #{eventnum}
 	</select>
 
 	<!-- 글 수정 -->
 	<update id="event_update" parameterType="EventVO">
 		UPDATE EVENT
-		SET eventtitle= #{eventtitle}, eventcontent= #{eventcontent}
-		WHERE
-		eventnum = #{eventnum}
+		SET eventtitle= #{eventtitle}, eventcontent= #{eventcontent}, eventdetailimg= #{eventdetailimg}
+		WHERE eventnum= #{eventnum}
 	</update>
 
 	<!-- 글 삭제 -->
@@ -50,20 +42,23 @@
 		delete from EVENT where eventnum = #{eventnum}
 	</delete>
 
-	<!-- 게시물 총 갯수 -->
-	<select id="event_count" resultType="int">
-		select count(eventnum) from EVENT
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countEvent" resultType="INTEGER">
+		SELECT COUNT(*) FROM EVENT
 	</select>
 
-	<!-- 구현중.. -->
-	<!-- 게시물 목록 + 페이징 -->
-	<select id="event_listPage" parameterType="hashMap"
-		resultType="EventVO">
-		select
-		eventnum, eventdate, eventtitle, eventcontent
-		from EVENT
-		order by eventnum desc
-		limit #{displayPost}, #{postNum}
-	</select>
-
+	<!-- 게시글 목록 -->
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectEvent" resultType="EventVO">
+		SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM EVENT 
+						ORDER BY eventnum DESC 
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
+</select>
 </mapper>

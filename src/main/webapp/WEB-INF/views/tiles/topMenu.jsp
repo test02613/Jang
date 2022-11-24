@@ -84,12 +84,12 @@
 					</a>
 				</div>
 			</div>
-			<%-- 	<form action="${ pageContext.servletContext.contextPath }/"
+				<form action="${ pageContext.servletContext.contextPath }/"
 					method="post" style="display: flex; width: 350px;">
 					<input class="right" id="search" name="searchValue"
 						type="search" placeholder="상품 이름 검색" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form> --%>
+				</form>
 		</div>
 	</div>
 </body>

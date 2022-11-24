@@ -17,13 +17,6 @@ public class EventDAOImpl implements EventDAO {
 		sql.insert("mapper.Event_SQL.event_insert", event);
 	}
 
-	// 글 목록
-	@Override
-	public List<EventVO> list() throws Exception {
-
-		return sql.selectList("mapper.Event_SQL.event_list");
-	}
-
 	// 상세페이지
 	@Override
 	public EventVO eventDetail(Integer num) throws Exception {
@@ -45,11 +38,18 @@ public class EventDAOImpl implements EventDAO {
 		return sql.selectOne("mapper.Event_SQL.event_delete", num);
 	}
 
-	// (페이징)게시물 총 갯수 진행중
+	// 게시물 총 갯수
 	@Override
-	public int count() throws Exception {
+	public int countEvent() {
+		
+		return sql.selectOne("mapper.Event_SQL.countEvent");
+	}
 
-		return sql.selectOne("mapper.Event_SQL.event_count");
+	// 게시글 목록, 페이징 처리 게시글 조회
+	@Override
+	public List<EventVO> selectEvent(PagingVO vo) {
+
+		return sql.selectList("mapper.Event_SQL.selectEvent", vo);
 	}
 
 }

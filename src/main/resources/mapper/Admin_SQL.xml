@@ -64,15 +64,13 @@
 	<select id="member_list" resultMap="memberlist">
 		SELECT *
 		FROM MEMBER
-		WHERE
-		admin=0
+		WHERE admin=0
 	</select>
 
 	<!-- 회원 블랙처리시 leave 0->2로 변경 -->
 	<update id="member_black" parameterType="MemberVO">
 		UPDATE MEMBER
-		SET leave =
-		2
+		SET leave = 2
 		WHERE id = #{id}
 	</update>
 
@@ -95,8 +93,7 @@
 	<!-- 주문상태 변경 -->
 	<update id="state_change" parameterType="OrderVO">
 		UPDATE ORDERTABLE
-		SET
-		state = #{state}
+		SET state = #{state}
 		WHERE ordernum = #{ordernum}
 	</update>
 

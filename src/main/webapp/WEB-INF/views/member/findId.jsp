@@ -65,6 +65,20 @@ button {
 	color: white;
 	background-color: #24292F;
 }
+/* 로그인 페이지로 가기 버튼 */
+#gologin{
+	width: 350px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
 /* 전체 화면을 덮는 layer, 로딩중일때 다른 이벤트를 방지하기 위함 */
 #loadingBar {
@@ -117,22 +131,22 @@ button {
 							id="MEMBER_EMAIL" placeholder="이메일주소">
 					</c:if>
 					<div id="center">
-						<c:if test="${id != null }">
-							<a href="/login"><button type="button" id=" ">로그인
-									페이지 가기</button></a>
-						</c:if>
+					
 						<c:if test="${id == null }">
 							<a href="/findPw">비밀번호 재설정</a>
 							<button class="defaultBtn loginBtn" type="submit" id="findIdBtn">아이디
 								찾기</button>
+							<p>
+								아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
+							</p></c:if>
+								<c:if test="${id != null }">
+							<a href="/login"><button id="gologin">로그인 페이지 가기</button></a>
+						</c:if>
 					</div>
-					<p>
-						아직 회원이 아니신가요? <a href="/join">회원가입하기</a>
-					</p>
-					</c:if>
+					
 				</div>
 			</div>
+				</form>
 	</div>
-	</form></div>
 </body>
 </html>

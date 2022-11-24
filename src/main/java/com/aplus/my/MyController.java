@@ -95,22 +95,22 @@ public class MyController {
 		return "my/myPoint";
 	}
 
-	// 포인트 충전
+	//포인트 충전
 	@RequestMapping(value = "/mypointUpdateAction", method = { RequestMethod.GET, RequestMethod.POST })
 	public String mypointUpdateAction(HttpSession session, MemberVO vo) throws IOException {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 포인트 조회 페이지 진입");
 
 		String memInfo = (String) session.getAttribute("id"); // 세션 id가져오기
-		Integer c = vo.getPoint(); //충전할금액  
+		Integer c = vo.getPoint(); // (고객 정보 들고오기 전)입력 받은 충전할 금액 먼저 변수 지정
 		vo = myservice.member(memInfo); // 고객 정보 가져오기
-		
-		Integer a = vo.getPoint(); // 기존금액 
+
+		Integer a = vo.getPoint(); // 고객 보유 기존금액
 
 		Integer pcharge = a + c;
-		vo.setPoint(pcharge);  // 2차:충전할 포인트 가져와서 vo에 저장
-		
-		myservice.pointUpdate(vo);  // 3차:기존+충전할 포인트 합쳐서 vo에 저장
-		
+		vo.setPoint(pcharge); // 충전할 포인트 가져와서 set
+
+		myservice.pointUpdate(vo); // 기존 포인트+충전할 포인트 -> vo에 저장
+
 		return "redirect:/mypoint";
 
 	}

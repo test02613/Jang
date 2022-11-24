@@ -17,13 +17,6 @@ public class EventServiceImpl implements EventService {
 		dao.EventCreate(event);
 	}
 
-	// 글 목록 
-	@Override
-	public List<EventVO> list() throws Exception {
-
-		return dao.list();
-	}
-
 	// 상세페이지 
 	@Override
 	public EventVO eventDetail(Integer num) throws Exception {
@@ -45,10 +38,17 @@ public class EventServiceImpl implements EventService {
 		return dao.eventDelete(num);
 	}
 
-	// (페이징)게시물 총 갯수 진행중 
+	// 게시물 총 갯수 
 	@Override
-	public int count() throws Exception {
-			return dao.count();
+	public int countEvent() {
+		return dao.countEvent();
+	}
+
+	// 게시글 목록, 페이징 처리 게시글 조회
+	@Override
+	public List<EventVO> selectEvent(PagingVO vo) {
+		
+		return dao.selectEvent(vo);
 	}
 
 }

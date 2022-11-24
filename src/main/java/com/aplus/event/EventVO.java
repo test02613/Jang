@@ -26,5 +26,8 @@ public class EventVO {
 
 	// 이벤트내용
 	private String eventcontent;
+	
+	// 이벤트 이미지
+	private String eventdetailimg;
 
 }
