@@ -27,19 +27,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aplus.event.PagingVO;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemService;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
-import com.aplus.review.ReviewVO;
 
 import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
- 
+
 	@Autowired
 	private AdminService adminservice;
 
@@ -132,13 +132,28 @@ public class AdminController {
 		return "admin/boardAdmin";
 	}
 
-	// 리뷰관리 페이지
+	// 리뷰관리 페이지 (목록 + 페이징)
 	@RequestMapping(value = "/reviewAdmin", method = RequestMethod.GET)
-	public String reviewAdminGET(Model model) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰관리 페이지 진입");
+	public String reviewAdminGET(PagingVO vo, Model model,
+			@RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) throws Exception {
 
-		List<ReviewVO> list = adminservice.reviewAdmin();
-		model.addAttribute("reviewlist", list);
+		int total = adminservice.countReview();
+
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("reviewlist", adminservice.selectReview(vo));
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>paging:" + vo);
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>adminservice.selectReview(vo):" + adminservice.selectReview(vo));
 
 		return "admin/reviewAdmin";
 	}

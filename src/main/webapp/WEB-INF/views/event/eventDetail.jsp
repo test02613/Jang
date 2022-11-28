@@ -14,7 +14,7 @@
 <style>
 /* 전체 랩 */
 #wrapper {
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 	margin-top: 30px;
 	border-radius: 10px;
@@ -56,6 +56,19 @@
 	cursor: pointer;
 	margin-bottom: 20px;
 }
+/* 글 목록 가기 */
+.evbutton {
+	width: 110px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
 </style>
 </head>
 <body>
@@ -73,39 +86,39 @@
 					</tr>
 				</thead>
 				<tbody>
-				<!-- eventdetailimg 있는 경우 -->
-				<c:if test="${detail.eventdetailimg != null}">
-					<tr>
-						<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.eventnum}" /></td>
-						<td id="title"><c:out value="${detail.eventtitle}" /></td>
-						<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.eventdate}" /></td>
-					</tr>
-					<tr>
-						<td id="title" colspan="3" height="200" scope="col"><img src='${detail.eventdetailimg}'
-								width="940px" height="650px"></td>
-					</tr>
-					<tr>
-						<td id="econtent" colspan="3" height="200" scope="col"><c:out
-								value="${detail.eventcontent}" /></td>
-					</tr>
+					<!-- eventdetailimg 있는 경우 -->
+					<c:if test="${detail.eventdetailimg != null}">
+						<tr>
+							<td id="title" style="text-decoration: none;"><c:out
+									value="${detail.eventnum}" /></td>
+							<td id="title"><c:out value="${detail.eventtitle}" /></td>
+							<td id="title" style="text-decoration: none;"><c:out
+									value="${detail.eventdate}" /></td>
+						</tr>
+						<tr>
+							<td id="title" colspan="3" height="200" scope="col"><img
+								src='${detail.eventdetailimg}' width="1000px" height="650px"></td>
+						</tr>
+						<tr>
+							<td id="econtent" colspan="3" height="200" scope="col"><c:out
+									value="${detail.eventcontent}" /></td>
+						</tr>
 					</c:if>
-					
+
 					<!-- eventdetailimg 없는 경우 -->
 					<c:if test="${detail.eventdetailimg == null}">
-					<tr>
-						<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.eventnum}" /></td>
-						<td id="title" ><c:out value="${detail.eventtitle}" /></td>
-						<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.eventdate}" /></td>
-					</tr>
-					<tr>
-						<td id="econtent" colspan="3" height="200" scope="col"><c:out
-								value="${detail.eventcontent}" /></td>
-					</tr>
-						</c:if>
+						<tr>
+							<td id="title" style="text-decoration: none;"><c:out
+									value="${detail.eventnum}" /></td>
+							<td id="title"><c:out value="${detail.eventtitle}" /></td>
+							<td id="title" style="text-decoration: none;"><c:out
+									value="${detail.eventdate}" /></td>
+						</tr>
+						<tr>
+							<td id="econtent" colspan="3" height="200" scope="col"><c:out
+									value="${detail.eventcontent}" /></td>
+						</tr>
+					</c:if>
 				</tbody>
 			</table>
 			<div class="center">
@@ -118,7 +131,7 @@
 			</div>
 			<br>
 			<div style="text-align: center;">
-				<a href="/event"><button class="ebutton">글 목록 가기</button></a>
+				<a href="/event"><button class="evbutton">글 목록 가기</button></a>
 			</div>
 		</div>
 	</div>

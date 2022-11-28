@@ -37,7 +37,7 @@ public class LoginController {
 	public String loginGET(HttpSession session) {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 로그인 페이지 진입");
 
-		session.invalidate(); // 로그인중에 login치고 들어가면 로그아웃 처리
+		session.invalidate(); // 로그인중에 login치고 들어가면 강제 로그아웃 처리
 		return "member/login";
 	}
 

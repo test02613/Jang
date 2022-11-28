@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aplus.event.PagingVO;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
@@ -51,11 +52,18 @@ public class AdminServiceImpl implements AdminService {
 		return dao.stateChange(vo);
 	}
 
-	// 리뷰관리 
+	// 회원 리뷰 게시물 총 갯수
 	@Override
-	public List<ReviewVO> reviewAdmin() throws Exception {
-
-		return dao.reviewAdmin();
+	public int countReview() {
+ 
+		return dao.countReview();
+	}
+	
+	// 회원 리뷰 게시글 목록, 페이징 처리 게시글 조회
+	@Override
+	public List<ReviewVO> selectReview(PagingVO vo) {
+ 
+		return dao.selectReview(vo);
 	}
 
 	// 리뷰삭제 

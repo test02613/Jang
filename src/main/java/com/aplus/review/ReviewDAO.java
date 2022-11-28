@@ -26,4 +26,5 @@ public interface ReviewDAO {
 
 	// 리뷰 삭제
 	public ReviewVO reviewDelete(Integer num) throws Exception;
+	
 }

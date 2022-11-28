@@ -51,9 +51,9 @@ td:hover {
 	margin-bottom: 20px;
 }
 /* 제목라인 */
-#title{
-text-align:center;
-align-content: center;
+#title {
+	text-align: center;
+	align-content: center;
 	font-weight: bold;
 }
 /* 버튼 중앙정렬 */
@@ -64,51 +64,52 @@ align-content: center;
 </head>
 <body>
 	<!-- 게시판 부트스트랩 -->
-		<div id="wrapper">
-			<div id="subjecet">리뷰</div>
-			<table class="table">
-				<thead class="table-dark">
-					<tr>
-						<th id="title" width="100" scope="col">번호</th>
-						<th id="title" width="100" scope="col">주문번호</th>
-						<th id="title" scope="col">제목</th>
-						<th id="title" width="200" scope="col">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.reviewnum}" /></td>
-					 	<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.ordernum}" /></td>
-						<td id="title"><c:out value="${detail.reviewtitle}" /></td>
-						<td id="title" style="text-decoration: none;"><c:out
-								value="${detail.reviewdate}" /></td>
-					</tr>
-					<tr>
-						<td id="title" colspan="5" height="200" scope="col"><c:out
-								value="${detail.reviewcontent}" /></td>
-					</tr>
-				</tbody>
-			</table>
-		
+	<div id="wrapper">
+		<div id="subjecet">리뷰</div>
+		<table class="table">
+			<thead class="table-dark">
+				<tr>
+					<th id="title" width="100" scope="col">번호</th>
+					<th id="title" width="100" scope="col">주문번호</th>
+					<th id="title" scope="col">제목</th>
+					<th id="title" width="200" scope="col">작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="title" style="text-decoration: none;"><c:out
+							value="${detail.reviewnum}" /></td>
+					<td id="title" style="text-decoration: none;"><c:out
+							value="${detail.ordernum}" /></td>
+					<td id="title"><c:out value="${detail.reviewtitle}" /></td>
+					<td id="title" style="text-decoration: none;"><c:out
+							value="${detail.reviewdate}" /></td>
+				</tr>
+				<tr>
+					<td id="title" colspan="5" height="200" scope="col"><c:out
+							value="${detail.reviewcontent}" /></td>
+				</tr>
+			</tbody>
+		</table>
 		<div id="button">
 			<!-- 회원만 수정 가능 -->
 			<c:if test="${admin eq 0}">
-				<a href='${path}/reviewUpdate?num=${detail.reviewnum}'><button class="rbutton">수정하기</button></a>
+				<a href='${path}/reviewUpdate?num=${detail.reviewnum}'><button
+						class="rbutton">수정하기</button></a>
 			</c:if>
-			<a href='${path}/reviewDeleteAction?num=${detail.reviewnum}'><button onclick="r_delete(); return true;" class="rbutton">삭제하기</button></a>
-				<div style="text-align: right;">
-				<a href="/myreview"><button class="rbutton">글 목록 가기</button></a></div>
+			<a href='${path}/reviewDeleteAction?num=${detail.reviewnum}'><button
+					onclick="r_delete(); return true;" class="rbutton">삭제하기</button></a>
+			<div style="text-align: right;">
+				<a href="/myreview"><button class="rbutton">글 목록 가기</button></a>
+			</div>
 		</div>
-		</div>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 	<script>
-	//삭제버튼 누르면 경고창 띄우기
-
+		//삭제버튼 누르면 경고창 띄우기
 	</script>
 </body>
 </html>

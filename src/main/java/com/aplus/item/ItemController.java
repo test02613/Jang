@@ -51,7 +51,7 @@ public class ItemController {
 	public String itemDetail(HttpSession session, Model model, Integer num) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상품 상세 페이지 진입");
 
-		// 세션 아이디 vo에 저장
+		// 로그인 여부 확인
 		String id = (String) session.getAttribute("id");
 		model.addAttribute("loginMember", id);
 
@@ -60,9 +60,11 @@ public class ItemController {
 
 		List<ItemAttrVO> list = itemService.itemAttr(num);
 		model.addAttribute("list1", list);
-
+ 
+		//해당 상품 리뷰 목록
 		List<ReviewVO> review = itemService.itemreviewlist(num);
 		model.addAttribute("review", review);
+		
 		return "item/itemDetail";
 	}
 

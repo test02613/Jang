@@ -62,11 +62,5 @@ public class ItemServiceImpl implements ItemService {
 		return dao.itemreviewdetail(itemnum);
 	}
 
-	// -----------상품검색 구현중----------
-	@Override
-	public ItemVO itemSearch(String itemname) throws Exception {
-
-		return dao.itemSearch(itemname);
-	}
 
 }

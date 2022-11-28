@@ -61,4 +61,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 		return sql.selectOne("mapper.Review_SQL.review_delete", num);
 	}
+
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>event.jsp</title>
+<title>reviewAdmin.jsp</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -79,52 +79,105 @@
 	margin-bottom: 20px;
 }
 </style>
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href = "reviewAdmin?nowPage=${paging.nowPage}&cntPerPage="
+				+ sel;
+	}
+</script>
 </head>
 <body>
 	<!-- 게시판 부트스트랩 -->
 	<div id="wrapper">
 		<h1 class="subjecet">리뷰관리</h1>
-		<table class="table">
-			<!-- 게시판 상단 메뉴 -->
-			<thead class="table-dark">
-				<tr>
-					<th scope="col" class="col-4" id="title">등록날짜 / 주문번호</th>
-					<th scope="col" class="col-2" id="title">작성자</th>
-					<th scope="col" class="col-4" id="title">제목</th>
-					<th scope="col" class="col-4" id="title">내용</th>
-						<th scope="col" class="col-2" id="title">#</th>
-					<th scope="col" class="col-2" id="title">#</th>
-				</tr>
-			</thead>
-			<!-- 게시글 목록 -->
-			<tbody>
-				<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
-				<c:forEach items="${reviewlist}" var="reviewlist" varStatus="Status">
-					<%-- <tr onClick="location.href='${path}/reviewDetail?num=${reviewlist.ordernum}'"
-							style="cursor: pointer;" id="reviewlist"> --%>
+		<div id="outter">
+			<!-- 옵션선택 -->
+			<div style="float: right; margin-bottom: 10px;">
+				<select id="cntPerPage" name="sel" onchange="selChange()">
+					<option value="5"
+						<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
+						보기</option>
+					<option value="10"
+						<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
+						보기</option>
+					<option value="15"
+						<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
+						보기</option>
+					<option value="20"
+						<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
+						보기</option>
+				</select>
+			</div>
+			<br>
+			<table class="table">
+				<!-- 게시판 상단 메뉴 -->
+				<thead class="table-dark">
 					<tr>
-						<td id="center"><c:out value="${reviewlist.reviewdate} / ${reviewlist.ordernum}" /></td>
-	
-						<td id="center"><c:out value="${reviewlist.id}" /></td>
-						<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
-						<td id="center"><c:out value="${reviewlist.reviewcontent}" /></td>
-						<td id="center"><a
-							href='${path}/reviewDetail?num=${reviewlist.ordernum}'>
-								<button type="button" class="rdetailbutton" >리뷰상세보기</button>
-						</a></td> 
-						<td id="center"><a
-							href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'>
-								<button type="button" class="deletebutton" onclick="reviewDelete();">삭제</button>
-						</a></td>
+						<th scope="col" class="col-4" id="title">등록날짜 / 주문번호</th>
+						<th scope="col" class="col-2" id="title">작성자</th>
+						<th scope="col" class="col-4" id="title">제목</th>
+						<th scope="col" class="col-4" id="title">내용</th>
+						<th scope="col" class="col-2" id="title">#</th>
+						<th scope="col" class="col-2" id="title">#</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<div style="text-align: center" id="button">
-			<a href="/adminMain"><button type="button" class="adminbutton">관리자페이지로
-					가기</button></a>
-		</div></div>
+				</thead>
+				<!-- 게시글 목록 -->
+				<tbody>
+					<%--<c:forEach var="변수이름" items="반복할 객체명" begin="시작값" end="마지막값" step="증가값" varStatus="Status">--%>
+					<c:forEach items="${reviewlist}" var="reviewlist"
+						varStatus="Status">
+						<%-- <tr onClick="location.href='${path}/reviewDetail?num=${reviewlist.ordernum}'"
+							style="cursor: pointer;" id="reviewlist"> --%>
+						<tr>
+							<td id="center"><c:out
+									value="${reviewlist.reviewdate} / ${reviewlist.ordernum}" /></td>
 
+							<td id="center"><c:out value="${reviewlist.id}" /></td>
+							<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
+							<td id="center"><c:out value="${reviewlist.reviewcontent}" /></td>
+							<td id="center"><a
+								href='${path}/reviewDetail?num=${reviewlist.ordernum}'>
+									<button type="button" class="rdetailbutton">리뷰상세보기</button>
+							</a></td>
+							<td id="center"><a
+								href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'>
+									<button type="button" class="deletebutton"
+										onclick="reviewDelete();">삭제</button>
+							</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
+			<div style="display: block; text-align: center;">
+				<c:if test="${paging.startPage != 1 }">
+					<a id="as"
+						href="/reviewAdmin?nowPage=${paging.startPage-1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
+				</c:if>
+				<c:forEach begin="${paging.startPage }" end="${paging.endPage}"
+					var="p">
+					<c:choose>
+						<c:when test="${p == paging.nowPage}">
+							<b id="as">${p}</b>
+						</c:when>
+						<c:when test="${p != paging.nowPage }">
+							<a id="as"
+								href="/reviewAdmin?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${paging.endPage != paging.lastPage}">
+					<a id="as"
+						href="/reviewAdmin?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">&gt;</a>
+				</c:if>
+			</div>
+			<div style="text-align: center" id="button">
+				<a href="/adminMain"><button type="button" class="adminbutton">관리자페이지로
+						가기</button></a>
+			</div>
+		</div>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"

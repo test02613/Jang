@@ -139,7 +139,7 @@
 						<tr>
 							<td><select name="ColorList" id="ColorList"
 								class="ColorList1">
-									<option value="">================ (필수)옵션: 색상/용량 선택
+									<option>================ (필수)옵션: 색상/용량 선택
 										================</option>
 									<c:forEach var="list1" items="${list1}" varStatus="index">
 										<c:if test="${list1.itemstock == 0}">
@@ -221,6 +221,7 @@
 	var color;
 	var num;
 	var itemcode;
+	
 	$('#ColorList').on("change", function() { // 셀렉트 박스 
 		color = $("#ColorList option:selected").val();
 		num = ${detail.itemnum}
@@ -259,13 +260,17 @@
 		order();
 	});
 
+	var c;
+	
 	function order() {
-
-		if (num == undefined) {
+		
+		if(num == undefined) {
 			alert("상품을 선택해 주세요");
+		} else if(${loginMember == null}) {
+			alert("로그인 후 이용해 주세요");
 		} else {
 			$.ajax({
-				type : "get",
+				type : "get", 
 				url : "/itemCode",
 				data : {
 					color : color,
@@ -299,6 +304,8 @@
 	$("#insertBasket").on("click", function() { // 장바구니
 		if (num == undefined) {
 			alert("상품을 선택해 주세요");
+		} else if(${loginMember == null}) {
+			alert("로그인 후 이용해 주세요");
 		} else {
 			$.ajax({
 				type : "get",

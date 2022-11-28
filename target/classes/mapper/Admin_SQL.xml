@@ -80,7 +80,7 @@
 		SET leave = 0
 		WHERE id = #{id}
 	</update>
-
+	
 	<!-- 주문관리 -->
 	<select id="order_admin" resultMap="orderlist">
 		SELECT *
@@ -89,7 +89,7 @@
 		order by a.ordernum DESC
 
 	</select>
-
+	
 	<!-- 주문상태 변경 -->
 	<update id="state_change" parameterType="OrderVO">
 		UPDATE ORDERTABLE
@@ -97,10 +97,25 @@
 		WHERE ordernum = #{ordernum}
 	</update>
 
-	<!-- 리뷰관리 -->
-	<select id="review_admin" resultMap="reviewlist">
-		SELECT *
-		FROM REVIEW
+	<!-- 회원 리뷰 관리 -->
+	<!-- 회원 리뷰 총 게시글 갯수 출력 -->
+	<select id="countReview" resultType="INTEGER">
+		SELECT COUNT(*) FROM REVIEW
+	</select>
+
+	<!-- 회원 리뷰 게시글 목록 -->
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectReview" resultType="ReviewVO">
+		SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM REVIEW 
+						ORDER BY reviewnum DESC 
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 
 	<!-- 리뷰삭제 -->
@@ -197,4 +212,5 @@
 		VALUES(#{itemnum},#{itemname},#{itemcat1},#{itemcat2},#{itemimg},#{itemdetailimg}
 		)
 	</insert>
+
 </mapper>

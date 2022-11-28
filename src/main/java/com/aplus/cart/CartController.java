@@ -32,6 +32,7 @@ public class CartController {
 	
 	@Autowired
 	private OrderService orderService;
+	
 	// 장바구니 추가
 	@RequestMapping(value = "/cartInsertAction", method = RequestMethod.GET)
 	public String cartInsert(HttpSession session, CartVO vo, Model model, Integer code, ItemAttrVO attr)
