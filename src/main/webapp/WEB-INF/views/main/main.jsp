@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -52,20 +52,20 @@
 						<!-- 슬라이드 쇼 -->
 						<div class="carousel-item active">
 							<!--가로-->
-							<a href="/eventDetail?num=14"> <img id="slideradius"
+							<a href="/eventDetail?num=1"> <img id="slideradius"
 								class="d-block w-100"
 								src="../resources/img/slide3.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="First slide"></a>
 							<div class="carousel-caption d-none d-md-block"></div>
 						</div>
 						<div class="carousel-item">
-							<a href="/eventDetail?num=14"> <img id="slideradius"
+							<a href="/eventDetail?num=2"> <img id="slideradius"
 								class="d-block w-100"
 								src="../resources/img/slide2.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="Second slide"></a>
 						</div>
 						<div class="carousel-item">
-							<a href="/eventDetail?num=14"> <img id="slideradius"
+							<a href="/eventDetail?num=3"> <img id="slideradius"
 								class="d-block w-100"
 								src="../resources/img/slide.png?auto=compress&cs=tinysrgb&h=650&w=940"
 								alt="Third slide"></a>

@@ -117,8 +117,6 @@
 						<th scope="col" class="col-4" id="title">등록날짜 / 주문번호</th>
 						<th scope="col" class="col-2" id="title">작성자</th>
 						<th scope="col" class="col-4" id="title">제목</th>
-						<th scope="col" class="col-4" id="title">내용</th>
-						<th scope="col" class="col-2" id="title">#</th>
 						<th scope="col" class="col-2" id="title">#</th>
 					</tr>
 				</thead>
@@ -135,15 +133,9 @@
 
 							<td id="center"><c:out value="${reviewlist.id}" /></td>
 							<td id="center"><c:out value="${reviewlist.reviewtitle}" /></td>
-							<td id="center"><c:out value="${reviewlist.reviewcontent}" /></td>
 							<td id="center"><a
 								href='${path}/reviewDetail?num=${reviewlist.ordernum}'>
 									<button type="button" class="rdetailbutton">리뷰상세보기</button>
-							</a></td>
-							<td id="center"><a
-								href='${path}/reviewAdminDeleteAction?reviewnum=${reviewlist.reviewnum}'>
-									<button type="button" class="deletebutton"
-										onclick="reviewDelete();">삭제</button>
 							</a></td>
 						</tr>
 					</c:forEach>

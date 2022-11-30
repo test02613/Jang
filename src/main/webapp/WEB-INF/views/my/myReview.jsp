@@ -106,7 +106,7 @@
 							</a></td>
 							<td id="center"><a
 								href="/reviewDeleteAction?num=${myreview.reviewnum}">
-									<button type="button" class="rbutton" onclick="riviewDelet();">삭제</button>
+									<button type="button" class="rbutton" onclick="reviewDelete();">삭제</button>
 							</a></td>
 						</tr>
 					</c:forEach>
@@ -123,9 +123,9 @@
 		crossorigin="anonymous"></script>
 	<script>
 		//삭제버튼 누르면 경고창 띄우기
-		function riviewDelet() {
+		function reviewDelete() {
 			window.confirm("리뷰 삭제시 다시 작성할 수 없습니다.")
-		}
+		}zzz
 	</script>
 </body>
 </html>

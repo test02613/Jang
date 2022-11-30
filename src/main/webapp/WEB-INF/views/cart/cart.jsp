@@ -104,7 +104,7 @@
 						</a></td>
 						<td class="center"><a
 							href='${path}/cartDeleteAction?code=${cartlist.itemcode}'>
-								<button class="cbutton">삭제</button>
+								<button class="cbutton" onclick="itemDelete();">삭제</button>
 						</a></td>
 					</tr>
 				</c:forEach>
@@ -113,8 +113,8 @@
 		<br>
 		<c:if test="${not empty cartlist}">
 			<div class="right" id="button">
-				<a href="/cartDeleteAllAction"><button type="button"
-						class="orderbutton" onclick="allDelete();" >장바구니 비우기</button></a>
+				<button type="button" class="orderbutton" onclick="allDelete();">장바구니
+					비우기</button>
 			</div>
 			<div class="center" id="button">
 				<a href="/cartOrder?id=${id}"><button type="button"
@@ -132,7 +132,13 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script>
-	//삭제버튼 누르면 경고창 띄우기
-	</script>
+<script>
+	//전체 삭제버튼 누르면 경고창 띄우기
+	function allDelete() {
+		if (window.confirm("장바구니를 비우시겠습니까?")) {
+			location.href = "/cartDeleteAllAction";
+		}
+
+	}
+</script>
 </html>

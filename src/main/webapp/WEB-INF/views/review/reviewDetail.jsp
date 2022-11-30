@@ -50,6 +50,19 @@ td:hover {
 	cursor: pointer;
 	margin-bottom: 20px;
 }
+/* admin- 리뷰관리 페이지가기 버튼 */
+.arbutton {
+	width: 170px;
+	height: 45px;
+	background-color: #24292F;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
 /* 제목라인 */
 #title {
 	text-align: center;
@@ -97,11 +110,22 @@ td:hover {
 				<a href='${path}/reviewUpdate?num=${detail.reviewnum}'><button
 						class="rbutton">수정하기</button></a>
 			</c:if>
-			<a href='${path}/reviewDeleteAction?num=${detail.reviewnum}'><button
-					onclick="r_delete(); return true;" class="rbutton">삭제하기</button></a>
+			
+			<!-- 회원 -->
+			<c:if test="${admin eq 0}">
+			<button onclick="r_delete();" class="rbutton">삭제하기</button>
 			<div style="text-align: right;">
 				<a href="/myreview"><button class="rbutton">글 목록 가기</button></a>
 			</div>
+			
+			<!-- 관리자  -->
+			</c:if>
+			<c:if test="${admin eq 1}">
+			<button onclick="ar_delete();" class="rbutton">삭제하기</button>
+			<div style="text-align: right;">
+				<a href="/reviewAdmin"><button class="arbutton">리뷰관리 페이지 가기</button></a>
+			</div>
+			</c:if>
 		</div>
 	</div>
 	<script
@@ -109,7 +133,21 @@ td:hover {
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 	<script>
-		//삭제버튼 누르면 경고창 띄우기
+		//(회원)삭제버튼 누르면 경고창 띄우기
+		function r_delete() {
+			if (window.confirm("리뷰 삭제시 다시 작성할 수 없습니다.")) {
+				location.href = "/reviewDeleteAction?num=${detail.reviewnum}";
+			}
+
+		}
+		
+		//(관리자)삭제버튼 누르면 경고창 띄우기
+		function ar_delete() {
+			if (window.confirm("삭제하시겠습니까?")) {
+				location.href = "/AdminreviewDeleteAction?num=${detail.reviewnum}";
+			}
+
+		}
 	</script>
 </body>
 </html>

@@ -117,4 +117,14 @@ public class ReviewController {
 
 		return "redirect:/myreview";
 	}
+	
+	// 관리자 리뷰 삭제
+	@RequestMapping(value = "/AdminreviewDeleteAction", method = RequestMethod.GET)
+	public String AdminreviewDeleteAction(Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰삭제");
+
+		reviewservice.reviewDelete(num);
+
+		return "redirect:/reviewAdmin";
+	}
 }
