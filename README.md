@@ -27,7 +27,7 @@
 
 - DataBase
     - Oracle SQL:11g
-    - ojbc6:11.2.0.4
+    - ojdbc6:11.2.0.4
     - spring-jdbc:5.3.22
     - hikariCP:3.4.2
     - mybatis:3.5.10
